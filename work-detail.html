@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品 | 視丘攝影藝術學院</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;500;700;900&family=Roboto:wght@100;300;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        serif: ['"Noto Serif TC"', 'serif'],
+                        display: ['"Roboto"', 'sans-serif'],
+                    },
+                    colors: {
+                        gallery: {
+                            50: '#FFFFFF', 100: '#F8F9FA', 200: '#E9ECEF',
+                            300: '#DEE2E6', 400: '#ADB5BD', 500: '#6C757D',
+                            800: '#343A40', 900: '#212529',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background: #F8F9FA; color: #212529; font-family: "Noto Sans TC", sans-serif; }
+        .lightbox {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.92);
+            z-index: 100; display: none; align-items: center; justify-content: center;
+            padding: 20px;
+        }
+        .lightbox.on { display: flex; }
+        .lightbox img { max-width: 100%; max-height: 90vh; object-fit: contain; }
+        .lightbox .lb-close {
+            position: absolute; top: 20px; right: 20px;
+            color: #fff; font-size: 32px; background: none; border: none;
+            cursor: pointer; width: 44px; height: 44px;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Header -->
+            <div id="shared-global-bg"></div>
+            <div id="shared-header"></div>
+        <!-- 動態注入 -->
+        <div class="text-center py-24 text-gallery-400">載入中…</div>
+    </main>
+
+    <!-- Related -->
+    <section id="related-section" class="max-w-7xl mx-auto px-6 md:px-12 pb-24 hidden">
+        <div class="flex items-center gap-4 mb-8">
+            <div class="h-px w-12 bg-gallery-800"></div>
+            <p class="text-[10px] font-bold tracking-[0.3em] text-gallery-400 uppercase font-display">Related Works</p>
+        </div>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-gallery-900 mb-10">其他作品</h2>
+        <div id="related-grid" class="grid grid-cols-2 md:grid-cols-4 gap-6"></div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <button class="lb-close" aria-label="關閉">×</button>
+        <img id="lb-img" alt="">
+    </div>
+
+    <div id="shared-cta"></div>
+    <div id="shared-footer"></div>
+
+    <script src="js/shared-layout.js"></script>
+    <script>
+        SharedLayout.mount({ activeNav: 'gallery' });
+    </script>
+    <script src="js/works-data.js"></script>
+    <script>
+        (function () {
+            const content = document.getElementById('work-content');
+            const relatedSection = document.getElementById('related-section');
+            const relatedGrid = document.getElementById('related-grid');
+            const lightbox = document.getElementById('lightbox');
+            const lbImg = document.getElementById('lb-img');
+
+            function esc(s) {
+                return String(s == null ? '' : s)
+                    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+            }
+
+            function getId() {
+                const params = new URLSearchParams(location.search);
+                return params.get('id');
+            }
+
+            function renderNotFound() {
+                content.innerHTML = `
+                    <div class="text-center py-32">
+                        <div class="text-5xl mb-4">🖼️</div>
+                        <h1 class="font-serif text-3xl text-gallery-900 mb-3">找不到此作品</h1>
+                        <p class="text-gallery-500 mb-8">網址中的作品 ID 不存在，可能已被移除。</p>
+                        <a href="gallery.html" class="inline-flex items-center gap-2 px-6 py-3 bg-gallery-900 text-white text-sm tracking-widest hover:bg-black transition-colors">
+                            <i class="fa-solid fa-arrow-left-long"></i> 回到家族藝廊
+                        </a>
+                    </div>`;
+            }
+
+            function render() {
+                const id = getId();
+                if (!id) { renderNotFound(); return; }
+                const w = WorksStore.getById(id);
+                if (!w) { renderNotFound(); return; }
+
+                document.title = `${w.title} | 視丘攝影藝術學院`;
+
+                content.innerHTML = `
+                    <article>
+                        <!-- 標題區 -->
+                        <header class="mb-12 pt-4">
+                            ${(w.categories || []).length ? `
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    ${w.categories.map(c => `
+                                        <span class="text-[10px] tracking-widest px-3 py-1 bg-gallery-900 text-white rounded-full">${esc(c)}</span>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                            <h1 class="font-serif text-4xl md:text-6xl font-bold text-gallery-900 mb-4">${esc(w.title)}</h1>
+                            ${w.subtitle ? `<p class="text-gallery-500 text-lg tracking-wide">${esc(w.subtitle)}</p>` : ''}
+                            <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs text-gallery-400 tracking-widest font-display uppercase">
+                                ${w.date ? `<span><i class="fa-regular fa-calendar mr-2"></i>${esc(w.date)}</span>` : ''}
+                                ${w.gallery && w.gallery.length ? `<span><i class="fa-regular fa-images mr-2"></i>${w.gallery.length} PHOTOS</span>` : ''}
+                            </div>
+                        </header>
+
+                        <!-- 封面 -->
+                        ${w.coverImage ? `
+                            <div class="mb-16 overflow-hidden cursor-zoom-in" data-lightbox="${esc(w.coverImage)}">
+                                <img src="${esc(w.coverImage)}" alt="${esc(w.title)}"
+                                     class="w-full h-auto"
+                                     onerror="this.style.opacity='0.3';">
+                            </div>
+                        ` : ''}
+
+                        <!-- 簡介 -->
+                        ${w.description ? `
+                            <section class="max-w-2xl mx-auto mb-20">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <div class="h-px w-12 bg-gallery-800"></div>
+                                    <p class="text-[10px] font-bold tracking-[0.3em] text-gallery-400 uppercase font-display">Statement</p>
+                                </div>
+                                <div class="font-serif text-lg md:text-xl leading-loose text-gallery-800 whitespace-pre-line">${esc(w.description)}</div>
+                            </section>
+                        ` : ''}
+
+                        <!-- 內頁作品照 -->
+                        ${w.gallery && w.gallery.length ? `
+                            <section>
+                                <div class="flex items-center gap-4 mb-8">
+                                    <div class="h-px w-12 bg-gallery-800"></div>
+                                    <p class="text-[10px] font-bold tracking-[0.3em] text-gallery-400 uppercase font-display">Works</p>
+                                </div>
+                                <div class="space-y-8">
+                                    ${w.gallery.map((g, i) => `
+                                        <figure class="cursor-zoom-in overflow-hidden" data-lightbox="${esc(g.src)}">
+                                            <img src="${esc(g.src)}" alt="${esc(g.caption || (w.title + ' - ' + (i + 1)))}"
+                                                 class="w-full h-auto"
+                                                 onerror="this.style.opacity='0.3';">
+                                            ${g.caption ? `<figcaption class="text-xs text-gallery-400 mt-3 tracking-widest">${esc(g.caption)}</figcaption>` : ''}
+                                        </figure>
+                                    `).join('')}
+                                </div>
+                            </section>
+                        ` : ''}
+
+                        <!-- 標籤 -->
+                        ${w.tags && w.tags.length ? `
+                            <div class="mt-16 pt-8 border-t border-gallery-200">
+                                <p class="text-[10px] tracking-[0.3em] text-gallery-400 uppercase font-display mb-3">Tags</p>
+                                <div class="flex flex-wrap gap-2">
+                                    ${w.tags.map(t => `<span class="text-xs px-3 py-1 bg-gallery-200 text-gallery-800 rounded-full">${esc(t)}</span>`).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+                    </article>
+                `;
+
+                // Lightbox
+                content.querySelectorAll('[data-lightbox]').forEach(el =>
+                    el.addEventListener('click', () => {
+                        lbImg.src = el.getAttribute('data-lightbox');
+                        lightbox.classList.add('on');
+                    })
+                );
+
+                renderRelated(w);
+            }
+
+            function renderRelated(current) {
+                const all = WorksStore.getAll().filter(w => w.id !== current.id);
+                if (!all.length) { relatedSection.classList.add('hidden'); return; }
+                // 優先同分類，再補齊
+                const sameCat = all.filter(w =>
+                    (w.categories || []).some(c => (current.categories || []).includes(c))
+                );
+                const others = all.filter(w => !sameCat.includes(w));
+                const list = sameCat.concat(others).slice(0, 4);
+
+                relatedSection.classList.remove('hidden');
+                relatedGrid.innerHTML = list.map(w => `
+                    <a href="work-detail.html?id=${encodeURIComponent(w.id)}"
+                       class="group block overflow-hidden">
+                        <div class="aspect-square overflow-hidden bg-gallery-200 mb-3">
+                            <img src="${esc(w.coverImage)}" alt="${esc(w.title)}"
+                                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                 onerror="this.style.opacity='0.3';">
+                        </div>
+                        <h4 class="font-serif text-sm md:text-base text-gallery-900 group-hover:text-gallery-500 transition-colors truncate">${esc(w.title)}</h4>
+                    </a>
+                `).join('');
+            }
+
+            // Lightbox close
+            lightbox.addEventListener('click', e => {
+                if (e.target === lightbox || e.target.classList.contains('lb-close')) {
+                    lightbox.classList.remove('on');
+                    lbImg.src = '';
+                }
+            });
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && lightbox.classList.contains('on')) {
+                    lightbox.classList.remove('on');
+                    lbImg.src = '';
+                }
+            });
+
+            render();
+            WorksStore.subscribe(render);
+        })();
+    </script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
