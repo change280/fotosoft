@@ -669,16 +669,44 @@
             }, intervalMs);
         })();
 
-        // ── Splash 自動清除 ──
-        window.addEventListener('load', function() {
+        // ── Splash 顯示策略：首次進入播放；同站其他頁返回或同分頁第二次進入時略過 ──
+        (function initSplashBehavior() {
             const splash = document.getElementById('splash');
-            if (splash) {
-                // 等待動畫 (3.5s 延遲 + 1.0s 動畫 = 4.5s) 結束後移除
-                setTimeout(() => { 
-                    splash.style.display = 'none'; 
-                }, 4600);
+            if (!splash) return;
+
+            const splashSeenKey = 'fotosoftSplashSeen';
+            let shouldSkipSplash = false;
+
+            try {
+                const seenInThisTab = sessionStorage.getItem(splashSeenKey) === '1';
+                const referrer = document.referrer;
+                let fromOtherInternalPage = false;
+
+                if (referrer) {
+                    const refUrl = new URL(referrer, window.location.href);
+                    const sameOrigin = refUrl.origin === window.location.origin;
+                    const isDifferentPath = refUrl.pathname !== window.location.pathname;
+                    fromOtherInternalPage = sameOrigin && isDifferentPath;
+                }
+
+                shouldSkipSplash = seenInThisTab || fromOtherInternalPage;
+                sessionStorage.setItem(splashSeenKey, '1');
+            } catch (e) {
+                // sessionStorage 不可用時，維持原本行為（播放一次）
             }
-        });
+
+            if (shouldSkipSplash) {
+                splash.style.display = 'none';
+                return;
+            }
+
+            window.addEventListener('load', function() {
+                // 等待動畫 (3.5s 延遲 + 1.0s 動畫 = 4.5s) 結束後移除
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                }, 4600);
+            });
+        })();
 
         // ── 視丘藝廊：動態渲染 featured 作品 ──
         (function renderGalleryScroller() {
