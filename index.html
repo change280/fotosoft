@@ -669,16 +669,14 @@
             }, intervalMs);
         })();
 
-        // ── Splash 顯示策略：首次進入播放；同站其他頁返回或同分頁第二次進入時略過 ──
+        // ── Splash 顯示策略：只有同站其他頁返回時略過；外站返回仍播放 ──
         (function initSplashBehavior() {
             const splash = document.getElementById('splash');
             if (!splash) return;
 
-            const splashSeenKey = 'fotosoftSplashSeen';
             let shouldSkipSplash = false;
 
             try {
-                const seenInThisTab = sessionStorage.getItem(splashSeenKey) === '1';
                 const referrer = document.referrer;
                 let fromOtherInternalPage = false;
 
@@ -689,10 +687,9 @@
                     fromOtherInternalPage = sameOrigin && isDifferentPath;
                 }
 
-                shouldSkipSplash = seenInThisTab || fromOtherInternalPage;
-                sessionStorage.setItem(splashSeenKey, '1');
+                shouldSkipSplash = fromOtherInternalPage;
             } catch (e) {
-                // sessionStorage 不可用時，維持原本行為（播放一次）
+                // URL 解析失敗時，維持預設行為（播放）
             }
 
             if (shouldSkipSplash) {
