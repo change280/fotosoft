@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於視丘 | 視丘攝影藝術學院 Fotosoft</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;500;700;900&family=Roboto:wght@100;300;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        serif: ['"Noto Serif TC"', 'serif'],
+                        display: ['"Roboto"', 'sans-serif'],
+                    },
+                    colors: {
+                        gallery: {
+                            50: '#FFFFFF', 100: '#F8F9FA', 200: '#E9ECEF',
+                            300: '#DEE2E6', 400: '#ADB5BD', 500: '#6C757D',
+                            800: '#343A40', 900: '#212529',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            color: #212529;
+            font-family: "Noto Sans TC", sans-serif;
+        }
+        .prose-cn p { line-height: 2; }
+        .prose-cn strong { color: #212529; font-weight: 700; }
+        .section-num {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 900;
+            font-size: clamp(6rem, 15vw, 12rem);
+            line-height: 1;
+            color: rgba(0,0,0,0.04);
+            pointer-events: none;
+            user-select: none;
+        }
+        .quote-block {
+            border-left: 2px solid #212529;
+            padding-left: 1.5rem;
+        }
+        details > summary { list-style: none; cursor: pointer; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] .chev { transform: rotate(90deg); }
+        .chev { transition: transform 0.3s ease; }
+
+        /* Hash-based section reveal */
+        .about-section { display: none; }
+        .about-section.active { display: block; animation: aboutFadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+        @keyframes aboutFadeUp {
+            0% { opacity: 0; transform: translateY(24px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .about-placeholder-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(248,249,250,0.5) 100%);
+            border: 2px dashed rgba(173,181,189,0.5);
+        }
+        /* Hero 圓形項目導覽 */
+        .hero-nav-arc {
+            display: flex; justify-content: flex-end; align-items: flex-end;
+            gap: 1rem; flex-wrap: nowrap;
+            padding: 0 1rem;
+        }
+        .hero-nav-circle {
+            --offset-x: 0px;
+            position: relative; display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            width: 6.5rem; height: 6.5rem; border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(222, 226, 230, 0.9);
+            color: #343A40;
+            box-shadow: 0 12px 26px rgba(33, 37, 41, 0.08), inset 0 1px 0 rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            transform: translateX(var(--offset-x)) scale(1);
+            transform-origin: center bottom;
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+                        background 0.3s ease, color 0.3s ease,
+                        box-shadow 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .hero-nav-circle .hnc-num {
+            font-family: 'Roboto', sans-serif; font-size: 0.68rem; font-weight: 700;
+            letter-spacing: 0.18em; color: #ADB5BD; margin-bottom: 0.15rem;
+            transition: color 0.3s ease;
+        }
+        .hero-nav-circle .hnc-icon {
+            font-size: 1.2rem; margin-bottom: 0.14rem; transition: transform 0.3s ease;
+        }
+        .hero-nav-circle .hnc-label {
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        .hero-nav-circle:hover {
+            background: #fff; border-color: #ADB5BD;
+            box-shadow: 0 16px 30px rgba(33, 37, 41, 0.14);
+            transform: translateX(var(--offset-x)) scale(1.08);
+        }
+        .hero-nav-circle:hover .hnc-icon { transform: scale(1.15); }
+
+        .hero-nav-circle.active {
+            background: linear-gradient(180deg, #343A40 0%, #212529 100%);
+            color: #FFFFFF; border-color: #212529;
+            box-shadow: 0 18px 36px rgba(33, 37, 41, 0.28), inset 0 1px 0 rgba(255,255,255,0.15);
+            transform: translateX(var(--offset-x)) translateY(-10px) scale(1.2);
+        }
+        .hero-nav-circle.active:hover { transform: translateX(var(--offset-x)) translateY(-12px) scale(1.24); }
+        .hero-nav-circle.active .hnc-num { color: rgba(255,255,255,0.55); }
+
+        .hero-nav-circle.is-left-of-focus { --offset-x: -12px; }
+        .hero-nav-circle.is-right-of-focus { --offset-x: 12px; }
+
+        /* 導覽列上有 hover 時：以 hover 的項目為視覺主角，暫時收起原 active 視覺 */
+        .hero-nav-arc:hover .hero-nav-circle.active:not(:hover) {
+            background: rgba(255, 255, 255, 0.85);
+            color: #343A40;
+            border-color: rgba(222, 226, 230, 0.9);
+            box-shadow: 0 12px 26px rgba(33, 37, 41, 0.08), inset 0 1px 0 rgba(255,255,255,0.9);
+            transform: translateX(var(--offset-x)) scale(1);
+        }
+        .hero-nav-arc:hover .hero-nav-circle.active:not(:hover) .hnc-num {
+            color: #ADB5BD;
+        }
+        .hero-nav-arc:hover .hero-nav-circle:hover {
+            background: linear-gradient(180deg, #343A40 0%, #212529 100%);
+            color: #FFFFFF;
+            border-color: #212529;
+            box-shadow: 0 18px 36px rgba(33, 37, 41, 0.28), inset 0 1px 0 rgba(255,255,255,0.15);
+            transform: translateX(var(--offset-x)) translateY(-12px) scale(1.24);
+        }
+        .hero-nav-arc:hover .hero-nav-circle:hover .hnc-num {
+            color: rgba(255,255,255,0.55);
+        }
+
+        /* 手機版：改為橫向可捲動一列 */
+        @media (max-width: 767px) {
+            .hero-nav-arc {
+                overflow-x: auto; justify-content: flex-start;
+                padding-bottom: 1rem; -webkit-overflow-scrolling: touch;
+            }
+            .hero-nav-arc::-webkit-scrollbar { display: none; }
+            .hero-nav-circle,
+            .hero-nav-circle[data-pos] { flex-shrink: 0; width: 5.7rem; height: 5.7rem; }
+            .hero-nav-circle:hover { transform: translateX(var(--offset-x)) scale(1.06); }
+            .hero-nav-circle.active { transform: translateX(var(--offset-x)) translateY(-8px) scale(1.14); }
+            .hero-nav-circle.active:hover { transform: translateX(var(--offset-x)) translateY(-10px) scale(1.18); }
+            .hero-nav-circle.is-left-of-focus,
+            .hero-nav-circle.is-right-of-focus { --offset-x: 0px; }
+        }
+
+        /* Hero 動態內容切換動畫 */
+        .hero-swap { transition: opacity 0.35s ease, transform 0.35s ease; }
+        .hero-swap.is-swapping { opacity: 0; transform: translateY(8px); }
+
+        /* 統一各章第一段內容的起始高度 */
+        .section-content-start { padding-top: 2.5rem; }
+        @media (min-width: 768px) {
+            .section-content-start { padding-top: 3rem; }
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-gallery-900 selection:text-white">
+
+    <div id="shared-global-bg"></div>
+    <div id="shared-header"></div>
+
+    <!-- ===== 頁面標題 Hero ===== -->
+    <section class="pt-24 pb-8 md:pt-32 md:pb-12 px-6 md:px-12 relative overflow-hidden">
+        <div class="absolute top-20 right-0 pointer-events-none select-none overflow-hidden w-full flex justify-end opacity-[0.04]">
+            <span class="font-display font-black text-[18vw] leading-none tracking-tighter text-black">ABOUT</span>
+        </div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="h-px w-12 bg-gallery-800"></div>
+                <p id="hero-kicker" class="hero-swap text-[10px] font-bold tracking-[0.3em] text-gallery-400 uppercase font-display">About Fotosoft</p>
+            </div>
+            <h1 id="hero-title" class="hero-swap font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-gallery-900 leading-tight">
+                關於視丘<br>
+                <span class="italic font-light text-gallery-400 text-3xl md:text-4xl lg:text-5xl">Taiwan's Photography Bauhaus</span>
+            </h1>
+            <p id="hero-desc" class="hero-swap mt-8 max-w-3xl text-gallery-500 text-base md:text-lg leading-loose">
+                自 1985 年創校至今，視丘攝影藝術學院是台灣唯一致力於「PLE 影像訊息讀寫教育」的攝影私塾大學。<br>
+                我們相信，攝影不只是一項技藝，而是理解世界的一種語言。
+            </p>
+
+            <!-- 8 圓形項目導覽（可隨時縱覽並展開任一子項目） -->
+            <div class="mt-14 md:mt-20">
+                <div id="hero-nav-arc" class="hero-nav-arc">
+                    <a href="#logo"         data-section="logo"         data-pos="0" class="hero-nav-circle">
+                        <span class="hnc-num">01</span>
+                        <i class="fa-solid fa-infinity hnc-icon"></i>
+                        <span class="hnc-label">LOGO 理念</span>
+                    </a>
+                    <a href="#vision"       data-section="vision"       data-pos="1" class="hero-nav-circle">
+                        <span class="hnc-num">02</span>
+                        <i class="fa-solid fa-bullseye hnc-icon"></i>
+                        <span class="hnc-label">願景使命</span>
+                    </a>
+                    <a href="#thalamus"     data-section="thalamus"     data-pos="2" class="hero-nav-circle">
+                        <span class="hnc-num">03</span>
+                        <i class="fa-solid fa-brain hnc-icon"></i>
+                        <span class="hnc-label">視丘是什麼</span>
+                    </a>
+                    <a href="#philosophy"   data-section="philosophy"   data-pos="3" class="hero-nav-circle">
+                        <span class="hnc-num">04</span>
+                        <i class="fa-solid fa-book-open hnc-icon"></i>
+                        <span class="hnc-label">教育哲學</span>
+                    </a>
+                    <a href="#features"     data-section="features"     data-pos="4" class="hero-nav-circle">
+                        <span class="hnc-num">05</span>
+                        <i class="fa-solid fa-building-columns hnc-icon"></i>
+                        <span class="hnc-label">學院特色</span>
+                    </a>
+                    <a href="#achievements" data-section="achievements" data-pos="5" class="hero-nav-circle">
+                        <span class="hnc-num">06</span>
+                        <i class="fa-solid fa-award hnc-icon"></i>
+                        <span class="hnc-label">成績單</span>
+                    </a>
+                    <a href="#alumni"       data-section="alumni"       data-pos="6" class="hero-nav-circle">
+                        <span class="hnc-num">07</span>
+                        <i class="fa-solid fa-user-graduate hnc-icon"></i>
+                        <span class="hnc-label">畢業校友</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 預設提示卡（未選擇章節時顯示） ===== -->
+    <section id="about-placeholder" class="px-6 md:px-12 pb-24">
+        <div class="max-w-4xl mx-auto">
+            <div class="about-placeholder-card rounded-3xl p-10 md:p-16 text-center">
+                <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-white border border-gallery-200 flex items-center justify-center shadow-sm">
+                    <i class="fa-solid fa-hand-pointer text-2xl text-gallery-400"></i>
+                </div>
+                <h3 class="font-serif text-2xl md:text-3xl font-bold text-gallery-900 mb-4">請自上方圓形項目選單開始探索</h3>
+                <p class="text-gallery-500 leading-loose max-w-xl mx-auto">
+                    點擊 Hero 區的任一圓形項目，即可展開該章節的完整內容。你也可以透過 header 上的「關於視丘」下拉子選單快速切換。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 1. LOGO 理念 ===== -->
+    <section id="logo" class="about-section py-24 md:py-32 px-6 md:px-12 relative">
+        <div class="max-w-7xl mx-auto relative">
+            <div class="absolute -top-4 -left-4 section-num">01</div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start relative z-10 section-content-start">
+                <div class="lg:col-span-4">
+                    <div class="aspect-square bg-white/70 border border-gallery-200 rounded-2xl flex items-center justify-center p-10 shadow-soft">
+                        <img src="logo.webp" alt="視丘 Fotosoft Logo" class="w-full h-full object-contain">
+                    </div>
+                </div>
+
+                <div class="lg:col-span-8 space-y-12 prose-cn text-gallery-800">
+                    <div>
+                        <h3 class="font-serif text-2xl md:text-3xl font-bold text-gallery-900 mb-4 flex items-baseline gap-4">
+                            <span class="font-display text-gallery-400 text-lg">∞</span> 無限大
+                        </h3>
+                        <p class="text-gallery-500 leading-loose">
+                            暗喻藝術有無限的可能。專業攝影師是一門在<strong class="text-gallery-800">藝術與商業</strong>世界有無限大可能性的事業；黑色方塊上的無限大符號，也暗喻專業攝影唯有站在紮實的理論基礎上，它的藝術性才有無限發展的空間。
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-2xl md:text-3xl font-bold text-gallery-900 mb-4 flex items-baseline gap-4">
+                            <span class="font-display text-gallery-400 text-lg">■</span> 四方形黑色實體
+                        </h3>
+                        <p class="text-gallery-500 leading-loose">
+                            暗喻攝影基礎理論對專業攝影師的重要性。視丘不僅以堅實紮實的攝影與視覺理論訓練著稱，更以有效幫助學生建立<strong class="text-gallery-800">個人的理論系統</strong>聞名。
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-2xl md:text-3xl font-bold text-gallery-900 mb-4 flex items-baseline gap-4">
+                            <span class="font-display text-gallery-400 text-lg">Fs</span> FOTO ＋ SOFT
+                        </h3>
+                        <p class="text-gallery-500 leading-loose mb-4">
+                            FOTO 意指攝影，SOFT 意指軟體。視丘是攝影軟體資訊的寶庫，更是攝影相關知識的活泉。到視丘，您不僅可以學到<strong class="text-gallery-800">「該如何 KNOW-HOW」</strong>，更能徹底了解<strong class="text-gallery-800">「為什麼要這樣 KNOW-WHY」</strong>。
+                        </p>
+                        <p class="text-gallery-500 leading-loose">
+                            視丘認為<strong class="text-gallery-800">專業攝影</strong>是各種行業中非常需要左腦右腦平衡的行業。照片上精密的光學品質需要嚴謹的左腦型邏輯訓練；影像中令人動容、回味無窮的精神內涵，則需要右腦型的感性訓練。對已經超越技術層面、想要進入藝術殿堂的攝影家而言，右腦的訓練比左腦更重要。
+                        </p>
+                        <div class="mt-6 quote-block text-gallery-800">
+                            視丘是台灣最早開設攝影右腦型課程的教育機構，並以視覺心理學、影像美學、世界攝影史、台灣攝影史研究等課程著稱。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 2. 願景與使命 Vision & Mission ===== -->
+    <section id="vision" class="about-section py-24 md:py-32 px-6 md:px-12 relative bg-white/30">
+        <div class="max-w-7xl mx-auto relative">
+            <div class="absolute -top-4 -left-4 section-num">02</div>
+            <div class="relative z-10 section-content-start">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+                    <div>
+                        <h3 class="font-display text-xs font-bold tracking-[0.3em] text-gallery-400 uppercase mb-8">Vision · 願景</h3>
+                        <div class="space-y-6 prose-cn text-gallery-800">
+                            <p class="text-lg md:text-xl font-serif leading-loose text-gallery-900">
+                                視丘是「台灣攝影的包浩斯」。
+                            </p>
+                            <p class="text-gallery-500 leading-loose">
+                                21 世紀的「台灣攝影的包浩斯」不只是訓練「專業攝影師」的學校。對創辦人吳嘉寶而言，它是培育能自由運用靜態與動態影像，並揉合其他四種訊息軟媒（繪畫、文字、語音、聲音），創造既深刻又具深厚文化底蘊的<strong>「形而上內容 Metaphysical Content」</strong>的<strong>「內容創作者 Content Creator」</strong>的私塾大學。
+                            </p>
+                            <p class="text-gallery-500 leading-loose">
+                                影像是視覺訊息傳播產業鏈中最重要的一環：<span class="text-gallery-800 tracking-wide">廣告 → 設計 → 攝影 → 印刷/網頁/App → 發行/電信</span>。
+                            </p>
+                            <p class="text-gallery-500 leading-loose">
+                                在「攝影 4.0 時代」的今天，手機傳播以影像為主要軟媒，社會更迫切需要有紮實視覺理論根基與深厚文化底蘊的<strong>「影像傳播專業人才 Image Information Communicator」</strong>。
+                            </p>
+                            <div class="quote-block text-gallery-800 leading-loose">
+                                人類文明進入攝影 4.0 版時代，「影像的天命」就是與其他訊息軟媒混合使用，用來創造能夠滿足人類精神生活需求的形而上內容。
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-display text-xs font-bold tracking-[0.3em] text-gallery-400 uppercase mb-8">Mission · 使命</h3>
+                        <ul class="space-y-6">
+                            <li class="border-l-2 border-gallery-200 pl-6 hover:border-gallery-900 transition-colors">
+                                <p class="text-gallery-800 leading-loose">為喜愛攝影、想成為專業攝影師的年輕世代，提供學習<strong>正確的、系統性、架構性專業攝影觀念與知識系統</strong>的攝影私塾大學。</p>
+                            </li>
+                            <li class="border-l-2 border-gallery-200 pl-6 hover:border-gallery-900 transition-colors">
+                                <p class="text-gallery-800 leading-loose">以先進國家攝影系與攝影研究所前後六年的課程規模，進行<strong>符合時代與台灣環境需求</strong>的專業攝影教學。</p>
+                            </li>
+                            <li class="border-l-2 border-gallery-200 pl-6 hover:border-gallery-900 transition-colors">
+                                <p class="text-gallery-800 leading-loose">課程全部奠基於<strong>當代藝術理論、藝術史、攝影史、視覺心理學、認知心理學、眼動追蹤、腦神經科學</strong>等基礎理論。</p>
+                            </li>
+                            <li class="border-l-2 border-gallery-200 pl-6 hover:border-gallery-900 transition-colors">
+                                <p class="text-gallery-800 leading-loose">視丘是非典型學校，教授各種視覺、藝術與傳播理論，讓學生具備 <strong>Learn, Unlearn, Relearn</strong> 的能力。</p>
+                            </li>
+                            <li class="border-l-2 border-gallery-200 pl-6 hover:border-gallery-900 transition-colors">
+                                <p class="text-gallery-800 leading-loose"><strong>“Learning by Doing”</strong> ─ 靠大量書寫心得、大量製作作業、反覆口頭討論照片，讓學生在「做中學」。</p>
+                            </li>
+                            <li class="border-l-2 border-gallery-200 pl-6 hover:border-gallery-900 transition-colors">
+                                <p class="text-gallery-800 leading-loose"><strong>“Practice before Theory”</strong> ─ 用各種科學理論解釋你的作業，讓你先擁有紮實的感受力、想像力、理解力、思考力、消化力與融合力。</p>
+                            </li>
+                            <li class="border-l-2 border-gallery-200 pl-6 hover:border-gallery-900 transition-colors">
+                                <p class="text-gallery-800 leading-loose">給你的攝影品味是：<strong>以世界為高度、以國際為廣度、以當下為鮮度、以歷史為長度</strong>的超凡視野。</p>
+                            </li>
+                            <li class="border-l-2 border-gallery-200 pl-6 hover:border-gallery-900 transition-colors">
+                                <p class="text-gallery-800 leading-loose">1985 年創校至今，日間部超過 61 屆、610 位畢業生活躍於兩岸與東南亞專業攝影市場，<strong>「視丘家族人脈網絡」</strong>是校友最大的資源。</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 3. Thalamus 視丘是什麼 ===== -->
+    <section id="thalamus" class="about-section py-24 md:py-32 px-6 md:px-12 relative">
+        <div class="max-w-7xl mx-auto relative">
+            <div class="absolute -top-4 -left-4 section-num">03</div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start relative z-10 section-content-start">
+                <div class="lg:col-span-5">
+                    <p class="text-gallery-500 leading-loose">
+                        「視丘 Thalamus」是大腦正中央深處的組織。<br>
+                        它是感覺、認知與創作意念的中繼站，也是一切藝術的起源。
+                    </p>
+                </div>
+                <div class="lg:col-span-7">
+                    <ol class="space-y-8">
+                        <li class="glass-card p-8 rounded-2xl bg-white/60 border border-white/80">
+                            <div class="flex items-start gap-6">
+                                <span class="font-display text-4xl font-black text-gallery-300">01</span>
+                                <p class="text-gallery-800 leading-loose flex-1">
+                                    所有由感覺系統傳入大腦皮質層的訊息都要先經過這裡，所有大腦皮質層送出的命令也在這裡留下備份。
+                                </p>
+                            </div>
+                        </li>
+                        <li class="glass-card p-8 rounded-2xl bg-white/60 border border-white/80">
+                            <div class="flex items-start gap-6">
+                                <span class="font-display text-4xl font-black text-gallery-300">02</span>
+                                <p class="text-gallery-800 leading-loose flex-1">
+                                    視丘與大腦皮質層的密切關係，是睡眠、清醒、感覺與認知等功能的關鍵。
+                                </p>
+                            </div>
+                        </li>
+                        <li class="glass-card p-8 rounded-2xl bg-white/60 border border-white/80">
+                            <div class="flex items-start gap-6">
+                                <span class="font-display text-4xl font-black text-gallery-300">03</span>
+                                <p class="text-gallery-800 leading-loose flex-1">
+                                    不論藝術家是因為外界刺激而產生創作意念，或是因內在思維而有創作意念，大腦對所有創作行為的指令都要經過視丘。
+                                </p>
+                            </div>
+                        </li>
+                    </ol>
+                    <div class="mt-10 quote-block">
+                        <p class="font-serif text-2xl md:text-3xl text-gallery-900 leading-snug">
+                            所以，「視丘」是一切藝術的<span class="italic text-gallery-400">起源</span>。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 4. 教育哲學 ===== -->
+    <section id="philosophy" class="about-section py-24 md:py-32 px-6 md:px-12 relative bg-white/30">
+        <div class="max-w-7xl mx-auto relative">
+            <div class="absolute -top-4 -left-4 section-num">04</div>
+            <div class="relative z-10 section-content-start">
+                <!-- 4-1 攝影是一座山 -->
+                <div class="mb-24">
+                    <h3 class="font-serif text-2xl md:text-3xl font-bold text-gallery-900 mb-8">攝影是一座山</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 text-gallery-800">
+                        <div class="space-y-4 prose-cn leading-loose">
+                            <p>想學好攝影，就不能只學攝影。</p>
+                            <p class="text-gallery-500">攝影技術 &lt; 表現形式 &lt; 視覺讀寫能力 &lt; 視覺藝術 &lt; 藝術 &lt; 文化 &lt; 歷史。</p>
+                            <p class="text-gallery-500">每一位老師窮畢生之力學習，往往也只能看見整座山四周，其中一條登山道路沿途的林相。</p>
+                            <p class="text-gallery-500">登山路徑不同、季節不同，林相自然不同，但它們都是事實的一部份。</p>
+                            <p class="text-gallery-500">時代在變，人類文明在進步，「攝影的定義」也不斷在變、在進步。</p>
+                        </div>
+                        <div class="space-y-4 prose-cn leading-loose">
+                            <p>不被時代淘汰，就必須<strong>終身學習</strong>。</p>
+                            <p class="text-gallery-500">唯有「盤根、粗幹」才可能有「好枝葉」；身材高大的人必有大腳丫子。</p>
+                            <p class="text-gallery-500">只要打好「視覺、美學、理論、技術」基礎，想在短期內將各種不同的攝影專業學到相當程度，是絕對可能的。</p>
+                            <p class="text-gallery-500">唯有紮實的基礎，才可能「自力解決」攝影人生中源源不斷的問題。</p>
+                            <p class="text-gallery-500 text-sm tracking-wider mt-6 pt-6 border-t border-gallery-200">
+                                核心課程 · 影像理論 / 視覺心理學 / 藝術史 / 攝影史 / 平面編輯 / 素描 / 基礎黑白暗房 / 光線研究
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4-2 康拉德博士的銘記理論 -->
+                <div class="mb-24">
+                    <h3 class="font-serif text-2xl md:text-3xl font-bold text-gallery-900 mb-8">康拉德博士的「銘記 Imprinting」理論</h3>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div class="glass-card bg-white/60 border border-white/80 rounded-2xl p-8">
+                            <p class="font-display text-xs font-bold tracking-[0.3em] text-gallery-400 uppercase mb-3">1 : 10</p>
+                            <p class="text-gallery-800 leading-loose">跟越多人學，越不容易出錯。視丘攝影圖書館藏書超過兩萬冊，涵蓋古今中外攝影大師專輯。</p>
+                        </div>
+                        <div class="glass-card bg-white/60 border border-white/80 rounded-2xl p-8">
+                            <p class="font-display text-xs font-bold tracking-[0.3em] text-gallery-400 uppercase mb-3">35 → 45 歲</p>
+                            <p class="text-gallery-800 leading-loose">35 歲前，將所有精力集中在克服材料與媒材的掌握與控制技術；35 至 45 歲，集中在個人風格與形式的建立。</p>
+                        </div>
+                        <div class="glass-card bg-white/60 border border-white/80 rounded-2xl p-8">
+                            <p class="font-display text-xs font-bold tracking-[0.3em] text-gallery-400 uppercase mb-3">60+ 歲</p>
+                            <p class="text-gallery-800 leading-loose">尋求「歷史價值體系」的座標，對自己過往成就的歷史定位，尋求永恆的價值。</p>
+                        </div>
+                    </div>
+                    <p class="mt-8 text-gallery-500 leading-loose">
+                        視丘不僅提供學生未來五年、十年夠用的攝影知識與技能，更提供能在未來四五十年夠用的美學、視覺理論，以及<strong class="text-gallery-800">終身學習所需的培養土壤</strong>。
+                    </p>
+                </div>
+
+                <!-- 4-3 馬斯洛需求層次 -->
+                <div class="mb-24">
+                    <h3 class="font-serif text-2xl md:text-3xl font-bold text-gallery-900 mb-8">馬斯洛的需求層次理論</h3>
+                    <div class="space-y-2 max-w-3xl">
+                        <div class="flex items-center gap-6 py-4 border-b border-gallery-200">
+                            <span class="font-display text-xs text-gallery-400 tracking-widest w-24 shrink-0">Peak</span>
+                            <span class="font-serif text-xl md:text-2xl text-gallery-900">高峰經驗</span>
+                        </div>
+                        <div class="flex items-center gap-6 py-4 border-b border-gallery-200">
+                            <span class="font-display text-xs text-gallery-400 tracking-widest w-24 shrink-0">Self</span>
+                            <span class="font-serif text-xl md:text-2xl text-gallery-900">自我實現</span>
+                        </div>
+                        <div class="flex items-center gap-6 py-4 border-b border-gallery-200">
+                            <span class="font-display text-xs text-gallery-400 tracking-widest w-24 shrink-0">Aesthetic</span>
+                            <span class="text-gallery-800">唯美主義的需求 ─ 對稱性、秩序、美</span>
+                        </div>
+                        <div class="flex items-center gap-6 py-4 border-b border-gallery-200">
+                            <span class="font-display text-xs text-gallery-400 tracking-widest w-24 shrink-0">Cognitive</span>
+                            <span class="text-gallery-800">認知的需求 ─ 知識、理解、神奇性</span>
+                        </div>
+                        <div class="flex items-center gap-6 py-4 border-b border-gallery-200">
+                            <span class="font-display text-xs text-gallery-400 tracking-widest w-24 shrink-0">Esteem</span>
+                            <span class="text-gallery-800">尊敬的需求 ─ 能力、認同、賞識</span>
+                        </div>
+                        <div class="flex items-center gap-6 py-4 border-b border-gallery-200">
+                            <span class="font-display text-xs text-gallery-400 tracking-widest w-24 shrink-0">Belonging</span>
+                            <span class="text-gallery-800">隸屬與愛的需求 ─ 關聯、接納、隸屬性</span>
+                        </div>
+                        <div class="flex items-center gap-6 py-4 border-b border-gallery-200">
+                            <span class="font-display text-xs text-gallery-400 tracking-widest w-24 shrink-0">Safety</span>
+                            <span class="text-gallery-800">安全的需求 ─ 舒適、安全、免於恐懼的自由</span>
+                        </div>
+                        <div class="flex items-center gap-6 py-4">
+                            <span class="font-display text-xs text-gallery-400 tracking-widest w-24 shrink-0">Physio</span>
+                            <span class="text-gallery-800">生理的需求 ─ 食物、水、氧氣</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4-4 攝影人生 -->
+                <div>
+                    <h3 class="font-serif text-2xl md:text-3xl font-bold text-gallery-900 mb-8">
+                        攝影人生 ─ 價值座標的不斷尋求
+                    </h3>
+                    <div class="prose-cn text-gallery-800 space-y-6 max-w-4xl leading-loose">
+                        <p>每一個攝影人生，一直有一把尺在那裡 ─ 一把衡量「好、壞」、「對、錯」、「價值」的尺。</p>
+                        <p class="text-gallery-500">所謂進步，就是用一把標準越來越高、適用範圍越來越寬廣的尺，衡量自己的成績。</p>
+                        <p class="text-gallery-500">將參考座標的縱軸，從地域、本國，放大到<strong class="text-gallery-800">「國際」</strong>；將橫軸，從現在、從前放大到<strong class="text-gallery-800">「歷史」</strong>的尺。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 5. 學院特色 ===== -->
+    <section id="features" class="about-section py-24 md:py-32 px-6 md:px-12 relative bg-white/30">
+        <div class="max-w-7xl mx-auto relative">
+            <div class="absolute -top-4 -left-4 section-num">05</div>
+            <div class="relative z-10 section-content-start">
+                <div class="prose-cn text-gallery-800 space-y-6 max-w-4xl leading-loose mb-16">
+                    <p>
+                        於 <strong>1985 年</strong>在台北成立的「視丘攝影藝術學院」，是台灣唯一專門培育「專業攝影師」的攝影私塾大學。
+                    </p>
+                    <p class="text-gallery-500">
+                        1980 年代以來，台灣的婚紗攝影業所開創出的市場規模與經營模式，已成為全世界婚紗攝影界人人稱羨、競相模仿的典範。加上服飾、雜誌出版、廣告、建築攝影等相關市場，每年需要大量專業攝影人才投入。
+                    </p>
+                    <p class="text-gallery-500">
+                        正因創辦人吳嘉寶老師對台灣攝影教育缺口有深刻認知，視丘以完整課程與方法論，持續彌補正規大學攝影教育的缺憾。
+                    </p>
+                </div>
+
+                <div class="space-y-16 mb-20">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+                        <div class="lg:col-span-4">
+                            <span class="font-display text-5xl md:text-6xl font-black text-gallery-200">01</span>
+                            <h3 class="font-serif text-2xl md:text-3xl font-bold text-gallery-900 mt-4 leading-tight">
+                                視丘以「攝影教育」為專業
+                            </h3>
+                            <p class="text-gallery-400 mt-4 tracking-widest text-xs">視丘瞭解攝影教育</p>
+                        </div>
+                        <div class="lg:col-span-8 prose-cn text-gallery-500 space-y-5 leading-loose">
+                            <p>1973 年吳嘉寶老師前往日本大學藝術學院攝影系專攻攝影理論與技術；1976 年於研究所受教於澤本德美教授，專業方向即為「攝影教育」。</p>
+                            <p>1977 年學成歸國後，隨即進入國立台灣藝專（現國立台灣藝術大學）從事攝影教育工作，並加入美國攝影教育學會 SPE，成為當時台灣唯一會員。</p>
+                            <p>1989 年首先召開「第一次全國攝影教師研習會」，翌年發起成立中華民國攝影教育協會（現中華攝影教育學會），並促成兩岸三地攝影研討會、兩岸三地學生創意攝影觀摩展、國際攝影學術研討會等多項創舉。</p>
+                        </div>
+                    </div>
+
+                    <div class="h-px bg-gallery-200"></div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+                        <div class="lg:col-span-4">
+                            <span class="font-display text-5xl md:text-6xl font-black text-gallery-200">02</span>
+                            <h3 class="font-serif text-2xl md:text-3xl font-bold text-gallery-900 mt-4 leading-tight">
+                                民間辦學的典範
+                            </h3>
+                            <p class="text-gallery-400 mt-4 tracking-widest text-xs">機動、彈性、真正因材施教</p>
+                        </div>
+                        <div class="lg:col-span-8 prose-cn text-gallery-500 space-y-5 leading-loose">
+                            <p>因為是民間辦學，視丘可依當代專業攝影發展趨勢隨時機動調整課程，保證學生所學是兩岸市場最需要的專業攝影技能與知識。</p>
+                            <p>不受博士學歷限制，機動聘請第一線業界大師任教；學生可實際在老師的營業攝影棚中上課，親身體會第一線工作氛圍。</p>
+                            <p>徹底實現孔夫子「有教無類」，不論年紀、學歷、背景。能將「不曾摸過相機」的朋友，訓練成畢業後可直接進入戰場的專業攝影能手。</p>
+                        </div>
+                    </div>
+
+                    <div class="h-px bg-gallery-200"></div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+                        <div class="lg:col-span-4">
+                            <span class="font-display text-5xl md:text-6xl font-black text-gallery-200">03</span>
+                            <h3 class="font-serif text-2xl md:text-3xl font-bold text-gallery-900 mt-4 leading-tight">
+                                視丘瞭解台灣專業攝影市場
+                            </h3>
+                            <p class="text-gallery-400 mt-4 tracking-widest text-xs">35 年市場觀察與實戰經驗</p>
+                        </div>
+                        <div class="lg:col-span-8 prose-cn text-gallery-500 space-y-5 leading-loose">
+                            <p>創辦人自 1966 年開始學習攝影以來，持續關注台灣、香港、中國大陸的攝影文化發展。1977 年歸國後，在專業攝影市場擔任商品、廣告、服飾、雜誌等專業攝影工作達 12 年之久。</p>
+                            <p>從 1960 至 70 年代的商業攝影、到親眼目睹婚紗攝影與服飾攝影的興起，並預言建築攝影、料理攝影的興盛，視丘一直以「為兩岸專業攝影市場培育最具發展潛力的人才」為主要目標。</p>
+                            <p>師資向來聘用第一線工作、享有盛名的專業攝影師，講授當下最實際有效的內容，讓學生畢業後可立刻學以致用。</p>
+                        </div>
+                    </div>
+
+                    <div class="h-px bg-gallery-200"></div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+                        <div class="lg:col-span-4">
+                            <span class="font-display text-5xl md:text-6xl font-black text-gallery-200">04</span>
+                            <h3 class="font-serif text-2xl md:text-3xl font-bold text-gallery-900 mt-4 leading-tight">
+                                視丘瞭解台灣學生的學習特性
+                            </h3>
+                            <p class="text-gallery-400 mt-4 tracking-widest text-xs">為台灣學生量身訂做的方法論</p>
+                        </div>
+                        <div class="lg:col-span-8 prose-cn text-gallery-500 space-y-5 leading-loose">
+                            <p>創辦人自 1976 年開始累積攝影教育經驗，加上 1964 年進入國立台灣藝專美術印刷科接觸攝影以來從未間斷的自身學習經驗，是視丘「最瞭解台灣學生學習特性」的主要原因。</p>
+                            <p>視丘的攝影教育方法，一直是針對台灣學生學習特性所擬定、修改出來的最有效方式。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-16">
+                    <!-- 五 -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+                        <div class="lg:col-span-4">
+                            <span class="font-display text-5xl md:text-6xl font-black text-gallery-200">05</span>
+                            <h3 class="font-serif text-2xl md:text-3xl font-bold text-gallery-900 mt-4 leading-tight">
+                                以世界、國際、歷史、本土、多元的視野理解攝影
+                            </h3>
+                        </div>
+                        <div class="lg:col-span-8 prose-cn text-gallery-500 space-y-5 leading-loose">
+                            <p>從創校之初，吳老師便積極敦聘從美國、日本、法國、德國學成歸國的碩士擔任視丘各項課程師資。今日在台灣攝影學術與商業界赫赫有名之士，大多曾在視丘任教。</p>
+                            <p>1980 年代起與日本、韓國、中國大陸等地攝影機構保持緊密聯繫與學術交流，並在當地媒體發表論文、主持專欄、策劃專題攝影展。</p>
+                            <p>1985 年在文建會支持下策劃執行「百年台灣攝影史料整理」工作，讓第一代台灣前輩攝影家與其偉大作品出土，引發後續的「台灣攝影史研究熱」。</p>
+                            <p>藏書超過兩萬冊的<strong class="text-gallery-800">「視丘攝影圖書館」</strong>，為師生提供了世界、國際、歷史、本土、多元的成功典範作為學習對象。</p>
+                        </div>
+                    </div>
+
+                    <div class="h-px bg-gallery-200"></div>
+
+                    <!-- 六 -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+                        <div class="lg:col-span-4">
+                            <span class="font-display text-5xl md:text-6xl font-black text-gallery-200">06</span>
+                            <h3 class="font-serif text-2xl md:text-3xl font-bold text-gallery-900 mt-4 leading-tight">
+                                以系統性、架構性認知理解攝影
+                            </h3>
+                        </div>
+                        <div class="lg:col-span-8 prose-cn text-gallery-500 space-y-5 leading-loose">
+                            <p>攝影是一門「易學難精」的學問。一般人接觸到的攝影相關知識，往往以繁雜、瑣碎、片段的樣貌出現，是無法成為知識與力量的資料性信息。</p>
+                            <p>正如將所有汽車零件堆放在一起，也不能成為可上路的汽車；把一條魚所有鱗片與骨頭拼湊在一起，也不會成為一條活魚。<strong class="text-gallery-800">部分與部分之間的關係（架構、系統），才是讓「整體」大於部分總和的關鍵。</strong></p>
+                            <p>視丘已將繁雜片段的攝影知識整理為系統完整、深入淺出的理論架構，讓您用「整體、系統、架構」的角度關照攝影，並在您的大腦中建立分解、消化、吸收新知的酵素。</p>
+                            <div class="quote-block text-gallery-800 mt-6">
+                                視丘不是補習班；視丘是私塾大學，甚至可視為研究所。
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="h-px bg-gallery-200"></div>
+
+                    <!-- 七 -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+                        <div class="lg:col-span-4">
+                            <span class="font-display text-5xl md:text-6xl font-black text-gallery-200">07</span>
+                            <h3 class="font-serif text-2xl md:text-3xl font-bold text-gallery-900 mt-4 leading-tight">
+                                從視覺心理、影像訊息傳播的角度理解攝影
+                            </h3>
+                        </div>
+                        <div class="lg:col-span-8 prose-cn text-gallery-500 space-y-5 leading-loose">
+                            <p>攝影的本質，本來就與<strong class="text-gallery-800">視覺</strong>、<strong class="text-gallery-800">傳播</strong>唇齒相依。無論是攝影家在現場「觀看」被攝體，或給別人「觀看」的照片，都與影像和視覺互為因果。</p>
+                            <p>當別人還在教「攝影學」時，視丘已在教「影像理論」，甚至進入「影像傳播理論」的階段。當別人還在教打光法時，視丘已在教「光線寫作技巧」。當別人還在教「攝影構圖」時，視丘早在 1990 年代初就開始「視覺心理學」課程。</p>
+                            <p>這正是為什麼視丘可以自豪地說 ─ <strong class="text-gallery-800">「您到視丘學到的，絕對不只有攝影而已」</strong>。</p>
+                        </div>
+                    </div>
+
+                    <div class="h-px bg-gallery-200"></div>
+
+                    <!-- 八 -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+                        <div class="lg:col-span-4">
+                            <span class="font-display text-5xl md:text-6xl font-black text-gallery-200">08</span>
+                            <h3 class="font-serif text-2xl md:text-3xl font-bold text-gallery-900 mt-4 leading-tight">
+                                以規劃攝影人生進程的規模理解攝影
+                            </h3>
+                        </div>
+                        <div class="lg:col-span-8 prose-cn text-gallery-500 space-y-5 leading-loose">
+                            <p>大部分年輕人到視丘只想學攝影 ─ 但你知道，你的專業攝影人生一輩子的每一個階段，會有哪些變化，哪些需要嗎？</p>
+                            <p>視丘不僅提供未來五到十年夠用的知識與技能，更提供能在未來四五十年夠用的美學、視覺理論，以及終身學習所需的培養土壤。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 6. 成績單 ===== -->
+    <section id="achievements" class="about-section py-24 md:py-32 px-6 md:px-12 relative">
+        <div class="max-w-7xl mx-auto relative">
+            <div class="absolute -top-4 -left-4 section-num">06</div>
+            <div class="relative z-10 section-content-start">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="glass-card bg-white/60 border border-white/80 rounded-2xl p-8">
+                        <p class="font-display text-xs font-bold tracking-[0.3em] text-gallery-400 uppercase mb-4">1985</p>
+                        <p class="text-gallery-800 leading-loose">於文建會支持下策劃執行「百年台灣攝影史料整理」，讓第一代台灣前輩攝影家與作品出土。</p>
+                    </div>
+                    <div class="glass-card bg-white/60 border border-white/80 rounded-2xl p-8">
+                        <p class="font-display text-xs font-bold tracking-[0.3em] text-gallery-400 uppercase mb-4">1989</p>
+                        <p class="text-gallery-800 leading-loose">首次召開「全國攝影教師研習會」，翌年發起成立中華民國攝影教育協會（現中華攝影教育學會）。</p>
+                    </div>
+                    <div class="glass-card bg-white/60 border border-white/80 rounded-2xl p-8">
+                        <p class="font-display text-xs font-bold tracking-[0.3em] text-gallery-400 uppercase mb-4">1991</p>
+                        <p class="text-gallery-800 leading-loose">首先發起「台灣本土攝影幻燈片教材」的製作，倡議以台灣攝影史名作進行攝影教學。</p>
+                    </div>
+                    <div class="glass-card bg-white/60 border border-white/80 rounded-2xl p-8">
+                        <p class="font-display text-xs font-bold tracking-[0.3em] text-gallery-400 uppercase mb-4">1994</p>
+                        <p class="text-gallery-800 leading-loose">應邀以「台灣攝影教育代表」身分參加香港「兩岸三地攝影研討會」，開啟兩岸三地攝影教育長期交流。</p>
+                    </div>
+                    <div class="glass-card bg-white/60 border border-white/80 rounded-2xl p-8">
+                        <p class="font-display text-xs font-bold tracking-[0.3em] text-gallery-400 uppercase mb-4">1995 – 2005</p>
+                        <p class="text-gallery-800 leading-loose">連續 11 年應邀前往中國大陸魯迅美術學院攝影系、大連醫科大學攝影系擔任客座教授密集講課。</p>
+                    </div>
+                    <div class="glass-card bg-white/60 border border-white/80 rounded-2xl p-8">
+                        <p class="font-display text-xs font-bold tracking-[0.3em] text-gallery-400 uppercase mb-4">1999 +</p>
+                        <p class="text-gallery-800 leading-loose">應邀持續參加大連舉行之「攝影理論研討會」並發表演講，成為兩岸攝影理論長期交流的橋樑。</p>
+                    </div>
+                    <div class="glass-card bg-white/60 border border-white/80 rounded-2xl p-8">
+                        <p class="font-display text-xs font-bold tracking-[0.3em] text-gallery-400 uppercase mb-4">Library</p>
+                        <p class="text-gallery-800 leading-loose">建置藏書超過 <strong>兩萬冊</strong> 的視丘攝影圖書館，涵蓋古今中外攝影大師作品，是台灣最珍貴的攝影專門圖書資源。</p>
+                    </div>
+                    <div class="glass-card bg-white/60 border border-white/80 rounded-2xl p-8">
+                        <p class="font-display text-xs font-bold tracking-[0.3em] text-gallery-400 uppercase mb-4">Overseas</p>
+                        <p class="text-gallery-800 leading-loose"><strong>4 位博士、34 位碩士</strong>透過視丘作品集與推薦函，取得美、日、英、歐、捷克等國攝影學位，甚至全額獎學金。</p>
+                    </div>
+                    <div class="glass-card bg-white/60 border border-white/80 rounded-2xl p-8">
+                        <p class="font-display text-xs font-bold tracking-[0.3em] text-gallery-400 uppercase mb-4">Alumni</p>
+                        <p class="text-gallery-800 leading-loose">日間部超過 <strong>61 屆、610 位</strong>畢業生活躍於兩岸與東南亞專業攝影市場，形成強大的「視丘家族人脈網絡」。</p>
+                    </div>
+                </div>
+
+                <div class="mt-16 quote-block max-w-4xl">
+                    <p class="text-gallery-800 leading-loose">
+                        凡是與攝影有關的，不論古今中外，視丘都可以幫您完全掌握。您在視丘學到的，不論是攝影的技術或理論，一定具備「世界級」、耐得起「歷史驗證」、有國際公認最高學術標準的正確性。
+                    </p>
+                    <p class="mt-4 font-serif text-2xl text-gallery-900">「視丘玩真的！」</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 7. 畢業校友 ===== -->
+    <section id="alumni" class="about-section py-24 md:py-32 px-6 md:px-12 relative bg-white/30">
+        <div class="max-w-7xl mx-auto relative">
+            <div class="absolute -top-4 -left-4 section-num">07</div>
+            <div class="relative z-10 section-content-start">
+                <div class="mb-12 flex flex-wrap gap-3 text-xs tracking-widest font-display">
+                    <span class="px-4 py-2 rounded-full bg-white/70 border border-gallery-200 text-gallery-800">67 屆 · Classes</span>
+                    <span class="px-4 py-2 rounded-full bg-white/70 border border-gallery-200 text-gallery-800">610+ 位 · Graduates</span>
+                    <span class="px-4 py-2 rounded-full bg-white/70 border border-gallery-200 text-gallery-800">24 位僑生 · International</span>
+                </div>
+
+                <div id="alumni-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- 動態注入各屆卡片 -->
+                </div>
+
+                <div class="mt-10 text-center">
+                    <button id="alumni-toggle" class="inline-flex items-center gap-3 px-8 py-3 rounded-full border border-gallery-800 text-gallery-900 text-sm tracking-widest font-bold hover:bg-gallery-900 hover:text-white transition-all">
+                        <span id="alumni-toggle-text">顯示全部 67 屆</span>
+                        <i class="fa-solid fa-arrow-down text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="shared-cta"></div>
+    <div id="shared-footer"></div>
+
+    <script src="js/shared-layout.js"></script>
+    <script>
+        SharedLayout.mount({ activeNav: 'philosophy' });
+    </script>
+    <script>
+        // ── 依 URL hash 展開對應章節；未選擇時顯示提示卡；同步 Hero 內容與圓形項目 active 狀態 ──
+        (function initAboutSectionRouter() {
+            const SECTION_META = {
+                logo:         { kicker: 'Logo · 01',          title: 'LOGO 理念<br><span class="italic font-light text-gallery-400 text-3xl md:text-4xl lg:text-5xl">∞ 無限大 · Foto + Soft</span>',                       desc: '黑色方塊上的無限大 ─ 專業攝影在藝術與商業世界，都擁有無限可能。' },
+                vision:       { kicker: 'Vision & Mission · 02', title: '願景與使命<br><span class="italic font-light text-gallery-400 text-3xl md:text-4xl lg:text-5xl">Taiwan\'s Bauhaus</span>',                        desc: '培育能運用影像揉合五種訊息軟媒，創造深刻形而上內容的內容創作者。' },
+                thalamus:     { kicker: 'Thalamus · 03',       title: '視丘是什麼<br><span class="italic font-light text-gallery-400 text-3xl md:text-4xl lg:text-5xl">一切藝術的起源</span>',                              desc: '大腦正中央的「視丘 Thalamus」，是感覺、認知與創作意念的中繼站。' },
+                philosophy:   { kicker: 'Philosophy · 04',     title: '教育哲學<br><span class="italic font-light text-gallery-400 text-3xl md:text-4xl lg:text-5xl">攝影是一座山</span>',                                  desc: '想學好攝影，就不能只學攝影。從視覺、美學、理論到技術，打好一座山的根。' },
+                features:     { kicker: 'Academy Features · 05', title: '學院特色<br><span class="italic font-light text-gallery-400 text-3xl md:text-4xl lg:text-5xl">Since 1985</span>',                                  desc: '台灣唯一專門培育專業攝影師的攝影私塾大學，兼具辦學理念與四大教學特色。' },
+                achievements: { kicker: 'Achievements · 06',   title: '視丘的成績單<br><span class="italic font-light text-gallery-400 text-3xl md:text-4xl lg:text-5xl">「視丘玩真的」</span>',                              desc: '從史料整理、教育協會、國際交流到永續藏書，為台灣攝影文化拓荒的成績。' },
+                alumni:       { kicker: 'Alumni · 07',         title: '畢業校友<br><span class="italic font-light text-gallery-400 text-3xl md:text-4xl lg:text-5xl">67 屆 · 610+ 位</span>',                                 desc: '創校 40 年培育的攝影家族，活躍於兩岸與海外攝影市場的重要力量。' }
+            };
+            const DEFAULT_META = {
+                kicker: 'About Fotosoft',
+                title: '關於視丘<br><span class="italic font-light text-gallery-400 text-3xl md:text-4xl lg:text-5xl">Taiwan\'s Photography Bauhaus</span>',
+                desc: '自 1985 年創校至今，視丘攝影藝術學院是台灣唯一致力於「PLE 影像訊息讀寫教育」的攝影私塾大學。<br>我們相信，攝影不只是一項技藝，而是理解世界的一種語言。'
+            };
+            const SECTION_IDS = Object.keys(SECTION_META);
+            const placeholder = document.getElementById('about-placeholder');
+            const circles = Array.prototype.slice.call(document.querySelectorAll('.hero-nav-circle'));
+            let hoverCircle = null;
+            const heroKicker = document.getElementById('hero-kicker');
+            const heroTitle = document.getElementById('hero-title');
+            const heroDesc = document.getElementById('hero-desc');
+
+            const sections = SECTION_IDS
+                .map(id => ({ id: id, el: document.getElementById(id) }))
+                .filter(s => s.el);
+
+            function currentHashId() {
+                const h = (window.location.hash || '').replace('#','');
+                if (h === 'introduction') return 'features';
+                return SECTION_IDS.indexOf(h) >= 0 ? h : '';
+            }
+
+            function swapHeroContent(meta) {
+                [heroKicker, heroTitle, heroDesc].forEach(el => el && el.classList.add('is-swapping'));
+                setTimeout(() => {
+                    if (heroKicker) heroKicker.textContent = meta.kicker;
+                    if (heroTitle)  heroTitle.innerHTML   = meta.title;
+                    if (heroDesc)   heroDesc.innerHTML    = meta.desc;
+                    [heroKicker, heroTitle, heroDesc].forEach(el => el && el.classList.remove('is-swapping'));
+                }, 200);
+            }
+
+            function getActiveCircle() {
+                return circles.find(function (c) { return c.classList.contains('active'); }) || null;
+            }
+
+            function applyCircleOffsets(focusCircle) {
+                circles.forEach(function (c) {
+                    c.classList.remove('is-left-of-focus', 'is-right-of-focus');
+                });
+                if (!focusCircle) return;
+                var focusIndex = circles.indexOf(focusCircle);
+                if (focusIndex < 0) return;
+
+                circles.forEach(function (c, i) {
+                    if (i < focusIndex) c.classList.add('is-left-of-focus');
+                    if (i > focusIndex) c.classList.add('is-right-of-focus');
+                });
+            }
+
+            circles.forEach(function (circle) {
+                circle.addEventListener('mouseenter', function () {
+                    hoverCircle = circle;
+                    applyCircleOffsets(hoverCircle);
+                });
+                circle.addEventListener('mouseleave', function () {
+                    hoverCircle = null;
+                    applyCircleOffsets(getActiveCircle());
+                });
+            });
+
+            function apply(scroll) {
+                const activeId = currentHashId();
+
+                sections.forEach(({ id, el }) => {
+                    el.classList.toggle('active', id === activeId);
+                });
+
+                circles.forEach(c => {
+                    c.classList.toggle('active', c.getAttribute('data-section') === activeId);
+                });
+
+                applyCircleOffsets(hoverCircle || getActiveCircle());
+
+                if (placeholder) {
+                    placeholder.style.display = activeId ? 'none' : '';
+                }
+
+                swapHeroContent(activeId ? SECTION_META[activeId] : DEFAULT_META);
+
+                if (activeId && scroll) {
+                    const target = document.getElementById(activeId);
+                    if (target) {
+                        const y = target.getBoundingClientRect().top + window.scrollY - 80;
+                        window.scrollTo({ top: y, behavior: 'smooth' });
+                    }
+                } else if (!activeId && scroll) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
+
+            window.addEventListener('hashchange', function () { apply(true); });
+            apply(false);
+        })();
+    </script>
+    <script>
+        // ── 畢業校友資料（依原始名單整理） ──
+        const ALUMNI = [
+            { n: 1,  names: '鄭維瑋、邱柏力' },
+            { n: 2,  names: '王崇欽、陳文揚、黃祿蕙、陳明義、楊凱文、余炎利、黃淑女' },
+            { n: 3,  names: '謝碧鶴、黃慶樹、黃國樑、呂明湖、楊其皓、謝清霖、侯健全、張允中、簡士博' },
+            { n: 4,  names: '余嘉熹、蔡玟瑛、黃俊富、談行儀、謝志維、黃炳麟、張文義、潘文龍、王金郎、林忠誠、姚一平、莊承志、劉宥瑩' },
+            { n: 5,  names: '吳采玉、張志清、吳慧玲、田福全、朱永義(香港)、范明淵、林汶霖、黃家榮' },
+            { n: 6,  names: '游世彥、宋永芳、黃文凱、張玉鳳、劉耀先、林宗賢、丁北陽' },
+            { n: 7,  names: '李孫元、柯乃文、張緯宇、廖瑞德、劉昱初、李建德、陽紫玲、蔡喬旭、明潔心' },
+            { n: 8,  names: '陳白浪、戴新安、楊基發、李建安、陳秋和、張志全、蔡昌峰、李衍金、高大鈞、陳正勝、張啓峰' },
+            { n: 9,  names: '曾喜育、林壽福、鄭建明、王凱銘、蕭鴻禧、陳威利(香港)、李俊麟、張小成' },
+            { n: 10, names: '蔡沂均、鐘順龍、譚天惠、彭壽寶、陳建達、劉美爵、羅敦強、張正宜' },
+            { n: 11, names: '林佩薰、許哲瑜、王秀禎、黃明進、林鳳飛、杜松德、胡書源、方俊堯、周如湘、彭文堂、徐明森' },
+            { n: 12, names: '陳志偉、崔久明、王美斐、徐錦輝、趙淑芬、陳國誠、程耀民' },
+            { n: 13, names: '吳啟明、王耀賢、萬一霖、林育靖、鄧雪貞、崔鴻聖' },
+            { n: 14, names: '姚宏杰、林振楹、蔡榮修' },
+            { n: 15, names: '林雅群、黃俊凱、吳冠賢、陳炳宏、王偉翔、王冬霖、黃雲翔、譚淑靜、楊小僅(新加坡)、何政儒' },
+            { n: 16, names: '徐丞儀、陳偉光、江明霖、劉士華、高建忠、陳偉廷、溫克源、蔡慧娟' },
+            { n: 17, names: '陳威文、葉維程、易淑娟、蔡秋嘉、賴信德、薛天水、江東振、李若祺、劉自強、金明隆、曾思瑀' },
+            { n: 18, names: '王呈玉、朱昱達、呂建文、詹朝智、羅濟本、廖國斌、蔡昇達、沈庶焜、黃可安、鄒錦玉' },
+            { n: 19, names: '江志強、余念梓、周茂麟、陳文慶、陳冠宏、黃振' },
+            { n: 20, names: '李文卿、李長恩、李慧玲、林佳正、張欣芸、莊智鈺、陳宗蔚、黃毅銘、楊川宏、熊秉政、鐘國強' },
+            { n: 21, names: '張家禎、張厥猷、張翠玉、許璟瑤(新加坡)、陳立偉、游淋祺、黃國華、楊顓華、劉煜仕、鄭天贊、羅淑明、王瑞斌(馬來西亞)' },
+            { n: 22, names: '方俊文、胡文卿、徐震麟、陳志湧、陳俊良、陳維勁(馬來西亞)、賴建宏' },
+            { n: 23, names: '吳朝源、張延任、張振明、陳俊弘、陳雅萍、戴之聖' },
+            { n: 24, names: '高北雁、石敦仁、黃正賢、張銘謙、徐怡君、陸南蓁、陳俊松、蕭德洪' },
+            { n: 25, names: '王嘉菲、陳國欣、楊如黔、楊明龍、廖志豪、林俊毅、唐乃崢、朱賢菁、黃振戎、陳永錚' },
+            { n: 26, names: '蔡仲誠、鄒長榮、楊麗蓉、馬榮冠(馬來西亞)、陳善怡、王琬珍、林璇璇(菲律賓)、陳永錚、黃湘雯、高維謙' },
+            { n: 27, names: '張獻文、賴佩霞、黃尹俊、蔡世豪、陳潔西、王譯樞、葉淑方、鄒瑋、陳茂新、陳善怡、李卓遠' },
+            { n: 28, names: '張琦婷、王正舒、陳國瀚、彭衛華、鄧明昌、徐世昭、呂建霖、劉祐任(夏威夷)' },
+            { n: 29, names: '蕭慧婷、黃敬元、彭聿莎、謝昕寰、吳錫奎、許宏偉、林冠州(智利)、黃進村、郭益智、丁宜平、王毅丰' },
+            { n: 30, names: '顏甄儀、呂婉綺、李薇屏、楊旎、曾懷慧、傅夢帆、宋和憬(新加坡)、林碧英、劉蕙寧、黃聖芸' },
+            { n: 31, names: '陳會琪、江宜純、馬廷瑄、曹芸榛、潘俊諭、張俊傑、黃雅鈴、林一秀、倪健、黃忠義、張嘉仁、朱原利、李游彬' },
+            { n: 32, names: '陳志和、邱之嶔、陳善泰、林芳宇、林千慧、白麗鈴、黃星融(新加坡)、陳冠佑' },
+            { n: 33, names: '游智惠、周懋琳、李盈霞、楊培源、劉德媛、王薇薇、吳素如、張志偉' },
+            { n: 34, names: '王維明、李志偉、陳彥傑、陳昭旨、許智翔、林凱倫' },
+            { n: 35, names: '林佩蓉、林耿民、傅凱蒂、王士釩、許博修、許珮瑤、蔡佩君、戴宇欣、蘇容正、蕭啟仁、徐嘉偉、李科頡、鄭至延、王忻玲' },
+            { n: 36, names: '侯念宗、王文祥、王智勇、黃國恆、彭玉婷、劉建成、陳明仁、潘佩儀、江鑫田、曹良賓、黃俞綾、劉懿德、饒孟蓁' },
+            { n: 37, names: '謝柏圭、王毓君、張毓琪、林杏芳、石明鑫、張晨晟、黃仲玄、廖建寧、王柏楊、周懷玉、劉美齡、黃笠洋、林宏翰' },
+            { n: 38, names: '鄭鈞評、陳鐸仁、林美君、莊博欽、賴映儒、張博涵、吳芊頤' },
+            { n: 39, names: '李誌軒、劉瀞之、林儂、楊貽茜、吳晴中、胡馨予、李進益、曾伍煌、郭澤衡' },
+            { n: 40, names: '李俞融、張峰榮、邱義仁、蔡金龍、侯鵬暉、龍霓裳、施昀佑、嚴邦文、黃聖偉、孟祥璐、魏欣妍、何永承、楊貽茜' },
+            { n: 41, names: '邱婉茹、林益弘、谷蔚欣(香港)、潘宜君、張耀仁、李佳叡、黃家裕(香港)、吳孟宇、陳庭萱、許瑜娟、廖珍儀、何清輔、汪吉光' },
+            { n: 42, names: '魏綾紜、楊榮孝(馬來西亞)、朱燕虹(馬來西亞)、邱韋婷、簡熒芸、端木芸苓、郭曉玲、李聖祥' },
+            { n: 43, names: '凌莊、林蔡中、黃詩雯、郭冠志、廖家麟、黃崇元、陳依婷、黃士育、朱誼璇、梁忠賢' },
+            { n: 44, names: '王艾如、王書駿、方錦鴻、蔡岳峻、楊佩如、陳季宇、王皓穎、柳柏年、王政智、王弼正、黃誌偉、蕭又滋、黃柏崑、曹譽威、陶蓮生、許朝益' },
+            { n: 45, names: '陳奕蕙、吳杏子、蔣曜陽、余錦智、黃雅嫻、黃聖臺、鄭卉君、陳璿智、梁淳蓁、羅憶琪、葉長恩、簡浩淳、吳易致' },
+            { n: 46, names: '陳韋丞、王鳳羽、黃柏森、徐仕璉、許均仰、江俊德' },
+            { n: 47, names: '潘健威、鍾欣融、王贊凱、梁啟慈、莫壯甜(馬來西亞)、沈煒棟(新加坡)' },
+            { n: 48, names: '徐子強、盧鉅湧、劉欣豪、陳云蓁、陳科文、王健勳、李雪芳' },
+            { n: 49, names: '涂煥昌、李武松、李家珍、黃健銘、倪珮嘉、黃智翔、張方宇、高宏君、馬國書、陳素玫、郭穎橋(香港)' },
+            { n: 50, names: '李伯儀、林妤庭、許惠如、何采蓉、張峯榕、周政緯、薛正國、趙維杰、黃馨儀、阮雅萍、莊家瑋' },
+            { n: 51, names: '蘇厚文、余佩瑜、張凱翔、劉興偉、郭哲文、許雅惠、容國貞' },
+            { n: 52, names: '林思嫻、陳智昇、林庭安、卓益如、蕭建原、夏天' },
+            { n: 53, names: '楊國裕、許嘉文、蔡健恒(香港)、胡毓洛、黃敬恆、蘇庭儀、蔣慈安、陳子涵' },
+            { n: 54, names: '王若庭、吳淑玲、林詩涵、徐佩琳、蔡恬恬、陳昭琳、鄭安秀、鄭立新、曾咨雅、曾咨敏' },
+            { n: 55, names: '張議文、陳俊諭、歐育志、鄭觀、吳宜靜、蕭琬臻、陳均俞' },
+            { n: 56, names: '高曉恬、黃于真、余資甯、邱顯然、薛玉明、徐啟倫(香港)、黃愛婷、劉駿邦(香港)' },
+            { n: 57, names: '楊岳校、林傳淵、李綺筠、林翠薇、郭佩雯、周仲瑜、林筱偲(巴西)、鄧凱元' },
+            { n: 58, names: '蘇于倩、江昕彥、施耀程、陳建煌、鄭伯旭、許楷帛、劉依雯(馬來西亞)' },
+            { n: 59, names: '馮元、宋任遠、張子祥、蘇鈺涵、李明憲、徐琬婷、洪啟學、邱吏君、陳天健、陳富鏗、陳瀚一' },
+            { n: 60, names: '陳秀憙、邱森森、倪巧儒、李雯靜(香港)、顏于斌、張海龍、楊岱叡、林承翰、王昱鎧、李偉麟、周鑫平' },
+            { n: 61, names: '楊承運、廖國孝、陳紀椿' },
+            { n: 62, names: '林信志、黃盈慈、林芳潔、陳建勳、諶宗漢、鄭閔、劉怡廷、宋慶薇、吳書伃、蔡雨君、莊牧蓉' },
+            { n: 63, names: '陳森有、楊朝喬、許䕒予、王化奇、張皓雯、林冠妤、黃得餘、施佑潔、蔡侑霖、丁貞辰' },
+            { n: 64, names: '鄭安倪、李彥潔、莊柏盛、陳續升、林峻頡、胡嘉蕙、李珮慈、陳欣、洪孟承、王莉婷' },
+            { n: 65, names: '張牧民、丁貞辰、蔡函穎' },
+            { n: 66, names: '張牧民、丁貞辰、蔡函穎、趙文瑄、蕭睿鋐、劉健華、陸璟忞、官姸欣、陳恩玉、余宗翰' },
+            { n: 67, names: '簡至柔、邱懷萱、宋柏瑋、黃渝文、丁友淳' },
+        ];
+
+        (function renderAlumni() {
+            const grid = document.getElementById('alumni-grid');
+            const toggleBtn = document.getElementById('alumni-toggle');
+            const toggleText = document.getElementById('alumni-toggle-text');
+            const INITIAL_COUNT = 9;
+            let expanded = false;
+
+            function esc(s) {
+                return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            }
+
+            function cardHTML(item) {
+                return `
+                    <article class="glass-card bg-white/60 border border-white/80 rounded-2xl p-6 hover:bg-white/80 transition-all">
+                        <div class="flex items-baseline gap-3 mb-3">
+                            <span class="font-display text-2xl font-black text-gallery-800">${item.n}</span>
+                            <span class="text-[10px] font-display font-bold tracking-[0.2em] text-gallery-400 uppercase">Class</span>
+                        </div>
+                        <p class="text-sm text-gallery-800 leading-loose tracking-wide">${esc(item.names)}</p>
+                    </article>`;
+            }
+
+            function render() {
+                const list = expanded ? ALUMNI : ALUMNI.slice(-INITIAL_COUNT);
+                grid.innerHTML = list.map(cardHTML).join('');
+                toggleText.textContent = expanded ? '收合顯示' : `顯示全部 ${ALUMNI.length} 屆`;
+            }
+
+            toggleBtn.addEventListener('click', function () {
+                expanded = !expanded;
+                render();
+                if (!expanded) {
+                    document.getElementById('alumni').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+
+            // 預設顯示最近幾屆（倒序展示更符合校友動態感）
+            render();
+        })();
+    </script>
+    <script src="js/works-data.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
