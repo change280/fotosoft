@@ -84,11 +84,15 @@
     // Reserve space so fixed header doesn't overlap page content.
     document.body.classList.add('shared-header-mounted');
     function updateHeaderHeight() {
-      var h = navbar.offsetHeight || 76;
+      // Guard against occasional abnormal measurements that can create large top gaps.
+      var raw = navbar.getBoundingClientRect().height || navbar.offsetHeight || 76;
+      var h = Math.max(60, Math.min(120, Math.round(raw)));
       document.body.style.setProperty('--shared-header-height', h + 'px');
     }
     updateHeaderHeight();
     window.addEventListener('resize', updateHeaderHeight);
+    window.addEventListener('load', updateHeaderHeight);
+    window.addEventListener('pageshow', updateHeaderHeight);
 
     var lastScroll = window.scrollY || 0;
 
