@@ -650,14 +650,38 @@
     <script src="js/shared-layout.js"></script>
     <script src="js/works-data.js"></script>
     <script>
+        (function normalizeIndexUrlAndScroll() {
+            const href = window.location.href;
+            const hasTrailingEmptyHash = href.endsWith('#') && !window.location.hash;
+
+            if (hasTrailingEmptyHash) {
+                history.replaceState(null, '', window.location.pathname + window.location.search);
+            }
+
+            function resetTopOnHashlessVisit() {
+                if (!window.location.hash) {
+                    window.scrollTo(0, 0);
+                }
+            }
+
+            window.addEventListener('load', resetTopOnHashlessVisit);
+            window.addEventListener('pageshow', resetTopOnHashlessVisit);
+        })();
+
         SharedLayout.mount({ onIndex: true });
 
         (function initHeroSlideshow() {
             const slides = Array.from(document.querySelectorAll('.hero-slide'));
             if (slides.length <= 1) return;
 
-            let currentIndex = 0;
+            const preferredStartIndex = Math.min(2, slides.length - 1);
+            let currentIndex = preferredStartIndex;
             const intervalMs = 3500;
+
+            slides.forEach(function(slide, idx) {
+                slide.classList.toggle('opacity-100', idx === currentIndex);
+                slide.classList.toggle('opacity-0', idx !== currentIndex);
+            });
 
             setInterval(function() {
                 const nextIndex = (currentIndex + 1) % slides.length;
