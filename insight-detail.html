@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>載入中… | 視丘尖端洞察</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;500;700;900&family=Roboto:wght@100;300;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        serif: ['"Noto Serif TC"', 'serif'],
+                        display: ['"Roboto"', 'sans-serif'],
+                    },
+                    colors: {
+                        gallery: {
+                            50: '#FFFFFF', 100: '#F8F9FA', 200: '#E9ECEF',
+                            300: '#DEE2E6', 400: '#ADB5BD', 500: '#6C757D',
+                            800: '#343A40', 900: '#212529',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { color: #212529; font-family: "Noto Sans TC", sans-serif; }
+        .article-body { max-width: 44rem; margin: 0 auto; }
+        .article-body p {
+            font-size: 1.05rem; line-height: 2;
+            color: #343A40; margin: 1.4rem 0;
+        }
+        .article-body p strong { color: #212529; font-weight: 700; }
+        .article-body h2 {
+            font-family: "Noto Serif TC", serif;
+            font-size: 1.9rem; font-weight: 700;
+            color: #212529; margin: 3rem 0 1.2rem;
+            line-height: 1.35; letter-spacing: 0.01em;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid #DEE2E6;
+        }
+        .article-body h3 {
+            font-family: "Noto Serif TC", serif;
+            font-size: 1.4rem; font-weight: 700;
+            color: #343A40; margin: 2.4rem 0 0.9rem;
+            line-height: 1.4;
+        }
+        .article-body figure {
+            margin: 2.4rem -1rem;
+        }
+        @media (min-width: 768px) {
+            .article-body figure { margin: 3rem -3rem; }
+        }
+        .article-body figure img {
+            width: 100%; height: auto; display: block;
+            border-radius: 0.75rem;
+            box-shadow: 0 18px 40px -20px rgba(33,37,41,0.35);
+        }
+        /* 縮圖：最長邊約為大圖最長邊的 1/3 */
+        .article-body figure.is-small {
+            margin: 2rem auto;
+            max-width: 33%;
+        }
+        @media (min-width: 768px) {
+            .article-body figure.is-small { margin: 2.4rem auto; max-width: 33%; }
+        }
+        .article-body figure.is-small img {
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 24px -14px rgba(33,37,41,0.3);
+        }
+        @media (max-width: 540px) {
+            .article-body figure.is-small { max-width: 55%; }
+        }
+        .article-body .thumb-strip {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.25rem;
+            margin: 2rem 0;
+            align-items: start;
+        }
+        .article-body .thumb-strip figure.is-small {
+            margin: 0;
+            max-width: 100%;
+        }
+        .article-body .thumb-strip figure.is-small img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+        @media (max-width: 900px) {
+            .article-body .thumb-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 540px) {
+            .article-body .thumb-strip { grid-template-columns: 1fr; }
+            .article-body .thumb-strip figure.is-small { max-width: 55%; margin: 0 auto; }
+        }
+        .article-body figcaption {
+            margin-top: 0.9rem;
+            font-size: 0.85rem;
+            color: #6C757D;
+            text-align: center;
+            line-height: 1.7;
+            font-style: italic;
+        }
+        .article-body blockquote {
+            margin: 2.4rem 0;
+            padding: 1.2rem 1.6rem;
+            border-left: 3px solid #212529;
+            background: rgba(233,236,239,0.5);
+            border-radius: 0 0.75rem 0.75rem 0;
+        }
+        .article-body blockquote p {
+            font-family: "Noto Serif TC", serif;
+            font-size: 1.25rem; font-weight: 500;
+            line-height: 1.75; color: #212529;
+            margin: 0;
+        }
+        .article-body blockquote cite {
+            display: block; margin-top: 0.75rem;
+            font-size: 0.8rem; color: #6C757D;
+            font-style: normal; letter-spacing: 0.08em;
+        }
+        .article-body blockquote cite::before {
+            content: "— "; color: #ADB5BD;
+        }
+        .article-body hr {
+            margin: 3rem auto; width: 4rem;
+            border: 0; border-top: 1px solid #ADB5BD;
+        }
+        .article-hero {
+            position: relative;
+            background: #212529;
+            overflow: hidden;
+        }
+        .article-hero-img {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; opacity: 0.55;
+        }
+        .article-hero-fade {
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, rgba(33,37,41,0.15) 0%, rgba(33,37,41,0.55) 55%, rgba(33,37,41,0.92) 100%);
+        }
+
+        /* 相關文章卡 */
+        .related-card {
+            display: block;
+            background: rgba(255,255,255,0.85);
+            border: 1px solid rgba(222,226,230,0.9);
+            border-radius: 0.9rem; overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            text-decoration: none; color: inherit;
+        }
+        .related-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px -14px rgba(33,37,41,0.28);
+            border-color: #ADB5BD;
+        }
+        .related-cover { aspect-ratio: 16/10; background: #E9ECEF; overflow: hidden; }
+        .related-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .related-card:hover .related-cover img { transform: scale(1.04); }
+    </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-gallery-900 selection:text-white">
+
+    <div id="shared-global-bg"></div>
+    <div id="shared-header"></div>
+
+    <!-- ===== 讀取中 / 找不到文章 ===== -->
+    <section id="article-fallback" class="hidden px-6 md:px-12 py-40 relative z-10">
+        <div class="max-w-3xl mx-auto text-center">
+            <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-white border border-gallery-200 flex items-center justify-center shadow-sm">
+                <i class="fa-regular fa-file-lines text-3xl text-gallery-400"></i>
+            </div>
+            <h1 class="font-serif text-3xl md:text-4xl font-bold text-gallery-900 mb-4">找不到這篇文章</h1>
+            <p class="text-gallery-500 leading-loose mb-10">
+                這篇文章可能已被移除，或連結不正確。<br>
+                你可以回到「尖端洞察」列表繼續探索其他文章。
+            </p>
+            <a href="insights.html" class="inline-flex items-center gap-3 px-8 py-3 rounded-full border border-gallery-800 text-gallery-900 text-sm tracking-widest font-bold hover:bg-gallery-900 hover:text-white transition-all">
+                <i class="fa-solid fa-arrow-left-long text-xs"></i> 返回尖端洞察
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== 文章 Hero ===== -->
+    <header id="article-hero" class="article-hero relative z-10 pt-24 pb-16 md:pt-36 md:pb-24 px-6 md:px-12 text-white hidden">
+        <img id="article-hero-img" class="article-hero-img" alt="">
+        <div class="article-hero-fade"></div>
+        <div class="max-w-4xl mx-auto relative z-10">
+            <a href="insights.html" class="inline-flex items-center gap-2 text-xs md:text-sm tracking-widest text-white/70 hover:text-white mb-8 transition-colors">
+                <i class="fa-solid fa-arrow-left-long"></i> Insights · 尖端洞察
+            </a>
+            <div id="article-cats" class="flex flex-wrap gap-2 mb-6 text-[10px] font-bold tracking-[0.2em] uppercase text-white/80"></div>
+            <h1 id="article-title" class="font-serif text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4"></h1>
+            <p id="article-subtitle" class="text-base md:text-xl text-white/80 leading-relaxed mb-8 max-w-3xl"></p>
+            <div class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/70">
+                <span id="article-author" class="flex items-center gap-2"><i class="fa-regular fa-user text-xs"></i><span></span></span>
+                <span id="article-date" class="flex items-center gap-2"><i class="fa-regular fa-calendar text-xs"></i><span></span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== 文章內文 ===== -->
+    <main id="article-main" class="relative z-10 px-6 md:px-12 py-16 md:py-24 hidden">
+        <article id="article-body" class="article-body"></article>
+
+        <!-- 分享 / 標籤 -->
+        <div class="max-w-2xl mx-auto mt-16 pt-8 border-t border-gallery-300">
+            <div id="article-tags" class="flex flex-wrap gap-2 mb-8"></div>
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <a href="insights.html" class="inline-flex items-center gap-3 text-sm font-bold tracking-widest text-gallery-900 hover:text-gallery-500 transition-colors">
+                    <i class="fa-solid fa-arrow-left-long"></i> 返回列表
+                </a>
+                <div class="flex gap-2">
+                    <button id="share-link" class="w-10 h-10 rounded-full border border-gallery-300 bg-white/70 flex items-center justify-center hover:bg-gallery-900 hover:text-white hover:border-gallery-900 transition-all" title="複製文章連結">
+                        <i class="fa-solid fa-link text-xs"></i>
+                    </button>
+                    <a id="share-fb" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-gallery-300 bg-white/70 flex items-center justify-center hover:bg-gallery-900 hover:text-white hover:border-gallery-900 transition-all" title="分享到 Facebook">
+                        <i class="fa-brands fa-facebook-f text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== 相關文章 ===== -->
+    <section id="article-related" class="relative z-10 px-6 md:px-12 pb-24 hidden">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex items-center gap-4 mb-10">
+                <div class="h-px w-12 bg-gallery-800"></div>
+                <p class="text-[10px] font-bold tracking-[0.3em] text-gallery-400 uppercase font-display">You may also like</p>
+            </div>
+            <div id="related-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
+    <div id="shared-cta"></div>
+    <div id="shared-footer"></div>
+
+    <script src="js/shared-layout.js"></script>
+    <script src="js/insights-data.js"></script>
+    <script>
+        SharedLayout.mount({ activeNav: 'insights' });
+
+        (function initDetail() {
+            const params = new URLSearchParams(location.search);
+            const id = params.get('id');
+
+            const fallbackEl = document.getElementById('article-fallback');
+            const heroEl = document.getElementById('article-hero');
+            const mainEl = document.getElementById('article-main');
+            const relatedEl = document.getElementById('article-related');
+
+            function esc(s) {
+                return String(s == null ? '' : s)
+                    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+            }
+
+            function renderBlocks(blocks) {
+                if (!blocks || !blocks.length) return '<p class="text-gallery-500">（尚無內文）</p>';
+                const out = [];
+                let smallRun = [];
+
+                function renderImageFigure(b) {
+                    if (!b || !b.src) return '';
+                    const sizeCls = b.size === 'small' ? ' class="is-small"' : '';
+                    return `<figure${sizeCls}>
+                        <img src="${esc(b.src)}" alt="${esc(b.alt || b.caption || '')}" loading="lazy">
+                        ${b.caption ? `<figcaption>${esc(b.caption)}</figcaption>` : ''}
+                    </figure>`;
+                }
+
+                function flushSmallRun() {
+                    if (!smallRun.length) return;
+                    if (smallRun.length === 1) {
+                        out.push(renderImageFigure(smallRun[0]));
+                    } else {
+                        out.push(`<div class="thumb-strip">${smallRun.map(renderImageFigure).join('')}</div>`);
+                    }
+                    smallRun = [];
+                }
+
+                blocks.forEach(b => {
+                    if (!b || !b.type) return '';
+                    if (b.type === 'heading') {
+                        flushSmallRun();
+                        const level = b.level === 3 ? 3 : 2;
+                        out.push(`<h${level}>${esc(b.text || '')}</h${level}>`);
+                        return;
+                    }
+                    if (b.type === 'paragraph') {
+                        flushSmallRun();
+                        const paras = String(b.text || '').split(/\n{2,}/).filter(Boolean);
+                        out.push(paras.map(p => `<p>${esc(p).replace(/\n/g, '<br>')}</p>`).join(''));
+                        return;
+                    }
+                    if (b.type === 'quote') {
+                        flushSmallRun();
+                        out.push(`<blockquote>
+                            <p>${esc(b.text || '')}</p>
+                            ${b.cite ? `<cite>${esc(b.cite)}</cite>` : ''}
+                        </blockquote>`);
+                        return;
+                    }
+                    if (b.type === 'image') {
+                        if (!b.src) return;
+                        if (b.size === 'small') {
+                            smallRun.push(b);
+                        } else {
+                            flushSmallRun();
+                            out.push(renderImageFigure(b));
+                        }
+                        return;
+                    }
+                    if (b.type === 'divider') {
+                        flushSmallRun();
+                        out.push('<hr>');
+                    }
+                });
+
+                flushSmallRun();
+                return out.join('');
+            }
+
+            function renderRelated(current) {
+                const grid = document.getElementById('related-grid');
+                const all = InsightsStore.getAll().filter(x => x.id !== current.id);
+                const curCats = new Set(current.categories || []);
+                const scored = all.map(p => {
+                    const overlap = (p.categories || []).filter(c => curCats.has(c)).length;
+                    return { p, score: overlap };
+                }).sort((a, b) => b.score - a.score);
+                const picks = scored.slice(0, 3).map(x => x.p);
+                if (!picks.length) { relatedEl.classList.add('hidden'); return; }
+                relatedEl.classList.remove('hidden');
+                grid.innerHTML = picks.map(p => {
+                    const cover = InsightsStore.coverOf(p);
+                    return `
+                        <a href="insight-detail.html?id=${encodeURIComponent(p.id)}" class="related-card">
+                            <div class="related-cover">
+                                <img src="${esc(cover)}" alt="${esc(p.title)}" loading="lazy"
+                                     onerror="this.src='${esc(InsightsStore.pickFallbackCover(p.id))}';">
+                            </div>
+                            <div class="p-5">
+                                <p class="text-[10px] font-bold tracking-[0.2em] text-gallery-400 uppercase mb-2">
+                                    ${esc(p.publishedDate || '')} · ${esc((p.categories && p.categories[0]) || '')}
+                                </p>
+                                <h3 class="font-serif text-lg font-bold text-gallery-900 leading-snug line-clamp-2">${esc(p.title)}</h3>
+                            </div>
+                        </a>
+                    `;
+                }).join('');
+            }
+
+            function renderPost(post) {
+                document.title = post.title + ' | 視丘尖端洞察';
+
+                const cover = InsightsStore.coverOf(post);
+                const imgEl = document.getElementById('article-hero-img');
+                imgEl.src = cover;
+                imgEl.alt = post.title;
+                imgEl.onerror = () => { imgEl.src = InsightsStore.pickFallbackCover(post.id); };
+
+                const catsHtml = (post.categories || []).map(c =>
+                    `<span class="px-2.5 py-1 rounded-full bg-white/15 border border-white/25 backdrop-blur">${esc(c)}</span>`
+                ).join('');
+                document.getElementById('article-cats').innerHTML = catsHtml;
+
+                document.getElementById('article-title').textContent = post.title;
+                const subEl = document.getElementById('article-subtitle');
+                if (post.subtitle) { subEl.textContent = post.subtitle; subEl.classList.remove('hidden'); }
+                else { subEl.classList.add('hidden'); }
+
+                const authorSpan = document.querySelector('#article-author span');
+                if (post.author) {
+                    authorSpan.textContent = post.author;
+                    document.getElementById('article-author').classList.remove('hidden');
+                } else {
+                    document.getElementById('article-author').classList.add('hidden');
+                }
+                const dateSpan = document.querySelector('#article-date span');
+                if (post.publishedDate) {
+                    dateSpan.textContent = post.publishedDate;
+                    document.getElementById('article-date').classList.remove('hidden');
+                } else {
+                    document.getElementById('article-date').classList.add('hidden');
+                }
+
+                document.getElementById('article-body').innerHTML = renderBlocks(post.blocks);
+
+                const tagsEl = document.getElementById('article-tags');
+                tagsEl.innerHTML = (post.tags || []).map(t =>
+                    `<span class="text-[10px] px-3 py-1 rounded-full border border-gallery-300 bg-white/60 text-gallery-500 tracking-widest">#${esc(t)}</span>`
+                ).join('');
+
+                // 分享
+                const shareUrl = location.href;
+                document.getElementById('share-fb').href =
+                    'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl);
+                document.getElementById('share-link').onclick = () => {
+                    navigator.clipboard.writeText(shareUrl).then(() => {
+                        const btn = document.getElementById('share-link');
+                        const old = btn.innerHTML;
+                        btn.innerHTML = '<i class="fa-solid fa-check text-xs"></i>';
+                        setTimeout(() => { btn.innerHTML = old; }, 1500);
+                    });
+                };
+
+                heroEl.classList.remove('hidden');
+                mainEl.classList.remove('hidden');
+                fallbackEl.classList.add('hidden');
+
+                renderRelated(post);
+            }
+
+            function tryRender() {
+                const post = id ? InsightsStore.getById(id) : null;
+                if (post) renderPost(post);
+                else {
+                    heroEl.classList.add('hidden');
+                    mainEl.classList.add('hidden');
+                    relatedEl.classList.add('hidden');
+                    fallbackEl.classList.remove('hidden');
+                    document.title = '找不到文章 | 視丘尖端洞察';
+                }
+            }
+
+            tryRender();
+            InsightsStore.subscribe(tryRender);
+            InsightsStore.refreshFromRemote().then(ok => { if (ok) tryRender(); });
+        })();
+    </script>
+    <script src="js/insights-admin.js"></script>
+</body>
+</html>
