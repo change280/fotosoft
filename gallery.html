@@ -149,7 +149,7 @@
                     <a href="work-detail.html?id=${encodeURIComponent(w.id)}"
                        class="card-hover group block overflow-hidden">
                         <div class="aspect-[3/2] overflow-hidden bg-gallery-200 mb-4">
-                            <img src="${esc(w.coverImage)}" alt="${esc(w.title)}"
+                                                        <img src="${esc(WorksStore.coverOf(w))}" alt="${esc(w.title)}"
                                  class="w-full h-full object-cover"
                                  onerror="this.style.opacity='0.3';">
                         </div>

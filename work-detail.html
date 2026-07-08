@@ -189,6 +189,8 @@
                 if (!id) { renderNotFound(); return; }
                 const w = WorksStore.getById(id);
                 if (!w) { renderNotFound(); return; }
+                const cover = WorksStore.coverOf(w);
+                const gallery = WorksStore.galleryOf(w);
 
                 document.title = `${w.title} | 視丘攝影藝術學院`;
 
@@ -207,14 +209,14 @@
                             ${w.subtitle ? `<p class="text-gallery-500 text-lg tracking-wide">${esc(w.subtitle)}</p>` : ''}
                             <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs text-gallery-400 tracking-widest font-display uppercase">
                                 ${w.date ? `<span><i class="fa-regular fa-calendar mr-2"></i>${esc(w.date)}</span>` : ''}
-                                ${w.gallery && w.gallery.length ? `<span><i class="fa-regular fa-images mr-2"></i>${w.gallery.length} PHOTOS</span>` : ''}
+                                ${gallery.length ? `<span><i class="fa-regular fa-images mr-2"></i>${gallery.length} PHOTOS</span>` : ''}
                             </div>
                         </header>
 
                         <!-- 封面 -->
-                        ${w.coverImage ? `
+                        ${cover ? `
                             <div class="mb-16 overflow-hidden">
-                                <img src="${esc(w.coverImage)}" alt="${esc(w.title)}"
+                                <img src="${esc(cover)}" alt="${esc(w.title)}"
                                      class="w-full h-auto"
                                      onerror="this.style.opacity='0.3';">
                             </div>
@@ -232,14 +234,14 @@
                         ` : ''}
 
                         <!-- 內頁作品照 -->
-                        ${w.gallery && w.gallery.length ? `
+                        ${gallery.length ? `
                             <section>
                                 <div class="flex items-center gap-4 mb-8">
                                     <div class="h-px w-12 bg-gallery-800"></div>
                                     <p class="text-[10px] font-bold tracking-[0.3em] text-gallery-400 uppercase font-display">Works</p>
                                 </div>
                                 <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3">
-                                    ${w.gallery.map((g, i) => `
+                                    ${gallery.map((g, i) => `
                                         <figure class="group cursor-zoom-in overflow-hidden bg-gallery-200 aspect-square" data-gallery-open="${i}">
                                             <img src="${esc(g.src)}" alt="${esc(g.caption || (w.title + ' - ' + (i + 1)))}"
                                                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -247,9 +249,9 @@
                                         </figure>
                                     `).join('')}
                                 </div>
-                                ${w.gallery.some(g => g && g.caption) ? `
+                                ${gallery.some(g => g && g.caption) ? `
                                     <div class="mt-4 grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3">
-                                        ${w.gallery.map((g, i) => `
+                                        ${gallery.map((g, i) => `
                                             <p class="text-[10px] md:text-[11px] text-gallery-400 tracking-widest truncate">${esc(g.caption || (w.title + ' - ' + (i + 1)))}</p>
                                         `).join('')}
                                     </div>
@@ -270,7 +272,7 @@
                 `;
 
                 // Lightbox: gallery thumbnails with prev/next
-                const galleryItems = (w.gallery || []).filter(g => g && g.src).map((g, i) => ({
+                const galleryItems = gallery.map((g, i) => ({
                     src: g.src,
                     caption: g.caption || (w.title + ' - ' + (i + 1))
                 }));
@@ -332,7 +334,7 @@
                     <a href="work-detail.html?id=${encodeURIComponent(w.id)}"
                        class="group block overflow-hidden">
                         <div class="aspect-square overflow-hidden bg-gallery-200 mb-3">
-                            <img src="${esc(w.coverImage)}" alt="${esc(w.title)}"
+                            <img src="${esc(WorksStore.coverOf(w))}" alt="${esc(w.title)}"
                                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                  onerror="this.style.opacity='0.3';">
                         </div>
