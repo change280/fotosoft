@@ -231,7 +231,7 @@
     <div id="shared-header"></div>
 
     <!-- ===== 頁面標題 Hero ===== -->
-    <section class="pt-8 md:pt-12 pt-8 md:pt-12 pb-8 md:pb-12 px-6 md:px-12 relative overflow-hidden">
+    <section class="pt-8 md:pt-12 pb-8 md:pb-12 px-6 md:px-12 relative overflow-hidden">
         <div class="absolute top-20 right-0 pointer-events-none select-none overflow-hidden w-full flex justify-end opacity-[0.04]">
             <span class="font-display font-black text-[18vw] leading-none tracking-tighter text-black">ABOUT</span>
         </div>
@@ -813,6 +813,22 @@
                     <span class="px-4 py-2 rounded-full bg-white/70 border border-gallery-200 text-gallery-800">24 位僑生 · International</span>
                 </div>
 
+                <div class="mb-8 flex flex-wrap gap-3" id="alumni-filters">
+                    <button type="button" data-filter="all" class="alumni-filter-btn inline-flex items-center gap-2 px-5 py-2 rounded-full border border-gallery-800 bg-gallery-900 text-white text-xs tracking-widest font-bold transition-all">
+                        全部屆別
+                    </button>
+                    <button type="button" data-filter="overseas" class="alumni-filter-btn inline-flex items-center gap-2 px-5 py-2 rounded-full border border-gallery-300 bg-white/80 text-gallery-800 text-xs tracking-widest font-bold hover:border-gallery-800 transition-all">
+                        出國留學生
+                    </button>
+                    <button type="button" data-filter="international" class="alumni-filter-btn inline-flex items-center gap-2 px-5 py-2 rounded-full border border-gallery-300 bg-white/80 text-gallery-800 text-xs tracking-widest font-bold hover:border-gallery-800 transition-all">
+                        來視丘留學的外籍生
+                    </button>
+                </div>
+
+                <div id="alumni-filter-note" class="mb-8 rounded-2xl border border-gallery-200 bg-white/70 px-5 py-4 text-sm leading-loose text-gallery-700">
+                    依屆別顯示視丘畢業校友資料（由最新屆往回顯示）。
+                </div>
+
                 <div id="alumni-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <!-- 動態注入各屆卡片 -->
                 </div>
@@ -1087,12 +1103,120 @@
             { n: 67, names: '簡至柔、邱懷萱、宋柏瑋、黃渝文、丁友淳' },
         ];
 
+        const OVERSEAS_ALUMNI = [
+            { n: 60, name: '邱森森', country: '美國', school: 'Pratt Institute, New York' },
+            { n: 56, name: '余資甯', country: '英國', school: 'University of the Arts London (UAL)' },
+            { n: 51, name: '張凱翔', country: '日本', school: '東京 Visual Arts 寫真學科' },
+            { n: 51, name: '容國貞', country: '美國', school: 'San Francisco Art Institute (SFAI)' },
+            { n: 50, name: '趙維杰', country: '捷克', school: 'FAMU 捷克國家電影學院' },
+            { n: 50, name: '黃馨儀', country: '捷克', school: 'FAMU 捷克國家電影學院' },
+            { n: 50, name: '張峯榕', country: '美國', school: 'Academy of Art University, San Francisco' },
+            { n: 48, name: '盧鉅湧', country: '英國', school: 'The Glasgow School of Art' },
+            { n: 45, name: '蔣曜陽', country: '日本', school: 'Tokyo Film Center School of Arts' },
+            { n: 45, name: '黃乃容', country: '英國', school: 'Slade School of Fine Art, University of London' },
+            { n: 41, name: '邱婉茹', country: '德國', school: '' },
+            { n: 40, name: '侯鵬暉', country: '日本', school: '日本大學藝術學院攝影碩士、博士' },
+            { n: 40, name: '施昀佑', country: '美國', school: 'School of the Art Institute of Chicago (SAIC)' },
+            { n: 40, name: '孟祥璐', country: '美國', school: 'Rochester Institute of Technology (RIT)' },
+            { n: 40, name: '魏欣妍', country: '美國', school: 'School of the Art Institute of Chicago (SAIC)' },
+            { n: 38, name: '吳芊頤', country: '英國', school: 'University of the Arts London (UAL)' },
+            { n: 37, name: '廖建寧', country: '美國', school: 'School of the Museum of Fine Arts, Boston' },
+            { n: 37, name: '周懷玉', country: '美國', school: 'School of the Museum of Fine Arts, Boston' },
+            { n: 36, name: '曹良賓', country: '美國', school: 'Pratt Institute, New York' },
+            { n: 36, name: '饒孟蓁', country: '美國', school: 'Chapman University, Orange, CA' },
+            { n: 36, name: '黃國恆', country: '美國', school: 'Pratt Institute, New York' },
+            { n: 36, name: '王智勇', country: '美國', school: 'Savannah College of Art and Design' },
+            { n: 34, name: '陳昭旨', country: '英國', school: 'Central Saint Martins' },
+            { n: 34, name: '許智翔', country: '英國', school: 'Central Saint Martins' },
+            { n: 31, name: '陳會琪', country: '法國', school: '' },
+            { n: 30, name: '李薇屏', country: '美國', school: 'Academy of Art University' },
+            { n: 26, name: '高維謙', country: '英國', school: 'University of the Arts London (UAL)' },
+            { n: 20, name: '陳宗蔚', country: '日本', school: '日本大學藝術學部寫真學科' },
+            { n: 11, name: '許哲瑜', country: '美國', school: 'Long Island University, MFA Photography' },
+            { n: 10, name: '鐘順龍', country: '英國', school: 'Goldsmiths, University of London' },
+            { n: 8,  name: '楊基發', country: '美國', school: 'Academy of Art University, San Francisco' },
+            { n: 7,  name: '廖瑞德', country: '美國', school: 'New York University, Tisch School of the Arts' },
+            { n: 4,  name: '余嘉熹', country: '美國', school: 'School of Visual Arts' },
+            { n: 4,  name: '劉宥瑩', country: '日本', school: '日本大學藝術學院攝影碩士' }
+        ];
+
+        const INTERNATIONAL_ALUMNI = [
+            { n: 66, name: '陸璟忞', country: '香港' },
+            { n: 60, name: '李雯靜', country: '香港' },
+            { n: 58, name: '劉依雯', country: '馬來西亞' },
+            { n: 57, name: '林筱偲', country: '巴西' },
+            { n: 57, name: '李綺筠', country: '香港' },
+            { n: 56, name: '徐啟倫', country: '香港' },
+            { n: 56, name: '劉駿邦', country: '香港' },
+            { n: 53, name: '蔡健恒', country: '香港' },
+            { n: 49, name: '郭穎橋', country: '香港' },
+            { n: 47, name: '沈煒棟', country: '新加坡' },
+            { n: 47, name: '莫壯甜', country: '馬來西亞' },
+            { n: 42, name: '楊榮孝', country: '馬來西亞' },
+            { n: 42, name: '朱燕虹', country: '馬來西亞' },
+            { n: 41, name: '黃家裕', country: '香港' },
+            { n: 41, name: '谷蔚欣', country: '香港' },
+            { n: 32, name: '黃星融', country: '新加坡' },
+            { n: 30, name: '宋和憬', country: '新加坡' },
+            { n: 29, name: '林冠州', country: '智利華僑' },
+            { n: 28, name: '劉祐任', country: '夏威夷' },
+            { n: 26, name: '馬榮冠', country: '馬來西亞' },
+            { n: 26, name: '林璇璇', country: '菲律賓' },
+            { n: 22, name: '陳維勁', country: '馬來西亞' },
+            { n: 21, name: '王瑞斌', country: '馬來西亞' },
+            { n: 21, name: '許璟瑤', country: '新加坡' },
+            { n: 15, name: '楊小僅', country: '馬來西亞' },
+            { n: 9,  name: '陳威利', country: '香港' },
+            { n: 5,  name: '朱永義', country: '香港' }
+        ];
+
         (function renderAlumni() {
             const grid = document.getElementById('alumni-grid');
             const toggleBtn = document.getElementById('alumni-toggle');
             const toggleText = document.getElementById('alumni-toggle-text');
+            const filtersRoot = document.getElementById('alumni-filters');
+            const noteEl = document.getElementById('alumni-filter-note');
             const INITIAL_COUNT = 9;
+            const ALUMNI_DESC = ALUMNI.slice().sort(function (a, b) { return b.n - a.n; });
+            const OVERSEAS_DESC = OVERSEAS_ALUMNI.slice().sort(function (a, b) { return b.n - a.n; });
+            const INTERNATIONAL_DESC = INTERNATIONAL_ALUMNI.slice().sort(function (a, b) { return b.n - a.n; });
             let expanded = false;
+            let mode = 'all';
+
+            const OVERSEAS_NOTE_HTML = [
+                '<p class="font-bold text-gallery-900">出國留學生名單（共 34 位），依屆別由新到舊排序。</p>',
+                '<div class="mt-4 space-y-4">',
+                '<div>',
+                '<p class="font-semibold text-gallery-900">一、辦學定位</p>',
+                '<ul class="mt-2 list-disc pl-5 space-y-2">',
+                '<li>視丘攝影藝術學院日間部，是台灣唯一以歐美「大學攝影系」與「攝影研究所」課程為內容架構授課，專門為台灣社會培訓「攝影藝術家」與「專業攝影師」人才的私塾大學攝影系。</li>',
+                '<li>視丘攝影藝術學院日間部也是台灣唯一彌補「台灣沒有任何一所大學設有攝影系」至大缺憾的；以私人微薄力量為台灣有志學習攝影的年輕一代設立的以世界攝影藝術標準為內容準繩的攝影系。</li>',
+                '</ul>',
+                '</div>',
+                '<div>',
+                '<p class="font-semibold text-gallery-900">二、課程架構與訓練深度</p>',
+                '<ul class="mt-2 list-disc pl-5 space-y-2">',
+                '<li>視丘攝影藝術學院日間部是以歐美大學「攝影系四年」與「攝影研究所兩年」；共六年的課程系統為藍本規劃，將之濃縮成一年的密集攝影系課程。</li>',
+                '<li>視丘攝影藝術學院日間部課程系統架構豐富而嚴謹，橫向涵蓋「視覺＋影像＋傳播」缺一不可的三大系統，縱向由基礎理論、實習作業、臨摹大師作品、Photobook製作到攝影棚與外景實戰應用；讓同學能夠充分消化所學，在作品上實證各種觀念的運用。</li>',
+                '<li>視丘攝影藝術學院日間部課程的紮根深度與涵蓋各面向的豐富性，實際上已經足夠讓同學畢業後在職場上應付從工作來的各種挑戰而且足足有餘。「畢業十幾年之後，還在職場上消化當年在視丘所學的種種理論、觀念、技術」是視丘學長姐常常回來與學弟妹分享時的共同心聲。</li>',
+                '</ul>',
+                '</div>',
+                '<div>',
+                '<p class="font-semibold text-gallery-900">三、海外升學成果</p>',
+                '<ul class="mt-2 list-disc pl-5 space-y-2">',
+                '<li>但是，從1985年視丘創校以來，也有許多視丘同學因為個人生涯規劃的需要在視丘畢業後前往歐美日等先進國家大學攝影研究所深造。</li>',
+                '<li>由於這些視丘畢業生在申請各國大學研究所時，都拿他們在視丘在學時按照指定作業製作的作品集 Portfolio 或Photobook ，連同視丘創辦人吳嘉寶老師寫的推薦信去申請入學許可，這些同學幾乎百分之百都按照他們的志向申請到目標學校的入學許可。</li>',
+                '<li>這些同學中，不但有一位申請到芝加哥藝術學院藝術研究所的全額獎學金，甚至還有一位同學因為在台灣只有高中畢業文憑，但是因為視丘督導下製作完成的作品集成績斐然，使英國校方特准這位同學從大二插班入學，足足省下一整年的學費與生活費。</li>',
+                '</ul>',
+                '</div>',
+                '<p class="mt-2">下面列表就是從視丘創校第一屆開始，曾經前往世界各個大學攝影研究所或大學攝影系（在台灣只有高中學歷者）就讀的視丘同學海外留學名單。</p>',
+                '</div>'
+            ].join('');
+
+            const INTERNATIONAL_NOTE_HTML = [
+                `<p class="font-bold text-gallery-900">來視丘留學的外籍生名單（共 ${INTERNATIONAL_DESC.length} 位），依屆別由新到舊排序。</p>`,
+                '<p class="mt-4">從1985年創校至今已有32年歷史的「視丘攝影藝術學院」，由於辦學有成，在全球華人圈卓有名聲。打從30多年前創校開始，就有來自香港的僑生前來視丘就讀。後來陸陸續續一直有海外華僑就讀視丘學習攝影專業知識技術，除馬來西亞、香港、新加坡等地人數最多外，甚至還有遠從智利、夏威夷等地來的僑生。</p>'
+            ].join('');
 
             function esc(s) {
                 return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -1109,10 +1233,61 @@
                     </article>`;
             }
 
+            function overseasCardHTML(item) {
+                return `
+                    <article class="glass-card bg-white/60 border border-white/80 rounded-2xl p-6 hover:bg-white/80 transition-all">
+                        <div class="flex items-baseline gap-3 mb-2">
+                            <span class="font-display text-2xl font-black text-gallery-800">${item.n}</span>
+                            <span class="text-[10px] font-display font-bold tracking-[0.2em] text-gallery-400 uppercase">Class</span>
+                        </div>
+                        <p class="text-base font-bold text-gallery-900 mb-1">${esc(item.name)}</p>
+                        <p class="text-xs tracking-widest text-gallery-500 mb-2">${esc(item.country)}</p>
+                        <p class="text-sm text-gallery-700 leading-loose">${esc(item.school || '資料整理中')}</p>
+                    </article>`;
+            }
+
+            function internationalCardHTML(item) {
+                return `
+                    <article class="glass-card bg-white/60 border border-white/80 rounded-2xl p-6 hover:bg-white/80 transition-all">
+                        <div class="flex items-baseline gap-3 mb-2">
+                            <span class="font-display text-2xl font-black text-gallery-800">${item.n}</span>
+                            <span class="text-[10px] font-display font-bold tracking-[0.2em] text-gallery-400 uppercase">Class</span>
+                        </div>
+                        <p class="text-base font-bold text-gallery-900 mb-1">${esc(item.name)}</p>
+                        <p class="text-sm text-gallery-700 leading-loose">${esc(item.country)}</p>
+                    </article>`;
+            }
+
+            function updateFilterButtons() {
+                if (!filtersRoot) return;
+                Array.prototype.forEach.call(filtersRoot.querySelectorAll('.alumni-filter-btn'), function (btn) {
+                    const active = btn.getAttribute('data-filter') === mode;
+                    btn.classList.toggle('bg-gallery-900', active);
+                    btn.classList.toggle('text-white', active);
+                    btn.classList.toggle('border-gallery-800', active);
+                    btn.classList.toggle('bg-white/80', !active);
+                    btn.classList.toggle('text-gallery-800', !active);
+                    btn.classList.toggle('border-gallery-300', !active);
+                });
+            }
+
             function render() {
-                const list = expanded ? ALUMNI : ALUMNI.slice(-INITIAL_COUNT);
-                grid.innerHTML = list.map(cardHTML).join('');
-                toggleText.textContent = expanded ? '收合顯示' : `顯示全部 ${ALUMNI.length} 屆`;
+                if (mode === 'all') {
+                    const list = expanded ? ALUMNI_DESC : ALUMNI_DESC.slice(0, INITIAL_COUNT);
+                    grid.innerHTML = list.map(cardHTML).join('');
+                    toggleBtn.style.display = '';
+                    toggleText.textContent = expanded ? '收合顯示' : `顯示全部 ${ALUMNI.length} 屆`;
+                    if (noteEl) noteEl.textContent = '依屆別顯示視丘畢業校友資料（由最新屆往回顯示）。';
+                } else if (mode === 'overseas') {
+                    grid.innerHTML = OVERSEAS_DESC.map(overseasCardHTML).join('');
+                    toggleBtn.style.display = 'none';
+                    if (noteEl) noteEl.innerHTML = OVERSEAS_NOTE_HTML;
+                } else {
+                    grid.innerHTML = INTERNATIONAL_DESC.map(internationalCardHTML).join('');
+                    toggleBtn.style.display = 'none';
+                    if (noteEl) noteEl.innerHTML = INTERNATIONAL_NOTE_HTML;
+                }
+                updateFilterButtons();
             }
 
             toggleBtn.addEventListener('click', function () {
@@ -1122,6 +1297,16 @@
                     document.getElementById('alumni').scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
+
+            if (filtersRoot) {
+                filtersRoot.addEventListener('click', function (event) {
+                    const btn = event.target.closest('[data-filter]');
+                    if (!btn) return;
+                    mode = btn.getAttribute('data-filter') || 'all';
+                    expanded = false;
+                    render();
+                });
+            }
 
             // 預設顯示最近幾屆（倒序展示更符合校友動態感）
             render();
