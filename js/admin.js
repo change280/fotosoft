@@ -249,6 +249,36 @@
         to   { opacity: 1; transform: translate(-50%, 0); }
       }
 
+      #fs-admin-root .fs-dialog-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.24);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 100001;
+      }
+      #fs-admin-root .fs-dialog {
+        width: min(460px, calc(100vw - 32px));
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 30px 80px -28px rgba(0,0,0,0.35);
+        overflow: hidden;
+      }
+      #fs-admin-root .fs-dialog-body {
+        padding: 24px 26px 20px;
+        font-size: 20px;
+        line-height: 1.7;
+        color: #212529;
+      }
+      #fs-admin-root .fs-dialog-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        padding: 14px 18px 18px;
+        border-top: 1px solid #E9ECEF;
+      }
+
       #fs-admin-hint {
         position: fixed; bottom: 12px; right: 12px;
         z-index: 99998; padding: 6px 10px; border-radius: 6px;
@@ -272,10 +302,112 @@
   /* ---------------------------------------------------------- */
   /* State                                                       */
   /* ---------------------------------------------------------- */
+  const DRAFT_STORAGE_KEY = 'FOTOSOFT_GALLERY_ADMIN_DRAFT_V1';
   let rootEl = null;
   let selectedId = null;
   let searchTerm = '';
   let dirtyDraft = null; // 未儲存的表單資料
+  let allowHistoryExit = false;
+
+  function hasUnsavedDraft() {
+    return !!dirtyDraft || !!localStorage.getItem(DRAFT_STORAGE_KEY);
+  }
+  function clearDraftState() {
+    try { localStorage.removeItem(DRAFT_STORAGE_KEY); } catch (_) {}
+  }
+  function persistDraftState() {
+    if (!dirtyDraft) {
+      clearDraftState();
+      return;
+    }
+    try {
+      localStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify({
+        selectedId: selectedId || '',
+        searchTerm: searchTerm,
+        dirtyDraft: dirtyDraft
+      }));
+    } catch (_) {}
+  }
+  function restoreDraftState() {
+    let raw = null;
+    try { raw = localStorage.getItem(DRAFT_STORAGE_KEY); } catch (_) {}
+    if (!raw) return false;
+    try {
+      const saved = JSON.parse(raw);
+      if (!saved || typeof saved !== 'object' || !saved.dirtyDraft || typeof saved.dirtyDraft !== 'object') return false;
+      selectedId = saved.selectedId || '';
+      searchTerm = typeof saved.searchTerm === 'string' ? saved.searchTerm : '';
+      dirtyDraft = saved.dirtyDraft;
+      return true;
+    } catch (_) {
+      clearDraftState();
+      return false;
+    }
+  }
+  function discardDirtyDraft() {
+    dirtyDraft = null;
+    clearDraftState();
+  }
+  function confirmAbandonUnsaved(message) {
+    if (!dirtyDraft) return true;
+    return confirm(message || '尚有未儲存的變更，確定要放棄嗎？');
+  }
+  async function resolveUnsavedBeforeContinue(message) {
+    if (!dirtyDraft) return true;
+    const action = await showSaveDiscardDialog(message || '尚有未儲存的變更，是否繼續？');
+    if (action === 'save') {
+      return saveDraft();
+    }
+    discardDirtyDraft();
+    return true;
+  }
+  function showSaveDiscardDialog(message) {
+    return new Promise(resolve => {
+      if (!rootEl) {
+        resolve('discard');
+        return;
+      }
+      const wrap = document.createElement('div');
+      wrap.className = 'fs-dialog-backdrop';
+      wrap.innerHTML = '' +
+        '<div class="fs-dialog" role="alertdialog" aria-modal="true" aria-labelledby="fs-dialog-title">' +
+          '<div class="fs-dialog-body" id="fs-dialog-title">' + escapeHtml(message || '尚有未儲存的變更，是否繼續？') + '</div>' +
+          '<div class="fs-dialog-actions">' +
+            '<button class="fs-btn fs-btn-ghost fs-btn-sm" data-dialog-action="discard">捨棄</button>' +
+            '<button class="fs-btn fs-btn-primary fs-btn-sm" data-dialog-action="save">儲存</button>' +
+          '</div>' +
+        '</div>';
+
+      function cleanup(result) {
+        document.removeEventListener('keydown', onKeydown, true);
+        wrap.remove();
+        resolve(result);
+      }
+      function onKeydown(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          e.stopPropagation();
+          cleanup('save');
+        }
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          e.stopPropagation();
+          cleanup('discard');
+        }
+      }
+
+      wrap.addEventListener('click', e => {
+        const action = e.target && e.target.getAttribute('data-dialog-action');
+        if (!action) return;
+        cleanup(action);
+      });
+
+      rootEl.appendChild(wrap);
+      document.addEventListener('keydown', onKeydown, true);
+      const primary = wrap.querySelector('[data-dialog-action="save"]');
+      if (primary) primary.focus();
+    });
+  }
 
   /* ---------------------------------------------------------- */
   /* Toast                                                       */
@@ -293,21 +425,25 @@
   /* ---------------------------------------------------------- */
   function open() {
     if (rootEl) return;
+    const restored = !dirtyDraft && restoreDraftState();
     rootEl = document.createElement('div');
     rootEl.id = 'fs-admin-root';
     document.body.appendChild(rootEl);
 
-    // 預設選第一筆
-    const all = WorksStore.getAll();
-    selectedId = all.length ? all[0].id : null;
-    dirtyDraft = null;
+    if (!restored) {
+      // 預設選第一筆
+      const all = WorksStore.getAll();
+      selectedId = all.length ? all[0].id : null;
+      dirtyDraft = null;
+    }
     render();
+    if (restored) toast('已還原上次未儲存的編輯');
   }
 
-  function close() {
-    if (dirtyDraft && !confirm('尚有未儲存的變更，確定要關閉嗎？')) return;
+  async function close() {
+    if (!(await resolveUnsavedBeforeContinue('尚有未儲存的變更，關閉前是否先儲存？'))) return;
     if (rootEl) { rootEl.remove(); rootEl = null; }
-    dirtyDraft = null;
+    discardDirtyDraft();
   }
 
   /* ---------------------------------------------------------- */
@@ -315,6 +451,18 @@
   /* ---------------------------------------------------------- */
   function render() {
     if (!rootEl) return;
+    const prevForm = rootEl.querySelector('.fs-form');
+    const prevList = rootEl.querySelector('.fs-list');
+    const savedFormScroll = prevForm ? prevForm.scrollTop : 0;
+    const savedListScroll = prevList ? prevList.scrollTop : 0;
+    const activeEl = document.activeElement;
+    const activeMarker = activeEl && rootEl.contains(activeEl) ? {
+      field: activeEl.getAttribute('data-field') || activeEl.getAttribute('data-role'),
+      idx: activeEl.getAttribute('data-index'),
+      selStart: typeof activeEl.selectionStart === 'number' ? activeEl.selectionStart : null,
+      selEnd: typeof activeEl.selectionEnd === 'number' ? activeEl.selectionEnd : null
+    } : null;
+
     const works = WorksStore.getAll();
     const filtered = searchTerm
       ? works.filter(w =>
@@ -347,6 +495,7 @@
               <button class="fs-btn fs-btn-ghost fs-btn-sm" data-role="export" style="flex:1;">匯出 JSON</button>
               <button class="fs-btn fs-btn-ghost fs-btn-sm" data-role="import" style="flex:1;">匯入 JSON</button>
             </div>
+            <p style="margin:6px 2px 0;font-size:11px;line-height:1.6;color:#6C757D;">編輯資料先儲存在瀏覽器（localStorage），不會自動寫入網站檔案。若要落地保存，請按「匯出 JSON」。</p>
             <button class="fs-btn fs-btn-ghost fs-btn-sm" data-role="reset" style="color:#dc2626;border-color:#fecaca;">重置為預設資料</button>
           </div>
         </aside>
@@ -357,6 +506,27 @@
       </div>
     `;
     bindEvents();
+
+    const newForm = rootEl.querySelector('.fs-form');
+    const newList = rootEl.querySelector('.fs-list');
+    if (newForm) newForm.scrollTop = savedFormScroll;
+    if (newList) newList.scrollTop = savedListScroll;
+
+    if (activeMarker && activeMarker.field) {
+      let selector = '';
+      if (activeMarker.idx != null) {
+        selector = '[data-field="' + activeMarker.field + '"][data-index="' + activeMarker.idx + '"]';
+      }
+      if (!selector) selector = '[data-field="' + activeMarker.field + '"]';
+      if (!rootEl.querySelector(selector)) selector = '[data-role="' + activeMarker.field + '"]';
+      const target = rootEl.querySelector(selector);
+      if (target && typeof target.focus === 'function') {
+        try { target.focus({ preventScroll: true }); } catch (_) { target.focus(); }
+        if (activeMarker.selStart != null && typeof target.setSelectionRange === 'function') {
+          try { target.setSelectionRange(activeMarker.selStart, activeMarker.selEnd != null ? activeMarker.selEnd : activeMarker.selStart); } catch (_) {}
+        }
+      }
+    }
   }
 
   function renderListItem(w) {
@@ -399,7 +569,7 @@
             ${w.coverImage ? '' : '尚未設定封面'}
           </div>
           <div class="fs-image-row">
-            <input class="fs-input" data-field="coverImage" placeholder="貼上圖片網址…" value="${escapeAttr(w.coverImage)}">
+            <input class="fs-input" data-field="coverImage" placeholder="/image/gallery/檔名.jpg 或外部網址" value="${escapeAttr(w.coverImage)}">
             <label class="fs-file-btn">
               選擇檔案
               <input type="file" accept="image/*" hidden data-role="upload-cover">
@@ -461,7 +631,7 @@
               <input type="file" accept="image/*" multiple hidden data-role="upload-gallery">
             </label>
           </div>
-          <p style="font-size:11px;color:#ADB5BD;margin:6px 0 0;">支援上傳本機圖片（自動嵌入）或點擊「編輯網址」貼上外部連結。</p>
+          <p style="font-size:11px;color:#ADB5BD;margin:6px 0 0;">選擇本機檔案時會自動填入 /image/gallery/檔名，也可改為外部連結。</p>
         </div>
 
         <div class="fs-field">
@@ -496,6 +666,7 @@
     if (search) {
       search.addEventListener('input', e => {
         searchTerm = e.target.value;
+        persistDraftState();
         // 只重繪列表，避免打斷 input focus
         const list = rootEl.querySelector('[data-role="list"]');
         const filtered = WorksStore.getAll().filter(w =>
@@ -512,8 +683,8 @@
 
     // 新增
     const newBtn = rootEl.querySelector('[data-role="new"]');
-    if (newBtn) newBtn.addEventListener('click', () => {
-      if (dirtyDraft && !confirm('尚有未儲存的變更，繼續？')) return;
+    if (newBtn) newBtn.addEventListener('click', async () => {
+      if (!(await resolveUnsavedBeforeContinue('尚有未儲存的變更，建立新作品前是否先儲存？'))) return;
       selectedId = null;
       dirtyDraft = {
         id: '',
@@ -527,19 +698,27 @@
         gallery: [],
         featured: false
       };
+      persistDraftState();
       render();
     });
 
     // 匯出 / 匯入 / 重置
     rootEl.querySelector('[data-role="export"]')
-      ?.addEventListener('click', exportJSON);
+      ?.addEventListener('click', async () => {
+        if (!(await resolveUnsavedBeforeContinue('匯出前有未儲存的變更，是否先儲存？'))) return;
+        exportJSON();
+      });
     rootEl.querySelector('[data-role="import"]')
-      ?.addEventListener('click', importJSON);
+      ?.addEventListener('click', async () => {
+        if (!(await resolveUnsavedBeforeContinue('匯入前有未儲存的變更，是否先儲存？'))) return;
+        importJSON();
+      });
     rootEl.querySelector('[data-role="reset"]')
-      ?.addEventListener('click', () => {
+      ?.addEventListener('click', async () => {
+        if (!(await resolveUnsavedBeforeContinue('重置前有未儲存的變更，是否先儲存？'))) return;
         if (confirm('確定重置為預設 10 筆資料？當前所有變更會遺失。')) {
           WorksStore.reset();
-          dirtyDraft = null;
+          discardDirtyDraft();
           selectedId = WorksStore.getAll()[0]?.id || null;
           render();
           toast('已重置為預設資料');
@@ -558,6 +737,7 @@
         } else {
           dirtyDraft[field] = el.value;
         }
+        persistDraftState();
         if (field === 'coverImage') {
           const preview = rootEl.querySelector('.fs-cover-preview');
           if (preview) {
@@ -576,6 +756,7 @@
         const set = new Set(dirtyDraft.categories || []);
         if (set.has(cat)) set.delete(cat); else set.add(cat);
         dirtyDraft.categories = Array.from(set);
+        persistDraftState();
         el.classList.toggle('on');
       })
     );
@@ -585,36 +766,34 @@
         if (!name) return;
         ensureDraft();
         dirtyDraft.categories = Array.from(new Set([...(dirtyDraft.categories || []), name.trim()]));
+        persistDraftState();
         render();
       });
 
     // 封面上傳
     rootEl.querySelector('[data-role="upload-cover"]')
-      ?.addEventListener('change', async e => {
+      ?.addEventListener('change', e => {
         const file = e.target.files?.[0];
         if (!file) return;
-        try {
-          const data = await fileToDataURL(file);
-          ensureDraft();
-          dirtyDraft.coverImage = data;
-          render();
-        } catch (err) {
-          toast('圖片讀取失敗');
-        }
+        ensureDraft();
+        dirtyDraft.coverImage = galleryImagePathFromFile(file);
+        persistDraftState();
+        toast('已設定封面路徑為 ' + dirtyDraft.coverImage);
+        render();
       });
 
     // 內頁圖 - 新增
     rootEl.querySelector('[data-role="upload-gallery"]')
-      ?.addEventListener('change', async e => {
+      ?.addEventListener('change', e => {
         const files = Array.from(e.target.files || []);
         if (!files.length) return;
         ensureDraft();
-        for (const f of files) {
-          try {
-            const data = await fileToDataURL(f);
-            dirtyDraft.gallery = (dirtyDraft.gallery || []).concat([{ src: data, caption: f.name }]);
-          } catch (_) { /* skip */ }
-        }
+        dirtyDraft.gallery = Array.isArray(dirtyDraft.gallery) ? dirtyDraft.gallery : [];
+        files.forEach(f => {
+          dirtyDraft.gallery.push({ src: galleryImagePathFromFile(f), caption: f.name });
+        });
+        persistDraftState();
+        toast('已新增 ' + files.length + ' 張，路徑預設為 /image/gallery/');
         render();
       });
 
@@ -624,10 +803,11 @@
         const idx = Number(el.getAttribute('data-index'));
         ensureDraft();
         const current = dirtyDraft.gallery[idx];
-        const next = prompt('請輸入圖片網址：', current.src.startsWith('data:') ? '' : current.src);
+        const next = prompt('請輸入圖片網址：', (current && current.src ? current.src : '/image/gallery/'));
         if (next === null) return;
         if (!next.trim()) return;
         dirtyDraft.gallery[idx] = { ...current, src: next.trim() };
+        persistDraftState();
         render();
       })
     );
@@ -636,17 +816,20 @@
         const idx = Number(el.getAttribute('data-index'));
         ensureDraft();
         dirtyDraft.gallery.splice(idx, 1);
+        persistDraftState();
         render();
       })
     );
 
     // 底部按鈕
     rootEl.querySelector('[data-role="save"]')
-      ?.addEventListener('click', saveDraft);
-    rootEl.querySelector('[data-role="cancel"]')
       ?.addEventListener('click', () => {
-        if (dirtyDraft && !confirm('放棄目前變更？')) return;
-        dirtyDraft = null;
+        if (!saveDraft()) return;
+        render();
+      });
+    rootEl.querySelector('[data-role="cancel"]')
+      ?.addEventListener('click', async () => {
+        if (!(await resolveUnsavedBeforeContinue('取消編輯前，是否先儲存目前變更？'))) return;
         render();
       });
     rootEl.querySelector('[data-role="delete"]')
@@ -654,7 +837,7 @@
         if (!selectedId) return;
         if (!confirm('確定刪除這件作品？此動作無法復原（但仍保留於已匯出的 JSON 檔）。')) return;
         WorksStore.remove(selectedId);
-        dirtyDraft = null;
+        discardDirtyDraft();
         selectedId = WorksStore.getAll()[0]?.id || null;
         render();
         toast('已刪除');
@@ -663,10 +846,17 @@
 
   function bindListItems() {
     rootEl.querySelectorAll('[data-role="select"]').forEach(el =>
-      el.addEventListener('click', () => {
-        if (dirtyDraft && !confirm('尚有未儲存的變更，繼續？')) return;
-        selectedId = el.getAttribute('data-id');
-        dirtyDraft = null;
+      el.addEventListener('click', async () => {
+        const nextId = el.getAttribute('data-id');
+        if (dirtyDraft && nextId !== selectedId) {
+          const action = await showSaveDiscardDialog('尚有未儲存的變更，切換作品會放棄目前編輯，是否繼續？');
+          if (action === 'save') {
+            if (!saveDraft()) return;
+          } else {
+            discardDirtyDraft();
+          }
+        }
+        selectedId = nextId;
         render();
       })
     );
@@ -676,19 +866,21 @@
     if (dirtyDraft) return;
     const current = WorksStore.getById(selectedId);
     dirtyDraft = current ? JSON.parse(JSON.stringify(current)) : null;
+    persistDraftState();
   }
 
   function saveDraft() {
-    if (!dirtyDraft) return;
+    if (!dirtyDraft) return true;
     if (!dirtyDraft.title || !dirtyDraft.title.trim()) {
       alert('請輸入作品標題');
-      return;
+      return false;
     }
     const saved = WorksStore.save(dirtyDraft);
     selectedId = saved.id;
     dirtyDraft = null;
-    render();
+    clearDraftState();
     toast('已儲存');
+    return true;
   }
 
   /* ---------------------------------------------------------- */
@@ -720,7 +912,7 @@
           const mode = confirm('按「確定」= 合併（保留現有並更新同 ID）\n按「取消」= 完全取代') ? 'merge' : 'replace';
           WorksStore.importJSON(String(reader.result), mode);
           selectedId = WorksStore.getAll()[0]?.id || null;
-          dirtyDraft = null;
+          discardDirtyDraft();
           render();
           toast('匯入完成');
         } catch (err) {
@@ -735,13 +927,9 @@
   /* ---------------------------------------------------------- */
   /* Helpers                                                     */
   /* ---------------------------------------------------------- */
-  function fileToDataURL(file) {
-    return new Promise((resolve, reject) => {
-      const r = new FileReader();
-      r.onload = () => resolve(String(r.result));
-      r.onerror = reject;
-      r.readAsDataURL(file);
-    });
+  function galleryImagePathFromFile(file) {
+    const name = String((file && file.name) || '').split(/[\\/]/).pop().trim();
+    return name ? '/image/gallery/' + name : '';
   }
 
   function escapeHtml(s) {
@@ -767,6 +955,26 @@
     if (e.key === 'Escape' && rootEl) {
       close();
     }
+  });
+
+  window.addEventListener('popstate', () => {
+    if (!rootEl || !hasUnsavedDraft()) return;
+    if (allowHistoryExit) {
+      allowHistoryExit = false;
+      return;
+    }
+    history.pushState({ __fsGalleryAdminDraft: true }, '', location.href);
+    resolveUnsavedBeforeContinue('離開頁面前偵測到未儲存編輯，是否先儲存？').then(ok => {
+      if (!ok) return;
+      allowHistoryExit = true;
+      try { history.back(); } catch (_) { allowHistoryExit = false; }
+    });
+  });
+
+  window.addEventListener('beforeunload', e => {
+    if (!hasUnsavedDraft()) return;
+    e.preventDefault();
+    e.returnValue = '';
   });
 
   /* ---------------------------------------------------------- */

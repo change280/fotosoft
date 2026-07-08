@@ -121,7 +121,7 @@
     var logoHref = 'index.html';
     var philosophyHref = 'about.html';
     var coursesHref = onIndex ? '#courses' : 'index.html#courses';
-    var insightsHref = onIndex ? '#insights' : 'index.html#insights';
+    var insightsHref = 'insights.html';
 
     function navClass(name) {
       var isActive = activeNav === name;
@@ -129,19 +129,19 @@
       return (isActive ? 'text-gallery-900 ' : 'text-gallery-500 hover:text-gallery-900 ') + base;
     }
 
-    // 「關於視丘」下拉子選單（對應 about.html 的各區塊 anchor）
+    // 「關於視丘」下拉子選單（對應 about.html 的各區塊 anchor + 師資團隊）
     var aboutSubmenu = [
-      { label: 'LOGO',   hash: '#logo',         icon: 'fa-infinity' },
-      { label: '願景與使命',   hash: '#vision',       icon: 'fa-bullseye' },
-      { label: '視丘是什麼',   hash: '#thalamus',     icon: 'fa-brain' },
-      { label: '教育哲學',     hash: '#philosophy',   icon: 'fa-book-open' },
-      { label: '學院特色',     hash: '#features',     icon: 'fa-building-columns' },
-      { label: '成績單',       hash: '#achievements', icon: 'fa-award' },
-      { label: '畢業校友',     hash: '#alumni',       icon: 'fa-user-graduate' }
+      { label: 'LOGO',   href: 'about.html#logo',         icon: 'fa-infinity' },
+      { label: '願景與使命',   href: 'about.html#vision',       icon: 'fa-bullseye' },
+      { label: '視丘是什麼',   href: 'about.html#thalamus',     icon: 'fa-brain' },
+      { label: '教育哲學',     href: 'about.html#philosophy',   icon: 'fa-book-open' },
+      { label: '學院特色',     href: 'about.html#features',     icon: 'fa-building-columns' },
+      { label: '成績單',       href: 'about.html#achievements', icon: 'fa-award' },
+      { label: '畢業校友',     href: 'about.html#alumni',       icon: 'fa-user-graduate' }
     ];
 
     var aboutMenuItemsHTML = aboutSubmenu.map(function (item) {
-      return '<a href="about.html' + item.hash + '" ' +
+      return '<a href="' + item.href + '" ' +
              'class="shared-submenu-link">' +
              '<span class="shared-submenu-link-icon"><i class="fa-solid ' + item.icon + '"></i></span>' +
              '<span class="shared-submenu-link-label">' + item.label + '</span></a>';
@@ -159,6 +159,31 @@
       '  </div>' +
       '</div>';
 
+    var facultySubmenu = [
+      { label: '創辦人｜吳嘉寶', href: 'faculty.html#founder-section', icon: 'fa-crown' },
+      { label: '現任師資', href: 'faculty.html#current-faculty-section', icon: 'fa-user-group' },
+      { label: '曾任師資', href: 'faculty.html#previous-faculty-section', icon: 'fa-users' }
+    ];
+
+    var facultyMenuItemsHTML = facultySubmenu.map(function (item) {
+      return '<a href="' + item.href + '" ' +
+             'class="shared-submenu-link">' +
+             '<span class="shared-submenu-link-icon"><i class="fa-solid ' + item.icon + '"></i></span>' +
+             '<span class="shared-submenu-link-label">' + item.label + '</span></a>';
+    }).join('');
+
+    var facultyDropdownHTML =
+      '<div class="relative group">' +
+      '  <a href="faculty.html" class="' + navClass('faculty') + '">' +
+      '    師資團隊' +
+      '  </a>' +
+      '  <div class="absolute left-1/2 -translate-x-1/2 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">' +
+            '    <div class="inline-block w-max min-w-0 bg-white/95 backdrop-blur-lg border border-gallery-200 shadow-xl rounded-xl py-3 overflow-hidden">' +
+             facultyMenuItemsHTML +
+      '    </div>' +
+      '  </div>' +
+      '</div>';
+
     return '' +
       '<header id="navbar" class="sticky w-full top-0 z-50 py-4 px-6 md:px-12 bg-white/95 backdrop-blur-lg text-gallery-900 border-b border-gallery-200 shadow-sm">' +
       '  <div class="max-w-7xl mx-auto flex justify-between items-center">' +
@@ -169,6 +194,7 @@
       '    <nav class="hidden lg:flex items-center gap-10 text-sm tracking-[0.2em] font-bold">' +
              aboutDropdownHTML +
       '      <a href="' + coursesHref + '" class="' + navClass('courses') + '">課程總覽</a>' +
+              facultyDropdownHTML +
       '      <a href="gallery.html" class="' + navClass('gallery') + '">家族藝廊</a>' +
       '      <a href="' + insightsHref + '" class="' + navClass('insights') + '">尖端洞察</a>' +
       '    </nav>' +
@@ -237,7 +263,7 @@
       '      <h4 class="text-gallery-900 font-display font-bold tracking-[0.2em] uppercase mb-8">About</h4>' +
       '      <ul class="space-y-4 tracking-widest">' +
       '        <li><a href="about.html#features" class="hover:text-gallery-900 transition-colors">學院特色</a></li>' +
-      '        <li><a href="#" class="hover:text-gallery-900 transition-colors">師資陣容</a></li>' +
+      '        <li><a href="faculty.html" class="hover:text-gallery-900 transition-colors">師資陣容</a></li>' +
       '        <li><a href="gallery.html" class="hover:text-gallery-900 transition-colors">視丘藝廊</a></li>' +
       '        <li><a href="#" class="hover:text-gallery-900 transition-colors">交通資訊</a></li>' +
       '      </ul>' +
