@@ -113,6 +113,28 @@
                     .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
             }
 
+            function resolveAssetPath(src) {
+                const path = String(src || '').trim();
+                if (!path) return '';
+                if (/^(?:https?:)?\/\//i.test(path) || /^data:/i.test(path)) return path;
+                if (!path.startsWith('/')) return path;
+
+                const isGitHubPages = /github\.io$/i.test(location.hostname || '');
+                if (!isGitHubPages) return path;
+
+                const repo = (location.pathname || '/').split('/').filter(Boolean)[0] || '';
+                if (!repo) return path;
+                if (path === '/' + repo || path.startsWith('/' + repo + '/')) return path;
+                return '/' + repo + path;
+            }
+
+            function coverOfWork(work) {
+                if (WorksStore && typeof WorksStore.coverOf === 'function') {
+                    return WorksStore.coverOf(work);
+                }
+                return resolveAssetPath(work && work.coverImage ? work.coverImage : '');
+            }
+
             function renderFilters() {
                 const cats = ['ALL'].concat(WorksStore.DEFAULT_CATEGORIES);
                 filterBar.innerHTML = cats.map(c => `
@@ -149,7 +171,7 @@
                     <a href="work-detail.html?id=${encodeURIComponent(w.id)}"
                        class="card-hover group block overflow-hidden">
                         <div class="aspect-[3/2] overflow-hidden bg-gallery-200 mb-4">
-                                                        <img src="${esc(WorksStore.coverOf(w))}" alt="${esc(w.title)}"
+                            <img src="${esc(coverOfWork(w))}" alt="${esc(w.title)}"
                                  class="w-full h-full object-cover"
                                  onerror="this.style.opacity='0.3';">
                         </div>
