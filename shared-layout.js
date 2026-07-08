@@ -213,7 +213,7 @@
   function renderGlobalBackground() {
     return '' +
       '<div class="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-gallery-100">' +
-      '  <img src="back.png" alt="背景紋理" class="absolute inset-0 w-full h-full object-cover grayscale opacity-[0.6] mix-blend-multiply object-[center_30%]">' +
+      '  <img src="back.webp" alt="背景紋理" class="absolute inset-0 w-full h-full object-cover grayscale opacity-[0.6] mix-blend-multiply object-[center_30%]">' +
       '  <div class="absolute inset-0 bg-[url(\'https://www.transparenttextures.com/patterns/cream-paper.png\')] opacity-80 mix-blend-multiply"></div>' +
       '  <div class="absolute top-0 left-0 w-full h-[25vh] bg-gradient-to-b from-white/60 to-transparent"></div>' +
       '  <div class="absolute bottom-0 left-0 w-full h-[25vh] bg-gradient-to-t from-[#F8F9FA]/60 to-transparent"></div>' +

@@ -569,7 +569,7 @@
             ${w.coverImage ? '' : '尚未設定封面'}
           </div>
           <div class="fs-image-row">
-            <input class="fs-input" data-field="coverImage" placeholder="/image/gallery/檔名.jpg 或外部網址" value="${escapeAttr(w.coverImage)}">
+            <input class="fs-input" data-field="coverImage" placeholder="/image/gallery/檔名.webp 或外部網址" value="${escapeAttr(w.coverImage)}">
             <label class="fs-file-btn">
               選擇檔案
               <input type="file" accept="image/*" hidden data-role="upload-cover">

@@ -503,7 +503,7 @@
             ${cover ? '' : '未設定封面（會自動套用圖庫）'}
           </div>
           <div class="fsi-image-row">
-            <input class="fsi-input" data-field="coverImage" placeholder="/image/insight/檔名.jpg 或外部網址" value="${escapeAttr(cover)}">
+            <input class="fsi-input" data-field="coverImage" placeholder="/image/insight/檔名.webp 或外部網址" value="${escapeAttr(cover)}">
             <label class="fsi-file-btn">
               選擇檔案
               <input type="file" accept="image/*" hidden data-role="upload-cover">
@@ -644,7 +644,7 @@
         </div>
         ${b.src ? `<img class="fsi-img-preview" src="${escapeAttr(b.src)}" alt="" style="${size === 'small' ? 'max-width:33%;margin:4px auto 6px;' : ''}">` : `<div class="fsi-divider-hint">— 尚未設定圖片 —</div>`}
         <div class="fsi-image-row">
-          <input type="text" data-block-field="src" data-idx="${i}" value="${escapeAttr(b.src || '')}" placeholder="/image/insight/檔名.jpg 或外部網址">
+          <input type="text" data-block-field="src" data-idx="${i}" value="${escapeAttr(b.src || '')}" placeholder="/image/insight/檔名.webp 或外部網址">
           <label class="fsi-file-btn">
             選擇檔案
             <input type="file" accept="image/*" multiple hidden data-role="upload-block-image" data-idx="${i}">
