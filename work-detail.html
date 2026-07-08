@@ -172,6 +172,40 @@
                 return params.get('id');
             }
 
+            function resolveAssetPath(src) {
+                const path = String(src || '').trim();
+                if (!path) return '';
+                if (/^(?:https?:)?\/\//i.test(path) || /^data:/i.test(path)) return path;
+                if (!path.startsWith('/')) return path;
+
+                const isGitHubPages = /github\.io$/i.test(location.hostname || '');
+                if (!isGitHubPages) return path;
+
+                const repo = (location.pathname || '/').split('/').filter(Boolean)[0] || '';
+                if (!repo) return path;
+                if (path === '/' + repo || path.startsWith('/' + repo + '/')) return path;
+                return '/' + repo + path;
+            }
+
+            function coverOfWork(work) {
+                if (WorksStore && typeof WorksStore.coverOf === 'function') {
+                    return WorksStore.coverOf(work);
+                }
+                return resolveAssetPath(work && work.coverImage ? work.coverImage : '');
+            }
+
+            function galleryOfWork(work) {
+                if (WorksStore && typeof WorksStore.galleryOf === 'function') {
+                    return WorksStore.galleryOf(work);
+                }
+                const list = work && Array.isArray(work.gallery) ? work.gallery : [];
+                return list.filter(g => g && g.src).map(g => ({
+                    src: resolveAssetPath(g.src),
+                    caption: g.caption || '',
+                    alt: g.alt || ''
+                }));
+            }
+
             function renderNotFound() {
                 content.innerHTML = `
                     <div class="text-center py-32">
@@ -189,8 +223,8 @@
                 if (!id) { renderNotFound(); return; }
                 const w = WorksStore.getById(id);
                 if (!w) { renderNotFound(); return; }
-                const cover = WorksStore.coverOf(w);
-                const gallery = WorksStore.galleryOf(w);
+                const cover = coverOfWork(w);
+                const gallery = galleryOfWork(w);
 
                 document.title = `${w.title} | 視丘攝影藝術學院`;
 
@@ -334,7 +368,7 @@
                     <a href="work-detail.html?id=${encodeURIComponent(w.id)}"
                        class="group block overflow-hidden">
                         <div class="aspect-square overflow-hidden bg-gallery-200 mb-3">
-                            <img src="${esc(WorksStore.coverOf(w))}" alt="${esc(w.title)}"
+                            <img src="${esc(coverOfWork(w))}" alt="${esc(w.title)}"
                                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                  onerror="this.style.opacity='0.3';">
                         </div>
