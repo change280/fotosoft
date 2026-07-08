@@ -1,0 +1,394 @@
+[
+  {
+    "id": "fst42-guo-siao-ling",
+    "title": "FST42-郭曉玲",
+    "subtitle": "PLE 影像訊息書寫教育 / 學員",
+    "coverImage": "/image/gallery/FST42-郭曉玲03+.jpg",
+    "description": "透過 PLE 影像訊息書寫教育，探索影像中的視覺元素與敘事語彙。",
+    "date": "2020-09-18",
+    "categories": [
+      "PLE-影像中的視覺元素",
+      "學生作品"
+    ],
+    "tags": [],
+    "gallery": [
+      {
+        "src": "https://www.fotosoft.com.tw/images/student/GUO-SIAO-LING/work01.jpg",
+        "caption": "work01"
+      },
+      {
+        "src": "https://www.fotosoft.com.tw/images/student/GUO-SIAO-LING/work02.jpg",
+        "caption": "work02"
+      },
+      {
+        "src": "https://www.fotosoft.com.tw/images/student/GUO-SIAO-LING/work03.jpg",
+        "caption": "work03"
+      }
+    ],
+    "featured": true,
+    "createdAt": 1600387200000,
+    "updatedAt": 1783504443514
+  },
+  {
+    "id": "fst40-shih-yun-you",
+    "title": "FST40-施昀佑",
+    "subtitle": "PLE 影像訊息書寫教育 / 學員",
+    "coverImage": "/image/gallery/FST40-施昀佑 08+.jpg",
+    "description": "以視覺元素解構日常景象。",
+    "date": "2020-09-18",
+    "categories": [
+      "PLE-影像中的視覺元素",
+      "學生作品"
+    ],
+    "tags": [],
+    "gallery": [
+      {
+        "src": "/image/gallery/FST40-施昀佑 01.jpg",
+        "caption": "FST40-施昀佑 01.jpg"
+      },
+      {
+        "src": "/image/gallery/FST40-施昀佑 02.jpg",
+        "caption": "FST40-施昀佑 02.jpg"
+      },
+      {
+        "src": "/image/gallery/FST40-施昀佑 03.jpg",
+        "caption": "FST40-施昀佑 03.jpg"
+      },
+      {
+        "src": "/image/gallery/FST40-施昀佑 04.jpg",
+        "caption": "FST40-施昀佑 04.jpg"
+      },
+      {
+        "src": "/image/gallery/FST40-施昀佑 05.jpg",
+        "caption": "FST40-施昀佑 05.jpg"
+      },
+      {
+        "src": "/image/gallery/FST40-施昀佑 06.jpg",
+        "caption": "FST40-施昀佑 06.jpg"
+      },
+      {
+        "src": "/image/gallery/FST40-施昀佑 07.jpg",
+        "caption": "FST40-施昀佑 07.jpg"
+      },
+      {
+        "src": "/image/gallery/FST40-施昀佑 08+.jpg",
+        "caption": "FST40-施昀佑 08+.jpg"
+      },
+      {
+        "src": "/image/gallery/FST40-施昀佑 09.jpg",
+        "caption": "FST40-施昀佑 09.jpg"
+      },
+      {
+        "src": "/image/gallery/FST40-施昀佑 10.jpg",
+        "caption": "FST40-施昀佑 10.jpg"
+      },
+      {
+        "src": "/image/gallery/FST40-施昀佑 11.jpg",
+        "caption": "FST40-施昀佑 11.jpg"
+      },
+      {
+        "src": "/image/gallery/FST40-施昀佑 12.jpg",
+        "caption": "FST40-施昀佑 12.jpg"
+      },
+      {
+        "src": "/image/gallery/FST40-施昀佑 13.jpg",
+        "caption": "FST40-施昀佑 13.jpg"
+      },
+      {
+        "src": "/image/gallery/FST40-施昀佑 14.jpg",
+        "caption": "FST40-施昀佑 14.jpg"
+      }
+    ],
+    "featured": true,
+    "createdAt": 1600387200001,
+    "updatedAt": 1783504451665
+  },
+  {
+    "id": "fst44-wang-shu-chun",
+    "title": "FST44-王書駿",
+    "subtitle": "PLE 影像訊息書寫教育 / 學員",
+    "coverImage": "https://www.fotosoft.com.tw/images/spsimpleportfolio/fst44-%E7%8E%8B%E6%9B%B8%E9%A7%BF/Portrait-13_600x400.jpg",
+    "description": "肖像影像的凝視與距離。",
+    "date": "2020-09-18",
+    "categories": [
+      "PLE-影像中的視覺元素",
+      "老師作品"
+    ],
+    "tags": [],
+    "gallery": [
+      {
+        "src": "https://www.fotosoft.com.tw/images/student/WANG-SHU-CHUN/Portrait-13.jpg"
+      }
+    ],
+    "featured": true,
+    "createdAt": 1600387200002,
+    "updatedAt": 1600387200002
+  },
+  {
+    "id": "fst49-tu-huan-chang",
+    "title": "FST49-涂煥昌",
+    "subtitle": "影像散文 / 老師",
+    "coverImage": "/image/gallery/FST49-涂煥昌 01+.jpg",
+    "description": "影像散文的長期紀實實踐。",
+    "date": "2020-09-18",
+    "categories": [
+      "影像散文-Photo-Essay",
+      "老師作品"
+    ],
+    "tags": [],
+    "gallery": [
+      {
+        "src": "/image/gallery/FST49-涂煥昌 01+.jpg",
+        "caption": "FST49-涂煥昌 01+.jpg"
+      }
+    ],
+    "featured": true,
+    "createdAt": 1600387200003,
+    "updatedAt": 1783505009842
+  },
+  {
+    "id": "ple2-weekend-class",
+    "title": "PLE2 假日專修班",
+    "subtitle": "聯合創作 / PLE2_假日專修班_伍如婷、林居鶴、林信志、徐思穎、張逸姿等以上同學作品",
+    "coverImage": "/image/gallery/PLE2_假日專修班02+.png",
+    "description": "假日專修班學員聯合創作。",
+    "date": "2020-09-18",
+    "categories": [
+      "影像詩作品",
+      "學生作品"
+    ],
+    "tags": [],
+    "gallery": [
+      {
+        "src": "/image/gallery/PLE2_假日專修班01.png",
+        "caption": "PLE2_假日專修班01.png"
+      },
+      {
+        "src": "/image/gallery/PLE2_假日專修班02+.png",
+        "caption": "PLE2_假日專修班02+.png"
+      },
+      {
+        "src": "/image/gallery/PLE2_假日專修班03.jpeg",
+        "caption": "PLE2_假日專修班03.jpeg"
+      },
+      {
+        "src": "/image/gallery/PLE2_假日專修班04.png",
+        "caption": "PLE2_假日專修班04.png"
+      },
+      {
+        "src": "/image/gallery/PLE2_假日專修班05.png",
+        "caption": "PLE2_假日專修班05.png"
+      },
+      {
+        "src": "/image/gallery/PLE2_假日專修班06.png",
+        "caption": "PLE2_假日專修班06.png"
+      },
+      {
+        "src": "/image/gallery/PLE2_假日專修班07.png",
+        "caption": "PLE2_假日專修班07.png"
+      }
+    ],
+    "featured": false,
+    "createdAt": 1600387200004,
+    "updatedAt": 1783505189343
+  },
+  {
+    "id": "visual-language-fst57-gwen",
+    "title": "影像中的視覺語言及其架構 / FST57-Gwen",
+    "subtitle": "視覺語言 / 學員",
+    "coverImage": "/image/gallery/影像中的視覺語言及其架構05+.png",
+    "description": "影像結構、語法與意義的實驗性作品。",
+    "date": "2020-09-18",
+    "categories": [
+      "影像中的視覺語言及其架構",
+      "學生作品"
+    ],
+    "tags": [],
+    "gallery": [
+      {
+        "src": "/image/gallery/影像中的視覺語言及其架構01.jpg",
+        "caption": "影像中的視覺語言及其架構01.jpg"
+      },
+      {
+        "src": "/image/gallery/影像中的視覺語言及其架構02.jpg",
+        "caption": "影像中的視覺語言及其架構02.jpg"
+      },
+      {
+        "src": "/image/gallery/影像中的視覺語言及其架構03.jpg",
+        "caption": "影像中的視覺語言及其架構03.jpg"
+      },
+      {
+        "src": "/image/gallery/影像中的視覺語言及其架構04.jpg",
+        "caption": "影像中的視覺語言及其架構04.jpg"
+      },
+      {
+        "src": "/image/gallery/影像中的視覺語言及其架構05+.png",
+        "caption": "影像中的視覺語言及其架構05+.png"
+      }
+    ],
+    "featured": false,
+    "createdAt": 1600387200005,
+    "updatedAt": 1783505111658
+  },
+  {
+    "id": "fst62-lin-hsin-chih",
+    "title": "FST62-林信志",
+    "subtitle": "PLE 影像訊息書寫教育 / 學員",
+    "coverImage": "/image/gallery/FST62-林信志 01+.jpg",
+    "description": "光線與空間的細節書寫。",
+    "date": "2020-09-18",
+    "categories": [
+      "PLE-影像中的視覺元素",
+      "學生作品"
+    ],
+    "tags": [],
+    "gallery": [
+      {
+        "src": "/image/gallery/FST62-林信志 01+.jpg",
+        "caption": "FST62-林信志 01+.jpg"
+      },
+      {
+        "src": "/image/gallery/FST62-林信志 02.jpg",
+        "caption": "FST62-林信志 02.jpg"
+      },
+      {
+        "src": "/image/gallery/FST62-林信志 03.jpg",
+        "caption": "FST62-林信志 03.jpg"
+      },
+      {
+        "src": "/image/gallery/FST62-林信志 04.jpg",
+        "caption": "FST62-林信志 04.jpg"
+      },
+      {
+        "src": "/image/gallery/FST62-林信志 05.jpg",
+        "caption": "FST62-林信志 05.jpg"
+      },
+      {
+        "src": "/image/gallery/FST62-林信志 06.jpg",
+        "caption": "FST62-林信志 06.jpg"
+      },
+      {
+        "src": "/image/gallery/FST62-林信志 07.jpg",
+        "caption": "FST62-林信志 07.jpg"
+      },
+      {
+        "src": "/image/gallery/FST62-林信志 08.jpg",
+        "caption": "FST62-林信志 08.jpg"
+      },
+      {
+        "src": "/image/gallery/FST62-林信志 09.jpg",
+        "caption": "FST62-林信志 09.jpg"
+      },
+      {
+        "src": "/image/gallery/FST62-林信志 10.jpg",
+        "caption": "FST62-林信志 10.jpg"
+      },
+      {
+        "src": "/image/gallery/FST62-林信志 11.jpg",
+        "caption": "FST62-林信志 11.jpg"
+      },
+      {
+        "src": "/image/gallery/FST62-林信志 12.jpg",
+        "caption": "FST62-林信志 12.jpg"
+      },
+      {
+        "src": "/image/gallery/FST62-林信志 13.jpg",
+        "caption": "FST62-林信志 13.jpg"
+      },
+      {
+        "src": "/image/gallery/FST62-林信志 14.jpg",
+        "caption": "FST62-林信志 14.jpg"
+      },
+      {
+        "src": "/image/gallery/FST62-林信志 15.jpg",
+        "caption": "FST62-林信志 15.jpg"
+      },
+      {
+        "src": "/image/gallery/FST62-林信志 16.jpg",
+        "caption": "FST62-林信志 16.jpg"
+      },
+      {
+        "src": "/image/gallery/FST62-林信志 17.jpg",
+        "caption": "FST62-林信志 17.jpg"
+      },
+      {
+        "src": "/image/gallery/FST62-林信志 18.jpg",
+        "caption": "FST62-林信志 18.jpg"
+      },
+      {
+        "src": "/image/gallery/FST62-林信志 19.jpg",
+        "caption": "FST62-林信志 19.jpg"
+      },
+      {
+        "src": "/image/gallery/FST62-林信志 20.jpg",
+        "caption": "FST62-林信志 20.jpg"
+      }
+    ],
+    "featured": false,
+    "createdAt": 1600387200006,
+    "updatedAt": 1783505423005
+  },
+  {
+    "id": "fst49-tu-huan-chang-2",
+    "title": "FST49-涂煥昌（PLE 系列）",
+    "subtitle": "PLE 影像訊息書寫教育 / 老師",
+    "coverImage": "https://www.fotosoft.com.tw/images/spsimpleportfolio/fst49%E6%B6%82%E7%85%A5%E6%98%8C/TU-2_600x400.jpg",
+    "description": "影像訊息書寫教育中的示範作品。",
+    "date": "2020-09-18",
+    "categories": [
+      "PLE-影像中的視覺元素",
+      "老師作品"
+    ],
+    "tags": [],
+    "gallery": [
+      {
+        "src": "https://www.fotosoft.com.tw/images/student/TU-HUAN-CHANG/TU-2.jpg"
+      }
+    ],
+    "featured": false,
+    "createdAt": 1600387200007,
+    "updatedAt": 1600387200007
+  },
+  {
+    "id": "fst59-chen-tien-chien",
+    "title": "FST59-陳天健",
+    "subtitle": "PLE 影像訊息書寫教育 / 老師",
+    "coverImage": "https://www.fotosoft.com.tw/images/spsimpleportfolio/fst59-%E9%99%B3%E5%A4%A9%E5%81%A5/CHEN-TIEN-CHIEN-1_600x400.jpg",
+    "description": "影像與時間的凝結。",
+    "date": "2020-09-18",
+    "categories": [
+      "PLE-影像中的視覺元素",
+      "老師作品"
+    ],
+    "tags": [],
+    "gallery": [
+      {
+        "src": "https://www.fotosoft.com.tw/images/student/CHEN-TIEN-CHIEN/CHEN-TIEN-CHIEN-1.jpg"
+      }
+    ],
+    "featured": false,
+    "createdAt": 1600387200008,
+    "updatedAt": 1600387200008
+  },
+  {
+    "id": "fst55-hsiao-wan-chen",
+    "title": "FST55-蕭琬臻",
+    "subtitle": "PLE 影像訊息書寫教育 / 老師",
+    "coverImage": "https://www.fotosoft.com.tw/images/spsimpleportfolio/fst55-%E8%95%AD%E7%90%AC%E8%87%BB/CH-1_600x400.png",
+    "description": "色彩與構圖的個人詮釋。",
+    "date": "2020-09-18",
+    "categories": [
+      "PLE-影像中的視覺元素",
+      "老師作品"
+    ],
+    "tags": [],
+    "gallery": [
+      {
+        "src": "https://www.fotosoft.com.tw/images/student/HSIAO-WAN-CHEN/CH-1.png"
+      }
+    ],
+    "featured": false,
+    "createdAt": 1600387200009,
+    "updatedAt": 1600387200009
+  }
+]
