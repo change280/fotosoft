@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>載入中… | 視丘師資</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;500;700;900&family=Roboto:wght@100;300;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Noto Sans TC"', 'sans-serif'], serif: ['"Noto Serif TC"', 'serif'], display: ['"Roboto"', 'sans-serif'] },
+                    colors: { gallery: { 50: '#FFFFFF', 100: '#F8F9FA', 200: '#E9ECEF', 300: '#DEE2E6', 400: '#ADB5BD', 500: '#6C757D', 800: '#343A40', 900: '#212529' } },
+                    boxShadow: { soft: '0 20px 40px -15px rgba(0,0,0,0.05)', glass: '0 8px 32px 0 rgba(31, 38, 135, 0.05)', editorial: '0 40px 100px -55px rgba(0,0,0,0.45)' }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { color: #212529; background: #F8F9FA; font-family: "Noto Sans TC", sans-serif; }
+        .glass-card { background: rgba(255,255,255,0.55); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.9); box-shadow: 0 8px 32px 0 rgba(31,38,135,0.05); }
+        @keyframes slowDrift { 0% { transform: translate(0,0) scale(1); opacity: 0.3; } 50% { transform: translate(2vw,2vh) scale(1.05); opacity: 0.6; } 100% { transform: translate(0,0) scale(1); opacity: 0.3; } }
+        @keyframes fadeUp { 0% { opacity: 0; transform: translateY(24px); } 100% { opacity: 1; transform: translateY(0); } }
+        @keyframes lineGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+        @keyframes imageBreath { 0%,100% { transform: scale(1); filter: grayscale(1); } 50% { transform: scale(1.035); filter: grayscale(.35); } }
+        .fade-up { animation: fadeUp 0.85s cubic-bezier(0.22,1,0.36,1) both; }
+        .stagger-2 { animation-delay: 0.16s; }
+        .dot-grid { background-image: radial-gradient(rgba(108,117,125,0.28) 1.2px, transparent 1.8px); background-size: 18px 18px; mask-image: linear-gradient(to bottom, transparent 0%, black 16%, black 72%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 16%, black 72%, transparent 100%); }
+        .portrait-mask::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.18) 54%, rgba(0,0,0,0.68) 100%), radial-gradient(circle at 25% 18%, rgba(255,255,255,0.28), transparent 30%); pointer-events: none; }
+        .image-breath { animation: imageBreath 14s ease-in-out infinite; transform-origin: center; }
+        .editorial-line { transform-origin: left center; animation: lineGrow 1.2s cubic-bezier(0.22,1,0.36,1) both; }
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s cubic-bezier(0.22,1,0.36,1); }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .progress-bar { transform-origin: left center; transform: scaleX(0); }
+
+        /* Meta list（頂端 label ｜ url 列） */
+        .meta-list { display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 2.4rem; }
+        .meta-row { display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; font-size: 0.92rem; line-height: 1.65; color: #495057; }
+        .meta-key { color: #212529; font-weight: 500; letter-spacing: 0.02em; }
+        .meta-sep { color: #ADB5BD; margin: 0 0.05rem; }
+        .meta-val { color: #495057; }
+        .meta-val.is-link { color: #495057; text-decoration: none; border-bottom: 1px solid transparent; transition: color .2s ease, border-color .2s ease; word-break: break-all; }
+        .meta-val.is-link:hover { color: #212529; border-color: #212529; }
+        .profile-lang-switch {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.45rem;
+            margin-bottom: 1.2rem;
+        }
+        .profile-lang-btn {
+            flex: 0 0 8.4rem;
+            border: 1px solid #DEE2E6;
+            background: #fff;
+            color: #495057;
+            border-radius: 999px;
+            padding: 0.34rem 0.78rem;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-align: center;
+            cursor: pointer;
+            transition: all .2s ease;
+        }
+        .profile-lang-btn:hover { border-color: #ADB5BD; color: #212529; }
+        .profile-lang-btn.active {
+            background: #212529;
+            border-color: #212529;
+            color: #fff;
+        }
+        @media (max-width: 640px) {
+            .profile-lang-switch {
+                justify-content: stretch;
+                width: 100%;
+            }
+            .profile-lang-btn {
+                flex: 1 1 0;
+                min-width: 0;
+            }
+        }
+
+        /* Page index dynamic */
+        .page-index-list { display: flex; flex-direction: column; gap: 0.95rem; }
+        .page-index-item { display: flex; align-items: baseline; gap: 0.6rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; color: #6C757D; text-decoration: none; transition: color .2s ease, transform .2s ease; }
+        .page-index-item:hover { color: #212529; transform: translateX(3px); }
+        .page-index-num { font-family: 'Roboto', sans-serif; font-weight: 700; color: #ADB5BD; letter-spacing: 0.1em; min-width: 1.3rem; }
+        .page-index-label { font-family: "Noto Sans TC", sans-serif; letter-spacing: 0.2em; }
+
+        /* Profile sections */
+        .profile-section { scroll-margin-top: 6rem; }
+        .profile-section + .profile-section { margin-top: 2rem; }
+        .profile-section-eyebrow { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.4rem; }
+        .profile-section-eyebrow-line { height: 1px; width: 3rem; background: #212529; }
+        .profile-section-eyebrow-text { font-family: 'Roboto', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.3em; color: #ADB5BD; text-transform: uppercase; }
+        .profile-section h2.profile-title { font-family: "Noto Serif TC", serif; font-size: clamp(1.9rem, 3.6vw, 3.2rem); font-weight: 700; color: #212529; line-height: 1.2; letter-spacing: 0.01em; margin: 0 0 1.4rem; }
+        .profile-body { color: #343A40; font-size: 1.02rem; line-height: 2; }
+        .profile-body p { margin: 0 0 1.1rem; }
+        .profile-body p:last-child { margin-bottom: 0; }
+        .curator-layout-switch {
+            display: inline-flex;
+            gap: 0.38rem;
+            margin: 0 0 1rem;
+            padding: 0.25rem;
+            border: 1px solid #DEE2E6;
+            border-radius: 999px;
+            background: #fff;
+        }
+        .curator-layout-btn {
+            border: none;
+            background: transparent;
+            color: #6C757D;
+            border-radius: 999px;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all .2s ease;
+        }
+        .curator-layout-btn.active {
+            background: #212529;
+            color: #fff;
+        }
+        .curator-layout-a,
+        .curator-layout-b {
+            display: grid;
+            gap: 0.75rem;
+        }
+        .curator-item {
+            border: 1px solid #E9ECEF;
+            border-radius: 0.75rem;
+            background: rgba(255, 255, 255, 0.82);
+            padding: 0.85rem 0.95rem;
+        }
+        .curator-topic {
+            margin: 0;
+            font-size: 0.98rem;
+            line-height: 1.62;
+            font-weight: 700;
+            color: #212529;
+        }
+        .curator-meta {
+            margin: 0.32rem 0 0;
+            font-size: 0.85rem;
+            line-height: 1.72;
+            color: #6C757D;
+        }
+        .curator-layout-b .curator-item {
+            display: grid;
+            grid-template-columns: 4.5rem minmax(0, 1fr);
+            gap: 0.85rem;
+            align-items: start;
+        }
+        .curator-year {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 1.9rem;
+            border-radius: 0.5rem;
+            background: #F1F3F5;
+            color: #495057;
+            font-family: 'Roboto', "Noto Sans TC", sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+        }
+        @media (max-width: 640px) {
+            .curator-layout-b .curator-item {
+                grid-template-columns: 1fr;
+                gap: 0.55rem;
+            }
+            .curator-year {
+                justify-content: flex-start;
+                padding: 0 0.6rem;
+                width: fit-content;
+            }
+        }
+        .profile-body-collapsible {
+            position: relative;
+            max-height: 23rem;
+            overflow: hidden;
+        }
+        .profile-body-collapsible::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 5.5rem;
+            background: linear-gradient(180deg, rgba(248,249,250,0) 0%, rgba(248,249,250,0.94) 72%, rgba(248,249,250,1) 100%);
+            pointer-events: none;
+        }
+        .profile-body-collapsible.is-expanded {
+            max-height: none;
+            overflow: visible;
+        }
+        .profile-body-collapsible.is-expanded::after { display: none; }
+        .profile-section-toggle-wrap {
+            margin-top: 0.9rem;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .profile-section-toggle {
+            border: 1px solid #DEE2E6;
+            background: #fff;
+            color: #495057;
+            border-radius: 999px;
+            padding: 0.4rem 0.9rem;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            cursor: pointer;
+            transition: all .2s ease;
+        }
+        .profile-section-toggle:hover { border-color: #ADB5BD; color: #212529; }
+
+        /* Gallery + Video */
+        .gallery-layout { display: flex; justify-content: flex-end; align-items: flex-start; gap: 1rem; }
+        .gallery-layout.with-video { gap: 0.95rem; }
+        .gallery-video { width: min(620px, 64vw); margin-left: 0; border-radius: 0.5rem; }
+        .gallery-video iframe,
+        .gallery-video video {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: 1px solid rgba(0,0,0,0.04);
+            background: #000;
+            border-radius: 0.5rem;
+            box-shadow: 0 24px 48px -12px rgba(0,0,0,0.08);
+            transition: transform 0.4s ease;
+        }
+        .gallery-video-main { display: block; }
+        .gallery-video-more {
+            margin-top: 1.5rem;
+            display: none;
+            gap: 1.5rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 0.5rem 0 1rem;
+            scroll-snap-type: x proximity;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .gallery-video-more::-webkit-scrollbar { display: none; }
+        .gallery-video-more.open { display: flex; animation: gracefulFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+        @keyframes gracefulFadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .gallery-video-more-item { flex: 0 0 min(480px, 85vw); max-width: min(480px, 85vw); scroll-snap-align: start; }
+        .gallery-video-more-item iframe,
+        .gallery-video-more-item video { width: 100%; border-radius: 0.25rem; box-shadow: 0 12px 24px -10px rgba(0,0,0,0.06); }
+        .gallery-video-toggle-wrap { margin-top: 1.2rem; display: flex; justify-content: flex-end; }
+        .gallery-video-toggle {
+            background: transparent;
+            border: none;
+            color: #6C757D;
+            font-family: 'Roboto', "Noto Sans TC", sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 0.5rem 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .gallery-video-toggle::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: currentColor;
+            transform: scaleX(0.3);
+            transform-origin: right center;
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .gallery-video-toggle:hover { color: #212529; }
+        .gallery-video-toggle:hover::after { transform: scaleX(1); transform-origin: left center; }
+        .gallery-video-toggle-icon {
+            font-size: 0.65rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.4s ease;
+            color: currentColor;
+            background: transparent;
+            width: auto;
+            height: auto;
+        }
+        .gallery-video-toggle.expanded .gallery-video-toggle-icon { transform: rotate(90deg); }
+        .gallery-video-toggle .label-hide { display: none; }
+        .gallery-video-toggle.expanded .label-show { display: none; }
+        .gallery-video-toggle.expanded .label-hide { display: inline; }
+        .gallery-strip { display: flex; justify-content: flex-end; gap: 0.4rem; flex-wrap: wrap; flex: 1; margin-top: 0; }
+        .gallery-thumb {
+            position: relative;
+            width: 8.5rem;
+            height: 8.5rem;
+            overflow: hidden;
+            background: #F8F9FA;
+            border-radius: 0.25rem;
+            cursor: zoom-in;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+        .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease; filter: brightness(0.95) grayscale(0.2); }
+        .gallery-thumb:hover img { transform: scale(1.08); filter: brightness(1) grayscale(0); }
+        .gallery-thumb::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.28) 100%); opacity: 0; transition: opacity .25s ease; border-radius: 0.5rem; }
+        .gallery-thumb:hover::after { opacity: 1; }
+        @media (max-width: 980px) {
+            .gallery-layout { flex-direction: column; align-items: stretch; gap: 1.5rem; }
+            .gallery-video { max-width: 100%; }
+            .gallery-strip { justify-content: flex-start; margin-top: 1rem; }
+        }
+        @media (max-width: 640px) {
+            .gallery-thumb { width: 6.5rem; height: 6.5rem; }
+            .gallery-strip { justify-content: center; }
+        }
+
+        /* Lightbox */
+        .lightbox { position: fixed; inset: 0; z-index: 99990; display: none; align-items: center; justify-content: center; background: rgba(15,15,15,0.78); backdrop-filter: blur(4px); }
+        .lightbox.open { display: flex; }
+        .lightbox-panel { position: relative; width: min(980px, calc(100vw - 3rem)); max-height: calc(100vh - 3rem); background: rgba(255,255,255,0.96); border-radius: 1rem; padding: 0.8rem 0.8rem 1rem; box-shadow: 0 30px 80px -28px rgba(0,0,0,0.55); }
+        .lightbox-image-wrap { width: 100%; max-height: calc(100vh - 9rem); overflow: hidden; border-radius: 0.75rem; background: #f1f3f5; display: flex; align-items: center; justify-content: center; }
+        .lightbox-image-wrap img { max-width: 100%; max-height: calc(100vh - 9rem); object-fit: contain; display: block; }
+        .lightbox-caption { margin-top: 0.7rem; display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; color: #495057; font-size: 0.9rem; line-height: 1.7; }
+        .lightbox-meta { font-size: 0.74rem; letter-spacing: 0.16em; color: #6C757D; white-space: nowrap; }
+        .lightbox-nav, .lightbox-close { position: absolute; width: 2.75rem; height: 2.75rem; border-radius: 999px; border: 1px solid rgba(222,226,230,0.95); background: rgba(255,255,255,0.95); color: #212529; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all .2s ease; }
+        .lightbox-close { top: -0.8rem; right: -0.8rem; }
+        .lightbox-nav.prev { left: -1.2rem; top: 50%; transform: translateY(-50%); }
+        .lightbox-nav.next { right: -1.2rem; top: 50%; transform: translateY(-50%); }
+        @media (max-width: 768px) { .lightbox-panel { width: calc(100vw - 1.25rem); padding: 0.6rem 0.6rem 0.9rem; } .lightbox-nav.prev { left: 0.35rem; } .lightbox-nav.next { right: 0.35rem; } .lightbox-close { top: 0.35rem; right: 0.35rem; } }
+
+        /* Courses grid */
+        .snap-card { transition: transform .45s ease, background .45s ease, border-color .45s ease; }
+        .snap-card:hover { transform: translateY(-6px); background: rgba(255,255,255,.78); border-color: rgba(33,37,41,.12); }
+
+        /* Related */
+        .related-faculty-card { display: flex; align-items: center; gap: 0.9rem; padding: 0.9rem 1rem; background: rgba(255,255,255,0.85); border: 1px solid rgba(222,226,230,0.9); border-radius: 0.85rem; text-decoration: none; color: inherit; transition: all 0.25s ease; }
+        .related-faculty-card:hover { transform: translateY(-3px); border-color: #ADB5BD; box-shadow: 0 12px 26px -14px rgba(33,37,41,0.25); }
+        .related-avatar { width: 52px; height: 52px; border-radius: 50%; background: #E9ECEF center/cover no-repeat; flex-shrink: 0; }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-gallery-900 selection:text-white relative min-h-screen">
+    <div id="shared-global-bg"></div>
+    <div id="shared-header"></div>
+
+    <div class="fixed top-0 left-0 right-0 h-[2px] z-[80] bg-transparent pointer-events-none">
+        <div id="scrollProgress" class="progress-bar h-full bg-gallery-900/70"></div>
+    </div>
+
+    <section id="profile-fallback" class="hidden px-6 md:px-12 py-40 relative z-10">
+        <div class="max-w-3xl mx-auto text-center">
+            <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-white border border-gallery-200 flex items-center justify-center shadow-sm">
+                <i class="fa-regular fa-user text-3xl text-gallery-400"></i>
+            </div>
+            <h1 class="font-serif text-3xl md:text-4xl font-bold text-gallery-900 mb-4">找不到這位師資</h1>
+            <p class="text-gallery-500 leading-loose mb-8">這位師資可能已被移除，或連結有誤。請回到「師資團隊」頁面繼續瀏覽。</p>
+            <a href="faculty.html" class="inline-flex items-center gap-3 px-8 py-3 rounded-full bg-gallery-900 text-white text-sm tracking-widest font-bold hover:bg-gallery-800 transition-all">
+                <i class="fa-solid fa-arrow-left text-xs"></i> 回師資團隊
+            </a>
+        </div>
+    </section>
+
+    <main id="profile-main" class="hidden">
+        <section id="top" class="relative z-10 overflow-hidden px-6 md:px-12 pt-20 md:pt-28 pb-8 md:pb-12 min-h-[calc(100vh-76px)] flex items-center">
+            <div class="absolute inset-x-0 top-0 h-[620px] dot-grid opacity-70 pointer-events-none"></div>
+            <div class="absolute -top-32 right-[-14vw] w-[44vw] h-[44vw] rounded-full bg-white blur-[120px] opacity-85 pointer-events-none animate-[slowDrift_22s_infinite_alternate]"></div>
+            <div class="absolute top-32 left-[-18vw] w-[38vw] h-[38vw] rounded-full bg-white blur-[110px] opacity-70 pointer-events-none animate-[slowDrift_26s_infinite_alternate_reverse]"></div>
+            <div class="absolute right-0 top-24 pointer-events-none select-none overflow-hidden opacity-[0.04] hidden md:block">
+                <span id="hero-watermark" class="font-display font-black text-[13vw] leading-none tracking-tighter text-black">FACULTY</span>
+            </div>
+
+            <div class="max-w-7xl mx-auto w-full relative">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                    <div class="lg:col-span-7 relative z-10 order-2 lg:order-1 fade-up">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="h-px w-12 bg-gallery-800 editorial-line"></div>
+                            <p class="text-[10px] font-bold tracking-[0.3em] text-gallery-400 uppercase font-display">Faculty Portrait</p>
+                        </div>
+                        <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-tight text-gallery-900 mb-8">
+                            <span id="hero-name"></span><br>
+                            <span id="hero-en" class="italic font-light text-gallery-400"></span>
+                        </h1>
+                        <p id="hero-tagline" class="text-gallery-800 font-serif text-2xl md:text-3xl leading-snug max-w-3xl mb-7 hidden"></p>
+                        <p id="hero-desc" class="text-gallery-500 font-medium leading-loose tracking-wide text-base md:text-lg max-w-2xl hidden"></p>
+                        <div class="mt-10 flex flex-col sm:flex-row gap-4">
+                            <a href="#profile" class="bg-gallery-900 text-white rounded-full px-8 py-4 text-xs font-bold tracking-[0.2em] inline-flex items-center justify-center gap-3 hover:bg-gallery-800 transition-all hover:-translate-y-1 shadow-lg">
+                                進入完整簡介 <i class="fa-solid fa-arrow-down-long text-xs"></i>
+                            </a>
+                            <a href="faculty.html" class="glass-card text-gallery-900 rounded-full px-8 py-4 text-xs font-bold tracking-[0.2em] inline-flex items-center justify-center gap-3 hover:bg-white transition-all hover:-translate-y-1">
+                                回師資團隊 <i class="fa-solid fa-arrow-left text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 order-1 lg:order-2 fade-up stagger-2">
+                        <div class="glass-card rounded-[2.2rem] p-4 md:p-5 relative overflow-hidden shadow-editorial">
+                            <div id="hero-portrait" class="portrait-mask relative h-[540px] md:h-[660px] rounded-[1.6rem] overflow-hidden bg-gallery-200">
+                                <img id="hero-photo" class="image-breath absolute inset-0 w-full h-full object-cover grayscale opacity-95" alt="">
+                                <div class="absolute top-6 left-6 z-10 glass-card rounded-full px-5 py-3">
+                                    <p id="hero-badge" class="font-display text-[10px] tracking-[0.3em] uppercase text-gallery-500">Faculty</p>
+                                </div>
+                                <div class="absolute bottom-7 left-7 right-7 z-10 text-white">
+                                    <p class="font-display text-[10px] tracking-[0.3em] uppercase text-white/60 mb-3">Fotosoft Faculty</p>
+                                    <h2 id="hero-title" class="font-serif text-4xl md:text-5xl font-bold mb-3"></h2>
+                                    <p class="text-sm tracking-[0.18em] text-white/78 font-medium">視丘攝影藝術學院</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery-section" class="relative z-10 px-6 md:px-12 pb-2 md:pb-4 hidden">
+            <div class="max-w-7xl mx-auto reveal">
+                <div id="gallery-layout" class="gallery-layout">
+                    <div id="gallery-video" class="gallery-video hidden">
+                        <div id="gallery-video-main" class="gallery-video-main"></div>
+                        <div class="gallery-video-toggle-wrap">
+                            <button type="button" id="gallery-video-toggle" class="gallery-video-toggle hidden"><span class="gallery-video-toggle-icon"><i class="fa-solid fa-play"></i></span><span class="label-show">瀏覽更多動態作品</span><span class="label-hide">收合更多動態作品</span></button>
+                        </div>
+                        <div id="gallery-video-more" class="gallery-video-more"></div>
+                    </div>
+                    <div id="gallery-strip" class="gallery-strip"></div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="profile" class="relative z-10 px-6 md:px-12 py-14 md:py-20">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                <aside class="lg:col-span-3 lg:sticky lg:top-28 reveal">
+                    <div class="glass-card rounded-[2rem] p-7">
+                        <p class="text-[10px] font-display tracking-[0.3em] uppercase text-gallery-400 mb-6">Page Index</p>
+                        <nav id="page-index" class="page-index-list"></nav>
+                    </div>
+                </aside>
+                <div class="lg:col-span-9 reveal">
+                    <div class="glass-card rounded-[2.4rem] p-8 md:p-12 relative overflow-hidden">
+                        <div id="profile-lang-switch" class="profile-lang-switch"></div>
+                        <div class="meta-list" id="meta-list"></div>
+                        <div id="profile-sections"></div>
+                        <p id="profile-empty" class="hidden text-center text-gallery-400 text-sm py-8">尚未建立內容區塊。管理者可按下 ⌘/Ctrl + Shift + E 進入編輯面板，新增區塊（如：學歷、曾任、獲獎…）。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="courses" class="relative z-10 px-6 md:px-12 pb-14 md:pb-20 hidden">
+            <div class="max-w-7xl mx-auto reveal">
+                <div class="flex items-center gap-4 mb-10">
+                    <p class="font-display text-[10px] font-bold tracking-[0.3em] text-gallery-400 uppercase">Courses · 授課方向</p>
+                    <div class="h-px flex-1 bg-gallery-200"></div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                    <div class="lg:col-span-4">
+                        <h2 class="font-serif text-4xl md:text-5xl font-bold leading-tight text-gallery-900">授課方向</h2>
+                        <p class="mt-6 text-gallery-500 leading-loose">此位師資在視丘所開設或協同的課程主題，展現教學專長與訓練脈絡。</p>
+                    </div>
+                    <div class="lg:col-span-8">
+                        <div id="courses-list" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="related" class="relative z-10 px-6 md:px-12 pt-24 pb-24">
+            <div class="max-w-5xl mx-auto reveal">
+                <div class="flex items-center gap-4 mb-6">
+                    <p class="font-display text-[10px] font-bold tracking-[0.3em] text-gallery-400 uppercase">Related Faculty · 相關師資</p>
+                    <div class="h-px flex-1 bg-gallery-200"></div>
+                </div>
+                <div id="profile-related" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+            </div>
+        </section>
+    </main>
+
+    <div id="faculty-lightbox" class="lightbox" aria-hidden="true">
+        <div class="lightbox-panel">
+            <button type="button" id="lightbox-close" class="lightbox-close" aria-label="關閉"><i class="fa-solid fa-xmark"></i></button>
+            <button type="button" id="lightbox-prev" class="lightbox-nav prev" aria-label="上一張"><i class="fa-solid fa-chevron-left"></i></button>
+            <button type="button" id="lightbox-next" class="lightbox-nav next" aria-label="下一張"><i class="fa-solid fa-chevron-right"></i></button>
+            <div class="lightbox-image-wrap"><img id="lightbox-image" alt=""></div>
+            <div class="lightbox-caption"><p id="lightbox-caption-text"></p><span id="lightbox-meta" class="lightbox-meta"></span></div>
+        </div>
+    </div>
+
+    <div id="shared-cta"></div>
+    <div id="shared-footer"></div>
+
+    <script src="js/shared-layout.js"></script>
+    <script>
+        SharedLayout.mount({ activeNav: 'faculty' });
+        const progress = document.getElementById('scrollProgress');
+        function updateProgress() {
+            const max = document.documentElement.scrollHeight - window.innerHeight;
+            const value = max > 0 ? window.scrollY / max : 0;
+            progress.style.transform = `scaleX(${Math.max(0, Math.min(1, value))})`;
+        }
+        window.addEventListener('scroll', updateProgress, { passive: true });
+        updateProgress();
+    </script>
+    <script src="js/faculty-data.js?v=20260707a"></script>
+    <script>
+        (function () {
+            const fallback = document.getElementById('profile-fallback');
+            const main = document.getElementById('profile-main');
+            const heroName = document.getElementById('hero-name');
+            const heroEn = document.getElementById('hero-en');
+            const heroTagline = document.getElementById('hero-tagline');
+            const heroDesc = document.getElementById('hero-desc');
+            const heroPhoto = document.getElementById('hero-photo');
+            const heroPortrait = document.getElementById('hero-portrait');
+            const heroBadge = document.getElementById('hero-badge');
+            const heroTitle = document.getElementById('hero-title');
+            const heroWatermark = document.getElementById('hero-watermark');
+            const metaListEl = document.getElementById('meta-list');
+            const pageIndexEl = document.getElementById('page-index');
+            const profileSectionsEl = document.getElementById('profile-sections');
+            const profileEmptyEl = document.getElementById('profile-empty');
+            const profileLangSwitchEl = document.getElementById('profile-lang-switch');
+            const gallerySec = document.getElementById('gallery-section');
+            const galleryLayout = document.getElementById('gallery-layout');
+            const galleryVideo = document.getElementById('gallery-video');
+            const galleryVideoMain = document.getElementById('gallery-video-main');
+            const galleryVideoMore = document.getElementById('gallery-video-more');
+            const galleryVideoToggle = document.getElementById('gallery-video-toggle');
+            const galleryStrip = document.getElementById('gallery-strip');
+            const coursesSec = document.getElementById('courses');
+            const coursesList = document.getElementById('courses-list');
+            const relatedEl = document.getElementById('profile-related');
+            const lightbox = document.getElementById('faculty-lightbox');
+            const lightboxImg = document.getElementById('lightbox-image');
+            const lightboxCaption = document.getElementById('lightbox-caption-text');
+            const lightboxMeta = document.getElementById('lightbox-meta');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const lightboxPrev = document.getElementById('lightbox-prev');
+            const lightboxNext = document.getElementById('lightbox-next');
+
+            let currentGallery = [];
+            let currentLightboxIndex = 0;
+            let isMoreVideosOpen = false;
+            let currentProfileLang = 'zh';
+            let activePersonId = '';
+            let expandedProfileSections = {};
+            let curatorLayoutVariant = 'a';
+            const PROFILE_LANGS = [
+                { key: 'zh', label: '中文' },
+                { key: 'ja', label: '日本語' },
+                { key: 'en', label: 'English' }
+            ];
+
+            function esc(s) {
+                return String(s == null ? '' : s).replace(/[&<>"']/g, function (m) {
+                    return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m];
+                });
+            }
+            function slugId(str, prefix) {
+                var base = String(str || '').toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w\u4e00-\u9fa5-]/g, '').replace(/-+/g, '-').slice(0, 40);
+                return (prefix || 'section') + '-' + (base || Math.random().toString(36).slice(2, 8));
+            }
+            function pad2(n) { return n < 10 ? '0' + n : String(n); }
+            function textToParagraphs(text) {
+                return String(text || '').split(/\n{2,}/).map(function (chunk) {
+                    return '<p>' + esc(chunk).replace(/\n/g, '<br>') + '</p>';
+                }).join('');
+            }
+            function splitCourses(str) {
+                return String(str || '').split(/[、,，;；\/\|]+/).map(function (s) { return s.trim(); }).filter(Boolean);
+            }
+            function courseCardHTML(name) {
+                return '<div class="snap-card rounded-2xl border border-gallery-200 bg-white/60 px-5 py-5 flex items-start gap-4"><span class="w-10 h-10 rounded-full bg-gallery-900 text-white flex items-center justify-center text-sm shrink-0"><i class="fa-solid fa-book-open-reader text-xs"></i></span><div><p class="font-serif text-lg font-bold text-gallery-900 leading-snug">' + esc(name) + '</p><p class="mt-1 text-xs tracking-[0.2em] text-gallery-400 uppercase font-display">Course</p></div></div>';
+            }
+            function getProfileSectionsByLang(person, lang) {
+                var i18n = person && person.profileI18n && typeof person.profileI18n === 'object' ? person.profileI18n : null;
+                if (i18n && Array.isArray(i18n[lang])) {
+                    return i18n[lang].filter(function (s) { return s && (s.title || s.body); });
+                }
+                if (lang === 'zh') {
+                    return Array.isArray(person.sections) ? person.sections.filter(function (s) { return s && (s.title || s.body); }) : [];
+                }
+                return [];
+            }
+            function renderProfileLangSwitch(person) {
+                profileLangSwitchEl.innerHTML = PROFILE_LANGS.map(function (item) {
+                    var cls = item.key === currentProfileLang ? 'profile-lang-btn active' : 'profile-lang-btn';
+                    return '<button type="button" class="' + cls + '" data-role="profile-lang" data-lang="' + item.key + '">' + item.label + '</button>';
+                }).join('');
+                Array.prototype.slice.call(profileLangSwitchEl.querySelectorAll('[data-role="profile-lang"]')).forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        var lang = btn.getAttribute('data-lang');
+                        if (!lang || lang === currentProfileLang) return;
+                        currentProfileLang = lang;
+                        renderMetaList(person);
+                        var enrichedSections = renderSections(person);
+                        renderPageIndex(enrichedSections);
+                        renderProfileLangSwitch(person);
+                    });
+                });
+            }
+            function parseVideoSource(input) {
+                var raw = String(input || '').trim();
+                if (!raw) return null;
+                var lower = raw.toLowerCase();
+                var fileLike = /\.(mp4|webm|ogg|mov|m4v)(\?.*)?$/.test(lower);
+                var yt = raw.match(/^https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([\w-]{6,})/i);
+                var ytShort = raw.match(/^https?:\/\/(?:www\.)?youtu\.be\/([\w-]{6,})/i);
+                var ytEmbed = raw.match(/^https?:\/\/(?:www\.)?youtube\.com\/embed\/([\w-]{6,})/i);
+                var vm = raw.match(/^https?:\/\/(?:www\.)?vimeo\.com\/(\d+)/i);
+
+                if (yt) return { kind: 'embed', src: 'https://www.youtube.com/embed/' + yt[1] };
+                if (ytShort) return { kind: 'embed', src: 'https://www.youtube.com/embed/' + ytShort[1] };
+                if (ytEmbed) return { kind: 'embed', src: 'https://www.youtube.com/embed/' + ytEmbed[1] };
+                if (vm) return { kind: 'embed', src: 'https://player.vimeo.com/video/' + vm[1] };
+                if (fileLike || raw.charAt(0) === '/' || raw.charAt(0) === '.') return { kind: 'file', src: raw };
+                if (/^https?:\/\//i.test(raw)) return { kind: 'embed', src: raw };
+                return { kind: 'file', src: raw };
+            }
+            function videoPlayerHTML(parsed) {
+                if (!parsed) return '';
+                if (parsed.kind === 'embed') {
+                    return '<iframe src="' + esc(parsed.src) + '" title="課程影片" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+                }
+                return '<video controls preload="metadata" playsinline><source src="' + esc(parsed.src) + '"></video>';
+            }
+            function normalizeVideoInputs(person) {
+                var out = [];
+                if (Array.isArray(person.videos)) {
+                    out = out.concat(person.videos);
+                }
+                if (person.video) {
+                    out = out.concat(String(person.video).split(/\r?\n+/));
+                }
+                var seen = new Set();
+                return out.map(function (item) { return String(item || '').trim(); }).filter(function (item) {
+                    if (!item || seen.has(item)) return false;
+                    seen.add(item);
+                    return true;
+                });
+            }
+            function renderVideoList(person) {
+                var sources = normalizeVideoInputs(person).map(parseVideoSource).filter(Boolean);
+                if (!sources.length) {
+                    galleryVideoMain.innerHTML = '';
+                    galleryVideoMore.innerHTML = '';
+                    galleryVideoMore.classList.remove('open');
+                    galleryVideoToggle.classList.add('hidden');
+                    galleryVideoToggle.classList.remove('expanded');
+                    galleryVideo.classList.add('hidden');
+                    return false;
+                }
+
+                galleryVideoMain.innerHTML = videoPlayerHTML(sources[0]);
+
+                if (sources.length > 1) {
+                    galleryVideoMore.innerHTML = sources.slice(1).map(function (source) {
+                        return '<div class="gallery-video-more-item">' + videoPlayerHTML(source) + '</div>';
+                    }).join('');
+                    galleryVideoToggle.classList.remove('hidden');
+                    galleryVideoToggle.classList.toggle('expanded', isMoreVideosOpen);
+                    galleryVideoMore.classList.toggle('open', isMoreVideosOpen);
+                } else {
+                    galleryVideoMore.innerHTML = '';
+                    galleryVideoMore.classList.remove('open');
+                    galleryVideoToggle.classList.add('hidden');
+                    galleryVideoToggle.classList.remove('expanded');
+                    isMoreVideosOpen = false;
+                }
+
+                galleryVideo.classList.remove('hidden');
+                return true;
+            }
+
+            function renderMetaList(person) {
+                var rows = [];
+                (person.links || []).forEach(function (link) {
+                    if (!link || !link.label || !link.url) return;
+                    rows.push('<div class="meta-row"><span class="meta-key">' + esc(link.label) + '</span><span class="meta-sep">｜</span><a class="meta-val is-link" href="' + esc(link.url) + '" target="_blank" rel="noopener">' + esc(link.url) + '</a></div>');
+                });
+                if (person.courses && person.courses.trim()) {
+                    rows.push('<div class="meta-row"><span class="meta-key">教授課程</span><span class="meta-sep">｜</span><span class="meta-val">' + esc(person.courses) + '</span></div>');
+                }
+                if (!rows.length) {
+                    metaListEl.style.display = 'none';
+                    metaListEl.innerHTML = '';
+                    return;
+                }
+                metaListEl.style.display = '';
+                metaListEl.innerHTML = rows.join('');
+            }
+            function profileSectionStateKey(sectionId) {
+                return [activePersonId || '', currentProfileLang || 'zh', sectionId || ''].join('::');
+            }
+            function shouldCollapseSectionBody(body) {
+                var text = String(body || '').trim();
+                if (!text) return false;
+                var paragraphCount = text.split(/\n{2,}/).filter(Boolean).length;
+                var lineCount = text.split(/\n/).filter(Boolean).length;
+                return text.length > 900 || paragraphCount > 6 || lineCount > 18;
+            }
+            function isCuratorShowcaseSection(title, lang) {
+                if (lang !== 'en') return false;
+                var t = String(title || '').toLowerCase();
+                return t.indexOf('curator, nominator, organizer') >= 0 && t.indexOf('exhibitions & symposiums') >= 0;
+            }
+            function parseCuratorLine(line) {
+                var raw = String(line || '').trim();
+                if (!raw) return null;
+                var normalized = raw.replace(/\s+/g, ' ').trim();
+                var parts = normalized.split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+                var yearIndex = parts.findIndex(function (p) { return /(^|[^0-9])(19|20)\d{2}([^0-9]|$)/.test(p); });
+                var topic = '';
+                var meta = '';
+                if (yearIndex > 0) {
+                    topic = parts.slice(0, yearIndex).join(', ');
+                    meta = parts.slice(yearIndex).join(', ');
+                } else if (parts.length > 1) {
+                    topic = parts[0];
+                    meta = parts.slice(1).join(', ');
+                } else {
+                    topic = normalized;
+                }
+                var yearMatch = (meta || normalized).match(/\b(19|20)\d{2}\b/);
+                return {
+                    topic: topic || normalized,
+                    meta: meta,
+                    year: yearMatch ? yearMatch[0] : '----'
+                };
+            }
+            function parseCuratorEntries(body) {
+                return String(body || '').split(/\r?\n+/).map(parseCuratorLine).filter(Boolean);
+            }
+            function renderCuratorBody(body) {
+                var entries = parseCuratorEntries(body);
+                if (!entries.length) return textToParagraphs(body);
+                var switchHTML = '<div class="curator-layout-switch" role="group" aria-label="Curator section layout">' +
+                    '<button type="button" class="curator-layout-btn ' + (curatorLayoutVariant === 'a' ? 'active' : '') + '" data-role="curator-layout" data-layout="a">Version A</button>' +
+                    '<button type="button" class="curator-layout-btn ' + (curatorLayoutVariant === 'b' ? 'active' : '') + '" data-role="curator-layout" data-layout="b">Version B</button>' +
+                    '</div>';
+                if (curatorLayoutVariant === 'b') {
+                    return switchHTML + '<div class="curator-layout-b">' + entries.map(function (item) {
+                        return '<article class="curator-item"><div class="curator-year">' + esc(item.year) + '</div><div><p class="curator-topic">' + esc(item.topic) + '</p>' + (item.meta ? '<p class="curator-meta">' + esc(item.meta) + '</p>' : '') + '</div></article>';
+                    }).join('') + '</div>';
+                }
+                return switchHTML + '<div class="curator-layout-a">' + entries.map(function (item) {
+                    return '<article class="curator-item"><p class="curator-topic">' + esc(item.topic) + '</p>' + (item.meta ? '<p class="curator-meta">' + esc(item.meta) + '</p>' : '') + '</article>';
+                }).join('') + '</div>';
+            }
+            function renderSectionBodyHTML(section) {
+                if (isCuratorShowcaseSection(section && section.title, currentProfileLang)) {
+                    return renderCuratorBody(section && section.body);
+                }
+                return textToParagraphs(section && section.body);
+            }
+
+            function renderSections(person) {
+                var sections = getProfileSectionsByLang(person, currentProfileLang);
+                // fallback: use intro / summary if no sections
+                if (!sections.length) {
+                    var fallbackBody = currentProfileLang === 'zh' ? ((person.intro && person.intro.trim()) || (person.summary && person.summary.trim()) || '') : '';
+                    if (fallbackBody) {
+                        sections = [{ title: '簡介', body: fallbackBody }];
+                    }
+                }
+                if (!sections.length) {
+                    profileSectionsEl.innerHTML = '';
+                    profileEmptyEl.classList.remove('hidden');
+                    return [];
+                }
+                profileEmptyEl.classList.add('hidden');
+                var enriched = sections.map(function (s, i) {
+                    var title = (s.title || '').trim();
+                    var id = slugId(title || ('s' + i), 'section');
+                    var body = s.body || '';
+                    var collapsible = shouldCollapseSectionBody(body);
+                    var expanded = collapsible ? !!expandedProfileSections[profileSectionStateKey(id)] : true;
+                    return { id: id, title: title, body: body, num: pad2(i + 1), collapsible: collapsible, expanded: expanded };
+                });
+                profileSectionsEl.innerHTML = enriched.map(function (s) {
+                    var bodyClass = s.collapsible ? ('profile-body profile-body-collapsible' + (s.expanded ? ' is-expanded' : '')) : 'profile-body';
+                    var toggleHTML = s.collapsible ? ('<div class="profile-section-toggle-wrap"><button type="button" class="profile-section-toggle" data-role="profile-section-toggle" data-section-id="' + esc(s.id) + '">' + (s.expanded ? '收合章節全文' : '展開章節全文') + '</button></div>') : '';
+                    var bodyHTML = renderSectionBodyHTML(s);
+                    return '<article id="' + s.id + '" class="profile-section">' +
+                        '<div class="profile-section-eyebrow"><span class="profile-section-eyebrow-line"></span><span class="profile-section-eyebrow-text">' + s.num + ' · Section</span></div>' +
+                        (s.title ? '<h2 class="profile-title">' + esc(s.title) + '</h2>' : '') +
+                        '<div class="' + bodyClass + '">' + bodyHTML + '</div>' +
+                        toggleHTML +
+                        '</article>';
+                }).join('');
+                Array.prototype.slice.call(profileSectionsEl.querySelectorAll('[data-role="profile-section-toggle"]')).forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        var sectionId = btn.getAttribute('data-section-id') || '';
+                        if (!sectionId) return;
+                        var key = profileSectionStateKey(sectionId);
+                        expandedProfileSections[key] = !expandedProfileSections[key];
+                        renderSections(person);
+                    });
+                });
+                Array.prototype.slice.call(profileSectionsEl.querySelectorAll('[data-role="curator-layout"]')).forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        var layout = btn.getAttribute('data-layout');
+                        if (layout !== 'a' && layout !== 'b') return;
+                        if (layout === curatorLayoutVariant) return;
+                        curatorLayoutVariant = layout;
+                        renderSections(person);
+                    });
+                });
+                return enriched;
+            }
+
+            function renderPageIndex(sections) {
+                // PAGE INDEX 只列出右側卡片內的 profile sections；其他區塊（照片相簿／授課方向／相關師資）不列入。
+                var items = sections.map(function (s) {
+                    return { href: '#' + s.id, label: s.title };
+                });
+                pageIndexEl.innerHTML = items.map(function (it, i) {
+                    return '<a href="' + esc(it.href) + '" class="page-index-item"><span class="page-index-num">' + pad2(i + 1) + '</span><span class="page-index-label">' + esc(it.label) + '</span></a>';
+                }).join('');
+            }
+
+            function renderGallery(list) {
+                currentGallery = Array.isArray(list) ? list.filter(function (item) { return item && item.src; }) : [];
+                if (!currentGallery.length) {
+                    galleryStrip.innerHTML = '';
+                    return false;
+                }
+                galleryStrip.innerHTML = currentGallery.map(function (item, idx) {
+                    return '<button type="button" class="gallery-thumb" data-gallery-open="' + idx + '" aria-label="開啟第 ' + (idx + 1) + ' 張照片"><img src="' + esc(item.src) + '" alt="' + esc(item.alt || item.caption || '') + '"></button>';
+                }).join('');
+                Array.prototype.slice.call(galleryStrip.querySelectorAll('[data-gallery-open]')).forEach(function (btn) {
+                    btn.addEventListener('click', function () { openLightbox(Number(btn.getAttribute('data-gallery-open')) || 0); });
+                });
+                return true;
+            }
+
+            function renderLightbox() {
+                const item = currentGallery[currentLightboxIndex];
+                if (!item) return;
+                lightboxImg.src = item.src; lightboxImg.alt = item.alt || item.caption || '';
+                lightboxCaption.textContent = item.caption || item.alt || '';
+                lightboxMeta.textContent = (currentLightboxIndex + 1) + ' / ' + currentGallery.length;
+            }
+            function openLightbox(index) {
+                if (!currentGallery.length) return;
+                currentLightboxIndex = Math.max(0, Math.min(currentGallery.length - 1, index));
+                renderLightbox();
+                lightbox.classList.add('open');
+                lightbox.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+            function closeLightbox() { lightbox.classList.remove('open'); lightbox.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; }
+            function moveLightbox(delta) {
+                if (!currentGallery.length) return;
+                currentLightboxIndex = (currentLightboxIndex + delta + currentGallery.length) % currentGallery.length;
+                renderLightbox();
+            }
+
+            function renderRelated(currentId) {
+                const list = FacultyStore.getAll().filter(function (p) { return p.id !== currentId && p.status !== 'previous'; }).slice(0, 6);
+                if (!list.length) {
+                    relatedEl.innerHTML = '<p class="text-center text-gallery-400 text-sm py-6">尚無其他師資資料</p>';
+                    return false;
+                }
+                relatedEl.innerHTML = list.map(function (p) {
+                    const photo = FacultyStore.photoOf(p);
+                    return '<a href="faculty-detail.html?id=' + encodeURIComponent(p.id) + '" class="related-faculty-card"><div class="related-avatar" style="background-image:url(\'' + esc(photo) + '\')"></div><div style="min-width:0;flex:1;"><p class="font-serif font-bold text-gallery-900 truncate">' + esc(p.name) + '</p><p class="text-xs text-gallery-500 truncate">' + esc(p.title || '') + '</p></div></a>';
+                }).join('');
+                return true;
+            }
+
+            function bindReveal() {
+                const items = document.querySelectorAll('.reveal:not(.is-visible)');
+                const io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+                    });
+                }, { threshold: 0.12 });
+                items.forEach(function (item) { io.observe(item); });
+            }
+
+            function render() {
+                const params = new URLSearchParams(location.search);
+                const id = params.get('id');
+                const person = id ? FacultyStore.getById(id) : null;
+
+                if (!person) {
+                    fallback.classList.remove('hidden'); main.classList.add('hidden');
+                    document.title = '找不到這位師資 | 視丘師資';
+                    return;
+                }
+                fallback.classList.add('hidden'); main.classList.remove('hidden');
+                document.title = person.name + ' | 視丘師資';
+
+                if (activePersonId !== person.id) {
+                    currentProfileLang = 'zh';
+                    activePersonId = person.id;
+                }
+
+                const photo = FacultyStore.photoOf(person);
+                heroName.textContent = person.name;
+                heroEn.textContent = person.englishName || '';
+                heroEn.style.display = person.englishName ? '' : 'none';
+
+                if (person.tagline) { heroTagline.textContent = person.tagline; heroTagline.classList.remove('hidden'); }
+                else if (person.summary) { heroTagline.textContent = person.summary; heroTagline.classList.remove('hidden'); }
+                else { heroTagline.classList.add('hidden'); }
+
+                if (person.summary && person.tagline && person.summary !== person.tagline) {
+                    heroDesc.textContent = person.summary; heroDesc.classList.remove('hidden');
+                } else { heroDesc.classList.add('hidden'); }
+
+                heroPhoto.src = photo; heroPhoto.alt = person.name;
+                heroBadge.textContent = person.status === 'previous' ? 'Previous Faculty' : (person.pinned ? 'Founder' : 'Current Faculty');
+                heroTitle.textContent = person.title || (person.status === 'previous' ? '曾任師資' : '現任師資');
+                heroWatermark.textContent = (person.englishName || person.name || 'FACULTY').toUpperCase();
+
+                renderMetaList(person);
+                var enrichedSections = renderSections(person);
+                renderProfileLangSwitch(person);
+
+                const hasVideo = renderVideoList(person);
+                const hasGallery = renderGallery(person.gallery || []);
+                galleryLayout.classList.toggle('with-video', hasVideo && hasGallery);
+                if (hasGallery) galleryStrip.style.display = ''; else galleryStrip.style.display = 'none';
+                if (hasVideo || hasGallery) gallerySec.classList.remove('hidden'); else gallerySec.classList.add('hidden');
+                const courses = splitCourses(person.courses);
+                const hasCourses = courses.length > 0;
+                if (hasCourses) {
+                    coursesSec.classList.remove('hidden');
+                    coursesList.innerHTML = courses.map(courseCardHTML).join('');
+                } else {
+                    coursesSec.classList.add('hidden');
+                    coursesList.innerHTML = '';
+                }
+
+                const hasRelated = renderRelated(person.id);
+                renderPageIndex(enrichedSections);
+
+                bindReveal();
+            }
+
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightboxPrev.addEventListener('click', function () { moveLightbox(-1); });
+            lightboxNext.addEventListener('click', function () { moveLightbox(1); });
+            lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
+            galleryVideoToggle.addEventListener('click', function () {
+                isMoreVideosOpen = !isMoreVideosOpen;
+                galleryVideoToggle.classList.toggle('expanded', isMoreVideosOpen);
+                galleryVideoMore.classList.toggle('open', isMoreVideosOpen);
+            });
+            document.addEventListener('keydown', function (e) {
+                if (!lightbox.classList.contains('open')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') moveLightbox(-1);
+                if (e.key === 'ArrowRight') moveLightbox(1);
+            });
+
+            render();
+            FacultyStore.subscribe(render);
+            window.addEventListener('popstate', render);
+            FacultyStore.refreshFromRemote().then(function (ok) { if (ok) render(); });
+        })();
+    </script>
+    <script src="js/faculty-admin.js?v=20260707a"></script>
+</body>
+</html>
