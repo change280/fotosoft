@@ -69,41 +69,58 @@
       '  transform: translateX(0) scale(1);',
       '  color: #343A40;',
       '}',
-      '#shared-mobile-menu-panel {',
-      '  transform: translateX(100%);',
-      '  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);',
+      '#shared-mobile-menu {',
+      '  transition: opacity 0.35s ease;',
       '}',
-      '#shared-mobile-menu.open #shared-mobile-menu-panel {',
-      '  transform: translateX(0);',
+      '.shared-mm-dots {',
+      '  background-image: radial-gradient(#343A40 1px, transparent 1px);',
+      '  background-size: 16px 16px;',
+      '  opacity: 0.06;',
       '}',
-      '.shared-mobile-link {',
-      '  display: flex;',
-      '  align-items: center;',
-      '  justify-content: space-between;',
-      '  gap: 0.75rem;',
-      '  width: 100%;',
-      '  padding: 0.85rem 0;',
-      '  font-size: 0.86rem;',
-      '  letter-spacing: 0.16em;',
-      '  color: #343A40;',
-      '  border-bottom: 1px solid rgba(222, 226, 230, 0.7);',
+      '.shared-mm-decor {',
+      '  position: absolute; left: -3rem; bottom: -2.5rem;',
+      '  font-size: 17rem; color: rgba(33, 37, 41, 0.035);',
+      '  pointer-events: none; transform: rotate(-12deg);',
       '}',
-      '.shared-mobile-link-icon {',
-      '  color: #ADB5BD;',
-      '  font-size: 0.7rem;',
+      '.shared-mm-link {',
+      '  display: block; text-align: right; position: relative;',
+      '  cursor: pointer; background: transparent; border: 0;',
       '}',
-      '.shared-mobile-submenu {',
-      '  margin-top: 0.1rem;',
-      '  margin-bottom: 0.55rem;',
-      '  padding-left: 0.85rem;',
-      '  border-left: 1px solid rgba(222, 226, 230, 0.9);',
+      '.shared-mm-main {',
+      '  display: block; font-family: "Noto Serif TC", serif; font-weight: 700;',
+      '  font-size: 1.75rem; line-height: 1.15; color: #212529;',
+      '  transition: color 0.3s ease;',
       '}',
-      '.shared-mobile-submenu-link {',
-      '  display: block;',
-      '  padding: 0.58rem 0;',
-      '  font-size: 0.78rem;',
-      '  letter-spacing: 0.1em;',
-      '  color: #6C757D;',
+      '.shared-mm-link:hover .shared-mm-main,',
+      '.shared-mm-link.active .shared-mm-main { color: #6C757D; }',
+      '.shared-mm-sub {',
+      '  display: block; font-family: "Roboto", sans-serif; font-size: 0.6rem;',
+      '  letter-spacing: 0.3em; text-transform: uppercase; color: #ADB5BD;',
+      '  margin-top: 0.35rem; transition: color 0.3s ease;',
+      '}',
+      '.shared-mm-link:hover .shared-mm-sub,',
+      '.shared-mm-link.active .shared-mm-sub { color: #6C757D; }',
+      '.shared-mm-chevron {',
+      '  font-size: 0.72rem; color: #ADB5BD; margin-right: 0.55rem;',
+      '  display: inline-block; transition: transform 0.3s ease, color 0.3s ease;',
+      '}',
+      '.shared-mm-link.active .shared-mm-chevron { transform: rotate(90deg); color: #212529; }',
+      '.shared-mm-panel { display: none; width: 100%; }',
+      '.shared-mm-panel.active { display: block; }',
+      '.shared-mm-panel-eyebrow {',
+      '  font-family: "Roboto", sans-serif; font-size: 0.6rem; letter-spacing: 0.3em;',
+      '  text-transform: uppercase; color: #ADB5BD; margin-bottom: 1rem;',
+      '}',
+      '.shared-mm-panel-link {',
+      '  display: block; font-family: "Noto Serif TC", serif; font-size: 1.05rem;',
+      '  color: #343A40; padding: 0.5rem 0; opacity: 0;',
+      '  animation: sharedMmFade 0.45s ease-out forwards;',
+      '  transition: color 0.2s ease;',
+      '}',
+      '.shared-mm-panel-link:hover { color: #6C757D; }',
+      '@keyframes sharedMmFade {',
+      '  from { opacity: 0; transform: translateY(10px); }',
+      '  to { opacity: 1; transform: translateY(0); }',
       '}'
     ].join('\n');
     document.head.appendChild(style);
@@ -161,20 +178,39 @@
     var toggle = document.getElementById('shared-mobile-menu-toggle');
     var closeBtn = document.getElementById('shared-mobile-menu-close');
     var backdrop = document.getElementById('shared-mobile-menu-backdrop');
-    if (!menu || !toggle || !closeBtn || !backdrop) return;
+    if (!menu || !toggle || !closeBtn) return;
+
+    function clearSubmenus() {
+      menu.querySelectorAll('.shared-mm-link.active').forEach(function (b) { b.classList.remove('active'); });
+      menu.querySelectorAll('.shared-mm-panel.active').forEach(function (p) { p.classList.remove('active'); });
+    }
 
     function openMenu() {
       menu.classList.remove('hidden');
-      requestAnimationFrame(function () { menu.classList.add('open'); });
+      requestAnimationFrame(function () { menu.style.opacity = '1'; });
       document.body.style.overflow = 'hidden';
       toggle.setAttribute('aria-expanded', 'true');
     }
 
     function closeMenu() {
-      menu.classList.remove('open');
-      setTimeout(function () { menu.classList.add('hidden'); }, 280);
+      menu.style.opacity = '0';
+      setTimeout(function () { menu.classList.add('hidden'); clearSubmenus(); }, 350);
       document.body.style.overflow = '';
       toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    // 點第一次展開左側子選單，點第二次直接前往該主頁面
+    function toggleSubmenu(key, btn) {
+      var panel = menu.querySelector('.shared-mm-panel[data-panel="' + key + '"]');
+      var wasActive = btn.classList.contains('active');
+      clearSubmenus();
+      if (wasActive) {
+        var href = btn.getAttribute('data-href');
+        if (href) { window.location.href = href; }
+        return;
+      }
+      btn.classList.add('active');
+      if (panel) panel.classList.add('active');
     }
 
     toggle.addEventListener('click', function () {
@@ -182,9 +218,19 @@
       else closeMenu();
     });
     closeBtn.addEventListener('click', closeMenu);
-    backdrop.addEventListener('click', closeMenu);
+    if (backdrop) backdrop.addEventListener('click', closeMenu);
 
-    menu.querySelectorAll('a').forEach(function (link) {
+    menu.querySelectorAll('[data-submenu]').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        toggleSubmenu(btn.getAttribute('data-submenu'), btn);
+      });
+    });
+
+    menu.querySelectorAll('[data-mm-nav]').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+    menu.querySelectorAll('.shared-mm-panel-link').forEach(function (link) {
       link.addEventListener('click', closeMenu);
     });
 
@@ -289,10 +335,25 @@
       '  </div>' +
       '</div>';
 
-    var coursesMobileSubmenuHTML = coursesSubmenu.map(function (item) {
-      var target = /^https?:\/\//.test(item.href) ? ' target="_blank" rel="noopener"' : '';
-      return '<a href="' + item.href + '"' + target + ' class="shared-mobile-submenu-link">' + item.label + '</a>';
-    }).join('');
+    function mmPanelLinks(items) {
+      return items.map(function (item, i) {
+        var target = /^https?:\/\//.test(item.href) ? ' target="_blank" rel="noopener"' : '';
+        return '<a href="' + item.href + '"' + target + ' class="shared-mm-panel-link" style="animation-delay:' + (0.05 * (i + 1)) + 's;">' + item.label + '</a>';
+      }).join('');
+    }
+
+    var mmPanelsHTML =
+      '<div class="shared-mm-panel" data-panel="about"><div class="shared-mm-panel-eyebrow">About Us</div>' + mmPanelLinks(aboutSubmenu) + '</div>' +
+      '<div class="shared-mm-panel" data-panel="courses"><div class="shared-mm-panel-eyebrow">Courses</div>' + mmPanelLinks(coursesSubmenu) + '</div>' +
+      '<div class="shared-mm-panel" data-panel="faculty"><div class="shared-mm-panel-eyebrow">Faculty</div>' + mmPanelLinks(facultySubmenu) + '</div>';
+
+    var mmMainListHTML =
+      '<a href="index.html" data-mm-nav class="shared-mm-link"><span class="shared-mm-main">首頁</span><span class="shared-mm-sub">Home</span></a>' +
+      '<button type="button" data-submenu="about" data-href="about.html" class="shared-mm-link focus:outline-none"><span class="shared-mm-main"><i class="fa-solid fa-chevron-right shared-mm-chevron"></i>關於視丘</span><span class="shared-mm-sub">About</span></button>' +
+      '<button type="button" data-submenu="courses" data-href="courses.html" class="shared-mm-link focus:outline-none"><span class="shared-mm-main"><i class="fa-solid fa-chevron-right shared-mm-chevron"></i>課程總覽</span><span class="shared-mm-sub">Courses</span></button>' +
+      '<button type="button" data-submenu="faculty" data-href="faculty.html" class="shared-mm-link focus:outline-none"><span class="shared-mm-main"><i class="fa-solid fa-chevron-right shared-mm-chevron"></i>師資團隊</span><span class="shared-mm-sub">Faculty</span></button>' +
+      '<a href="gallery.html" data-mm-nav class="shared-mm-link"><span class="shared-mm-main">家族藝廊</span><span class="shared-mm-sub">Gallery</span></a>' +
+      '<a href="insights.html" data-mm-nav class="shared-mm-link"><span class="shared-mm-main">尖端洞察</span><span class="shared-mm-sub">Insights</span></a>';
 
     return '' +
       '<header id="navbar" class="sticky w-full top-0 z-50 py-4 px-6 md:px-12 bg-white/95 backdrop-blur-lg text-gallery-900 border-b border-gallery-200 shadow-sm">' +
@@ -317,27 +378,28 @@
       '      <i class="fa-solid fa-bars"></i>' +
       '    </button>' +
       '  </div>' +
-        '  <div id="shared-mobile-menu" class="hidden lg:hidden fixed inset-0 z-[70]">' +
-        '    <div id="shared-mobile-menu-backdrop" class="absolute inset-0 bg-black/45 backdrop-blur-[2px]"></div>' +
-        '    <aside id="shared-mobile-menu-panel" class="absolute right-0 top-0 h-full w-[88vw] max-w-[360px] bg-white/98 backdrop-blur-lg border-l border-gallery-200 shadow-2xl px-6 py-6">' +
-        '      <div class="flex items-center justify-between mb-6">' +
-        '        <p class="font-display text-[11px] tracking-[0.26em] uppercase text-gallery-400">Menu</p>' +
-        '        <button id="shared-mobile-menu-close" class="w-9 h-9 rounded-full border border-gallery-300 text-gallery-700 hover:bg-gallery-900 hover:text-white hover:border-gallery-900 transition-colors" aria-label="關閉選單">' +
-        '          <i class="fa-solid fa-xmark"></i>' +
-        '        </button>' +
+        '  <div id="shared-mobile-menu" class="hidden lg:hidden fixed top-0 left-0 w-screen h-screen z-[70]" style="opacity:0;">' +
+        '    <div id="shared-mobile-menu-backdrop" class="absolute inset-0 bg-white/95 backdrop-blur-xl"></div>' +
+        '    <div class="shared-mm-dots absolute inset-0"></div>' +
+        '    <i class="fa-solid fa-camera-retro shared-mm-decor"></i>' +
+        '    <div class="relative z-10 h-full flex flex-col">' +
+        '      <div class="flex items-center justify-between px-6 py-5">' +
+        '        <a href="index.html" data-mm-nav class="flex items-center gap-2">' +
+        '          <img src="logo.webp" alt="視丘 Logo" class="h-8 w-auto object-contain">' +
+        '          <span class="font-serif font-bold tracking-widest text-gallery-900">視丘 <span class="font-display text-xs font-light uppercase tracking-widest text-gallery-400">Fotosoft</span></span>' +
+        '        </a>' +
+        '        <button id="shared-mobile-menu-close" class="w-11 h-11 rounded-full border border-gallery-300 bg-white text-gallery-700 hover:bg-gallery-900 hover:text-white hover:border-gallery-900 hover:rotate-90 transition-all duration-300 flex items-center justify-center" aria-label="關閉選單"><i class="fa-solid fa-xmark text-lg"></i></button>' +
         '      </div>' +
-        '      <nav class="flex flex-col">' +
-        '        <a href="about.html" class="shared-mobile-link"><span>關於視丘</span><i class="fa-solid fa-arrow-right-long shared-mobile-link-icon"></i></a>' +
-        '        <a href="' + coursesHref + '" class="shared-mobile-link"><span>課程總覽</span><i class="fa-solid fa-arrow-right-long shared-mobile-link-icon"></i></a>' +
-        '        <div class="shared-mobile-submenu">' +
-            coursesMobileSubmenuHTML +
+        '      <div class="flex-1 flex flex-row overflow-hidden">' +
+        '        <div id="shared-mm-submenu-area" class="flex-1 flex flex-col justify-center items-start pl-8 md:pl-16 pr-4 overflow-y-auto">' +
+                    mmPanelsHTML +
         '        </div>' +
-        '        <a href="faculty.html" class="shared-mobile-link"><span>師資團隊</span><i class="fa-solid fa-arrow-right-long shared-mobile-link-icon"></i></a>' +
-        '        <a href="gallery.html" class="shared-mobile-link"><span>家族藝廊</span><i class="fa-solid fa-arrow-right-long shared-mobile-link-icon"></i></a>' +
-        '        <a href="' + insightsHref + '" class="shared-mobile-link"><span>尖端洞察</span><i class="fa-solid fa-arrow-right-long shared-mobile-link-icon"></i></a>' +
-        '      </nav>' +
-        '      <a href="#" class="inline-flex items-center justify-center mt-8 w-full border border-gallery-800 text-gallery-900 px-4 py-3 text-xs tracking-[0.2em] font-bold hover:bg-gallery-900 hover:text-white transition-all duration-300 rounded-full bg-white/70">預約免費旁聽</a>' +
-        '    </aside>' +
+        '        <div class="flex-none flex flex-col justify-center items-end gap-7 pr-8 md:pr-16 pb-16 min-w-[190px]">' +
+                    mmMainListHTML +
+        '          <a href="#" data-mm-nav class="mt-3 inline-flex items-center justify-center border border-gallery-800 text-gallery-900 px-6 py-3 text-[11px] tracking-[0.2em] font-bold hover:bg-gallery-900 hover:text-white transition-all duration-300 rounded-full">預約免費旁聽</a>' +
+        '        </div>' +
+        '      </div>' +
+        '    </div>' +
         '  </div>' +
       '</header>';
   }
@@ -412,7 +474,7 @@
       '    <div>' +
       '      <h4 class="text-gallery-900 font-display font-bold tracking-[0.2em] uppercase mb-8">Contact</h4>' +
       '      <ul class="space-y-4 tracking-wider font-sans">' +
-      '        <li>台北市松山區八德路三段...</li>' +
+      '        <li>111臺北市士林區天母里天母北路101巷13號2樓</li>' +
       '        <li>Tel: (02) 2773-5258</li>' +
       '        <li>Email: info@fotosoft.com.tw</li>' +
       '      </ul>' +
