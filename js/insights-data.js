@@ -148,6 +148,23 @@
     return h;
   }
 
+  function resolveAssetPath(path) {
+    const src = String(path || '').trim();
+    if (!src) return '';
+    if (/^(?:https?:)?\/\//i.test(src) || /^data:/i.test(src)) return src;
+    if (!src.startsWith('/')) return src;
+
+    const host = (typeof location !== 'undefined' && location.hostname) ? location.hostname : '';
+    const pathname = (typeof location !== 'undefined' && location.pathname) ? location.pathname : '/';
+    const isGitHubPages = /github\.io$/i.test(host);
+    if (!isGitHubPages) return src;
+
+    const firstSeg = pathname.split('/').filter(Boolean)[0] || '';
+    if (!firstSeg) return src;
+    if (src === '/' + firstSeg || src.startsWith('/' + firstSeg + '/')) return src;
+    return '/' + firstSeg + src;
+  }
+
   /* ---------- Store ---------- */
   const InsightsStore = {
     STORAGE_KEY, EVENT_NAME, DEFAULT_CATEGORIES, FALLBACK_COVERS,
@@ -191,7 +208,11 @@
 
     coverOf(post) {
       if (!post) return '';
-      return (post.coverImage && post.coverImage.trim()) || this.pickFallbackCover(post.id);
+      return resolveAssetPath((post.coverImage && post.coverImage.trim()) || this.pickFallbackCover(post.id));
+    },
+
+    assetPath(path) {
+      return resolveAssetPath(path);
     },
 
     /** 由 blocks 抽首段當摘要（若原 summary 為空） */

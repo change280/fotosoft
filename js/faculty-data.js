@@ -619,7 +619,7 @@
       name: '吳嘉寶', englishName: 'Chia-Pao Wu',
       title: '創辦人 · 視丘攝影藝術學院',
       courses: '影像理論、視覺心理學、世界攝影史、台灣攝影史、Photobook 製作、攝影專題',
-      photo: 'JIABAO_portraita.jpg',
+      photo: "JIABAO_portraita.webp",
       gallery: [], links: [],
       status: 'current', pinned: true, order: 0,
       summary: '1985 年創立視丘攝影藝術學院，長期推動台灣攝影教育與影像訊息讀寫能力。',
@@ -674,6 +674,22 @@
     let h = 0; s = String(s || '');
     for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
     return h;
+  }
+  function resolveAssetPath(path) {
+    var src = String(path || '').trim();
+    if (!src) return '';
+    if (/^(?:https?:)?\/\//i.test(src) || /^data:/i.test(src)) return src;
+    if (src.charAt(0) !== '/') return src;
+
+    var host = (typeof location !== 'undefined' && location.hostname) ? location.hostname : '';
+    var pathname = (typeof location !== 'undefined' && location.pathname) ? location.pathname : '/';
+    var isGitHubPages = /github\.io$/i.test(host);
+    if (!isGitHubPages) return src;
+
+    var firstSeg = pathname.split('/').filter(Boolean)[0] || '';
+    if (!firstSeg) return src;
+    if (src === '/' + firstSeg || src.indexOf('/' + firstSeg + '/') === 0) return src;
+    return '/' + firstSeg + src;
   }
   function normalizeGallery(list) {
     if (!Array.isArray(list)) return [];
@@ -806,9 +822,22 @@
     getById(id) { return this.getAll().find(function (p) { return p.id === id; }) || null; },
     photoOf(p) {
       if (!p) return '';
-      if (p.photo && p.photo.trim()) return p.photo;
-      if (p.image && p.image.trim()) return p.image;
-      return FALLBACK_PHOTOS[stableHash(p.id) % FALLBACK_PHOTOS.length];
+      if (p.photo && p.photo.trim()) return resolveAssetPath(p.photo);
+      if (p.image && p.image.trim()) return resolveAssetPath(p.image);
+      return resolveAssetPath(FALLBACK_PHOTOS[stableHash(p.id) % FALLBACK_PHOTOS.length]);
+    },
+    galleryOf(p) {
+      if (!p || !Array.isArray(p.gallery)) return [];
+      return p.gallery.filter(function (item) { return item && item.src; }).map(function (item) {
+        return {
+          src: resolveAssetPath(item.src),
+          alt: String(item.alt || '').trim(),
+          caption: String(item.caption || '').trim()
+        };
+      });
+    },
+    assetPath(path) {
+      return resolveAssetPath(path);
     },
     save(person) {
       const list = this.getAll();

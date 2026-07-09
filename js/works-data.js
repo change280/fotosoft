@@ -52,15 +52,15 @@
       id: 'fst42-guo-siao-ling',
       title: 'FST42-郭曉玲',
       subtitle: 'PLE 影像訊息書寫教育 / 學員',
-      coverImage: 'https://www.fotosoft.com.tw/images/spsimpleportfolio/fst42-%E9%83%AD%E6%9B%89%E7%8E%B2/work03_600x400.jpg',
+      coverImage: 'https://www.fotosoft.com.tw/images/spsimpleportfolio/fst42-%E9%83%AD%E6%9B%89%E7%8E%B2/work03_600x400.webp',
       description: '透過 PLE 影像訊息書寫教育，探索影像中的視覺元素與敘事語彙。',
       date: '2020-09-18',
       categories: ['PLE-影像中的視覺元素', '學生作品'],
       tags: [],
       gallery: [
-        { src: 'https://www.fotosoft.com.tw/images/student/GUO-SIAO-LING/work01.jpg', caption: 'work01' },
-        { src: 'https://www.fotosoft.com.tw/images/student/GUO-SIAO-LING/work02.jpg', caption: 'work02' },
-        { src: 'https://www.fotosoft.com.tw/images/student/GUO-SIAO-LING/work03.jpg', caption: 'work03' }
+        { src: 'https://www.fotosoft.com.tw/images/student/GUO-SIAO-LING/work01.webp', caption: 'work01' },
+        { src: 'https://www.fotosoft.com.tw/images/student/GUO-SIAO-LING/work02.webp', caption: 'work02' },
+        { src: 'https://www.fotosoft.com.tw/images/student/GUO-SIAO-LING/work03.webp', caption: 'work03' }
       ],
       featured: true,
       createdAt: 1600387200000,
@@ -70,13 +70,13 @@
       id: 'fst40-shih-yun-you',
       title: 'FST40-施昀佑',
       subtitle: 'PLE 影像訊息書寫教育 / 學員',
-      coverImage: 'https://www.fotosoft.com.tw/images/spsimpleportfolio/fst40-%E6%96%BD%E6%98%80%E4%BD%91/work-3_600x400.jpg',
+      coverImage: 'https://www.fotosoft.com.tw/images/spsimpleportfolio/fst40-%E6%96%BD%E6%98%80%E4%BD%91/work-3_600x400.webp',
       description: '以視覺元素解構日常景象。',
       date: '2020-09-18',
       categories: ['PLE-影像中的視覺元素', '學生作品'],
       tags: [],
       gallery: [
-        { src: 'https://www.fotosoft.com.tw/images/student/SHIH-YUN-YOU/work-3.jpg' }
+        { src: 'https://www.fotosoft.com.tw/images/student/SHIH-YUN-YOU/work-3.webp' }
       ],
       featured: true,
       createdAt: 1600387200001,
@@ -86,13 +86,13 @@
       id: 'fst44-wang-shu-chun',
       title: 'FST44-王書駿',
       subtitle: 'PLE 影像訊息書寫教育 / 學員',
-      coverImage: 'https://www.fotosoft.com.tw/images/spsimpleportfolio/fst44-%E7%8E%8B%E6%9B%B8%E9%A7%BF/Portrait-13_600x400.jpg',
+      coverImage: 'https://www.fotosoft.com.tw/images/spsimpleportfolio/fst44-%E7%8E%8B%E6%9B%B8%E9%A7%BF/Portrait-13_600x400.webp',
       description: '肖像影像的凝視與距離。',
       date: '2020-09-18',
       categories: ['PLE-影像中的視覺元素', '老師作品'],
       tags: [],
       gallery: [
-        { src: 'https://www.fotosoft.com.tw/images/student/WANG-SHU-CHUN/Portrait-13.jpg' }
+        { src: 'https://www.fotosoft.com.tw/images/student/WANG-SHU-CHUN/Portrait-13.webp' }
       ],
       featured: true,
       createdAt: 1600387200002,
@@ -102,13 +102,13 @@
       id: 'fst49-tu-huan-chang',
       title: 'FST49-涂煥昌',
       subtitle: '影像散文 / 老師',
-      coverImage: 'https://www.fotosoft.com.tw/images/spsimpleportfolio/fst49-%E6%B6%82%E7%85%A5%E6%98%8C/final1_600x400.jpg',
+      coverImage: 'https://www.fotosoft.com.tw/images/spsimpleportfolio/fst49-%E6%B6%82%E7%85%A5%E6%98%8C/final1_600x400.webp',
       description: '影像散文的長期紀實實踐。',
       date: '2020-09-18',
       categories: ['影像散文-Photo-Essay', '老師作品'],
       tags: [],
       gallery: [
-        { src: 'https://www.fotosoft.com.tw/images/H-C-TU/final1.jpg' }
+        { src: 'https://www.fotosoft.com.tw/images/H-C-TU/final1.webp' }
       ],
       featured: true,
       createdAt: 1600387200003,
@@ -118,13 +118,13 @@
       id: 'ple2-weekend-class',
       title: 'PLE2 假日專修班',
       subtitle: '聯合創作 / 學員',
-      coverImage: 'https://www.fotosoft.com.tw/images/spsimpleportfolio/ple2_%E5%81%87%E6%97%A5%E5%B0%88%E4%BF%AE%E7%8F%AD/PLE2-Joint-work_600x400.png',
+      coverImage: 'https://www.fotosoft.com.tw/images/spsimpleportfolio/ple2_%E5%81%87%E6%97%A5%E5%B0%88%E4%BF%AE%E7%8F%AD/PLE2-Joint-work_600x400.webp',
       description: '假日專修班學員聯合創作。',
       date: '2020-09-18',
       categories: ['影像詩作品', '學生作品'],
       tags: [],
       gallery: [
-        { src: 'https://www.fotosoft.com.tw/images/student/PLE2/PLE2-Joint-work.png' }
+        { src: 'https://www.fotosoft.com.tw/images/student/PLE2/PLE2-Joint-work.webp' }
       ],
       featured: false,
       createdAt: 1600387200004,
@@ -134,13 +134,13 @@
       id: 'visual-language-fst57-gwen',
       title: '影像中的視覺語言及其架構 / FST57-Gwen',
       subtitle: '視覺語言 / 學員',
-      coverImage: 'https://www.fotosoft.com.tw/images/spsimpleportfolio/%E5%BD%B1%E5%83%8F%E4%B8%AD%E7%9A%84%E8%A6%96%E8%A6%BA%E8%AA%9E%E8%A8%80%E5%8F%8A%E5%85%B6%E6%9E%B6%E6%A7%8B/FST57-Gwen_600x400.png',
+      coverImage: 'https://www.fotosoft.com.tw/images/spsimpleportfolio/%E5%BD%B1%E5%83%8F%E4%B8%AD%E7%9A%84%E8%A6%96%E8%A6%BA%E8%AA%9E%E8%A8%80%E5%8F%8A%E5%85%B6%E6%9E%B6%E6%A7%8B/FST57-Gwen_600x400.webp',
       description: '影像結構、語法與意義的實驗性作品。',
       date: '2020-09-18',
       categories: ['影像中的視覺語言及其架構', '學生作品'],
       tags: [],
       gallery: [
-        { src: 'https://www.fotosoft.com.tw/images/student/visual-language/FST57-Gwen.png' }
+        { src: 'https://www.fotosoft.com.tw/images/student/visual-language/FST57-Gwen.webp' }
       ],
       featured: false,
       createdAt: 1600387200005,
@@ -150,13 +150,13 @@
       id: 'fst62-lin-hsin-chih',
       title: 'FST62-林信志',
       subtitle: 'PLE 影像訊息書寫教育 / 學員',
-      coverImage: 'https://www.fotosoft.com.tw/images/spsimpleportfolio/fst62-%E6%9E%97%E4%BF%A1%E5%BF%97/FST62-Billy-1_600x400.jpg',
+      coverImage: 'https://www.fotosoft.com.tw/images/spsimpleportfolio/fst62-%E6%9E%97%E4%BF%A1%E5%BF%97/FST62-Billy-1_600x400.webp',
       description: '光線與空間的細節書寫。',
       date: '2020-09-18',
       categories: ['PLE-影像中的視覺元素', '學生作品'],
       tags: [],
       gallery: [
-        { src: 'https://www.fotosoft.com.tw/images/student/LIN-HSIN-CHIH/FST62-Billy-1.jpg' }
+        { src: 'https://www.fotosoft.com.tw/images/student/LIN-HSIN-CHIH/FST62-Billy-1.webp' }
       ],
       featured: false,
       createdAt: 1600387200006,
@@ -166,13 +166,13 @@
       id: 'fst49-tu-huan-chang-2',
       title: 'FST49-涂煥昌（PLE 系列）',
       subtitle: 'PLE 影像訊息書寫教育 / 老師',
-      coverImage: 'https://www.fotosoft.com.tw/images/spsimpleportfolio/fst49%E6%B6%82%E7%85%A5%E6%98%8C/TU-2_600x400.jpg',
+      coverImage: 'https://www.fotosoft.com.tw/images/spsimpleportfolio/fst49%E6%B6%82%E7%85%A5%E6%98%8C/TU-2_600x400.webp',
       description: '影像訊息書寫教育中的示範作品。',
       date: '2020-09-18',
       categories: ['PLE-影像中的視覺元素', '老師作品'],
       tags: [],
       gallery: [
-        { src: 'https://www.fotosoft.com.tw/images/student/TU-HUAN-CHANG/TU-2.jpg' }
+        { src: 'https://www.fotosoft.com.tw/images/student/TU-HUAN-CHANG/TU-2.webp' }
       ],
       featured: false,
       createdAt: 1600387200007,
@@ -182,13 +182,13 @@
       id: 'fst59-chen-tien-chien',
       title: 'FST59-陳天健',
       subtitle: 'PLE 影像訊息書寫教育 / 老師',
-      coverImage: 'https://www.fotosoft.com.tw/images/spsimpleportfolio/fst59-%E9%99%B3%E5%A4%A9%E5%81%A5/CHEN-TIEN-CHIEN-1_600x400.jpg',
+      coverImage: 'https://www.fotosoft.com.tw/images/spsimpleportfolio/fst59-%E9%99%B3%E5%A4%A9%E5%81%A5/CHEN-TIEN-CHIEN-1_600x400.webp',
       description: '影像與時間的凝結。',
       date: '2020-09-18',
       categories: ['PLE-影像中的視覺元素', '老師作品'],
       tags: [],
       gallery: [
-        { src: 'https://www.fotosoft.com.tw/images/student/CHEN-TIEN-CHIEN/CHEN-TIEN-CHIEN-1.jpg' }
+        { src: 'https://www.fotosoft.com.tw/images/student/CHEN-TIEN-CHIEN/CHEN-TIEN-CHIEN-1.webp' }
       ],
       featured: false,
       createdAt: 1600387200008,
@@ -198,13 +198,13 @@
       id: 'fst55-hsiao-wan-chen',
       title: 'FST55-蕭琬臻',
       subtitle: 'PLE 影像訊息書寫教育 / 老師',
-      coverImage: 'https://www.fotosoft.com.tw/images/spsimpleportfolio/fst55-%E8%95%AD%E7%90%AC%E8%87%BB/CH-1_600x400.png',
+      coverImage: 'https://www.fotosoft.com.tw/images/spsimpleportfolio/fst55-%E8%95%AD%E7%90%AC%E8%87%BB/CH-1_600x400.webp',
       description: '色彩與構圖的個人詮釋。',
       date: '2020-09-18',
       categories: ['PLE-影像中的視覺元素', '老師作品'],
       tags: [],
       gallery: [
-        { src: 'https://www.fotosoft.com.tw/images/student/HSIAO-WAN-CHEN/CH-1.png' }
+        { src: 'https://www.fotosoft.com.tw/images/student/HSIAO-WAN-CHEN/CH-1.webp' }
       ],
       featured: false,
       createdAt: 1600387200009,
@@ -234,6 +234,23 @@
     try {
       window.dispatchEvent(new CustomEvent(EVENT_NAME));
     } catch (_) { /* noop */ }
+  }
+
+  function resolveAssetPath(path) {
+    const src = String(path || '').trim();
+    if (!src) return '';
+    if (/^(?:https?:)?\/\//i.test(src) || /^data:/i.test(src)) return src;
+    if (!src.startsWith('/')) return src;
+
+    const host = (typeof location !== 'undefined' && location.hostname) ? location.hostname : '';
+    const pathname = (typeof location !== 'undefined' && location.pathname) ? location.pathname : '/';
+    const isGitHubPages = /github\.io$/i.test(host);
+    if (!isGitHubPages) return src;
+
+    const firstSeg = pathname.split('/').filter(Boolean)[0] || '';
+    if (!firstSeg) return src;
+    if (src === '/' + firstSeg || src.startsWith('/' + firstSeg + '/')) return src;
+    return '/' + firstSeg + src;
   }
 
   /* ---------------------------------------------------------- */
@@ -274,6 +291,26 @@
       const set = new Set(DEFAULT_CATEGORIES);
       this.getAll().forEach(w => (w.categories || []).forEach(c => set.add(c)));
       return Array.from(set);
+    },
+
+    coverOf(work) {
+      if (!work) return '';
+      return resolveAssetPath(work.coverImage || '');
+    },
+
+    galleryOf(work) {
+      if (!work || !Array.isArray(work.gallery)) return [];
+      return work.gallery
+        .filter(g => g && g.src)
+        .map(g => ({
+          src: resolveAssetPath(g.src),
+          caption: g.caption || '',
+          alt: g.alt || ''
+        }));
+    },
+
+    assetPath(path) {
+      return resolveAssetPath(path);
     },
 
     /** 新增 / 更新 (upsert) */
