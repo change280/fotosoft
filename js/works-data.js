@@ -242,15 +242,16 @@
     if (/^(?:https?:)?\/\//i.test(src) || /^data:/i.test(src)) return src;
     if (!src.startsWith('/')) return src;
 
+    const repoPrefix = '/fotosoft';
+    if (src === repoPrefix || src.startsWith(repoPrefix + '/')) return src;
+
     const host = (typeof location !== 'undefined' && location.hostname) ? location.hostname : '';
     const pathname = (typeof location !== 'undefined' && location.pathname) ? location.pathname : '/';
     const isGitHubPages = /github\.io$/i.test(host);
-    if (!isGitHubPages) return src;
+    const underRepoPath = pathname === repoPrefix || pathname.startsWith(repoPrefix + '/');
+    if (!isGitHubPages && !underRepoPath) return src;
 
-    const firstSeg = pathname.split('/').filter(Boolean)[0] || '';
-    if (!firstSeg) return src;
-    if (src === '/' + firstSeg || src.startsWith('/' + firstSeg + '/')) return src;
-    return '/' + firstSeg + src;
+    return repoPrefix + src;
   }
 
   /* ---------------------------------------------------------- */
