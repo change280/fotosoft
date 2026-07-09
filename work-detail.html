@@ -178,13 +178,14 @@
                 if (/^(?:https?:)?\/\//i.test(path) || /^data:/i.test(path)) return path;
                 if (!path.startsWith('/')) return path;
 
-                const isGitHubPages = /github\.io$/i.test(location.hostname || '');
-                if (!isGitHubPages) return path;
+                const repoPrefix = '/fotosoft';
+                if (path === repoPrefix || path.startsWith(repoPrefix + '/')) return path;
 
-                const repo = (location.pathname || '/').split('/').filter(Boolean)[0] || '';
-                if (!repo) return path;
-                if (path === '/' + repo || path.startsWith('/' + repo + '/')) return path;
-                return '/' + repo + path;
+                const isGitHubPages = /github\.io$/i.test(location.hostname || '');
+                const underRepoPath = (location.pathname || '/') === repoPrefix || (location.pathname || '/').startsWith(repoPrefix + '/');
+                if (!isGitHubPages && !underRepoPath) return path;
+
+                return repoPrefix + path;
             }
 
             function coverOfWork(work) {
