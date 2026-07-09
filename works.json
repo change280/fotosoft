@@ -128,7 +128,7 @@
     "id": "fst49-tu-huan-chang",
     "title": "FST49-涂煥昌",
     "subtitle": "影像散文 / 老師",
-    "coverImage": "/image/gallery/FST49-涂煥昌 01+.jpg",
+    "coverImage": "/image/gallery/涂煥昌00.webp",
     "description": "影像散文的長期紀實實踐。",
     "date": "2020-09-18",
     "categories": [
@@ -138,13 +138,13 @@
     "tags": [],
     "gallery": [
       {
-        "src": "/image/gallery/FST49-涂煥昌 01+.jpg",
-        "caption": "FST49-涂煥昌 01+.jpg"
+        "src": "/image/gallery/涂煥昌00.webp",
+        "caption": "涂煥昌00.webp"
       }
     ],
     "featured": true,
     "createdAt": 1600387200003,
-    "updatedAt": 1783505009842
+    "updatedAt": 1783519163331
   },
   {
     "id": "ple2-weekend-class",
