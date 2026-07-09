@@ -35,6 +35,8 @@
 
   const STORAGE_KEY = 'FOTOSOFT_WORKS_V1';
   const EVENT_NAME = 'fotosoft:works-updated';
+  const SOURCE_KEY = 'FOTOSOFT_WORKS_SOURCE_V1';
+  const REMOTE_WORKS_PATH = '/works.json';
 
   /* ---------- 預設分類（對應舊版 fotosoft.com.tw/art-museum） ---------- */
   const DEFAULT_CATEGORIES = [
@@ -254,6 +256,23 @@
     return repoPrefix + src;
   }
 
+  function canFetchRemoteWorks() {
+    return typeof fetch === 'function' && typeof location !== 'undefined';
+  }
+
+  async function fetchRemoteWorks() {
+    if (!canFetchRemoteWorks()) return null;
+    try {
+      const url = resolveAssetPath(REMOTE_WORKS_PATH);
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) return null;
+      const data = await res.json();
+      return Array.isArray(data) ? data : null;
+    } catch (_) {
+      return null;
+    }
+  }
+
   /* ---------------------------------------------------------- */
   /* Store                                                       */
   /* ---------------------------------------------------------- */
@@ -262,18 +281,44 @@
     STORAGE_KEY,
     EVENT_NAME,
     DEFAULT_CATEGORIES,
+    _bootPromise: null,
 
     /** 首次載入時寫入預設資料 */
     _seedIfEmpty() {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_WORKS));
+        localStorage.setItem(SOURCE_KEY, 'default');
       }
+    },
+
+    _markLocalSource() {
+      localStorage.setItem(SOURCE_KEY, 'local');
+    },
+
+    _boot() {
+      this._seedIfEmpty();
+      if (this._bootPromise) return this._bootPromise;
+
+      this._bootPromise = (async () => {
+        const source = localStorage.getItem(SOURCE_KEY) || '';
+        // 使用者在本機編輯後，保留 localStorage，避免每次被遠端覆蓋。
+        if (source === 'local') return;
+
+        const remote = await fetchRemoteWorks();
+        if (!remote) return;
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(remote));
+        localStorage.setItem(SOURCE_KEY, 'remote');
+        broadcast();
+      })();
+
+      return this._bootPromise;
     },
 
     /** 取得全部作品（依 createdAt 遞增排序 = 舊版顯示順序） */
     getAll() {
-      this._seedIfEmpty();
+      this._boot();
       const data = safeParse(localStorage.getItem(STORAGE_KEY)) || [];
       return data.slice().sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0));
     },
@@ -340,6 +385,7 @@
         : list.map(w => (w.id === normalized.id ? normalized : w));
 
       localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      this._markLocalSource();
       broadcast();
       return normalized;
     },
@@ -348,12 +394,14 @@
     remove(id) {
       const next = this.getAll().filter(w => w.id !== id);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      this._markLocalSource();
       broadcast();
     },
 
     /** 重置為預設資料 */
     reset() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_WORKS));
+      this._markLocalSource();
       broadcast();
     },
 
@@ -375,6 +423,7 @@
         // 預設為 replace
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
       }
+      this._markLocalSource();
       broadcast();
     },
 
