@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>載入中… | 視丘學員心得</title>
+    <meta name="description" content="視丘攝影藝術學院學員心得：來自不同城市與背景學員的完整課後回饋。">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;500;700;900&family=Roboto:wght@100;300;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: { extend: {
+                fontFamily: { sans: ['"Noto Sans TC"','sans-serif'], serif: ['"Noto Serif TC"','serif'], display: ['"Roboto"','sans-serif'] },
+                colors: { gallery: { 50:'#FFFFFF',100:'#F8F9FA',200:'#E9ECEF',300:'#DEE2E6',400:'#ADB5BD',500:'#6C757D',800:'#343A40',900:'#212529' } }
+            } }
+        }
+    </script>
+    <style> body { color:#212529; font-family:"Noto Sans TC",sans-serif; } </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-gallery-900 selection:text-white">
+
+    <div id="shared-global-bg"></div>
+    <div id="shared-header"></div>
+
+    <!-- 找不到心得 -->
+    <section id="td-fallback" class="hidden px-6 md:px-12 py-40 relative z-10">
+        <div class="max-w-3xl mx-auto text-center">
+            <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-white border border-gallery-200 flex items-center justify-center shadow-sm">
+                <i class="fa-regular fa-comment-dots text-3xl text-gallery-400"></i>
+            </div>
+            <h1 class="font-serif text-3xl md:text-4xl font-bold text-gallery-900 mb-4">找不到這則學員心得</h1>
+            <p class="text-gallery-500 leading-loose mb-10">這則心得可能不存在，或連結不正確。<br>你可以回到「課程總覽」查看更多學員回饋。</p>
+            <a href="courses.html#testimonials" class="inline-flex items-center gap-3 px-8 py-3 rounded-full border border-gallery-800 text-gallery-900 text-sm tracking-widest font-bold hover:bg-gallery-900 hover:text-white transition-all">
+                <i class="fa-solid fa-arrow-left-long text-xs"></i> 返回學員心得
+            </a>
+        </div>
+    </section>
+
+    <!-- 單則完整心得 -->
+    <main id="td-single" class="hidden relative z-10 px-6 md:px-12 py-14 md:py-20">
+        <div class="max-w-3xl mx-auto">
+            <a href="courses.html#testimonials" class="inline-flex items-center gap-2 text-sm font-bold text-gallery-500 hover:text-gallery-900 transition-colors mb-8">
+                <i class="fa-solid fa-arrow-left-long"></i> 返回學員心得
+            </a>
+            <div class="rounded-3xl border border-gallery-200 bg-white/92 backdrop-blur p-7 md:p-12 shadow-[0_22px_48px_-28px_rgba(33,37,41,0.22)]">
+                <div class="flex items-center gap-4 mb-8 pb-6 border-b border-gallery-200">
+                    <div id="td-avatar" class="w-14 h-14 rounded-full bg-gallery-100 text-gallery-800 flex items-center justify-center font-bold font-serif text-xl border border-white shadow-sm"></div>
+                    <div class="min-w-0">
+                        <h1 id="td-name" class="font-serif text-2xl font-bold text-gallery-900 leading-tight"></h1>
+                        <div class="text-xs text-gallery-400 flex items-center gap-2 mt-1 font-medium">
+                            <span class="text-[#C5A670] flex gap-0.5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                            <span id="td-meta"></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="td-body" class="space-y-5 text-gallery-800 text-[1.02rem] leading-loose"></div>
+                <div id="td-chips" class="flex flex-wrap gap-2 mt-9 pt-6 border-t border-gallery-200"></div>
+            </div>
+
+            <div class="mt-10">
+                <p class="text-xs font-bold tracking-[0.2em] text-gallery-400 uppercase font-display mb-4">More Testimonials</p>
+                <div id="td-more" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 全部心得列表（無 id 時） -->
+    <main id="td-list" class="hidden relative z-10 px-6 md:px-12 py-14 md:py-20">
+        <div class="max-w-4xl mx-auto">
+            <a href="courses.html#testimonials" class="inline-flex items-center gap-2 text-sm font-bold text-gallery-500 hover:text-gallery-900 transition-colors mb-8">
+                <i class="fa-solid fa-arrow-left-long"></i> 返回課程總覽
+            </a>
+            <div class="flex items-center gap-4 mb-3">
+                <div class="h-px w-10 bg-gallery-800"></div>
+                <p class="text-[10px] font-bold tracking-[0.26em] text-gallery-400 uppercase font-display">All Testimonials</p>
+            </div>
+            <h1 class="font-serif text-3xl md:text-4xl font-bold text-gallery-900 mb-8">學員心得・完整回饋</h1>
+            <div id="td-list-body" class="space-y-4"></div>
+        </div>
+    </main>
+
+    <div id="shared-cta"></div>
+    <div id="shared-footer"></div>
+
+    <script src="js/shared-layout.js"></script>
+    <script src="js/testimonials-data.js"></script>
+    <script>
+        SharedLayout.mount({ activeNav: 'courses' });
+
+        (function () {
+            const Store = window.TestimonialsStore;
+            function esc(s) {
+                return String(s == null ? '' : s)
+                    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+            }
+
+            const params = new URLSearchParams(location.search);
+            const id = params.get('id');
+
+            const fallbackEl = document.getElementById('td-fallback');
+            const singleEl = document.getElementById('td-single');
+            const listEl = document.getElementById('td-list');
+
+            if (!id) {
+                // 列出全部
+                const all = Store.getAll();
+                document.getElementById('td-list-body').innerHTML = all.map(function (t) {
+                    const paras = t.paragraphs.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('');
+                    return '<details class="rounded-2xl border border-gallery-200 bg-white/90 p-5 md:p-6">' +
+                        '<summary class="cursor-pointer font-semibold text-gallery-900">' + esc(t.name) + '（' + esc(t.city) + '）</summary>' +
+                        '<div class="mt-4 space-y-3 text-gallery-500 text-sm leading-loose">' + paras + '</div>' +
+                    '</details>';
+                }).join('');
+                listEl.classList.remove('hidden');
+                document.title = '學員心得 | 視丘攝影藝術學院 Fotosoft';
+                return;
+            }
+
+            const t = Store.getById(id);
+            if (!t) {
+                fallbackEl.classList.remove('hidden');
+                document.title = '找不到學員心得 | 視丘攝影藝術學院';
+                return;
+            }
+
+            document.title = t.name + '的學員心得 | 視丘攝影藝術學院 Fotosoft';
+            document.getElementById('td-avatar').textContent = t.initials || t.name.slice(0, 1);
+            document.getElementById('td-name').textContent = t.name + '（' + t.city + '）';
+            document.getElementById('td-meta').textContent = [t.course, t.date].filter(Boolean).join('　·　');
+            document.getElementById('td-body').innerHTML = t.paragraphs.map(function (p) {
+                return '<p>' + esc(p) + '</p>';
+            }).join('');
+            document.getElementById('td-chips').innerHTML = (t.chips || []).map(function (c) {
+                return '<span class="px-3 py-1 bg-gallery-100 text-gallery-500 text-[11px] font-medium rounded-full border border-gallery-200">' + esc(c) + '</span>';
+            }).join('');
+
+            document.getElementById('td-more').innerHTML = Store.getAll()
+                .filter(function (o) { return o.id !== t.id; })
+                .slice(0, 4)
+                .map(function (o) {
+                    return '<a href="testimonial-detail.html?id=' + encodeURIComponent(o.id) + '" class="flex items-center gap-3 p-3 rounded-xl border border-gallery-200 bg-white/85 hover:border-gallery-800 hover:-translate-y-0.5 transition-all">' +
+                        '<span class="w-9 h-9 rounded-full bg-gallery-100 text-gallery-800 flex items-center justify-center font-bold text-sm flex-shrink-0">' + esc(o.initials || o.name.slice(0, 1)) + '</span>' +
+                        '<span class="min-w-0"><span class="block text-sm font-semibold text-gallery-900 truncate">' + esc(o.name) + '（' + esc(o.city) + '）</span>' +
+                        '<span class="block text-xs text-gallery-400 truncate">' + esc(o.badge || '') + '</span></span>' +
+                    '</a>';
+                }).join('');
+
+            singleEl.classList.remove('hidden');
+        })();
+    </script>
+</body>
+</html>

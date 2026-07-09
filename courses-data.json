@@ -1,0 +1,1254 @@
+[
+  {
+    "id": "ple",
+    "track": "fulltime",
+    "index": "01",
+    "title": "PLE 影像風格養成所 日間部",
+    "subtitle": "原日間部・一年制系統課程｜總體說明",
+    "tag": "一年制系統",
+    "kicker": "Full-time Program",
+    "schedule": "採線上一對一 / 一對多說明會",
+    "cardImage": "/image/courses/PLE 影像風格養成所 日間部.webp",
+    "cardDesc": "涵蓋「視覺、影像、攝影、藝術創作、訊息傳播」五大面向的全備理論系統，培養攝影 4.0 時代的影像傳播專業人才。",
+    "heroImage": "/image/courses/PLE 影像風格養成所 日間部.webp",
+    "intro": "以「影像當文字使用」的 PLE 影像訊息讀寫教育為核心，結構嚴謹、理論全備的一年制系統課程。",
+    "enrollUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdXoaP2utrgzwpUxV0wlWlWd8ecpb2roEUtXjubq0WSN7H0cA/viewform",
+    "externalUrl": "",
+    "featured": true,
+    "blocks": [
+      {
+        "type": "heading",
+        "text": "課程簡介"
+      },
+      {
+        "type": "paragraph",
+        "text": "「影像風格養成所」，顧名思義就是訓練年輕一代既能隨心所欲地創造影像、用影像表達自我，更能讓自己創造的影像具備獨特風格，讓觀者印象深刻的能力，讓自己成為影像傳播時代的影像專業人才。"
+      },
+      {
+        "type": "paragraph",
+        "text": "PLE 是「Photo Literacy Education 影像訊息讀寫教育」的縮寫，顧名思義就是：訓練同學能夠把「影像當文字使用」的教育。2010 年起世界攝影已進入「攝影 4.0 版時代」，影像早已取代文字，成為新世代表達自我的主要工具。"
+      },
+      {
+        "type": "paragraph",
+        "text": "面對影像無所不在、傳媒中「影像驅逐文字」的攝影 4.0 版時代，人人都應該學習認識影像，更何況是想要借用影像主動傳遞訊息的專業攝影人員。「視丘 PLE 影像風格養成所」是一套結構嚴謹、理論全備的攝影知識系統，整套課程涵蓋攝影 4.0 版時代影像傳播專業人才所需的「視覺、影像、攝影、藝術創作、訊息傳播」五大面向的全備理論系統。"
+      },
+      {
+        "type": "cards",
+        "heading": "總體教育目標｜九大攝影軟實力 Photo Smart Power",
+        "columns": 2,
+        "items": [
+          {
+            "title": "掌握「優勢鏡位 Vantage Point」",
+            "desc": "使用影像精準敘事、圖像敘事口條清晰的能力"
+          },
+          {
+            "title": "運用「視覺語言與其結構 Visual Language」",
+            "desc": "經營影像美感內容，豐富影像感受性訊息"
+          },
+          {
+            "title": "經營「視覺動力 Visual Dynamics」",
+            "desc": "賦予影像整體豐富生機與能量"
+          },
+          {
+            "title": "運用「影子的語言 Language of Cast Shadow」",
+            "desc": "豐富視覺虛實平衡與辯證思考訊息"
+          },
+          {
+            "title": "運用「影像媒體語言 Media Language」",
+            "desc": "強化影像軟媒特質、豐富影像感受性訊息"
+          },
+          {
+            "title": "運用「影像語意 Semantic Meaning」",
+            "desc": "擴散並增強單一影像訊息厚度、賦予形而上訊息"
+          },
+          {
+            "title": "運用「影像間脈絡性訊息 Contextual Meaning」",
+            "desc": "在影像群中把對的影像放在對的地方，利於精準長篇敘事"
+          },
+          {
+            "title": "運用圖像經典「引經據典 Allusive Style」",
+            "desc": "以圖像結構暗喻藝術史經典，擴增並強化訊息厚度"
+          },
+          {
+            "title": "「多元解讀影像 Multiple Interpretation」",
+            "desc": "強化精準挑選「合目的」影像的能力，為影像書寫形上內容的重要基礎"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "教育哲學"
+      },
+      {
+        "type": "paragraph",
+        "text": "繼承現代藝術教育典範包浩斯 Bauhaus 精神，以「Learning by Doing 做中學」與「Practice before Theory 用理論解釋同學的作業」兩大主軸的實戰教育理念，循序漸進地訓練學生的感受力、想像力、理解力、思考力與融合力。"
+      },
+      {
+        "type": "checklist",
+        "heading": "Learning by Doing 做中學：學習生活的八大部分",
+        "items": [
+          "依照指定進度製作作業",
+          "策劃並執行個展或月評審展覽創作",
+          "觀賞同學個展或美術館著名展覽",
+          "思考並書寫觀展與上課心得",
+          "依進度研究並思考史上重要大師作品集",
+          "依進度研究並思考史上重要藝術電影",
+          "思考並臨摹著名大師重要作品",
+          "上課與同學老師一起討論評價作業"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Practice before Theory：同學先依進度做作業，老師再與同學一起討論每一張作業。討論時以視覺藝術相關的各種「學術理論」與大師作品為基礎評論，同學將學到：視覺心理學、認知心理學、Alfred L. Yarbus 眼動追蹤、David Marr 視覺理論、Bauhaus 圖像理論、當代藝術理論、影像傳播理論等，以及西洋藝術史、電影史、攝影史等歷史源流，最終具備面對時代更迭所需的 Unlearn 與 Relearn 能力。"
+      },
+      {
+        "type": "cards",
+        "heading": "學習架構｜五階段循序漸進",
+        "columns": 2,
+        "items": [
+          {
+            "title": "一、影像識字",
+            "desc": "學習用「影像中的視覺語言及其架構」觀看世界與單字型影像書寫。"
+          },
+          {
+            "title": "二、影像書法",
+            "desc": "影像美學的普世價值與個人影像風格的建立。"
+          },
+          {
+            "title": "三、影像造詞",
+            "desc": "影像與文字、影像拼貼、三聯作。"
+          },
+          {
+            "title": "四、影像散文",
+            "desc": "短小精練的影像詩歌。"
+          },
+          {
+            "title": "五、影像小說、影像裝置展與影像劇場",
+            "desc": "書寫深刻動人的影像文學作品。"
+          }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "PLE 影像風格養成所 · 線上即時視訊招生說明會",
+        "text": "由視丘創辦人吳嘉寶老師親自講解、親自 Q&A 回應的 Zoom 線上一對一或一對多說明會。內容包括：世界攝影發展的最新狀況與未來趨勢、攝影進化五時代的斷代、攝影 5.0 時代如何學好紮實的攝影觀念與技術、為期一年的課程系統結構介紹，以及畢業學長姐作業與作品分享。",
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLSdXoaP2utrgzwpUxV0wlWlWd8ecpb2roEUtXjubq0WSN7H0cA/viewform",
+        "urlLabel": "預約說明會報名表單"
+      },
+      {
+        "type": "teacher",
+        "heading": "老師介紹",
+        "items": [
+          {
+            "name": "吳嘉寶",
+            "role": "台北視丘攝影藝術學院暨中華攝影教育學會創辦人",
+            "photo": "/image/faculty/JIABAO_portraita.webp",
+            "link": "faculty-detail.html?id=wu-chia-pao"
+          }
+        ]
+      }
+    ],
+    "order": 999,
+    "createdAt": 1783597028082,
+    "updatedAt": 1783597028082
+  },
+  {
+    "id": "visual-language",
+    "track": "online",
+    "index": "02",
+    "title": "影像解讀：視覺語言入門班",
+    "subtitle": "用世界通行的視覺語言，讓照片言之有物",
+    "tag": "入門",
+    "kicker": "Online Module",
+    "schedule": "週二 20:00–22:00",
+    "cardImage": "/image/courses/影像解讀：視覺語言入門班01.webp",
+    "cardDesc": "認識影像承載的三層訊息，學會用世界通行的「視覺語言」讓照片言之有物。",
+    "heroImage": "/image/courses/影像解讀：視覺語言入門班01.webp",
+    "intro": "本課程培養學員能夠用世界通行的「專業與藝術圖像專用的視覺語言」，用影像媒體表達自己的感受與想法。",
+    "enrollUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdo6N37HiASv1EBmmRQnyvXPiH3sDAv7fjKVP9GPe7sMh0VQQ/viewform?usp=sf_link",
+    "externalUrl": "",
+    "featured": true,
+    "blocks": [
+      {
+        "type": "info",
+        "heading": "課程資訊",
+        "items": [
+          {
+            "icon": "fa-solid fa-desktop",
+            "label": "班別",
+            "value": "線上班"
+          },
+          {
+            "icon": "fa-regular fa-calendar",
+            "label": "堂數",
+            "value": "5 堂（共 10 小時）"
+          },
+          {
+            "icon": "fa-regular fa-clock",
+            "label": "時間",
+            "value": "每週二 20:00–22:00"
+          },
+          {
+            "icon": "fa-solid fa-location-dot",
+            "label": "上課地點",
+            "value": "線上授課"
+          },
+          {
+            "icon": "fa-solid fa-tag",
+            "label": "費用",
+            "value": "體驗價 NT$ 4,000（原價 NT$ 6,200）"
+          }
+        ]
+      },
+      {
+        "type": "lessons",
+        "heading": "課程內容",
+        "items": [
+          {
+            "title": "第一堂",
+            "lines": [
+              "單張影像承載的三層訊息",
+              "攝影的真相",
+              "影像訊息傳播的結構"
+            ]
+          },
+          {
+            "title": "第二堂",
+            "lines": [
+              "影像中的視覺元素：造形之造形家族"
+            ]
+          },
+          {
+            "title": "第三堂",
+            "lines": [
+              "影像中的視覺元素：造形之線條"
+            ]
+          },
+          {
+            "title": "第四堂",
+            "lines": [
+              "影像中的視覺元素：影調"
+            ]
+          },
+          {
+            "title": "第五堂",
+            "lines": [
+              "影像中的視覺元素：色彩"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "checklist",
+        "heading": "誰適合這堂課",
+        "items": [
+          "喜歡攝影，希望自己拍的照片「言之有物」的人",
+          "網路媒體小編，想拍出好照片、挑對好照片的人",
+          "想斜槓兼差接案當專業攝影師的人",
+          "希望照片能精準表達自己想法或感受的人",
+          "想學會欣賞攝影藝術、一窺影像堂奧的人",
+          "想用手機也能拍出作品等級照片的人"
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "課程說明"
+      },
+      {
+        "type": "paragraph",
+        "text": "國際知名美國攝影家 Philip-Lorca diCorcia 說得好：「攝影是每個人都認為他自己也能說的外語。」在專業與藝術圖像的世界裡通行的「視覺語言」，對一般人而言其實有如外國話一樣難懂。"
+      },
+      {
+        "type": "paragraph",
+        "text": "視丘積累 38 年專業攝影教育經驗告訴我們，一張影像承載的訊息共有三層：第一層是「生物生存本能所需的訊息」，視丘稱為「蛋殼性訊息」；第二層是圖像藝術專屬、全世界通行、能產生美感感受的「視覺語言及其結構」，視丘稱為「蛋白性訊息」，是人人易懂易學的「影像白話文」；第三層是能讓觀者進入聯想、解讀，甚至影像文學層次的「影像語意 semantic meaning」，視丘稱為「蛋黃性訊息」，是高層次影像的精華所在。"
+      },
+      {
+        "type": "paragraph",
+        "text": "本課程的教學目標，就是讓所有學員透過五堂課認識基礎性的「影像中的視覺語言及其結構」，讓觀者能夠從你拍的或挑選的影像裡看到影像自己講的白話文。"
+      },
+      {
+        "type": "teacher",
+        "heading": "老師介紹",
+        "items": [
+          {
+            "name": "涂煥昌",
+            "role": "PLE 影像風格養成所 日間部 講師",
+            "photo": "/image/faculty/涂煥昌00.webp",
+            "link": "faculty-detail.html?id=h-c-tu"
+          }
+        ]
+      },
+      {
+        "type": "checklist",
+        "heading": "備註",
+        "items": [
+          "課程需完成繳費始完成報名。",
+          "為維持課程內容的最新、最完整，視丘保持隨時修改課程內容的權利。",
+          "課程設計著作權為吳嘉寶所有，任何形式的複製均應事前徵得作者的書面同意。"
+        ]
+      },
+      {
+        "type": "cta",
+        "label": "點我報名",
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLSdo6N37HiASv1EBmmRQnyvXPiH3sDAv7fjKVP9GPe7sMh0VQQ/viewform?usp=sf_link"
+      },
+      {
+        "type": "image",
+        "src": "/image/courses/影像解讀：視覺語言入門班02.webp",
+        "size": "large",
+        "caption": ""
+      },
+      {
+        "type": "image",
+        "src": "/image/courses/影像解讀：視覺語言入門班03.webp",
+        "size": "large",
+        "caption": ""
+      }
+    ],
+    "order": 999,
+    "createdAt": 1783564950020,
+    "updatedAt": 1783564950020
+  },
+  {
+    "id": "collage",
+    "track": "online",
+    "index": "03",
+    "title": "影像創作班｜主題一：拼貼",
+    "subtitle": "以攝影拼貼掌握影像語意與圖像構成",
+    "tag": "影像創作",
+    "kicker": "Online Module",
+    "schedule": "週一 20:00–22:00",
+    "cardImage": "/image/courses/影像創作班｜主題一：拼貼01.webp",
+    "cardDesc": "透過攝影拼貼掌握「影像語意」，練習視覺平衡、群化與視覺動力等圖像構成技巧。",
+    "heroImage": "/image/courses/影像創作班｜主題一：拼貼01.webp",
+    "intro": "藉由介紹攝影拼貼作品與實作練習，認識並掌握運用圖像傳遞第三層訊息：「影像的語意 Semantic Meaning」的能力，同時掌握控制圖像整體視覺平衡並賦予視覺動力等基本圖像構成技巧。",
+    "enrollUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdo6N37HiASv1EBmmRQnyvXPiH3sDAv7fjKVP9GPe7sMh0VQQ/viewform?usp=sf_link",
+    "externalUrl": "",
+    "featured": true,
+    "blocks": [
+      {
+        "type": "info",
+        "heading": "課程資訊",
+        "items": [
+          {
+            "icon": "fa-solid fa-desktop",
+            "label": "班別",
+            "value": "線上班"
+          },
+          {
+            "icon": "fa-regular fa-calendar-check",
+            "label": "預定上課日",
+            "value": "採預約報名（招生滿 6 位即開課）"
+          },
+          {
+            "icon": "fa-regular fa-calendar",
+            "label": "堂數",
+            "value": "5 堂（共 10 小時）"
+          },
+          {
+            "icon": "fa-regular fa-clock",
+            "label": "時間",
+            "value": "每週一 20:00–22:00"
+          },
+          {
+            "icon": "fa-solid fa-tag",
+            "label": "費用",
+            "value": "體驗價 NT$ 4,000（原價 NT$ 6,200）"
+          }
+        ]
+      },
+      {
+        "type": "lessons",
+        "heading": "課程內容",
+        "items": [
+          {
+            "title": "第一堂：了解攝影拼貼 Photo Collage",
+            "lines": [
+              "攝影拼貼是什麼？攝影拼貼的歷史沿革",
+              "世界攝影藝術史殿堂級大師經典攝影拼貼作品介紹",
+              "製作攝影拼貼的方法"
+            ]
+          },
+          {
+            "title": "第二堂",
+            "lines": [
+              "視覺美感的基本原則",
+              "同學作業討論"
+            ]
+          },
+          {
+            "title": "第三堂",
+            "lines": [
+              "從比例而來的美感與群化",
+              "同學作業討論"
+            ]
+          },
+          {
+            "title": "第四堂",
+            "lines": [
+              "視覺動力",
+              "同學作業討論"
+            ]
+          },
+          {
+            "title": "第五堂",
+            "lines": [
+              "空間感",
+              "同學作業討論"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "cards",
+        "heading": "誰適合這堂課",
+        "columns": 2,
+        "items": [
+          {
+            "title": "好奇心旺盛，看膩了平庸圖片的人",
+            "desc": "拍不出來的腦洞，用拼貼建構腦海的世界。"
+          },
+          {
+            "title": "視覺工作者",
+            "desc": "平面設計師、接案攝影師、媒體小編或中小企業主，學會精準打動人心的專業視覺語彙。"
+          },
+          {
+            "title": "對手作有興趣的人",
+            "desc": "喜歡用手工親手創作新奇事物的人。"
+          },
+          {
+            "title": "入門體驗者",
+            "desc": "想藉由攝影拼貼的實作與視覺理論探討，一窺視覺藝術堂奧的人。"
+          }
+        ]
+      },
+      {
+        "type": "cards",
+        "heading": "這堂課你會學到",
+        "columns": 3,
+        "items": [
+          {
+            "title": "視覺語言",
+            "desc": "學習在視覺敘事與表達上運用萬國通用的視覺語言基礎應用。"
+          },
+          {
+            "title": "圖像語言",
+            "desc": "理解在視框所限的平面靜態空間裡，觀者與攝影者觀看的差異。"
+          },
+          {
+            "title": "視覺美感",
+            "desc": "大幅提升你對圖像特有的視覺美感的感受力。"
+          }
+        ]
+      },
+      {
+        "type": "checklist",
+        "heading": "課前準備",
+        "items": [
+          "上網購買大型視覺雜誌（LIFE、GEO、Vogue 等），用美工刀沿輪廓剪下網點照片備用",
+          "製作作品時當襯底的厚紙板",
+          "可反覆撕貼、不會太黏的膠水"
+        ]
+      },
+      {
+        "type": "teacher",
+        "heading": "老師介紹",
+        "items": [
+          {
+            "badge": "實體班",
+            "name": "涂煥昌",
+            "role": "PLE 影像風格養成所 日間部 講師",
+            "photo": "/image/faculty/涂煥昌00.webp",
+            "link": "faculty-detail.html?id=h-c-tu"
+          },
+          {
+            "badge": "線上班",
+            "name": "吳嘉寶",
+            "role": "台北視丘攝影藝術學院暨中華攝影教育學會創辦人",
+            "photo": "/image/faculty/JIABAO_portraita.webp",
+            "link": "faculty-detail.html?id=wu-chia-pao"
+          }
+        ]
+      },
+      {
+        "type": "checklist",
+        "heading": "備註",
+        "items": [
+          "課程需完成繳費始完成報名。",
+          "為維持課程內容的最新、最完整，視丘保持隨時修改課程內容的權利。",
+          "課程設計著作權為吳嘉寶所有，任何形式的複製均應事前徵得作者的書面同意。"
+        ]
+      },
+      {
+        "type": "cta",
+        "label": "點我報名",
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLSdo6N37HiASv1EBmmRQnyvXPiH3sDAv7fjKVP9GPe7sMh0VQQ/viewform?usp=sf_link"
+      },
+      {
+        "type": "image",
+        "src": "/image/courses/影像創作班｜主題一：拼貼02.webp",
+        "size": "large",
+        "caption": ""
+      },
+      {
+        "type": "image",
+        "src": "/image/courses/影像創作班｜主題一：拼貼03.webp",
+        "size": "large",
+        "caption": ""
+      }
+    ],
+    "order": 999,
+    "createdAt": 1783567145069,
+    "updatedAt": 1783597804692
+  },
+  {
+    "id": "triptych",
+    "track": "online",
+    "index": "04",
+    "title": "影像創作班｜主題二：三張照片的影像故事",
+    "subtitle": "從三聯作 Triptych 開始書寫影像文學",
+    "tag": "影像創作",
+    "kicker": "Online Module",
+    "schedule": "週一 20:00–22:00",
+    "cardImage": "/image/courses/影像創作班｜主題二：三張照片的影像故事01.webp",
+    "cardDesc": "從「三聯作 Triptych」開始，學習把對的影像放在對的地方，書寫影像文學。",
+    "heroImage": "/image/courses/影像創作班｜主題二：三張照片的影像故事01.webp",
+    "intro": "培養學員能夠精準挑選「合目的」的影像，並使用適當的形式將對的影像放在對的地方，在作品整體的影像群之間共鳴出某種「形而上內容」的高級影像創作能力。從「三聯作 Triptych」的練習開始，訓練學員拿影像當文字使用、書寫影像小說的能力。",
+    "enrollUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdo6N37HiASv1EBmmRQnyvXPiH3sDAv7fjKVP9GPe7sMh0VQQ/viewform?usp=sf_link",
+    "externalUrl": "",
+    "featured": false,
+    "blocks": [
+      {
+        "type": "info",
+        "heading": "課程資訊",
+        "items": [
+          {
+            "icon": "fa-solid fa-desktop",
+            "label": "班別",
+            "value": "線上班"
+          },
+          {
+            "icon": "fa-regular fa-calendar-check",
+            "label": "預定上課日",
+            "value": "採預約報名（招生滿 6 位即開課）"
+          },
+          {
+            "icon": "fa-regular fa-calendar",
+            "label": "堂數",
+            "value": "5 堂（2 小時／堂，共 10 小時）"
+          },
+          {
+            "icon": "fa-regular fa-clock",
+            "label": "時間",
+            "value": "每週一 20:00–22:00"
+          },
+          {
+            "icon": "fa-solid fa-tag",
+            "label": "費用",
+            "value": "體驗價 NT$ 4,000（原價 NT$ 6,200）"
+          }
+        ]
+      },
+      {
+        "type": "lessons",
+        "heading": "課程內容",
+        "items": [
+          {
+            "title": "第一堂",
+            "lines": [
+              "世界攝影史上影像文學經典範例介紹與分析",
+              "三聯作作業製作方式與規格介紹"
+            ]
+          },
+          {
+            "title": "第二堂",
+            "lines": [
+              "同學三聯作作業討論與建議"
+            ]
+          },
+          {
+            "title": "第三堂",
+            "lines": [
+              "同學三聯作作業討論與建議"
+            ]
+          },
+          {
+            "title": "第四堂",
+            "lines": [
+              "同學三聯作作業討論與建議"
+            ]
+          },
+          {
+            "title": "第五堂",
+            "lines": [
+              "同學三聯作作業討論與建議"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "checklist",
+        "heading": "誰適合這堂課",
+        "items": [
+          "想用複數影像群創作，參加國內外攝影比賽的人",
+          "想製作 Photobook 影像長篇小說的人",
+          "想舉辦個展、學習非線性布展方式的人",
+          "想學會精準挑選「合目的」影像來使用的人",
+          "想迎頭趕上攝影 4.0 時代精神進行影像文學創作的人",
+          "想藉由 Photo Installation 影像裝置展進行創作的人"
+        ]
+      },
+      {
+        "type": "checklist",
+        "heading": "課前準備",
+        "items": [
+          "整理好過去拍過的照片資料庫，總數最好在 8,000 張以上",
+          "備有桌機或筆電，最好安裝 Adobe Creative Suite 影像處理軟體",
+          "製作作業時，請務必使用 Illustrator 製作"
+        ]
+      },
+      {
+        "type": "teacher",
+        "heading": "老師介紹",
+        "items": [
+          {
+            "name": "吳嘉寶",
+            "role": "台北視丘攝影藝術學院暨中華攝影教育學會創辦人",
+            "photo": "/image/faculty/JIABAO_portraita.webp",
+            "link": "faculty-detail.html?id=wu-chia-pao"
+          }
+        ]
+      },
+      {
+        "type": "checklist",
+        "heading": "備註",
+        "items": [
+          "課程需完成繳費始完成報名。",
+          "為維持課程內容的最新、最完整，視丘保持隨時修改課程內容的權利。",
+          "課程設計著作權為吳嘉寶所有，任何形式的複製均應事前徵得作者的書面同意。"
+        ]
+      },
+      {
+        "type": "cta",
+        "label": "點我報名",
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLSdo6N37HiASv1EBmmRQnyvXPiH3sDAv7fjKVP9GPe7sMh0VQQ/viewform?usp=sf_link"
+      },
+      {
+        "type": "image",
+        "src": "/image/courses/影像創作班｜主題二：三張照片的影像故事01.webp",
+        "size": "large",
+        "caption": ""
+      },
+      {
+        "type": "image",
+        "src": "/image/courses/影像創作班｜主題二：三張照片的影像故事02.webp",
+        "size": "large",
+        "caption": ""
+      },
+      {
+        "type": "image",
+        "src": "/image/courses/影像創作班｜主題二：三張照片的影像故事03.webp",
+        "size": "large",
+        "caption": "影像創作班｜主題二：三張照片的影像故事03.webp"
+      },
+      {
+        "type": "image",
+        "src": "/image/courses/影像創作班｜主題二：三張照片的影像故事04.webp",
+        "size": "large",
+        "caption": "影像創作班｜主題二：三張照片的影像故事04.webp"
+      }
+    ],
+    "order": 999,
+    "createdAt": 1783567602444,
+    "updatedAt": 1783598073112
+  },
+  {
+    "id": "curators",
+    "track": "online",
+    "index": "05",
+    "title": "國際攝影策展人培育工作坊",
+    "subtitle": "培養策展思維與實務執行能力",
+    "tag": "工作坊",
+    "kicker": "Online Module",
+    "schedule": "週二 20:00–22:30",
+    "cardImage": "/image/courses/國際攝影策展人培育工作坊.webp",
+    "cardDesc": "為有志於影像策展的學員量身打造，培養策展思維與實務執行能力。",
+    "heroImage": "/image/courses/國際攝影策展人培育工作坊.webp",
+    "intro": "為有志於影像策展的學員量身打造，培養策展思維與實務執行能力。",
+    "enrollUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdo6N37HiASv1EBmmRQnyvXPiH3sDAv7fjKVP9GPe7sMh0VQQ/viewform?usp=sf_link",
+    "externalUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdo6N37HiASv1EBmmRQnyvXPiH3sDAv7fjKVP9GPe7sMh0VQQ/viewform?usp=sf_link",
+    "featured": false,
+    "blocks": [
+      {
+        "type": "info",
+        "heading": "課程資訊",
+        "items": [
+          {
+            "icon": "fa-solid fa-desktop",
+            "label": "班別",
+            "value": "線上班"
+          },
+          {
+            "icon": "fa-regular fa-clock",
+            "label": "時間",
+            "value": "每週二 20:00–22:30"
+          },
+          {
+            "icon": "fa-solid fa-location-dot",
+            "label": "上課地點",
+            "value": "線上授課"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "為有志於影像策展的學員量身打造，從策展概念、選件邏輯到展覽執行，培養完整的策展思維與實務執行能力。詳細課程內容與開課資訊，歡迎透過報名表單洽詢。"
+      },
+      {
+        "type": "teacher",
+        "heading": "老師介紹",
+        "items": [
+          {
+            "name": "吳嘉寶",
+            "role": "台北視丘攝影藝術學院暨中華攝影教育學會創辦人",
+            "photo": "/image/faculty/JIABAO_portraita.webp",
+            "link": "faculty-detail.html?id=wu-chia-pao"
+          }
+        ]
+      },
+      {
+        "type": "checklist",
+        "heading": "備註",
+        "items": [
+          "課程需完成繳費始完成報名。",
+          "為維持課程內容的最新、最完整，視丘保持隨時修改課程內容的權利。",
+          "課程設計著作權為吳嘉寶所有，任何形式的複製均應事前徵得作者的書面同意。"
+        ]
+      },
+      {
+        "type": "cta",
+        "label": "預約報名",
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLSdo6N37HiASv1EBmmRQnyvXPiH3sDAv7fjKVP9GPe7sMh0VQQ/viewform?usp=sf_link"
+      }
+    ],
+    "order": 999,
+    "createdAt": 1783597646917,
+    "updatedAt": 1783597646917
+  },
+  {
+    "id": "ai",
+    "track": "online",
+    "index": "06",
+    "title": "從零開始探索 AI 圖像生成的奇妙世界",
+    "subtitle": "踏入生成式 AI 影像的大門",
+    "tag": "AI 圖像",
+    "kicker": "Online Module",
+    "schedule": "週四 20:00–22:00",
+    "cardImage": "/image/courses/從零開始探索 AI 圖像生成的奇妙世界.webp",
+    "cardDesc": "帶你踏入生成式 AI 影像的大門，從零開始掌握 AI 圖像創作的觀念與工具。",
+    "heroImage": "/image/courses/從零開始探索 AI 圖像生成的奇妙世界.webp",
+    "intro": "帶你踏入生成式 AI 影像的大門，從零開始掌握 AI 圖像創作的觀念與工具。",
+    "enrollUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdo6N37HiASv1EBmmRQnyvXPiH3sDAv7fjKVP9GPe7sMh0VQQ/viewform?usp=sf_link",
+    "externalUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdo6N37HiASv1EBmmRQnyvXPiH3sDAv7fjKVP9GPe7sMh0VQQ/viewform?usp=sf_link",
+    "featured": false,
+    "blocks": [
+      {
+        "type": "info",
+        "heading": "課程資訊",
+        "items": [
+          {
+            "icon": "fa-solid fa-desktop",
+            "label": "班別",
+            "value": "線上班"
+          },
+          {
+            "icon": "fa-regular fa-clock",
+            "label": "時間",
+            "value": "每週四 20:00–22:00"
+          },
+          {
+            "icon": "fa-solid fa-location-dot",
+            "label": "上課地點",
+            "value": "線上授課"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "從零開始，帶你認識生成式 AI 影像的原理、工具與創作方法，並從視覺美學的角度思考如何駕馭 AI，讓 AI 成為你影像創作的助力。詳細課程內容與開課資訊，歡迎透過報名表單洽詢。"
+      },
+      {
+        "type": "teacher",
+        "heading": "老師介紹",
+        "items": [
+          {
+            "name": "吳嘉寶",
+            "role": "台北視丘攝影藝術學院暨中華攝影教育學會創辦人",
+            "photo": "/image/faculty/JIABAO_portraita.webp",
+            "link": "faculty-detail.html?id=wu-chia-pao"
+          }
+        ]
+      },
+      {
+        "type": "checklist",
+        "heading": "備註",
+        "items": [
+          "課程需完成繳費始完成報名。",
+          "為維持課程內容的最新、最完整，視丘保持隨時修改課程內容的權利。",
+          "課程設計著作權為吳嘉寶所有，任何形式的複製均應事前徵得作者的書面同意。"
+        ]
+      },
+      {
+        "type": "cta",
+        "label": "預約報名",
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLSdo6N37HiASv1EBmmRQnyvXPiH3sDAv7fjKVP9GPe7sMh0VQQ/viewform?usp=sf_link"
+      }
+    ],
+    "order": 999,
+    "createdAt": 1783597699061,
+    "updatedAt": 1783597699061
+  },
+  {
+    "id": "live",
+    "track": "online",
+    "index": "07",
+    "title": "視丘影像美學 LIVE 線上課程",
+    "subtitle": "華語教學，誠摯歡迎全球華人選修",
+    "tag": "LIVE",
+    "kicker": "Online Module",
+    "schedule": "週三 20:00–22:00",
+    "cardImage": "/image/courses/視丘影像美學LIVE_線上課程01.webp",
+    "cardDesc": "華語教學、歡迎全球華人選修，隨時插班上課的影像美學即時線上課程。",
+    "heroImage": "/image/courses/視丘影像美學LIVE_線上課程01.webp",
+    "intro": "華語教學，誠摯歡迎全球華人選修。歡迎隨時插班上課，也歡迎預約旁聽。",
+    "enrollUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdo6N37HiASv1EBmmRQnyvXPiH3sDAv7fjKVP9GPe7sMh0VQQ/viewform?usp=sf_link",
+    "externalUrl": "",
+    "featured": true,
+    "blocks": [
+      {
+        "type": "info",
+        "heading": "課程資訊",
+        "items": [
+          {
+            "icon": "fa-regular fa-calendar",
+            "label": "堂數",
+            "value": "每期共 5 堂課"
+          },
+          {
+            "icon": "fa-regular fa-clock",
+            "label": "時間",
+            "value": "每週三 20:00–22:00"
+          },
+          {
+            "icon": "fa-solid fa-location-dot",
+            "label": "上課地點",
+            "value": "線上授課"
+          },
+          {
+            "icon": "fa-solid fa-tag",
+            "label": "費用",
+            "value": "原價 NT$ 5,900（本課程不適用任何優惠方案）"
+          },
+          {
+            "icon": "fa-solid fa-plus",
+            "label": "彈性選修",
+            "value": "歡迎隨時插班上課、歡迎預約旁聽"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "課程介紹下載"
+      },
+      {
+        "type": "checklist",
+        "heading": "",
+        "items": [
+          "關於「如何觀賞藝術展覽」的視丘觀賞指南：https://www.fotosoft.com.tw/images/onlineclass/Introduction1.pdf",
+          "課程內容的 10 個層次：https://www.fotosoft.com.tw/images/onlineclass/Introduction8.pdf",
+          "課程的教育理念：https://www.fotosoft.com.tw/images/onlineclass/Introduction6.pdf",
+          "課程的上課方式：https://www.fotosoft.com.tw/images/onlineclass/15-Introduction.pdf"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "同學上課心得分享 — 佳評如潮：「視丘影像美學 LIVE 線上學習」第一屆同學上課心得回饋，詳見 https://www.fotosoft.com.tw/class/online/experience.html 。"
+      },
+      {
+        "type": "teacher",
+        "heading": "老師介紹",
+        "items": [
+          {
+            "name": "吳嘉寶",
+            "role": "台北視丘攝影藝術學院暨中華攝影教育學會創辦人",
+            "photo": "/image/faculty/JIABAO_portraita.webp",
+            "link": "faculty-detail.html?id=wu-chia-pao"
+          }
+        ]
+      },
+      {
+        "type": "checklist",
+        "heading": "備註",
+        "items": [
+          "課程需完成繳費始完成報名。",
+          "為維持課程內容的最新、最完整，視丘保持隨時修改課程內容的權利。",
+          "課程設計著作權為吳嘉寶所有，任何形式的複製均應事前徵得作者的書面同意。"
+        ]
+      },
+      {
+        "type": "cta",
+        "label": "點我報名",
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLSdo6N37HiASv1EBmmRQnyvXPiH3sDAv7fjKVP9GPe7sMh0VQQ/viewform?usp=sf_link"
+      }
+    ],
+    "order": 999,
+    "createdAt": 1783567617102,
+    "updatedAt": 1783567617102
+  },
+  {
+    "id": "kertesz",
+    "track": "online",
+    "index": "08",
+    "title": "站在巨人的肩膀上：Andre Kertesz 篇",
+    "subtitle": "殿堂級大師作品研究",
+    "tag": "大師研究",
+    "kicker": "Master Study",
+    "schedule": "週一 20:00–22:00",
+    "cardImage": "/image/courses/站在巨人的肩膀上：殿堂級大師作品研究 Andre Kertesz 篇01.webp",
+    "cardDesc": "解構 20 世紀最重要攝影大師 Andre Kertesz 的生平重要作品與影像思考方法。",
+    "heroImage": "/image/courses/站在巨人的肩膀上：殿堂級大師作品研究 Andre Kertesz 篇01.webp",
+    "intro": "透過有 20 世紀最重要攝影大師美譽的 Andre Kertesz 生平重要作品的解構與分析，學習攝影大師的影像思考方法。",
+    "enrollUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdo6N37HiASv1EBmmRQnyvXPiH3sDAv7fjKVP9GPe7sMh0VQQ/viewform?usp=sf_link",
+    "externalUrl": "",
+    "featured": false,
+    "blocks": [
+      {
+        "type": "info",
+        "heading": "課程資訊",
+        "items": [
+          {
+            "icon": "fa-solid fa-desktop",
+            "label": "班別",
+            "value": "線上班"
+          },
+          {
+            "icon": "fa-regular fa-calendar-check",
+            "label": "預定上課日",
+            "value": "採預約報名（招生滿 6 位即開課）"
+          },
+          {
+            "icon": "fa-regular fa-calendar",
+            "label": "堂數",
+            "value": "5 堂（共 10 小時）"
+          },
+          {
+            "icon": "fa-regular fa-clock",
+            "label": "時間",
+            "value": "每週一 20:00–22:00"
+          },
+          {
+            "icon": "fa-solid fa-tag",
+            "label": "費用",
+            "value": "體驗價 NT$ 4,000（原價 NT$ 6,200）"
+          }
+        ]
+      },
+      {
+        "type": "lessons",
+        "heading": "課程內容",
+        "items": [
+          {
+            "title": "第一堂",
+            "lines": [
+              "Andre Kertesz 的生平介紹"
+            ]
+          },
+          {
+            "title": "第二堂",
+            "lines": [
+              "Andre Kertesz 重要作品分析"
+            ]
+          },
+          {
+            "title": "第三堂",
+            "lines": [
+              "Andre Kertesz 的圖像思考術"
+            ]
+          },
+          {
+            "title": "第四堂",
+            "lines": [
+              "Andre Kertesz 如何剪裁照片"
+            ]
+          },
+          {
+            "title": "第五堂",
+            "lines": [
+              "Andre Kertesz 與我"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "cards",
+        "heading": "誰適合這堂課",
+        "columns": 3,
+        "items": [
+          {
+            "title": "視覺工作者",
+            "desc": "平面設計師、接案攝影師、媒體小編或中小企業主，學會精準打動人心的專業視覺語彙。"
+          },
+          {
+            "title": "想提升作品層次的人",
+            "desc": "不滿現狀、想讓作品更耐人尋味的攝影愛好者。"
+          },
+          {
+            "title": "手機攝影入門者",
+            "desc": "想從殿堂級大師作品中偷學影像思考竅門的人。"
+          }
+        ]
+      },
+      {
+        "type": "cards",
+        "heading": "這堂課你會學到",
+        "columns": 3,
+        "items": [
+          {
+            "title": "大師的攝影手法",
+            "desc": "學習如何將眼前的視覺像轉化成圖像上的視覺與圖像語言。"
+          },
+          {
+            "title": "大師的構圖方式",
+            "desc": "從大師的裁切中，學習如何將平庸作品轉化成世界名作。"
+          },
+          {
+            "title": "歷久彌新的視覺美感",
+            "desc": "從反覆觀看與辯證分析中提升自己的視覺美感。"
+          }
+        ]
+      },
+      {
+        "type": "teacher",
+        "heading": "老師介紹",
+        "items": [
+          {
+            "name": "吳嘉寶",
+            "role": "台北視丘攝影藝術學院暨中華攝影教育學會創辦人",
+            "photo": "/image/faculty/JIABAO_portraita.webp",
+            "link": "faculty-detail.html?id=wu-chia-pao"
+          }
+        ]
+      },
+      {
+        "type": "checklist",
+        "heading": "備註",
+        "items": [
+          "課程需完成繳費始完成報名。",
+          "為維持課程內容的最新、最完整，視丘保持隨時修改課程內容的權利。",
+          "課程設計著作權為吳嘉寶所有，任何形式的複製均應事前徵得作者的書面同意。"
+        ]
+      },
+      {
+        "type": "cta",
+        "label": "點我報名",
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLSdo6N37HiASv1EBmmRQnyvXPiH3sDAv7fjKVP9GPe7sMh0VQQ/viewform?usp=sf_link"
+      },
+      {
+        "type": "image",
+        "src": "/image/courses/站在巨人的肩膀上：殿堂級大師作品研究 Andre Kertesz 篇02.webp",
+        "size": "large",
+        "caption": ""
+      },
+      {
+        "type": "image",
+        "src": "/image/courses/站在巨人的肩膀上：殿堂級大師作品研究 Andre Kertesz 篇03.webp",
+        "size": "large",
+        "caption": "站在巨人的肩膀上：殿堂級大師作品研究 Andre Kertesz 篇03.webp"
+      },
+      {
+        "type": "image",
+        "src": "/image/courses/站在巨人的肩膀上：殿堂級大師作品研究 Andre Kertesz 篇04.webp",
+        "size": "large",
+        "caption": "站在巨人的肩膀上：殿堂級大師作品研究 Andre Kertesz 篇04.webp"
+      }
+    ],
+    "order": 999,
+    "createdAt": 1783567630734,
+    "updatedAt": 1783598773240
+  },
+  {
+    "id": "callahan",
+    "track": "online",
+    "index": "09",
+    "title": "站在巨人的肩膀上：Harry Callahan 篇",
+    "subtitle": "殿堂級大師作品研究",
+    "tag": "大師研究",
+    "kicker": "Master Study",
+    "schedule": "週一 20:00–22:00",
+    "cardImage": "/image/courses/站在巨人的肩膀上：殿堂級大師作品研究 Harry Callahan 篇01.webp",
+    "cardDesc": "解析 New Bauhaus 名師 Harry Callahan 作品，學習教出無數大師的影像思考法。",
+    "heroImage": "/image/courses/站在巨人的肩膀上：殿堂級大師作品研究 Harry Callahan 篇01.webp",
+    "intro": "透過在美國芝加哥 New Bauhaus 任教、孕育出無數東西方攝影大師的 Harry Callahan 生平重要作品的解構與分析，學習教出無數攝影大師的老師獨特的影像思考方法。",
+    "enrollUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdo6N37HiASv1EBmmRQnyvXPiH3sDAv7fjKVP9GPe7sMh0VQQ/viewform?usp=sf_link",
+    "externalUrl": "",
+    "featured": false,
+    "blocks": [
+      {
+        "type": "info",
+        "heading": "課程資訊",
+        "items": [
+          {
+            "icon": "fa-solid fa-desktop",
+            "label": "班別",
+            "value": "線上班"
+          },
+          {
+            "icon": "fa-regular fa-calendar-check",
+            "label": "預定上課日",
+            "value": "採預約報名（招生滿 6 位即開課）"
+          },
+          {
+            "icon": "fa-regular fa-calendar",
+            "label": "堂數",
+            "value": "5 堂（共 10 小時）"
+          },
+          {
+            "icon": "fa-regular fa-clock",
+            "label": "時間",
+            "value": "每週一 20:00–22:00"
+          },
+          {
+            "icon": "fa-solid fa-tag",
+            "label": "費用",
+            "value": "體驗價 NT$ 4,000（原價 NT$ 6,200）"
+          }
+        ]
+      },
+      {
+        "type": "lessons",
+        "heading": "課程內容",
+        "items": [
+          {
+            "title": "第一堂",
+            "lines": [
+              "Harry Callahan 的生平介紹"
+            ]
+          },
+          {
+            "title": "第二堂",
+            "lines": [
+              "Harry Callahan：Eleanor and Barbara 系列"
+            ]
+          },
+          {
+            "title": "第三堂",
+            "lines": [
+              "Harry Callahan 重要作品分析"
+            ]
+          },
+          {
+            "title": "第四堂",
+            "lines": [
+              "Harry Callahan 的圖像思考術"
+            ]
+          },
+          {
+            "title": "第五堂",
+            "lines": [
+              "Harry Callahan 與我"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "cards",
+        "heading": "誰適合這堂課",
+        "columns": 3,
+        "items": [
+          {
+            "title": "視覺工作者",
+            "desc": "平面設計師、接案攝影師、媒體小編或中小企業主，學會精準打動人心的專業視覺語彙。"
+          },
+          {
+            "title": "想提升作品層次的人",
+            "desc": "不滿現狀、想讓作品更耐人尋味的攝影愛好者。"
+          },
+          {
+            "title": "手機攝影入門者",
+            "desc": "想從殿堂級大師作品中偷學影像思考竅門的人。"
+          }
+        ]
+      },
+      {
+        "type": "cards",
+        "heading": "這堂課你會學到",
+        "columns": 2,
+        "items": [
+          {
+            "title": "大師的攝影手法",
+            "desc": "學習在攝影現場如何與眼前的事物狀態對決。"
+          },
+          {
+            "title": "大師影像創作思考方式",
+            "desc": "學習如何將眼前的視覺像轉化成圖像上的視覺與圖像語言。"
+          },
+          {
+            "title": "大師的構圖方式",
+            "desc": "從大師的裁切中，學習如何將平庸作品轉化成世界名作。"
+          },
+          {
+            "title": "歷久彌新的視覺美感",
+            "desc": "從反覆觀看與辯證分析中提升自己的視覺美感。"
+          }
+        ]
+      },
+      {
+        "type": "teacher",
+        "heading": "老師介紹",
+        "items": [
+          {
+            "name": "吳嘉寶",
+            "role": "台北視丘攝影藝術學院暨中華攝影教育學會創辦人",
+            "photo": "/image/faculty/JIABAO_portraita.webp",
+            "link": "faculty-detail.html?id=wu-chia-pao"
+          }
+        ]
+      },
+      {
+        "type": "checklist",
+        "heading": "備註",
+        "items": [
+          "課程需完成繳費始完成報名。",
+          "為維持課程內容的最新、最完整，視丘保持隨時修改課程內容的權利。",
+          "課程設計著作權為吳嘉寶所有，任何形式的複製均應事前徵得作者的書面同意。"
+        ]
+      },
+      {
+        "type": "cta",
+        "label": "點我報名",
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLSdo6N37HiASv1EBmmRQnyvXPiH3sDAv7fjKVP9GPe7sMh0VQQ/viewform?usp=sf_link"
+      },
+      {
+        "type": "image",
+        "src": "/image/courses/站在巨人的肩膀上：殿堂級大師作品研究 Harry Callahan 篇02.webp",
+        "size": "large",
+        "caption": ""
+      },
+      {
+        "type": "image",
+        "src": "/image/courses/站在巨人的肩膀上：殿堂級大師作品研究 Harry Callahan 篇03.webp",
+        "size": "large",
+        "caption": "站在巨人的肩膀上：殿堂級大師作品研究 Harry Callahan 篇03.webp"
+      },
+      {
+        "type": "image",
+        "src": "/image/courses/站在巨人的肩膀上：殿堂級大師作品研究 Harry Callahan 篇04.webp",
+        "size": "large",
+        "caption": "站在巨人的肩膀上：殿堂級大師作品研究 Harry Callahan 篇04.webp"
+      }
+    ],
+    "order": 999,
+    "createdAt": 1783567644046,
+    "updatedAt": 1783598797851
+  }
+]

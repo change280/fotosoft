@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>載入中… | 視丘全職養成課程</title>
+    <meta name="description" content="視丘攝影藝術學院全職養成課程詳情：PLE 影像風格養成所日間部。">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;500;700;900&family=Roboto:wght@100;300;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: { extend: {
+                fontFamily: { sans: ['"Noto Sans TC"','sans-serif'], serif: ['"Noto Serif TC"','serif'], display: ['"Roboto"','sans-serif'] },
+                colors: { gallery: { 50:'#FFFFFF',100:'#F8F9FA',200:'#E9ECEF',300:'#DEE2E6',400:'#ADB5BD',500:'#6C757D',800:'#343A40',900:'#212529' } }
+            } }
+        }
+    </script>
+    <style> body { color:#212529; font-family:"Noto Sans TC",sans-serif; } </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-gallery-900 selection:text-white">
+
+    <div id="shared-global-bg"></div>
+    <div id="shared-header"></div>
+
+    <!-- 找不到課程 -->
+    <section id="cd-fallback" class="hidden px-6 md:px-12 py-40 relative z-10">
+        <div class="max-w-3xl mx-auto text-center">
+            <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-white border border-gallery-200 flex items-center justify-center shadow-sm">
+                <i class="fa-regular fa-folder-open text-3xl text-gallery-400"></i>
+            </div>
+            <h1 class="font-serif text-3xl md:text-4xl font-bold text-gallery-900 mb-4">找不到這門課程</h1>
+            <p class="text-gallery-500 leading-loose mb-10">這門課程可能已被移除，或連結不正確。<br>你可以回到「課程總覽」繼續探索。</p>
+            <a href="courses.html" class="inline-flex items-center gap-3 px-8 py-3 rounded-full border border-gallery-800 text-gallery-900 text-sm tracking-widest font-bold hover:bg-gallery-900 hover:text-white transition-all">
+                <i class="fa-solid fa-arrow-left-long text-xs"></i> 返回課程總覽
+            </a>
+        </div>
+    </section>
+
+    <!-- Hero -->
+    <header id="cd-hero" class="cd-hero relative z-10 pt-24 pb-16 md:pt-36 md:pb-24 px-6 md:px-12 text-white hidden">
+        <img id="cd-hero-img" class="cd-hero-img" alt="">
+        <div class="cd-hero-fade"></div>
+        <div class="max-w-4xl mx-auto relative z-10">
+            <a href="courses.html" class="inline-flex items-center gap-2 text-xs md:text-sm tracking-widest text-white/70 hover:text-white mb-8 transition-colors">
+                <i class="fa-solid fa-arrow-left-long"></i> Full-time Program · 全職養成
+            </a>
+            <p id="cd-kicker" class="text-[10px] font-bold tracking-[0.3em] uppercase text-white/70 mb-4 font-display"></p>
+            <h1 id="cd-title" class="font-serif text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4"></h1>
+            <p id="cd-subtitle" class="text-base md:text-xl text-white/80 leading-relaxed mb-6 max-w-3xl"></p>
+            <span id="cd-schedule" class="inline-flex items-center gap-2 text-sm text-white/80 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 backdrop-blur">
+                <i class="fa-regular fa-clock"></i><span></span>
+            </span>
+        </div>
+    </header>
+
+    <!-- 內文 -->
+    <main id="cd-main" class="relative z-10 px-6 md:px-12 py-14 md:py-20 hidden">
+        <div class="max-w-4xl mx-auto cd-detail-card p-6 md:p-12">
+            <p id="cd-intro" class="cd-wrap text-gallery-500 text-base md:text-lg leading-loose mb-10 hidden"></p>
+            <div id="cd-body" class="cd-wrap"></div>
+            <div class="cd-wrap mt-12 pt-6 border-t border-gallery-200">
+                <a href="courses.html" class="inline-flex items-center gap-2 text-sm font-bold text-gallery-500 hover:text-gallery-900 transition-colors">
+                    <i class="fa-solid fa-arrow-left-long"></i> 返回課程總覽
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <div id="shared-cta"></div>
+    <div id="shared-footer"></div>
+
+    <script src="js/shared-layout.js"></script>
+    <script src="js/courses-data.js"></script>
+    <script src="js/courses-detail.js"></script>
+    <script>
+        SharedLayout.mount({ activeNav: 'courses' });
+        CoursesDetail.mount({ track: 'fulltime' });
+    </script>
+    <script src="js/courses-admin.js"></script>
+</body>
+</html>
