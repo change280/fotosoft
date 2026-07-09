@@ -68,6 +68,42 @@
       '  opacity: 1;',
       '  transform: translateX(0) scale(1);',
       '  color: #343A40;',
+      '}',
+      '#shared-mobile-menu-panel {',
+      '  transform: translateX(100%);',
+      '  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);',
+      '}',
+      '#shared-mobile-menu.open #shared-mobile-menu-panel {',
+      '  transform: translateX(0);',
+      '}',
+      '.shared-mobile-link {',
+      '  display: flex;',
+      '  align-items: center;',
+      '  justify-content: space-between;',
+      '  gap: 0.75rem;',
+      '  width: 100%;',
+      '  padding: 0.85rem 0;',
+      '  font-size: 0.86rem;',
+      '  letter-spacing: 0.16em;',
+      '  color: #343A40;',
+      '  border-bottom: 1px solid rgba(222, 226, 230, 0.7);',
+      '}',
+      '.shared-mobile-link-icon {',
+      '  color: #ADB5BD;',
+      '  font-size: 0.7rem;',
+      '}',
+      '.shared-mobile-submenu {',
+      '  margin-top: 0.1rem;',
+      '  margin-bottom: 0.55rem;',
+      '  padding-left: 0.85rem;',
+      '  border-left: 1px solid rgba(222, 226, 230, 0.9);',
+      '}',
+      '.shared-mobile-submenu-link {',
+      '  display: block;',
+      '  padding: 0.58rem 0;',
+      '  font-size: 0.78rem;',
+      '  letter-spacing: 0.1em;',
+      '  color: #6C757D;',
       '}'
     ].join('\n');
     document.head.appendChild(style);
@@ -115,12 +151,54 @@
     onScroll();
   }
 
+  function setupMobileMenu() {
+    var navbar = document.getElementById('navbar');
+    if (!navbar) return;
+    if (navbar.dataset.mobileMenuBound === '1') return;
+    navbar.dataset.mobileMenuBound = '1';
+
+    var menu = document.getElementById('shared-mobile-menu');
+    var toggle = document.getElementById('shared-mobile-menu-toggle');
+    var closeBtn = document.getElementById('shared-mobile-menu-close');
+    var backdrop = document.getElementById('shared-mobile-menu-backdrop');
+    if (!menu || !toggle || !closeBtn || !backdrop) return;
+
+    function openMenu() {
+      menu.classList.remove('hidden');
+      requestAnimationFrame(function () { menu.classList.add('open'); });
+      document.body.style.overflow = 'hidden';
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeMenu() {
+      menu.classList.remove('open');
+      setTimeout(function () { menu.classList.add('hidden'); }, 280);
+      document.body.style.overflow = '';
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    toggle.addEventListener('click', function () {
+      if (menu.classList.contains('hidden')) openMenu();
+      else closeMenu();
+    });
+    closeBtn.addEventListener('click', closeMenu);
+    backdrop.addEventListener('click', closeMenu);
+
+    menu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !menu.classList.contains('hidden')) closeMenu();
+    });
+  }
+
   function renderHeader(activeNav, options) {
     var opts = options || {};
     var onIndex = !!opts.onIndex;
     var logoHref = 'index.html';
     var philosophyHref = 'about.html';
-    var coursesHref = onIndex ? '#courses' : 'index.html#courses';
+    var coursesHref = 'courses.html';
     var insightsHref = 'insights.html';
 
     function navClass(name) {
@@ -184,6 +262,38 @@
       '  </div>' +
       '</div>';
 
+    var coursesSubmenu = [
+      { label: '日間部・全職養成', href: 'fulltime-detail.html?id=ple', icon: 'fa-graduation-cap' },
+      { label: '線上單元課程', href: 'courses.html#online-grid', icon: 'fa-desktop' },
+      { label: '學員心得', href: 'courses.html#testimonials', icon: 'fa-comments' },
+      { label: '課程 FAQ', href: 'courses.html#faq', icon: 'fa-circle-question' }
+    ];
+
+    var coursesMenuItemsHTML = coursesSubmenu.map(function (item) {
+      var target = /^https?:\/\//.test(item.href) ? ' target="_blank" rel="noopener"' : '';
+      return '<a href="' + item.href + '"' + target +
+             ' class="shared-submenu-link">' +
+             '<span class="shared-submenu-link-icon"><i class="fa-solid ' + item.icon + '"></i></span>' +
+             '<span class="shared-submenu-link-label">' + item.label + '</span></a>';
+    }).join('');
+
+    var coursesDropdownHTML =
+      '<div class="relative group">' +
+      '  <a href="' + coursesHref + '" class="' + navClass('courses') + '">' +
+      '    課程總覽' +
+      '  </a>' +
+      '  <div class="absolute left-1/2 -translate-x-1/2 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">' +
+            '    <div class="inline-block w-max min-w-0 bg-white/95 backdrop-blur-lg border border-gallery-200 shadow-xl rounded-xl py-3 overflow-hidden">' +
+             coursesMenuItemsHTML +
+      '    </div>' +
+      '  </div>' +
+      '</div>';
+
+    var coursesMobileSubmenuHTML = coursesSubmenu.map(function (item) {
+      var target = /^https?:\/\//.test(item.href) ? ' target="_blank" rel="noopener"' : '';
+      return '<a href="' + item.href + '"' + target + ' class="shared-mobile-submenu-link">' + item.label + '</a>';
+    }).join('');
+
     return '' +
       '<header id="navbar" class="sticky w-full top-0 z-50 py-4 px-6 md:px-12 bg-white/95 backdrop-blur-lg text-gallery-900 border-b border-gallery-200 shadow-sm">' +
       '  <div class="max-w-7xl mx-auto flex justify-between items-center">' +
@@ -193,7 +303,7 @@
       '    </a>' +
       '    <nav class="hidden lg:flex items-center gap-10 text-sm tracking-[0.2em] font-bold">' +
              aboutDropdownHTML +
-      '      <a href="' + coursesHref + '" class="' + navClass('courses') + '">課程總覽</a>' +
+              coursesDropdownHTML +
               facultyDropdownHTML +
       '      <a href="gallery.html" class="' + navClass('gallery') + '">家族藝廊</a>' +
       '      <a href="' + insightsHref + '" class="' + navClass('insights') + '">尖端洞察</a>' +
@@ -203,10 +313,32 @@
       '        預約免費旁聽' +
       '      </a>' +
       '    </div>' +
-      '    <button class="lg:hidden text-2xl text-gallery-800" aria-label="開啟選單">' +
+        '    <button id="shared-mobile-menu-toggle" class="lg:hidden text-2xl text-gallery-800" aria-label="開啟選單" aria-expanded="false">' +
       '      <i class="fa-solid fa-bars"></i>' +
       '    </button>' +
       '  </div>' +
+        '  <div id="shared-mobile-menu" class="hidden lg:hidden fixed inset-0 z-[70]">' +
+        '    <div id="shared-mobile-menu-backdrop" class="absolute inset-0 bg-black/45 backdrop-blur-[2px]"></div>' +
+        '    <aside id="shared-mobile-menu-panel" class="absolute right-0 top-0 h-full w-[88vw] max-w-[360px] bg-white/98 backdrop-blur-lg border-l border-gallery-200 shadow-2xl px-6 py-6">' +
+        '      <div class="flex items-center justify-between mb-6">' +
+        '        <p class="font-display text-[11px] tracking-[0.26em] uppercase text-gallery-400">Menu</p>' +
+        '        <button id="shared-mobile-menu-close" class="w-9 h-9 rounded-full border border-gallery-300 text-gallery-700 hover:bg-gallery-900 hover:text-white hover:border-gallery-900 transition-colors" aria-label="關閉選單">' +
+        '          <i class="fa-solid fa-xmark"></i>' +
+        '        </button>' +
+        '      </div>' +
+        '      <nav class="flex flex-col">' +
+        '        <a href="about.html" class="shared-mobile-link"><span>關於視丘</span><i class="fa-solid fa-arrow-right-long shared-mobile-link-icon"></i></a>' +
+        '        <a href="' + coursesHref + '" class="shared-mobile-link"><span>課程總覽</span><i class="fa-solid fa-arrow-right-long shared-mobile-link-icon"></i></a>' +
+        '        <div class="shared-mobile-submenu">' +
+            coursesMobileSubmenuHTML +
+        '        </div>' +
+        '        <a href="faculty.html" class="shared-mobile-link"><span>師資團隊</span><i class="fa-solid fa-arrow-right-long shared-mobile-link-icon"></i></a>' +
+        '        <a href="gallery.html" class="shared-mobile-link"><span>家族藝廊</span><i class="fa-solid fa-arrow-right-long shared-mobile-link-icon"></i></a>' +
+        '        <a href="' + insightsHref + '" class="shared-mobile-link"><span>尖端洞察</span><i class="fa-solid fa-arrow-right-long shared-mobile-link-icon"></i></a>' +
+        '      </nav>' +
+        '      <a href="#" class="inline-flex items-center justify-center mt-8 w-full border border-gallery-800 text-gallery-900 px-4 py-3 text-xs tracking-[0.2em] font-bold hover:bg-gallery-900 hover:text-white transition-all duration-300 rounded-full bg-white/70">預約免費旁聽</a>' +
+        '    </aside>' +
+        '  </div>' +
       '</header>';
   }
 
@@ -271,10 +403,10 @@
       '    <div>' +
       '      <h4 class="text-gallery-900 font-display font-bold tracking-[0.2em] uppercase mb-8">Programs</h4>' +
       '      <ul class="space-y-4 tracking-widest">' +
-      '        <li><a href="index.html#courses" class="hover:text-gallery-900 transition-colors">日間部 全職養成</a></li>' +
-      '        <li><a href="index.html#courses" class="hover:text-gallery-900 transition-colors">夜間部 在職進修</a></li>' +
-      '        <li><a href="index.html#courses" class="hover:text-gallery-900 transition-colors">動態影像 攝影指導</a></li>' +
-      '        <li><a href="#" class="hover:text-gallery-900 transition-colors">企業包班</a></li>' +
+      '        <li><a href="courses.html#ple" class="hover:text-gallery-900 transition-colors">PLE 影像風格養成所</a></li>' +
+      '        <li><a href="courses.html#visual-language" class="hover:text-gallery-900 transition-colors">視覺語言入門班</a></li>' +
+      '        <li><a href="courses.html#collage" class="hover:text-gallery-900 transition-colors">影像創作班｜拼貼</a></li>' +
+      '        <li><a href="courses.html" class="hover:text-gallery-900 transition-colors">課程總覽</a></li>' +
       '      </ul>' +
       '    </div>' +
       '    <div>' +
@@ -307,6 +439,7 @@
     if (header) {
       header.innerHTML = renderHeader(opts.activeNav || '', opts);
       setupHeaderScrollBehavior();
+      setupMobileMenu();
     }
 
     var cta = document.getElementById('shared-cta');

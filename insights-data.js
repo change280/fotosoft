@@ -1,400 +1,311 @@
-[
-  {
-    "id": "why-photography-literacy",
-    "title": "Visual Language within Images",
-    "subtitle": "PLE 影像訊息讀寫教育的當代必要性",
-    "author": "吳嘉寶",
-    "publishedDate": "2024-05-20",
-    "coverImage": "/fotosoft/image/insight/Visual Language within Images13.webp",
-    "categories": [
-      "專欄",
-      "影像理論",
-      "教育觀察"
-    ],
-    "tags": [
-      "AI",
-      "PLE",
-      "影像讀寫"
-    ],
-    "summary": "AI 可以生成完美的像素，但無法取代人類觀看世界的獨特視角。在演算技術爆發的年代，創作者的核心競爭力將回歸到最根本的美學涵養與視覺論述能力。",
-    "featured": true,
-    "blocks": [
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images01.webp",
-        "caption": "Visual Language within Images01.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images02.webp",
-        "caption": "Visual Language within Images02.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images03.webp",
-        "caption": "Visual Language within Images03.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images04.webp",
-        "caption": "Visual Language within Images04.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images05.webp",
-        "caption": "Visual Language within Images05.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images06.webp",
-        "caption": "Visual Language within Images06.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images07.webp",
-        "caption": "Visual Language within Images07.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images08.webp",
-        "caption": "Visual Language within Images08.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images09.webp",
-        "caption": "Visual Language within Images09.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images10.webp",
-        "caption": "Visual Language within Images10.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images11.webp",
-        "caption": "Visual Language within Images11.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images12.webp",
-        "caption": "Visual Language within Images12.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images13.webp",
-        "caption": "Visual Language within Images13.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images14.webp",
-        "caption": "Visual Language within Images14.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images15.webp",
-        "caption": "Visual Language within Images15.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images16.webp",
-        "caption": "Visual Language within Images16.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images17.webp",
-        "caption": "Visual Language within Images17.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images18.webp",
-        "caption": "Visual Language within Images18.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images19.webp",
-        "caption": "Visual Language within Images19.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images20.webp",
-        "caption": "Visual Language within Images20.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images21.webp",
-        "caption": "Visual Language within Images21.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Visual Language within Images22.webp",
-        "caption": "Visual Language within Images22.webp",
-        "alt": "",
-        "size": "large"
-      }
-    ],
-    "createdAt": 1783507510708,
-    "updatedAt": 1783519494687
-  },
-  {
-    "id": "seeing-is-not-looking",
-    "title": "Ernst Haas生日快樂！",
-    "subtitle": "",
-    "author": "吳嘉寶",
-    "publishedDate": "2023-11-10",
-    "coverImage": "/fotosoft/image/insight/Ernst Haas生日快樂！05.webp",
-    "categories": [
-      "專欄",
-      "視覺心理"
-    ],
-    "tags": [
-      "視覺心理",
-      "認知",
-      "觀看"
-    ],
-    "summary": "",
-    "featured": false,
-    "blocks": [
-      {
-        "type": "paragraph",
-        "text": "今天 2025 年 3 ⽉ 2 ⽇是世界攝影史上排名⾄少前⼗⼤的殿堂級⼤師 Ernst Haas 恩斯特･哈斯爺爺 105 歲冥誕⽇。\n\n哈斯爺爺，祝您 105 歲⽣⽇快樂！\n\n哈斯爺爺 1921 年 3 ⽉ 2 ⽇在奧地利維也納市，1986年 9 ⽉ 12 ⽇因中風在美國紐約市家中逝世，得年 65 歲。去世前他正著⼿要寫回憶錄。\n\n和世界攝影史上其它殿堂級⼤師動輒活過 80 歲的攝影⼤師相比，哈斯爺爺 65 歲就離世，確實屬於英年早逝。但是活得不夠長，卻也⼀點不妨礙哈斯爺爺在五⼗知天命之前，就已經在世界攝影界建立了後⼈難以企及的豐功偉業。\n\n世⼈對哈斯的肯定通常都集中在他將「彩⾊攝影」帶進「攝影是藝術」的殿堂級領域。和攝影術早期被認為攝影術不過是販夫走卒⽤來謀⽣的⼯具⽽已，「不應該；也不可能是藝術」⼀般，哈斯成名前後的 1940-50 年代，即便在世界最頂尖的「想要推動『攝影成為藝術』紐約 291 畫廊的極⼩圈圈裡」也和美國社會主流觀念⼀樣，普遍認為唯有⿊⽩照片才可能成為攝影藝術談論的對象，彩⾊攝影不過是⽤來在雜誌上刊登商業宣傳的彩⾊照⽽已，絕非藝術。\n\n1958 年、哈斯年⽅ 37，美國暢銷攝影雜誌 《Popular Photography ⼤眾攝影》⽉刊，將哈斯與 Ansel Adams、Richard Avedon、Henri Cartier-Bresson、Alfred Eisenstadt、Philippe Halsman、Yousuf Karsh、Gjon Mili、Irving Penn 和 W. Eugene Smith 等⼈並列為世界⼗⼤攝影師。"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Ernst Haas生日快樂！01.webp",
-        "caption": "Ernst Haas生日快樂！01.webp",
-        "alt": "",
-        "size": "small"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Ernst Haas生日快樂！02.webp",
-        "caption": "Ernst Haas生日快樂！02.webp",
-        "alt": "",
-        "size": "small"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Ernst Haas生日快樂！03.webp",
-        "caption": "Ernst Haas生日快樂！03.webp",
-        "alt": "",
-        "size": "small"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Ernst Haas生日快樂！04.webp",
-        "caption": "Ernst Haas生日快樂！04.webp",
-        "alt": "",
-        "size": "small"
-      },
-      {
-        "type": "paragraph",
-        "text": "1962 年，哈斯年⽅不惑，是個⼈⽣涯成就最輝煌的⼀年。美國紐約現代美術館在當時在攝影部擔任主任的愛德華･史泰欽推動  下，讓 MoMA 攝影部舉辦了「恩斯特･哈斯：彩⾊攝影」個展。這是 MoMA 第⼀個以彩⾊照片為主要內容的個⼈藝術家⼤規模個展，展出哈斯過去⼗年主要以慢速快⾨創作的作品。與此同時太平洋彼岸的⽇本也在每⽇新聞主辦下，在東京市池袋⻄武百貨頂樓舉辦⼤規模的「恩斯特･哈斯：彩⾊攝影」巡迴展。同年，才剛開台的美國國家公共電視台邀請哈斯撰寫並主持名為《看的藝術 The Art of Seeing》；全長四⼩時的迷你電視連續劇。\n\n翌年，1963年在美國柯達公司，在世界五⼤洲展出以恩斯特哈斯作品構成的「彩⾊世界」攝影展。\n\n此後，從 1962 年到 2012 年為⽌的 50 年間，哈斯的攝影個展共展出了 62 次，50年間幾乎每⼀年都會有恩斯特･哈斯的⼤型個展在世界某國展出。這還不包括 1947 年（年⽅ 26）美國紅⼗字會在奧地利維也納為他舉辦的第⼀次個展及 1960 年哈斯從德國科隆起⾸的⼤型攝影巡迴展。\n\n除了彩⾊攝影領域的成就外，哈斯也是出⾊的電影劇照師。在與哈斯合作的其它電影靜照中，看到哈斯的出⾊影像構成能⼒，著名導演約翰休斯頓在 1966 年拍攝著名的「聖經 The Bibl」⼤片時，聘請哈斯擔任第⼆劇組的導演，負責電影中「創世紀」部分的影像製 作。這個經驗提醒了哈斯何不從⾃⼰累績的彩⾊攝影資料庫挑選出適當的影像來編織成「創世紀」的故事？\n\n於是，恩斯特･哈斯的曠世巨作：「天地創造 The Creation」就因此在 1971 年問世。根據舊約聖經創世紀的經⽂描述，哈斯從他的影像資料庫中挑選 106 張彩⾊照片既具備豐富詩意，也能標達表達聖經深意的脈絡完成他的影像詩。這本具備「攝影 4.0 版時代」的影像⽂學特徵的「影像長篇⼩說」出版後立刻轟動世界，直到 1988 年的 17 年間全球銷售量已經超過 350,000 本。"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Ernst Haas生日快樂！05.webp",
-        "caption": "Ernst Haas生日快樂！05.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "paragraph",
-        "text": "和世界攝影史上其它殿堂級⼤師動通常都是在幼年時就從⽗執輩收到玩具型相機，從此就愛上攝影相比，哈斯開始接觸攝影的年紀⾜⾜晚了他的同⾏⼗幾⼆⼗年。儘管喜歡⾳樂和攝影的⽗親從哈斯⼩時候就期盼哈斯喜歡攝影，但是他真正接觸攝影卻是⽗親･在哈斯  19 歲時去世之後，他才踏入⽗親在家中遺留下的暗房。直到 1949 年他28歲的時候，哈斯才開始接觸彩⾊攝影。\n\n哈斯畢⽣成就所需的養分幾乎都是因為源⾃他誕⽣於⼀個重視教育與藝術猶太裔⾼官家中。1921 年⼆戰前夕，是奧地利⽂藝風氣最鼎盛時期，喜歡⾳樂和攝影的⽗親從⼩⿎勵孩⼦追求創造⼒。⺟親是立志成為藝術家的詩⼈。和羅伯特･法蘭克⼀樣，兩⼈都是在接觸攝影之前先學習過電影，也都對詩歌和詩⼈有濃厚興趣。\n\n哈斯的⽗親在家裡留有藏書即為豐富的圖書館加上維也納市博物館和圖書館林立的都市，雙親在哈斯成年之前特別誘導哈斯兩兄弟研究哲學和詩歌，由 Thomas Forman 選詩，Bryan Holme 挑選愛德華威斯頓等⼈拍攝的照片所共著的《詩⼈的相機 A Poet's Camera》在1946 年出版的攝影與詩作選集等等，都讓哈斯對攝影的創作潛⼒有了更深的認識。ˋ\n\n哈斯的作品深具形式特質，所有作品幾乎都成為後⼈學習影像美感的重要教材，恐怕就是來⾃哈斯爺爺⽗⺟親的基因以及年少時所打下的深厚⽂化底蘊形塑⽽成。哈斯畢⽣的成就正呼應著視丘攝影藝術學院經常對同學們耳提⾯命的提醒：「攝影藝術家最需要的養分，通常都來⾃非攝影的其它藝術⽂化領域。」\n\n對視丘⽽⾔，哈斯在世界攝影史上的殿堂級地位，根本不是「⼗⼤」⽽是「第⼀⼤」。尤其是對喜愛攝影想要在影像創作上有所成就的年輕⼈⽽⾔，恩斯特･哈斯根本就應該是世界藝術史上最重  要；⾸屈⼀指的殿堂級攝影⼤師！"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Ernst Haas生日快樂！06.webp",
-        "caption": "Ernst Haas生日快樂！06.webp",
-        "alt": "",
-        "size": "small"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Ernst Haas生日快樂！07.webp",
-        "caption": "Ernst Haas生日快樂！07.webp",
-        "alt": "",
-        "size": "small"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Ernst Haas生日快樂！08.webp",
-        "caption": "Ernst Haas生日快樂！08.webp",
-        "alt": "",
-        "size": "small"
-      },
-      {
-        "type": "paragraph",
-        "text": "1985年視丘攝影藝術學院開始了⽇間部，專⾨為台灣地區培訓專業攝影⼈才開始，在課堂上視丘就認定哈斯的「天地創造」是關於「攝影表現技法」的「教科書」使⽤。\n\n對視丘⽽⾔，哈斯是世界攝影史上幾乎是唯⼀的；真正了解「影像中的視覺語⾔」的世界攝影⼤師！哈斯幾乎是眾多⼤師中唯⼀能夠把「造形、影調、⾊彩」三項視覺基本三元素與「視覺⼼理學的諸原理」「渾然天成地」融合成為完整的「新整體 the new Whole」的攝影⼤師。\n\n在視丘專業攝影教學裡，不論是優勢鏡位 Vantage Point、完形結構 Gestalt Construction、變形、模糊的積極運⽤、剪影、造形、減法構成、N-2、N+2、⾊彩飽和、倒影、擬⼈化、重複曝光、疊影、複合空間、群化原理、壓縮透視、誇張透視、時間感、空間感、 what else. 等等等等基乎所有我們可以想像得到的影像表現技巧在哈斯的彩⾊作品中都可以（甚⾄只在「天地創造」這本教科書裡就可以）找到最佳⽰範例證。\n\n世界攝影史上最早由恩斯特哈斯開發出來的慢速快⾨＋晃動相機＋Pan 等影像表現技法，對後進不僅影響巨⼤；世⼈普遍認為德國當代藝術家葛哈・利希特 Gerhard Richter 的 Photo Painting 系列的 “Ferrari 1964”創作靈感源⾃哈斯的作品，圈內⼈也都知道美國挪⽤藝術⼤師理查德·普林斯 Richard Prince 的 Untitled (cowboy), 1989 源⾃哈斯當年為萬寶路香煙 Marlboro 拍攝的廣告照片。\n\n對視丘牆外的攝影愛好者⽽⾔，可能對影像的「完形結構」不知所云。簡⽽⾔之，視丘教學中對影像中的完形結構所下的定義就 是：「觀者視野中所⾒的⼀切視覺刺激都有其必須存在的積極意義、作⽤和⽬的。」有興趣的朋友不妨從這篇⽂中視丘為您精選⼗張附圖來仔細品味「影像中的完形結構」的境界。\n\n視丘以為哈斯的影像創作能夠把造形、影調、⾊彩三項視覺元素與視覺完形原理「渾然天成地」融合成為⼀個完整的新整體的這項\n\n \n\n本能恐怕就是世⼈普遍認為他的作品具備詩意，令⼈百看不厭成功地說服世⼈認為他是將彩⾊攝影從技術層次提升進入藝術境界的第⼀⼈的主要原因。\n\n讓我們重申：將彩⾊攝影提升⾄藝術境界的第⼀⼈是今天 3 ⽉ 2 ⽇⽣⽇的恩斯特･哈斯⽽不是⼤家普遍誤以爲的威廉·埃格斯頓 William Eggleston 啊！（甚⾄有⼈將威廉稱為彩⾊攝影之⽗，更是恐怖）兩⼈都因為 MoMA 為他們舉辦彩⾊攝影個展，前者在 1962年後者在 1976 年。\n\n所以，對視丘⽽⾔，或者對想要真正且踏實地學好「真攝影」的朋友⽽⾔，每年 3 ⽉ 2 ⽇確實是⼀個「不平凡」的⽇⼦。\n\n \n"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/Ernst Haas生日快樂！09.webp",
-        "caption": "Ernst Haas生日快樂！09.webp",
-        "alt": "",
-        "size": "large"
-      }
-    ],
-    "createdAt": 1783507977878,
-    "updatedAt": 1783519530045
-  },
-  {
-    "id": "ernst-haas-birthday",
-    "title": "芳庫伯塔爺爺⽣⽇快樂！",
-    "subtitle": "",
-    "author": "吳嘉寶",
-    "publishedDate": "2020-03-02",
-    "coverImage": "/fotosoft/image/insight/芳庫伯塔爺爺⽣⽇快樂！01.webp",
-    "categories": [
-      "專欄",
-      "攝影史",
-      "人物紀念"
-    ],
-    "tags": [],
-    "summary": "",
-    "featured": true,
-    "blocks": [
-      {
-        "type": "paragraph",
-        "text": "今天 2025 年 02⽉24⽇是加泰隆尼亞籍世界攝影史殿堂級⼤師 Joan Fontcuberta  瓊･芳庫伯塔爺爺的 71 歲⽣⽇！\n"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/芳庫伯塔爺爺⽣⽇快樂！01.webp",
-        "caption": "芳庫伯塔爺爺⽣⽇快樂！01.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "paragraph",
-        "text": "瓊･芳庫伯塔爺爺 1955 年 2 ⽉ 24 ⽇⽣於⻄班牙加泰隆尼亞的巴塞隆納市。\n\n對台灣攝影界朋友⽽⾔，瓊･芳庫伯塔這個名字應該是非常陌⽣，但他卻是1980年代以後歐洲當代藝術的代表性⼈物，甚⾄有⼈稱他為「⼿屈⼀指的歐洲當代攝影家」。因為⼩時玩⾃制炸彈時的失誤，讓他失去了⼀根⼿指頭，他經常⾃嘲說，缺⼀根指頭使他成為⼀名糟糕的攝影家，但是在歐洲當代攝影界，他的攝影成就卻無⼈能 比。2013 年的哈蘇國際攝影獎不過是他冗長的攝影成就名單裡的⼀項。在他之前的這個獎的得主包括安塞爾-亞當斯和亨利･卡蒂埃-布列松。"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/芳庫伯塔爺爺⽣⽇快樂！02.webp",
-        "caption": "芳庫伯塔爺爺⽣⽇快樂！02.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "paragraph",
-        "text": "視丘在2012年提出的「攝影的進化」斷代中把 2010 年開始的「攝影4.0版時代」定義為「影像⽂學」的時代。也許會有⼈對：「影像」如何成為「⽂學」？仍有疑惑。  簡⽽⾔之，「⽂學」就是⽤⽂字當作媒材撰寫/創作虛構且具備形⽽上內容的故事，「影像⽂學」就是⽤影像當作媒材撰寫虛構/創作且具備形⽽上內容的故事。剛剛才在⽇本東京都寫真美術館展過的 Alec Soth 的 “⼀個關於房間的房間”的展覽和 Photobook 就是「影像⽂學創作」的最佳例證。這也是視丘向來主張 2010年才出現的最新影像創作形式：Photobook 這個名詞正確的中譯應該是「影像長編⼩說」，⽽不是⼀般簡稱的「攝影書」⽽已的原因。\n\n芳庫伯塔在當代藝術中最了不起的成就，就是早在 1984 年他就開創了⼀個全新的影像⽂學創作形式：他使⽤在當代社會中「科學博物館」或「美術館」正式展覽的規格與形式，⽤鉅細彌遺、規模龐⼤；乍看之下屬於真實的科學或歷史⽂獻的視覺、⽂字、⾳訊資料進⾏他的影像⽂學創作。他積極使⽤只有在科學期刊才會出現的影像與⽂字資料，或者看似呆板卻習以為常的科學模型、化⽯、動植物標本或已經刻意「做舊」的影像透過我⼤眾早已在新聞、廣告、博物館展覽中習慣的影像視覺語⾔來傳遞他在創作中想要讓我們相信「那是真實發⽣過」的訊息，最後卻⼜在展覽的某些⾓落中故意留下線索，讓觀者驚覺⾃⼰正在經歷的這個展覽其實是芳庫伯塔要我們真⼼相信 的；⽂學等級的虛構故事（⼀場⼤規模的騙局）。"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/芳庫伯塔爺爺⽣⽇快樂！03.webp",
-        "caption": "芳庫伯塔爺爺⽣⽇快樂！03.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "paragraph",
-        "text": "從 1984-2016 他共創造出 14 個⼤型虛構故事，展覽展出的地點都是歐洲各國的國家科博館等級的機構。他的展覽經常⽤「不存在事物的照片」、「比虛構更奇怪 Stranger Than Fiction」等字眼為展名，也常常被記者冠以「現代特洛伊⽊⾺式」展覽、「攝影騙局」之名。\n\nHerbarium (1984)\nFauna (1987)\nConstellations (1993)\nArtist and the Photograph (1995)\nSputnik (1997)\nHemograms (1998)\nSirens (2000)\nPin Zhuang (2001)\nKarelia: Miracles & Co. (2002)\nOrogenesis (2002)\nGooglegrams (2005)\nDeconstructing Osama (2007)\nCamouﬂages (2014)\nTrauma (2016)\n芳庫伯塔認為他的創作理念來⾃他曾在⻄班牙獨裁法蘭⻄斯科·佛朗哥統治下過了20年。在他 26歲把⼈⽣⽅向轉向攝影創作之 前，他和⽗⺟親都在廣告界⼯作。他說：「「我的作品--我不想⾃命不凡--是教育性的。是⼀種懷疑的教育，保護我們不被操控。我們想要相信。相信是比較舒服的，因為不相信意味著努⼒、對抗。我們被動地從電視、媒體和網際網路接收⼤量資訊，因為我們不願花費精⼒去懷疑。」他認為⼀般⼤眾都是「在理智上偷懶」，也因此觀眾參觀科學博物館裡舉辦的芳庫伯塔的展覽，需要花費許多批判性的精⼒。⼀旦你揭穿了這個騙局，另⼀個問題就會出現：你為什麼要相信你所看到的任何東⻄的真實性，即使它帶有⼀個值得尊敬的博物館的印記？\n\n這正是芳庫伯塔爺爺畢⽣作品的核⼼精神，他⽤他的作品來向總是習慣於「在理智上偷懶」的我們提出這個問題：「你為什麼要相信你所看到的任何東⻄的真實性，即是它是⼀張照片？\n\n芳庫伯塔是⼀個徹頭徹尾的英雄偶像反叛者。他的作品之所以如此可以引⼈入勝、如此有效地騙倒⼤部分觀眾，在於他在作品中隱藏的機智、尖刻的幽默、刺耳的智慧以及天衣無縫的表現技巧，他將所有要向觀眾的「理智上的懶惰」挑釁的計謀都精⼼設計注入展覽之中。\n\n1984年他和著名捷克思想家 Vilém Flusser 威廉-弗魯瑟（著名的「攝影的哲學思考」⼀書作者）合作的第⼀件作品：「Herbarium 標本室」那些看起來與世界攝影史上 Karl Blossﬁeld的著名作品極度相似的各種植物標本，其實都是他攝影棚裡的⽔管⽻⽑之類的拼合⽽成的。弗魯瑟稱芳庫伯塔是歐洲最重要的攝影師之⼀，因為他明⽩照片的真正意義：記錄不存在的東⻄。"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/芳庫伯塔爺爺⽣⽇快樂！04.webp",
-        "caption": "芳庫伯塔爺爺⽣⽇快樂！04.webp",
-        "alt": "",
-        "size": "small"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/芳庫伯塔爺爺⽣⽇快樂！05.webp",
-        "caption": "芳庫伯塔爺爺⽣⽇快樂！05.webp",
-        "alt": "",
-        "size": "small"
-      },
-      {
-        "type": "paragraph",
-        "text": "在1995年藝術家和他們的照片系列中，芳庫伯塔「想像並實現了20世紀⻄班牙最偉⼤的四位藝術家，即畢卡索、米羅、達利和塔⽪斯的攝影作品」、 他混合了事實（畢加索確實曾與 André Villers合作創作了⼀系列⽯版畫，名為「Diurnes」）與虛構（虛構⼀位研究員最近發現了該系列中被丟棄的圖片）。這個展覽的⽬的在於提醒觀者探索策展⼈與博物館的想法或立場是如何影響⼤眾對藝術的觀感。"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/芳庫伯塔爺爺⽣⽇快樂！06.webp",
-        "caption": "芳庫伯塔爺爺⽣⽇快樂！06.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "paragraph",
-        "text": "1997年的 Sputnik 展覽，描述⼀位在1968 年，俄羅斯太空⼈ Ivan Istochnikov 和他的狗在⼀次例⾏太空漫步中失蹤的龐⼤故事，不淡惹惱了當時⼀位俄羅斯⼤使威脅要提出外交控訴還認為這個展侮辱了「俄羅斯的光榮過去」。其實 Ivan Istochnikov 就是瓊･芳庫伯塔的俄⽂翻譯，展覽中反覆出現的蘇聯太空⼈的照片都是芳庫伯塔的⾃拍照。"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/芳庫伯塔爺爺⽣⽇快樂！07.webp",
-        "caption": "芳庫伯塔爺爺⽣⽇快樂！07.webp",
-        "alt": "",
-        "size": "large"
-      },
-      {
-        "type": "paragraph",
-        "text": "芳庫伯塔堅稱現今影像的流通對於建構其意義比其實際內容更為重要。這個觀念正好與台北視丘攝影藝術學院在2010年就提倡，「攝影術這個名詞已經消失，攝影4.0版時代其實就是『影像傳播的時代』。」不謀⽽合。影像傳播時代就是⼈們積極且⼤量使⽤影像傳遞訊息的時代，在這個時代裡，影像拍了什麼並不重要，重要的是作者藉著這張影像的⽤法，想要向觀眾傳遞什麼樣的訊息。\n\n芳庫伯塔1979 年到 1986 年間，他在巴塞隆納⼤學美術學院擔任教授，之後就靠藝術謀⽣。1980 年，他共同創辦了⻄班牙/英⽂視覺藝術期刊 PhotoVision，⽬前仍擔任總編輯。1993 年起，在巴塞隆納龐培法布拉⼤學擔任視聽傳播教授。2003 年在哈佛⼤學擔任視覺與環境研究的客座講師。\n\n1994 年獲法國⽂化部頒發「藝術與⽂學勳章」。1996 年法國阿爾勒攝影節藝術總監。2005 年和 2009 年在阿爾勒攝影節展出作品。"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/芳庫伯塔爺爺⽣⽇快樂！08.webp",
-        "caption": "芳庫伯塔爺爺⽣⽇快樂！08.webp",
-        "alt": "",
-        "size": "small"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/芳庫伯塔爺爺⽣⽇快樂！09.webp",
-        "caption": "芳庫伯塔爺爺⽣⽇快樂！09.webp",
-        "alt": "",
-        "size": "small"
-      },
-      {
-        "type": "image",
-        "src": "/fotosoft/image/insight/芳庫伯塔爺爺⽣⽇快樂！10.webp",
-        "caption": "芳庫伯塔爺爺⽣⽇快樂！10.webp",
-        "alt": "",
-        "size": "small"
-      }
-    ],
-    "createdAt": 1783508786775,
-    "updatedAt": 1783519563745
+/* ============================================================
+ * insights-data.js
+ * ------------------------------------------------------------
+ * 視丘尖端洞察（Insights） — 共用資料層
+ *
+ * 頁面使用：
+ *   <script src="js/insights-data.js"></script>
+ *   const list = InsightsStore.getAll();
+ *   const post = InsightsStore.getById('ernst-haas-birthday');
+ *
+ * 資料模型 (Insight)：
+ *   {
+ *     id:            string   // URL slug，唯一識別
+ *     title:         string
+ *     subtitle:      string
+ *     author:        string   // 例：吳嘉寶 / Chia-Pao Wu
+ *     publishedDate: string   // 'YYYY-MM-DD'
+ *     coverImage:    string   // 卡片封面 + 詳細頁 hero；未填會 fallback 到圖庫
+ *     categories:    string[] // 例：['專欄','攝影史']
+ *     tags:          string[]
+ *     summary:       string   // 卡片摘要（若空會自動由 blocks 抽首段）
+ *     featured:      boolean  // 是否置入首頁「尖端洞察」精選（首頁只取 1 篇最新精選）
+ *     blocks: Block[]         // 內文區塊，順序即呈現順序
+ *     createdAt:     number
+ *     updatedAt:     number
+ *   }
+ *
+ * Block（自由穿插的內文區塊）：
+ *   { type: 'heading',   level: 2|3,      text: string }
+ *   { type: 'paragraph', text: string }                 // 允許 \n\n 分段
+ *   { type: 'quote',     text: string,    cite?: string }
+ *   { type: 'image',     src: string,     caption?: string, alt?: string, size?: 'large'|'small' }
+ *   { type: 'divider' }
+ *
+ *   image.size：
+ *     'large'（預設）→ 大圖，寬度佔滿內文欄寬。
+ *     'small'        → 縮圖，最長邊約為大圖最長邊的 1/3。
+ * ============================================================ */
+
+(function (global) {
+  'use strict';
+
+  const STORAGE_KEY = 'FOTOSOFT_INSIGHTS_V1';
+  const EVENT_NAME  = 'fotosoft:insights-updated';
+  const REMOTE_JSON = 'insights-data.json';
+
+  /* 圖庫：未指定封面時，用 id 做雜湊挑一張作為 fallback */
+  const FALLBACK_COVERS = [
+    'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1200&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=80&w=1200&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1200&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?q=80&w=1200&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=1200&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1519183071298-a2962feb14f4?q=80&w=1200&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1200&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1526481280695-3c4696237c00?q=80&w=1200&auto=format&fit=crop'
+  ];
+
+  const DEFAULT_CATEGORIES = [
+    '專欄','攝影史','影像理論','視覺心理','教育觀察','時事評論','人物紀念'
+  ];
+
+  /* ---------- 預設種子資料（示範文章） ---------- */
+  const DEFAULT_INSIGHTS = [
+    {
+      id: 'ernst-haas-birthday',
+      title: 'Ernst Haas 生日快樂！',
+      subtitle: '紀念一位讓彩色攝影登堂入室的大師',
+      author: '吳嘉寶',
+      publishedDate: '2020-03-02',
+      coverImage: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1200&auto=format&fit=crop',
+      categories: ['專欄','攝影史','人物紀念'],
+      tags: ['Ernst Haas','彩色攝影','Magnum'],
+      summary: 'Ernst Haas 於 1921 年 3 月 2 日在奧地利維也納出生。他是史上第一位在紐約 MoMA 舉辦彩色攝影個展的攝影家。',
+      featured: true,
+      blocks: [
+        { type: 'paragraph', text: 'Ernst Haas 於 1921 年 3 月 2 日在奧地利維也納出生，1986 年 9 月 12 日於美國紐約辭世，享年 65 歲。他是史上第一位在紐約現代美術館 MoMA 舉辦彩色攝影個展的攝影家（1962 年），也是 Magnum 早期最重要的成員之一。' },
+        { type: 'heading', level: 2, text: '色彩，攝影的新語言' },
+        { type: 'paragraph', text: 'Haas 在戰後的維也納街頭拍下無數黑白影像，但真正讓他成為傳奇的，是他敢在 1950 年代末期就以柯達克羅姆彩色片深入紐約街頭、賽事現場與抽象光影。當時彩色攝影仍被視為「商業」而非「藝術」，Haas 是最早以彩色影像進行嚴肅創作論述的少數。' },
+        { type: 'image', src: 'https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?q=80&w=1400&auto=format&fit=crop', caption: '紐約街頭的光與色 — Haas 常用慢速快門在移動中捕捉抽象色彩。' },
+        { type: 'quote', text: '重要的不是你看到什麼，而是你如何看見它。', cite: 'Ernst Haas' },
+        { type: 'heading', level: 2, text: '從新聞攝影到抽象視覺詩' },
+        { type: 'paragraph', text: '1949 年，Robert Capa 邀請 Haas 加入 Magnum。他從報導攝影出發，卻在 1950 年代初期完成了他最具代表性的作品《Homecoming》— 記錄戰後戰俘回到維也納火車站的動人瞬間，這組作品讓 LIFE 雜誌以史無前例的 24 頁彩色跨頁刊登。' },
+        { type: 'paragraph', text: '此後 Haas 的工作愈來愈朝向抽象，他把運動、跳躍、水花、色塊、倒影都當作「視覺的音符」。他在 1971 年出版的《The Creation》以攝影重新演繹《創世紀》，是彩色攝影書史上的里程碑。' },
+        { type: 'divider' },
+        { type: 'paragraph', text: '「視丘攝影圖書館」典藏多本 Haas 的重要作品集，歡迎有興趣的朋友到館參閱。攝影史不只是知識，更是我們理解「觀看」這件事的長線索引。' }
+      ]
+    },
+    {
+      id: 'why-photography-literacy',
+      title: '為什麼在 AI 時代，我們更需要學習「影像讀寫」？',
+      subtitle: 'PLE 影像訊息讀寫教育的當代必要性',
+      author: '吳嘉寶',
+      publishedDate: '2024-05-20',
+      coverImage: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1200&auto=format&fit=crop',
+      categories: ['專欄','影像理論','教育觀察'],
+      tags: ['AI','PLE','影像讀寫'],
+      summary: 'AI 可以生成完美的像素，但無法取代人類觀看世界的獨特視角。在演算技術爆發的年代，創作者的核心競爭力將回歸到最根本的美學涵養與視覺論述能力。',
+      featured: true,
+      blocks: [
+        { type: 'paragraph', text: '2023 年之後，生成式 AI 讓「產出一張像模像樣的照片」變得幾乎零門檻。這件事對攝影教育提出了一個尖銳的問題：既然機器能生成，人還要學什麼？' },
+        { type: 'heading', level: 2, text: '技術會過時，讀寫能力不會' },
+        { type: 'paragraph', text: '相機的操作、後製的技法、甚至構圖法則，都是「工具層」的知識。它們會隨著設備與軟體更新而不斷改寫。但一張影像為什麼「打動人」— 這是屬於視覺心理學、藝術史與符號學的問題，是任何演算法都無法自動給出的答案。' },
+        { type: 'image', src: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1400&auto=format&fit=crop', caption: 'AI 可以生成無數張技術完美的影像，但「意義」仍需要人來賦予。' },
+        { type: 'heading', level: 2, text: 'PLE：Photo Literacy Education' },
+        { type: 'paragraph', text: '視丘自 1985 年創校起提倡的「PLE 影像訊息讀寫教育」，正是為了培養「能讀懂影像、也能用影像書寫」的當代創作者。它包含三個層次：\n\n1. Read — 拆解一張影像的視覺元素、符號與文化脈絡\n2. Write — 用影像作為主要語言表達思想\n3. Edit — 在多影像的序列中建構論述與敘事' },
+        { type: 'quote', text: '攝影不是一項技藝，而是理解世界的一種語言。', cite: '視丘教育理念' }
+      ]
+    },
+    {
+      id: 'seeing-is-not-looking',
+      title: '看見（Seeing）不等於觀看（Looking）',
+      subtitle: '視覺心理學給攝影家的第一堂課',
+      author: '吳嘉寶',
+      publishedDate: '2023-11-10',
+      coverImage: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?q=80&w=1200&auto=format&fit=crop',
+      categories: ['專欄','視覺心理'],
+      tags: ['視覺心理','認知','觀看'],
+      summary: '眼睛接收光線，但真正「看見」發生在大腦。攝影家若不理解這件事，就只能拍出「拍到什麼」，而無法拍出「想讓別人看見什麼」。',
+      featured: false,
+      blocks: [
+        { type: 'paragraph', text: '在視覺心理學中，「Looking」是眼球接收光線的生理過程；「Seeing」則是大腦對這些訊號進行辨識、篩選、賦予意義的認知過程。兩者相差的，是整個文化與經驗的厚度。' },
+        { type: 'heading', level: 2, text: '為什麼兩個人看同一個場景會拍出不同照片？' },
+        { type: 'paragraph', text: '答案在於「注意力」。人眼一次只能高解析度地看清楚視野中約 2 度的範圍，其餘都是低解析度的邊視。我們以為自己「看到全景」，其實是大腦快速跳視（saccade）後拼貼出來的錯覺。' },
+        { type: 'image', src: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1400&auto=format&fit=crop', caption: '眼動實驗顯示：人在觀看肖像時，注意力會反覆停留在眼睛與嘴巴。' },
+        { type: 'paragraph', text: '所以「拍照」這件事，某種程度上就是「凍結你選擇注意的東西」。這也是為什麼視丘的課程從一開始就強調視覺心理學 — 沒有這層自覺，攝影家就會停留在「拍到什麼」的層次。' }
+      ]
+    }
+  ];
+
+  /* ---------- Utility ---------- */
+  function safeParse(s) { try { return JSON.parse(s); } catch (_) { return null; } }
+  function slugify(text) {
+    return String(text || '')
+      .toLowerCase().trim()
+      .replace(/\s+/g, '-')
+      .replace(/[^\w\u4e00-\u9fa5-]/g, '')
+      .replace(/-+/g, '-')
+      .slice(0, 60) || 'insight-' + Date.now();
   }
-]
+  function broadcast() {
+    try { window.dispatchEvent(new CustomEvent(EVENT_NAME)); } catch (_) {}
+  }
+  function stableHash(s) {
+    let h = 0;
+    s = String(s || '');
+    for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+    return h;
+  }
+
+  function resolveAssetPath(path) {
+    const src = String(path || '').trim();
+    if (!src) return '';
+    if (/^(?:https?:)?\/\//i.test(src) || /^data:/i.test(src)) return src;
+    if (!src.startsWith('/')) return src;
+
+    const host = (typeof location !== 'undefined' && location.hostname) ? location.hostname : '';
+    const pathname = (typeof location !== 'undefined' && location.pathname) ? location.pathname : '/';
+    const isGitHubPages = /github\.io$/i.test(host);
+    if (!isGitHubPages) return src;
+
+    const firstSeg = pathname.split('/').filter(Boolean)[0] || '';
+    if (!firstSeg) return src;
+    if (src === '/' + firstSeg || src.startsWith('/' + firstSeg + '/')) return src;
+    return '/' + firstSeg + src;
+  }
+
+  /* ---------- Store ---------- */
+  const InsightsStore = {
+    STORAGE_KEY, EVENT_NAME, DEFAULT_CATEGORIES, FALLBACK_COVERS,
+
+    _seedIfEmpty() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_INSIGHTS));
+    },
+
+    /** 新到舊排序 */
+    getAll() {
+      this._seedIfEmpty();
+      const data = safeParse(localStorage.getItem(STORAGE_KEY)) || [];
+      return data.slice().sort((a, b) => {
+        const ta = Date.parse(a.publishedDate || '') || (a.createdAt || 0);
+        const tb = Date.parse(b.publishedDate || '') || (b.createdAt || 0);
+        return tb - ta;
+      });
+    },
+
+    getById(id) {
+      return this.getAll().find(i => i.id === id) || null;
+    },
+
+    /** 首頁精選（最新的 featured 一篇） */
+    getFeatured(limit) {
+      const arr = this.getAll().filter(i => i.featured);
+      return typeof limit === 'number' ? arr.slice(0, limit) : arr;
+    },
+
+    getAllCategories() {
+      const set = new Set(DEFAULT_CATEGORIES);
+      this.getAll().forEach(i => (i.categories || []).forEach(c => c && set.add(c)));
+      return Array.from(set);
+    },
+
+    /** 依 id 產生穩定 fallback 封面 */
+    pickFallbackCover(id) {
+      return FALLBACK_COVERS[stableHash(id) % FALLBACK_COVERS.length];
+    },
+
+    coverOf(post) {
+      if (!post) return '';
+      return resolveAssetPath((post.coverImage && post.coverImage.trim()) || this.pickFallbackCover(post.id));
+    },
+
+    assetPath(path) {
+      return resolveAssetPath(path);
+    },
+
+    /** 由 blocks 抽首段當摘要（若原 summary 為空） */
+    summaryOf(post, maxLen) {
+      if (!post) return '';
+      if (post.summary && post.summary.trim()) return post.summary.trim();
+      const first = (post.blocks || []).find(b => b && b.type === 'paragraph' && b.text);
+      const raw = first ? String(first.text).replace(/\s+/g, ' ').trim() : '';
+      const max = maxLen || 100;
+      return raw.length > max ? raw.slice(0, max) + '…' : raw;
+    },
+
+    save(post) {
+      const list = this.getAll();
+      const now = Date.now();
+      const isNew = !post.id || !list.some(i => i.id === post.id);
+      const normalized = {
+        id: post.id || (slugify(post.title) + '-' + now.toString(36)),
+        title: (post.title || '未命名文章').trim(),
+        subtitle: (post.subtitle || '').trim(),
+        author: (post.author || '').trim(),
+        publishedDate: post.publishedDate || new Date(now).toISOString().slice(0, 10),
+        coverImage: (post.coverImage || '').trim(),
+        categories: Array.isArray(post.categories) ? post.categories.filter(Boolean) : [],
+        tags: Array.isArray(post.tags) ? post.tags.filter(Boolean) : [],
+        summary: (post.summary || '').trim(),
+        featured: !!post.featured,
+        blocks: Array.isArray(post.blocks) ? post.blocks.filter(b => b && b.type) : [],
+        createdAt: post.createdAt || now,
+        updatedAt: now
+      };
+      const next = isNew
+        ? list.concat([normalized])
+        : list.map(i => (i.id === normalized.id ? normalized : i));
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      } catch (e) { console.warn('[insights] quota', e); }
+      broadcast();
+      return normalized;
+    },
+
+    remove(id) {
+      const next = this.getAll().filter(i => i.id !== id);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      broadcast();
+    },
+
+    reset() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_INSIGHTS));
+      broadcast();
+    },
+
+    exportJSON() {
+      return JSON.stringify(this.getAll(), null, 2);
+    },
+
+    importJSON(jsonString, mode) {
+      const data = typeof jsonString === 'string' ? safeParse(jsonString) : jsonString;
+      if (!Array.isArray(data)) throw new Error('匯入資料格式錯誤：必須為陣列');
+      if (mode === 'merge') {
+        const map = new Map(this.getAll().map(i => [i.id, i]));
+        data.forEach(i => { if (i && i.id) map.set(i.id, i); });
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(map.values())));
+      } else {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      }
+      broadcast();
+    },
+
+    /** 嘗試從 insights-data.json 拉最新資料覆蓋（用於部署後同步） */
+    refreshFromRemote() {
+      return fetch(REMOTE_JSON + '?t=' + Date.now(), { cache: 'no-store' })
+        .then(r => r.ok ? r.json() : null)
+        .then(data => {
+          if (!Array.isArray(data)) return false;
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+          broadcast();
+          return true;
+        })
+        .catch(() => false);
+    },
+
+    subscribe(callback) {
+      const handler = () => callback();
+      window.addEventListener(EVENT_NAME, handler);
+      window.addEventListener('storage', (e) => {
+        if (e.key === STORAGE_KEY) callback();
+      });
+      return () => window.removeEventListener(EVENT_NAME, handler);
+    },
+
+    slugify
+  };
+
+  global.InsightsStore = InsightsStore;
+})(window);
