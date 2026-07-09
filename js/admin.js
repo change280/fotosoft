@@ -531,7 +531,8 @@
 
   function renderListItem(w) {
     const active = w.id === selectedId ? 'active' : '';
-    const bg = w.coverImage ? `background-image:url('${escapeAttr(w.coverImage)}')` : '';
+    const coverSrc = WorksStore.assetPath ? WorksStore.assetPath(w.coverImage || '') : (w.coverImage || '');
+    const bg = coverSrc ? `background-image:url('${escapeAttr(coverSrc)}')` : '';
     return `
       <div class="fs-list-item ${active}" data-role="select" data-id="${escapeAttr(w.id)}">
         <div class="fs-list-thumb" style="${bg}"></div>
@@ -557,6 +558,7 @@
   function renderForm(w, isNew) {
     const allCats = WorksStore.getAllCategories();
     const currentCats = new Set(w.categories || []);
+    const coverPreviewSrc = WorksStore.assetPath ? WorksStore.assetPath(w.coverImage || '') : (w.coverImage || '');
     return `
       <div class="fs-main-head">
         <h2 class="fs-main-title">${isNew ? '新增作品' : '編輯作品'}</h2>
@@ -565,7 +567,7 @@
       <div class="fs-form">
         <div class="fs-field">
           <label class="fs-label">封面圖（顯示於家族藝廊圖卡 & 首頁視丘藝廊）</label>
-          <div class="fs-cover-preview" style="${w.coverImage ? `background-image:url('${escapeAttr(w.coverImage)}')` : ''}">
+          <div class="fs-cover-preview" style="${coverPreviewSrc ? `background-image:url('${escapeAttr(coverPreviewSrc)}')` : ''}">
             ${w.coverImage ? '' : '尚未設定封面'}
           </div>
           <div class="fs-image-row">
@@ -618,7 +620,7 @@
           <label class="fs-label">內頁作品照（${(w.gallery || []).length} 張）</label>
           <div class="fs-gallery-list" data-role="gallery">
             ${(w.gallery || []).map((g, i) => `
-              <div class="fs-gallery-item" style="background-image:url('${escapeAttr(g.src)}')">
+              <div class="fs-gallery-item" style="background-image:url('${escapeAttr(WorksStore.assetPath ? WorksStore.assetPath(g.src || '') : (g.src || ''))}')">
                 <div class="fs-gallery-actions">
                   <button data-role="edit-gallery" data-index="${i}" title="編輯網址">✎</button>
                   <button data-role="remove-gallery" data-index="${i}" title="刪除">🗑</button>
@@ -741,7 +743,8 @@
         if (field === 'coverImage') {
           const preview = rootEl.querySelector('.fs-cover-preview');
           if (preview) {
-            preview.style.backgroundImage = el.value ? `url('${el.value}')` : '';
+            const nextCover = WorksStore.assetPath ? WorksStore.assetPath(el.value || '') : (el.value || '');
+            preview.style.backgroundImage = nextCover ? `url('${nextCover}')` : '';
             preview.textContent = el.value ? '' : '尚未設定封面';
           }
         }
