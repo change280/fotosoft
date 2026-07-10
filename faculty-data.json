@@ -8,9 +8,22 @@
     "courses": "影像理論、視覺心理學、世界攝影史、台灣攝影史、Photobook 製作、攝影專題",
     "photo": "/fotosoft/image/faculty/JIABAO_portraita.webp",
     "image": "/image/faculty/JIABAO_portraita.webp",
-    "video": "",
-    "videos": [],
-    "gallery": [],
+    "video": "https://www.youtube.com/watch?v=65wDq1lWn4w",
+    "videos": [
+      "https://www.youtube.com/watch?v=65wDq1lWn4w"
+    ],
+    "gallery": [
+      {
+        "src": "/fotosoft/image/faculty/自拍照＿吳嘉寶.webp",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "src": "/fotosoft/image/faculty/典藏＿吳嘉寶.webp",
+        "alt": "",
+        "caption": ""
+      }
+    ],
     "links": [
       {
         "label": "臉書",
@@ -189,7 +202,7 @@
       }
     ],
     "createdAt": 1783479064128,
-    "updatedAt": 1783519842145
+    "updatedAt": 1783644733318
   },
   {
     "id": "吳文富",
