@@ -449,18 +449,15 @@
                         <p class="text-[10px] font-bold tracking-[0.3em] text-gallery-400 uppercase font-display">Programs</p>
                     </div>
                     <h2 class="font-serif text-4xl md:text-5xl font-bold text-gallery-900">選擇你的影像探索路徑</h2>
+                <a href="courses.html" class="pt-4 group inline-flex items-center gap-4 font-bold text-gallery-900 pb-1 border-b border-gallery-900 hover:text-gallery-500 hover:border-gallery-500 transition-colors tracking-widest text-sm whitespace-nowrap">
+                    查看完整招生課程總覽 <i class="fa-solid fa-arrow-right-long text-xs group-hover:translate-x-2 transition-transform"></i>
+                </a>
                 </div>
                 <p class="text-gallery-500 font-medium tracking-widest text-sm mb-2">從零基礎到專業職人，找到屬於你的觀看方式。</p>
             </div>
 
             <!-- 課程卡片：玻璃態設計（由 js/courses-data.js 動態渲染 featured 課程） -->
-            <div id="programs-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
-
-            <div class="mt-14 flex justify-center">
-                <a href="courses.html" class="group inline-flex items-center gap-4 font-bold text-gallery-900 pb-1 border-b border-gallery-900 hover:text-gallery-500 hover:border-gallery-500 transition-colors tracking-widest text-sm whitespace-nowrap">
-                    查看完整招生課程總覽 <i class="fa-solid fa-arrow-right-long text-xs group-hover:translate-x-2 transition-transform"></i>
-                </a>
-            </div>
+            <div id="programs-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[4fr_3fr_3fr_3fr] gap-6"></div>
         </div>
     </section>
 
@@ -625,12 +622,19 @@
                 let list = store.getFeatured();
                 if (!list.length) list = store.getAll();
                 list = list.slice(0, 4);
+                // 讓「日間部」(fulltime) 固定置於第一格（對應較寬的 4fr 欄位）
+                const fi = list.findIndex(function (c) { return c.track === 'fulltime'; });
+                if (fi > 0) { const moved = list.splice(fi, 1)[0]; list.unshift(moved); }
                 grid.innerHTML = list.map(function (c) {
                     const img = store.cardImageOf(c);
                     const tag = c.tag || store.trackOf(c).label;
+                    const isFulltime = c.track === 'fulltime';
+                    const imgClass = isFulltime
+                        ? 'w-full h-full object-cover opacity-100 transition-all duration-700 group-hover:scale-[1.03]'
+                        : 'w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 mix-blend-multiply';
                     return `<a href="${esc(hrefOf(c))}"${targetAttr(c)} class="group block relative overflow-hidden glass-card rounded-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:bg-white/80 p-1.5">
                         <div class="aspect-[4/3] overflow-hidden img-hover-zoom rounded-t-xl bg-gallery-100">
-                            <img src="${esc(img)}" alt="${esc(c.title)}" loading="lazy" onerror="this.src='${esc(store.pickFallbackImage(c.id))}'" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 mix-blend-multiply">
+                            <img src="${esc(img)}" alt="${esc(c.title)}" loading="lazy" onerror="this.src='${esc(store.pickFallbackImage(c.id))}'" class="${imgClass}">
                         </div>
                         <div class="p-8">
                             <span class="text-[10px] text-gallery-800 font-bold tracking-widest border border-gallery-300 bg-white/80 px-3 py-1 mb-5 inline-block uppercase rounded-full backdrop-blur-sm">${esc(tag)}</span>
