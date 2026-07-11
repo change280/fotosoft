@@ -244,6 +244,34 @@
             transform: scale(0.98);
         }
 
+        .hero-video-layer {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+
+        .hero-video-layer.is-active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .hero-video-close {
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: rgba(0, 0, 0, 0.45);
+            color: #fff;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: background-color 0.25s ease, transform 0.25s ease;
+        }
+
+        .hero-video-close:hover {
+            background: rgba(0, 0, 0, 0.66);
+            transform: scale(1.04);
+        }
+
         /* 浮水印裝飾字 */
         .watermark-text {
             writing-mode: vertical-rl;
@@ -442,6 +470,19 @@
             <div class="absolute inset-0 bg-black/50 hero-dim-overlay"></div>
             </div>
 
+            <div id="hero-video-layer" class="hero-video-layer absolute inset-0 z-40 bg-black/80" aria-hidden="true">
+                <iframe id="hero-video-iframe"
+                    class="absolute inset-0 w-full h-full"
+                    src="about:blank"
+                    title="Hero Video Player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+                <button id="hero-video-close" type="button" class="hero-video-close absolute top-4 right-4 md:top-6 md:right-6 z-50" aria-label="關閉影片">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
             <!-- Controls -->
             <button type="button" class="hero-prev hidden md:block absolute left-4 md:left-10 top-1/2 -translate-y-1/2 hero-nav-btn text-3xl md:text-4xl z-30 cursor-pointer transition duration-300 hover:scale-110" aria-label="Previous slide">
                 <i class="fa-solid fa-chevron-left"></i>
@@ -633,7 +674,7 @@
                     <div class="h-px w-12 bg-gallery-800"></div>
                     <p class="text-[10px] font-bold tracking-[0.3em] text-gallery-400 uppercase font-display">Videos</p>
                 </div>
-                <div id="insights-videos" class="flex overflow-x-auto gap-4 no-scrollbar pb-2 snap-x snap-mandatory"></div>
+                <div id="insights-videos" class="flex overflow-x-auto gap-4 no-scrollbar pb-6 snap-x snap-mandatory"></div>
 
                 <a href="insights.html" class="sm:hidden mt-8 inline-flex items-center gap-3 text-xs font-bold tracking-widest text-gallery-900 pb-1 border-b border-gallery-900 hover:text-gallery-500 hover:border-gallery-500 transition-colors">
                     瀏覽所有專欄 <i class="fa-solid fa-arrow-right-long text-xs"></i>
@@ -818,6 +859,14 @@
 
             const heroPrev = document.querySelector('.hero-prev');
             const heroNext = document.querySelector('.hero-next');
+            const heroVideoLayer = document.getElementById('hero-video-layer');
+            const heroVideoIframe = document.getElementById('hero-video-iframe');
+            const heroVideoClose = document.getElementById('hero-video-close');
+            const heroGhostText = document.querySelector('.hero-ghost-text');
+            const heroScrollIndicator = document.querySelector('.hero-stage .animate-bounce');
+            const heroBottomDots = document.querySelector('.hero-bottom-white-dots');
+
+            let isVideoMode = false;
 
             function renderSlide(index) {
                 slides.forEach(function(slide, idx) {
@@ -827,11 +876,47 @@
                 currentIndex = index;
             }
 
+            function stopAutoplay() {
+                if (autoplayTimer) {
+                    clearInterval(autoplayTimer);
+                    autoplayTimer = null;
+                }
+            }
+
             function restartAutoplay() {
-                if (autoplayTimer) clearInterval(autoplayTimer);
+                if (isVideoMode) return;
+                stopAutoplay();
                 autoplayTimer = setInterval(function() {
                     renderSlide((currentIndex + 1) % slides.length);
                 }, intervalMs);
+            }
+
+            function setHeroOverlayVisibility(hidden) {
+                if (heroGhostText) heroGhostText.style.display = hidden ? 'none' : '';
+                if (heroPrev) heroPrev.style.display = hidden ? 'none' : '';
+                if (heroNext) heroNext.style.display = hidden ? 'none' : '';
+                if (heroScrollIndicator) heroScrollIndicator.style.display = hidden ? 'none' : '';
+                if (heroBottomDots) heroBottomDots.style.display = hidden ? 'none' : '';
+            }
+
+            function openHeroVideo(videoId) {
+                if (!heroVideoLayer || !heroVideoIframe || !videoId) return;
+                isVideoMode = true;
+                stopAutoplay();
+                setHeroOverlayVisibility(true);
+                heroVideoLayer.classList.add('is-active');
+                heroVideoLayer.setAttribute('aria-hidden', 'false');
+                heroVideoIframe.src = 'https://www.youtube.com/embed/' + encodeURIComponent(videoId) + '?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&origin=' + encodeURIComponent(window.location.origin);
+            }
+
+            function closeHeroVideo() {
+                if (!heroVideoLayer || !heroVideoIframe) return;
+                isVideoMode = false;
+                heroVideoLayer.classList.remove('is-active');
+                heroVideoLayer.setAttribute('aria-hidden', 'true');
+                heroVideoIframe.src = 'about:blank';
+                setHeroOverlayVisibility(false);
+                restartAutoplay();
             }
 
             function goPrev() {
@@ -848,6 +933,38 @@
 
             if (heroPrev) heroPrev.addEventListener('click', goPrev);
             if (heroNext) heroNext.addEventListener('click', goNext);
+            if (heroVideoClose) heroVideoClose.addEventListener('click', closeHeroVideo);
+
+            window.addEventListener('fotosoft:hero-play-video', function (event) {
+                const videoId = event && event.detail && event.detail.videoId;
+                openHeroVideo(videoId);
+            });
+
+            window.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape' && isVideoMode) {
+                    closeHeroVideo();
+                }
+            });
+
+            window.addEventListener('message', function (event) {
+                if (!isVideoMode || !heroVideoIframe) return;
+                if (event.source !== heroVideoIframe.contentWindow) return;
+                if (typeof event.origin !== 'string' || !/youtube\.com$|youtube-nocookie\.com$/.test(new URL(event.origin).hostname)) return;
+
+                var payload = event.data;
+                if (typeof payload === 'string') {
+                    try {
+                        payload = JSON.parse(payload);
+                    } catch (e) {
+                        return;
+                    }
+                }
+
+                if (!payload || payload.event !== 'onStateChange') return;
+                if (Number(payload.info) === 0) {
+                    closeHeroVideo();
+                }
+            });
 
             restartAutoplay();
         })();
@@ -1018,17 +1135,18 @@
 
                 if (videoRow) {
                     videoRow.innerHTML = videoItems.map(function (item) {
+                        const id = youtubeId(item.url);
                         const thumb = youtubeThumb(item.url);
                         return `
-                            <a href="${esc(item.url)}" target="_blank" rel="noopener"
+                            <a href="${esc(item.url)}" data-hero-video-id="${esc(id)}"
                                class="insight-video-card group relative shrink-0 w-[64vw] sm:w-[260px] md:w-[280px] hover:-translate-y-1 transition-transform duration-500 snap-center">
                                 <div class="aspect-[16/10] overflow-hidden bg-gallery-100 relative">
                                     <img src="${esc(thumb)}" alt="${esc(item.title)}"
                                          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100">
                                     <div class="absolute inset-0 bg-black/35 group-hover:bg-black/25 transition-colors"></div>
                                     <div class="absolute inset-0 flex items-center justify-center">
-                                        <div class="w-14 h-14 rounded-full bg-white/92 text-gallery-900 flex items-center justify-center shadow-lg border border-white/70 group-hover:scale-110 transition-transform">
-                                            <i class="fa-solid fa-play text-sm ml-1"></i>
+                                        <div class="w-14 h-14 rounded-full bg-gallery-900/76 text-white flex items-center justify-center shadow-lg border border-white/70 group-hover:scale-110 transition-transform">
+                                            <i class="fa-solid fa-play text-sm ml-1 text-white"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -1040,6 +1158,24 @@
                                 </div>
                             </a>`;
                     }).join('');
+
+                    if (videoRow.dataset.heroVideoBound !== '1') {
+                        videoRow.dataset.heroVideoBound = '1';
+                        videoRow.addEventListener('click', function (event) {
+                            const card = event.target.closest('[data-hero-video-id]');
+                            if (!card) return;
+                            const videoId = card.getAttribute('data-hero-video-id');
+                            if (!videoId) return;
+                            event.preventDefault();
+                            window.dispatchEvent(new CustomEvent('fotosoft:hero-play-video', {
+                                detail: { videoId: videoId }
+                            }));
+                            const heroSection = document.querySelector('.hero-stage');
+                            if (heroSection) {
+                                heroSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                        });
+                    }
                 }
             }
 
