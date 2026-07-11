@@ -121,6 +121,85 @@
       '@keyframes sharedMmFade {',
       '  from { opacity: 0; transform: translateY(10px); }',
       '  to { opacity: 1; transform: translateY(0); }',
+      '}',
+      '.shared-cta-wrap {',
+      '  overflow: visible !important;',
+      '  margin-top: clamp(76px, 9vw, 110px);',
+      '  background-image: url("image/cta網點.webp");',
+      '  background-repeat: no-repeat;',
+      '  background-position: center bottom;',
+      '  background-size: cover;',
+      '}',
+      '.shared-cta-bridge {',
+      '  position: absolute;',
+      '  left: 50%;',
+      '  top: -72px;',
+      '  transform: translateX(-50%);',
+      '  width: min(320px, 34vw);',
+      '  height: 150px;',
+      '  pointer-events: none;',
+      '  z-index: 0;',
+      '}',
+      '.shared-cta-bridge-line {',
+      '  position: absolute;',
+      '  left: 50%;',
+      '  top: 0;',
+      '  width: 1px;',
+      '  height: 200px;',
+      '  transform: translateX(-50%);',
+      '  background: linear-gradient(to bottom, rgba(173,181,189,0), rgba(173,181,189,0.66) 36%, rgba(173,181,189,0.45) 74%, rgba(173,181,189,0.16) 92%, rgba(173,181,189,0));',
+      '}',
+      '.shared-cta-bridge-noise {',
+      '  position: absolute;',
+      '  left: 50%;',
+      '  top: 24px;',
+      '  width: 120px;',
+      '  height: 46px;',
+      '  transform: translateX(-50%);',
+      '  background-image: radial-gradient(rgba(173,181,189,0.5) 0.8px, transparent 0.9px);',
+      '  background-size: 9px 9px;',
+      '  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);',
+      '  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);',
+      '  opacity: 0.38;',
+      '}',
+      '.shared-cta-kicker {',
+      '  display: inline-flex;',
+      '  align-items: center;',
+      '  gap: 0.58rem;',
+      '  font-family: "Roboto", sans-serif;',
+      '  font-size: 0.66rem;',
+      '  font-weight: 800;',
+      '  letter-spacing: 0.34em;',
+      '  text-transform: uppercase;',
+      '  color: #ADB5BD;',
+      '  margin-bottom: 1.5rem;',
+      '}',
+      '.shared-cta-kicker-dot {',
+      '  width: 0.3rem;',
+      '  height: 0.3rem;',
+      '  border-radius: 999px;',
+      '  background: #ADB5BD;',
+      '  opacity: 0.9;',
+      '}',
+      '.closing-fx {',
+      '  overflow: visible !important;',
+      '}',
+      '.closing-fx .closing-glow {',
+      '  position: absolute;',
+      '  left: 50%;',
+      '  top: calc(100% + 106px);',
+      '  width: min(1080px, 88vw);',
+      '  height: clamp(240px, 34vh, 380px);',
+      '  transform: translateX(-50%);',
+      '  background: radial-gradient(ellipse at top, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.72) 28%, rgba(255,255,255,0.36) 58%, rgba(255,255,255,0.12) 76%, transparent 100%);',
+      '  filter: blur(58px);',
+      '}',
+      '@media (max-width: 767px) {',
+      '  .shared-cta-wrap { margin-top: clamp(64px, 12vw, 88px); }',
+      '  .shared-cta-bridge { top: -60px; height: 132px; }',
+      '  .shared-cta-bridge-line { height: 136px; }',
+      '  .closing-fx .closing-glow { top: calc(100% + 52px); height: clamp(180px, 24vh, 280px); filter: blur(44px); }',
+      '  .shared-cta-kicker { font-size: 0.6rem; letter-spacing: 0.28em; margin-bottom: 1.2rem; }',
       '}'
     ].join('\n');
     document.head.appendChild(style);
@@ -418,13 +497,18 @@
 
   function renderCTA() {
     return '' +
-      '<section class="py-8 md:py-12 text-gallery-900 text-center px-6 relative z-10 overflow-hidden">' +
-      '  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] h-[90vw] max-w-4xl max-h-4xl bg-white rounded-full blur-[120px] pointer-events-none -z-10 opacity-70"></div>' +
-      '  <div class="max-w-3xl mx-auto p-12 md:p-24 relative group">' +
+      '<section class="shared-cta-wrap py-8 md:py-12 text-gallery-900 text-center px-6 relative z-10">' +
+      '  <div class="shared-cta-bridge" aria-hidden="true">' +
+      '    <div class="shared-cta-bridge-line"></div>' +
+      '    <div class="shared-cta-bridge-noise"></div>' +
+      '  </div>' +
+      '  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] max-w-4xl max-h-4xl bg-white rounded-full blur-[120px] pointer-events-none -z-10 opacity-40"></div>' +
+      '  <div class="max-w-3xl mx-auto p-12 md:p-24 relative z-10 group">' +
       '    <div class="absolute top-0 left-0 w-6 h-[1px] bg-gallery-400"></div>' +
       '    <div class="absolute top-0 left-0 w-[1px] h-6 bg-gallery-400"></div>' +
       '    <div class="absolute bottom-0 right-0 w-6 h-[1px] bg-gallery-400"></div>' +
       '    <div class="absolute bottom-0 right-0 w-[1px] h-6 bg-gallery-400"></div>' +
+      '    <div class="shared-cta-kicker"><span class="shared-cta-kicker-dot"></span><span>Join Fotosoft</span></div>' +
       '    <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6 leading-tight">準備好重新認識<br><span class="italic font-light text-gallery-500">影像</span>了嗎？</h2>' +
       '    <p class="text-gallery-500 font-medium text-sm tracking-widest mb-16">加入視丘，開啟你的影像創作旅程。</p>' +
       '    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">' +
@@ -490,6 +574,19 @@
       '</footer>';
   }
 
+  function ensureIndexClosingFx() {
+    var insights = document.getElementById('insights');
+    if (!insights) return;
+    if (insights.querySelector('.closing-fx')) return;
+
+    var fx = document.createElement('div');
+    fx.className = 'closing-fx';
+    fx.setAttribute('aria-hidden', 'true');
+    fx.innerHTML = '<div class="closing-texture"></div><div class="closing-glow"></div>';
+
+    insights.insertBefore(fx, insights.firstChild);
+  }
+
   function mount(options) {
     var opts = options || {};
     injectStyleOnce();
@@ -506,6 +603,8 @@
 
     var cta = document.getElementById('shared-cta');
     if (cta) cta.innerHTML = renderCTA();
+
+    ensureIndexClosingFx();
 
     var footer = document.getElementById('shared-footer');
     if (footer) footer.innerHTML = renderFooter();
