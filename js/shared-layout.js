@@ -200,9 +200,227 @@
       '  .shared-cta-bridge-line { height: 136px; }',
       '  .closing-fx .closing-glow { top: calc(100% + 52px); height: clamp(180px, 24vh, 280px); filter: blur(44px); }',
       '  .shared-cta-kicker { font-size: 0.6rem; letter-spacing: 0.28em; margin-bottom: 1.2rem; }',
+      '}',
+      '.shared-fab-wrap {',
+      '  position: fixed;',
+      '  right: 1rem;',
+      '  bottom: 1rem;',
+      '  z-index: 65;',
+      '  display: flex;',
+      '  flex-direction: column;',
+      '  gap: 0.72rem;',
+      '  pointer-events: none;',
+      '}',
+      '.shared-fab-btn {',
+      '  pointer-events: auto;',
+      '  width: 3.25rem;',
+      '  height: 3.25rem;',
+      '  position: relative;',
+      '  border-radius: 999px;',
+      '  display: inline-flex;',
+      '  align-items: center;',
+      '  justify-content: center;',
+      '  border: 0.8px solid var(--fab-ring-border, rgba(40, 46, 135, 0.28));',
+      '  background: var(--fab-ring, #ffffff);',
+      '  color: var(--fab-icon, #282E87);',
+      '  box-shadow: 0 10px 24px rgba(31, 41, 55, 0.2);',
+      '  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.25s ease;',
+      '}',
+      '.shared-fab-btn::before {',
+      '  content: "";',
+      '  position: absolute;',
+      '  inset: 0.14rem;',
+      '  border-radius: 999px;',
+      '  background: var(--fab-fill, #ffffff);',
+      '  border: 0.8px solid var(--fab-fill-border, transparent);',
+      '}',
+      '.shared-fab-btn > i {',
+      '  position: relative;',
+      '  z-index: 1;',
+      '}',
+      '.shared-fab-btn:hover {',
+      '  transform: translateY(-2px) scale(1.04);',
+      '}',
+      '.shared-fab-btn--fb {',
+      '  --fab-ring: linear-gradient(180deg, #6674B2, #4E5C9F);',
+      '  --fab-ring-border: rgba(78, 92, 159, 0.84);',
+      '  --fab-fill: #ffffff;',
+      '  --fab-fill-border: rgba(78, 92, 159, 0.24);',
+      '  --fab-icon: #4E5C9F;',
+      '}',
+      '.shared-fab-btn--fb:hover {',
+      '  box-shadow: 0 14px 30px rgba(78, 92, 159, 0.36);',
+      '}',
+      '.shared-fab-btn--contact {',
+      '  --fab-ring: #ffffff;',
+      '  --fab-ring-border: rgba(78, 92, 159, 0.45);',
+      '  --fab-fill: linear-gradient(180deg, #6270AD, #4B599A);',
+      '  --fab-fill-border: rgba(78, 92, 159, 0.74);',
+      '  --fab-icon: #ffffff;',
+      '  backdrop-filter: blur(10px);',
+      '  -webkit-backdrop-filter: blur(10px);',
+      '}',
+      '.shared-fab-btn--contact:hover {',
+      '  --fab-ring-border: rgba(78, 92, 159, 0.74);',
+      '  --fab-fill: linear-gradient(180deg, #6B79B7, #5361A2);',
+      '  box-shadow: 0 14px 30px rgba(78, 92, 159, 0.28);',
+      '}',
+      '.shared-fab-btn--top {',
+      '  --fab-ring: linear-gradient(180deg, #6674B2, #4E5C9F);',
+      '  --fab-ring-border: rgba(92, 106, 176, 0.64);',
+      '  --fab-fill: #43508A;',
+      '  --fab-fill-border: rgba(255, 255, 255, 0.75);',
+      '  --fab-icon: #EEF0FF;',
+      '  opacity: 0;',
+      '  transform: translateY(12px);',
+      '  pointer-events: none;',
+      '}',
+      '.shared-fab-btn--top.is-visible {',
+      '  opacity: 1;',
+      '  transform: translateY(0);',
+      '  pointer-events: auto;',
+      '}',
+      '.shared-fab-btn--top:hover {',
+      '  --fab-ring-border: rgba(97, 112, 186, 0.86);',
+      '  --fab-fill-border: rgba(255, 255, 255, 0.9);',
+      '  box-shadow: 0 14px 30px rgba(67, 80, 138, 0.4);',
+      '}',
+      '.shared-fab-tip {',
+      '  position: absolute;',
+      '  right: calc(100% + 0.65rem);',
+      '  padding: 0.38rem 0.62rem;',
+      '  border-radius: 0.55rem;',
+      '  background: rgba(71, 84, 136, 0.9);',
+      '  color: #F8FAFC;',
+      '  font-size: 0.62rem;',
+      '  font-weight: 700;',
+      '  letter-spacing: 0.12em;',
+      '  white-space: nowrap;',
+      '  opacity: 0;',
+      '  transform: translateX(6px);',
+      '  transition: opacity 0.2s ease, transform 0.2s ease;',
+      '  pointer-events: none;',
+      '}',
+      '.shared-fab-btn:hover .shared-fab-tip {',
+      '  opacity: 1;',
+      '  transform: translateX(0);',
+      '}',
+      '.shared-footer-sitemap-head {',
+      '  display: grid;',
+      '  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);',
+      '  column-gap: 2rem;',
+      '  align-items: end;',
+      '  margin-bottom: 1.85rem;',
+      '}',
+      '.shared-footer-sitemap-head > :first-child {',
+      '  text-align: right;',
+      '}',
+      '.shared-footer-sitemap-body {',
+      '  display: grid;',
+      '  grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr);',
+      '  column-gap: 1.45rem;',
+      '  align-items: start;',
+      '}',
+      '.shared-footer-sitemap-divider {',
+      '  align-self: stretch;',
+      '  background: linear-gradient(to bottom, rgba(173,181,189,0), rgba(173,181,189,0.85) 12%, rgba(173,181,189,0.85) 88%, rgba(173,181,189,0));',
+      '}',
+      '.shared-footer-sitemap-list {',
+      '  font-size: 1.02rem;',
+      '  letter-spacing: 0.16em;',
+      '}',
+      '.shared-footer-sitemap-list li + li {',
+      '  margin-top: 1rem;',
+      '}',
+      '.shared-footer-sitemap-list a {',
+      '  color: #6C757D;',
+      '}',
+      '.shared-footer-sitemap-list a:hover {',
+      '  color: #212529;',
+      '}',
+      '.shared-footer-sitemap-list--left {',
+      '  text-align: right;',
+      '}',
+      '@media (min-width: 768px) {',
+      '  .shared-fab-wrap { right: 1.35rem; bottom: 1.35rem; }',
+      '}',
+      '@media (max-width: 767px) {',
+      '  .shared-footer-sitemap-head { display: none; }',
+      '  .shared-footer-sitemap-body {',
+      '    grid-template-columns: 1fr;',
+      '    row-gap: 1rem;',
+      '  }',
+      '  .shared-footer-sitemap-divider { display: none; }',
+      '  .shared-footer-sitemap-body > :nth-child(1),',
+      '  .shared-footer-sitemap-body > :nth-child(3) { padding-top: 0.35rem; }',
+      '  .shared-footer-sitemap-body > :nth-child(1)::before,',
+      '  .shared-footer-sitemap-body > :nth-child(3)::before {',
+      '    display: block;',
+      '    margin-bottom: 1rem;',
+      '    font-family: "Noto Sans TC", sans-serif;',
+      '    font-size: 0.75rem;',
+      '    font-weight: 700;',
+      '    letter-spacing: 0.2em;',
+      '    line-height: 1;',
+      '    color: #212529;',
+      '  }',
+      '  .shared-footer-sitemap-body > :nth-child(1)::before { content: "全站快速導覽"; }',
+      '  .shared-footer-sitemap-body > :nth-child(3)::before { content: "PROGRAMS"; }',
+      '  .shared-footer-sitemap-list--left { text-align: left; }',
+      '  .shared-footer-sitemap-list { font-size: 0.95rem; letter-spacing: 0.12em; }',
       '}'
     ].join('\n');
     document.head.appendChild(style);
+  }
+
+  function renderFloatingActions() {
+    return '' +
+      '<div id="shared-floating-actions" class="shared-fab-wrap" aria-label="快捷操作按鍵">' +
+      '  <a href="https://www.facebook.com/Fotosoft" target="_blank" rel="noopener" class="shared-fab-btn shared-fab-btn--fb" aria-label="前往 Facebook 粉絲專頁">' +
+      '    <i class="fa-brands fa-facebook-f"></i>' +
+      '    <span class="shared-fab-tip">Facebook</span>' +
+      '  </a>' +
+      '  <button id="shared-fab-contact" type="button" class="shared-fab-btn shared-fab-btn--contact" aria-label="聯絡我們">' +
+      '    <i class="fa-solid fa-phone"></i>' +
+      '    <span class="shared-fab-tip">聯絡我們</span>' +
+      '  </button>' +
+      '  <button id="shared-fab-top" type="button" class="shared-fab-btn shared-fab-btn--top" aria-label="回到頂端">' +
+      '    <i class="fa-solid fa-arrow-up"></i>' +
+      '    <span class="shared-fab-tip">回到頂端</span>' +
+      '  </button>' +
+      '</div>';
+  }
+
+  function setupFloatingActions() {
+    var wrap = document.getElementById('shared-floating-actions');
+    if (!wrap || wrap.dataset.bound === '1') return;
+    wrap.dataset.bound = '1';
+
+    var contactBtn = document.getElementById('shared-fab-contact');
+    var topBtn = document.getElementById('shared-fab-top');
+    var topThreshold = 280;
+
+    function updateTopButton() {
+      if (!topBtn) return;
+      if ((window.scrollY || 0) > topThreshold) topBtn.classList.add('is-visible');
+      else topBtn.classList.remove('is-visible');
+    }
+
+    if (contactBtn) {
+      contactBtn.addEventListener('click', function () {
+        var target = document.getElementById('shared-cta') || document.getElementById('shared-footer');
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+
+    if (topBtn) {
+      topBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    window.addEventListener('scroll', updateTopButton, { passive: true });
+    updateTopButton();
   }
 
   function setupHeaderScrollBehavior() {
@@ -449,7 +667,7 @@
       '      <a href="' + insightsHref + '" class="' + navClass('insights') + '">尖端洞察</a>' +
       '    </nav>' +
       '    <div class="hidden lg:block">' +
-      '      <a href="#" class="border border-gallery-800 text-gallery-900 px-6 py-2.5 text-xs tracking-[0.2em] font-bold hover:bg-gallery-900 hover:text-white transition-all duration-300 rounded-full bg-white/50 backdrop-blur-sm">' +
+      '      <a href="#shared-cta" class="border border-gallery-800 text-gallery-900 px-6 py-2.5 text-xs tracking-[0.2em] font-bold hover:bg-gallery-900 hover:text-white transition-all duration-300 rounded-full bg-white/50 backdrop-blur-sm">' +
       '        預約免費旁聽' +
       '      </a>' +
       '    </div>' +
@@ -475,7 +693,7 @@
         '        </div>' +
         '        <div class="flex-none flex flex-col justify-center items-end gap-7 pr-8 md:pr-16 pb-16 min-w-[190px]">' +
                     mmMainListHTML +
-        '          <a href="#" data-mm-nav class="mt-3 inline-flex items-center justify-center border border-gallery-800 text-gallery-900 px-6 py-3 text-[11px] tracking-[0.2em] font-bold hover:bg-gallery-900 hover:text-white transition-all duration-300 rounded-full">預約免費旁聽</a>' +
+        '          <a href="#shared-cta" data-mm-nav class="mt-3 inline-flex items-center justify-center border border-gallery-800 text-gallery-900 px-6 py-3 text-[11px] tracking-[0.2em] font-bold hover:bg-gallery-900 hover:text-white transition-all duration-300 rounded-full">預約免費旁聽</a>' +
         '        </div>' +
         '      </div>' +
         '    </div>' +
@@ -532,35 +750,40 @@
       '      </a>' +
       '      <p class="leading-relaxed tracking-wider mb-8">台灣唯一專業攝影私塾大學<br>自 1987 年起，致力於 PLE 影像訊息讀寫教育。</p>' +
       '      <div class="flex gap-4">' +
-      '        <a href="#" class="w-10 h-10 rounded-full border border-gallery-300 bg-white/50 flex items-center justify-center hover:bg-gallery-900 hover:text-white hover:border-gallery-900 transition-all duration-300 text-sm text-gallery-800 shadow-sm"><i class="fa-brands fa-facebook-f"></i></a>' +
-      '        <a href="#" class="w-10 h-10 rounded-full border border-gallery-300 bg-white/50 flex items-center justify-center hover:bg-gallery-900 hover:text-white hover:border-gallery-900 transition-all duration-300 text-sm text-gallery-800 shadow-sm"><i class="fa-brands fa-instagram"></i></a>' +
-      '        <a href="#" class="w-10 h-10 rounded-full border border-gallery-300 bg-white/50 flex items-center justify-center hover:bg-gallery-900 hover:text-white hover:border-gallery-900 transition-all duration-300 text-sm text-gallery-800 shadow-sm"><i class="fa-brands fa-youtube"></i></a>' +
+      '        <a href="https://www.facebook.com/Fotosoft" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-gallery-300 bg-white/50 flex items-center justify-center hover:bg-gallery-900 hover:text-white hover:border-gallery-900 transition-all duration-300 text-sm text-gallery-800 shadow-sm"><i class="fa-brands fa-facebook-f"></i></a>' +
+      '        <a href="https://www.instagram.com/fotosoft__/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-gallery-300 bg-white/50 flex items-center justify-center hover:bg-gallery-900 hover:text-white hover:border-gallery-900 transition-all duration-300 text-sm text-gallery-800 shadow-sm"><i class="fa-brands fa-instagram"></i></a>' +
+      '        <a href="https://www.youtube.com/@tofotosoft" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-gallery-300 bg-white/50 flex items-center justify-center hover:bg-gallery-900 hover:text-white hover:border-gallery-900 transition-all duration-300 text-sm text-gallery-800 shadow-sm"><i class="fa-brands fa-youtube"></i></a>' +
       '      </div>' +
       '    </div>' +
-      '    <div>' +
-      '      <h4 class="text-gallery-900 font-display font-bold tracking-[0.2em] uppercase mb-8">About</h4>' +
-      '      <ul class="space-y-4 tracking-widest">' +
-      '        <li><a href="about.html#features" class="hover:text-gallery-900 transition-colors">學院特色</a></li>' +
-      '        <li><a href="faculty.html" class="hover:text-gallery-900 transition-colors">師資陣容</a></li>' +
-      '        <li><a href="gallery.html" class="hover:text-gallery-900 transition-colors">視丘藝廊</a></li>' +
-      '        <li><a href="#" class="hover:text-gallery-900 transition-colors">交通資訊</a></li>' +
-      '      </ul>' +
-      '    </div>' +
-      '    <div>' +
-      '      <h4 class="text-gallery-900 font-display font-bold tracking-[0.2em] uppercase mb-8">Programs</h4>' +
-      '      <ul class="space-y-4 tracking-widest">' +
-      '        <li><a href="courses.html#ple" class="hover:text-gallery-900 transition-colors">PLE 影像風格養成所</a></li>' +
-      '        <li><a href="courses.html#visual-language" class="hover:text-gallery-900 transition-colors">視覺語言入門班</a></li>' +
-      '        <li><a href="courses.html#collage" class="hover:text-gallery-900 transition-colors">影像創作班｜拼貼</a></li>' +
-      '        <li><a href="courses.html" class="hover:text-gallery-900 transition-colors">課程總覽</a></li>' +
-      '      </ul>' +
+      '    <div class="col-span-1 md:col-span-2 lg:col-span-2">' +
+      '      <div class="shared-footer-sitemap-head">' +
+      '        <h4 class="text-gallery-900 font-display font-bold tracking-[0.2em] mb-0">全站快速導覽</h4>' +
+      '        <h4 class="text-gallery-900 font-display font-bold tracking-[0.2em] uppercase mb-0">Programs</h4>' +
+      '      </div>' +
+      '      <div class="shared-footer-sitemap-body">' +
+      '        <ul class="shared-footer-sitemap-list shared-footer-sitemap-list--left">' +
+      '          <li><a href="index.html" class="transition-colors">首頁</a></li>' +
+      '          <li><a href="about.html" class="transition-colors">關於視丘</a></li>' +
+      '          <li><a href="courses.html" class="transition-colors">課程總覽</a></li>' +
+      '          <li><a href="faculty.html" class="transition-colors">師資團隊</a></li>' +
+      '          <li><a href="gallery.html" class="transition-colors">家族藝廊</a></li>' +
+      '          <li><a href="insights.html" class="transition-colors">尖端洞察</a></li>' +
+      '        </ul>' +
+      '        <div class="shared-footer-sitemap-divider" aria-hidden="true"></div>' +
+      '        <ul class="shared-footer-sitemap-list">' +
+      '          <li><a href="fulltime-detail.html?id=ple" class="transition-colors">日間部・全職養成</a></li>' +
+      '          <li><a href="courses.html#online-grid" class="transition-colors">線上單元課程</a></li>' +
+      '          <li><a href="courses.html#testimonials" class="transition-colors">學員心得</a></li>' +
+      '          <li><a href="courses.html#faq" class="transition-colors">課程 FAQ</a></li>' +
+      '        </ul>' +
+      '      </div>' +
       '    </div>' +
       '    <div>' +
       '      <h4 class="text-gallery-900 font-display font-bold tracking-[0.2em] uppercase mb-8">Contact</h4>' +
       '      <ul class="space-y-4 tracking-wider font-sans">' +
       '        <li>111臺北市士林區天母里天母北路101巷13號2樓</li>' +
-      '        <li>Tel: (02) 2773-5258</li>' +
-      '        <li>Email: info@fotosoft.com.tw</li>' +
+      '        <li>Tel: 0952-073-849</li>' +
+      '        <li>Email: fotosoftinstitu@gmail.com</li>' +
       '      </ul>' +
       '    </div>' +
       '  </div>' +
@@ -608,6 +831,11 @@
 
     var footer = document.getElementById('shared-footer');
     if (footer) footer.innerHTML = renderFooter();
+
+    if (!document.getElementById('shared-floating-actions')) {
+      document.body.insertAdjacentHTML('beforeend', renderFloatingActions());
+    }
+    setupFloatingActions();
   }
 
   global.SharedLayout = { mount: mount };
