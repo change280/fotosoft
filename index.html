@@ -221,6 +221,29 @@
             filter: brightness(0.65);
         }
 
+        .hero-nav-btn {
+            width: 3rem;
+            height: 3rem;
+            opacity: 0;
+            pointer-events: none;
+            color: rgba(255, 255, 255, 0.88);
+            transition: opacity 0.35s ease, transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .hero-stage:hover .hero-nav-btn,
+        .hero-stage:focus-within .hero-nav-btn {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .hero-nav-btn:hover {
+            color: #ffffff;
+        }
+
+        .hero-nav-btn:active {
+            transform: scale(0.98);
+        }
+
         /* 浮水印裝飾字 */
         .watermark-text {
             writing-mode: vertical-rl;
@@ -236,32 +259,132 @@
             box-shadow: var(--tw-shadow-glass);
         }
 
-        /* Hero -> Philosophy 過渡：灰階網點由上往下蔓延並逐步淡出 */
+        .insights-fade {
+            -webkit-mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-size: 100% 100%;
+            mask-size: 100% 100%;
+        }
+        @media (max-width: 767px) {
+            .insights-fade {
+                -webkit-mask-image: linear-gradient(to right, transparent 0, #000 10%, #000 90%, transparent 100%);
+                mask-image: linear-gradient(to right, transparent 0, #000 10%, #000 90%, transparent 100%);
+            }
+        }
+        .insight-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 56vw;
+            background: rgba(255, 255, 255, 0.82);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.06);
+            text-decoration: none;
+            color: inherit;
+            scroll-snap-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        @media (min-width: 768px) { .insight-card { min-width: 320px; } }
+        .insight-card:hover { transform: translateY(-4px); box-shadow: 0 26px 52px -18px rgba(33,37,41,0.22); border-color: #DEE2E6; }
+        .insight-card__media {
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background: #E9ECEF;
+            border-radius: 1.3rem 1.3rem 0 0;
+        }
+        .insight-card__media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(0.5);
+            transition: transform 0.7s ease, filter 0.5s ease, opacity 0.5s ease;
+        }
+        .insight-card:hover .insight-card__media img {
+            transform: scale(1.05);
+            filter: grayscale(0);
+        }
+        .insight-card__body {
+            padding: 1.35rem 1.4rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .insight-card__arrow {
+            margin-top: auto;
+            padding-top: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #212529;
+            transition: gap 0.25s ease, color 0.25s ease;
+        }
+        .insight-card:hover .insight-card__arrow { gap: 0.85rem; color: #6C757D; }
+        .insight-more-card {
+            min-width: 160px; background: #F8F9FA;
+            border: 2px dashed rgba(173,181,189,0.5); border-radius: 1rem;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 1.75rem; text-decoration: none; color: inherit;
+            scroll-snap-align: center; transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+        .insight-more-card:hover { border-color: #343A40; transform: translateY(-4px); }
+        .insight-video-card {
+            min-width: 72vw;
+            background: rgba(255,255,255,0.72);
+            border: 1px solid rgba(255,255,255,0.85);
+            border-radius: 1rem;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            scroll-snap-align: center;
+            box-shadow: 0 18px 36px -18px rgba(33,37,41,0.18);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .insight-video-card:hover { transform: translateY(-3px); box-shadow: 0 24px 42px -20px rgba(33,37,41,0.22); }
+        @media (min-width: 768px) { .insight-video-card { min-width: 260px; } }
+
+        /* M25 文字接力：場景水印大字 */
+        .scene-watermark-wrap { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+        .scene-watermark {
+            position: absolute; top: 0;
+            font-family: 'Roboto', sans-serif; font-weight: 900;
+            letter-spacing: -0.03em; line-height: 0.8;
+            color: rgba(33,37,41,0.045);
+            font-size: clamp(3.5rem, 13vw, 10rem);
+            white-space: nowrap;
+        }
+        /* M36 + M03 收束 → CTA 過渡橋 */
+        .closing-bridge { position: relative; height: clamp(120px, 17vw, 220px); z-index: 10; pointer-events: none; overflow: hidden; }
+        .closing-bridge .bridge-spine {
+            position: absolute; left: 50%; top: 0; width: 1px; height: 58%;
+            transform: translateX(-50%);
+            background: linear-gradient(to bottom, rgba(173,181,189,0), rgba(173,181,189,0.7) 45%, rgba(173,181,189,0));
+        }
+        .closing-bridge .bridge-cue {
+            position: absolute; left: 50%; bottom: 18%;
+            transform: translateX(-50%);
+            display: flex; align-items: center; gap: 0.6rem;
+        }
+        @media (max-width: 767px) {
+            .scene-watermark { font-size: clamp(3rem, 20vw, 6rem); }
+            .closing-fx .closing-glow { height: 32vh; bottom: -12vh; }
+        }
+
+        /* Hero -> Philosophy 過渡：套用 index 網點圖並向下淡出 */
         .philosophy-transition-tone {
-            background-image:
-                radial-gradient(rgba(108, 117, 125, 0.38) 1.3px, transparent 2px),
-                linear-gradient(
-                    to bottom,
-                    rgba(248, 249, 250, 0) 0%,
-                    rgba(173, 181, 189, 0.16) 20%,
-                    rgba(173, 181, 189, 0.30) 42%,
-                    rgba(222, 226, 230, 0.18) 62%,
-                    rgba(248, 249, 250, 0) 100%
-                );
-            background-size: 16px 16px, 100% 100%;
-            background-position: left top, left top;
-            -webkit-mask-image: linear-gradient(
-                to bottom,
-                transparent 0%,
-                rgba(0, 0, 0, 0.65) 18%,
-                rgba(0, 0, 0, 0.88) 42%,
-                transparent 100%
-            );
+            background-image: url("image/index網點.webp");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center top;
             mask-image: linear-gradient(
                 to bottom,
                 transparent 0%,
-                rgba(0, 0, 0, 0.65) 18%,
-                rgba(0, 0, 0, 0.88) 42%,
+                rgba(0, 0, 0, 0.62) 18%,
+                rgba(0, 0, 0, 0.86) 42%,
                 transparent 100%
             );
             pointer-events: none;
@@ -318,6 +441,14 @@
             <img src="Slide_View-camera-technique-01.webp" alt="Hero Slide camera technique" class="hero-slide absolute inset-0 w-full h-full object-cover object-center opacity-0 transition-opacity duration-1000">
             <div class="absolute inset-0 bg-black/50 hero-dim-overlay"></div>
             </div>
+
+            <!-- Controls -->
+            <button type="button" class="hero-prev hidden md:block absolute left-4 md:left-10 top-1/2 -translate-y-1/2 hero-nav-btn text-3xl md:text-4xl z-30 cursor-pointer transition duration-300 hover:scale-110" aria-label="Previous slide">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button type="button" class="hero-next hidden md:block absolute right-4 md:right-10 top-1/2 -translate-y-1/2 hero-nav-btn text-3xl md:text-4xl z-30 cursor-pointer transition duration-300 hover:scale-110" aria-label="Next slide">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
         
         <!-- 側邊巨大的垂直裝飾字 (融入背景) -->
         <div class="absolute left-4 md:left-12 top-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none select-none z-10">
@@ -363,8 +494,8 @@
 
     <!-- 3. Philosophy Section (理念區) -->
     <section id="philosophy" class="py-24 md:py-40 px-6 md:px-12 relative z-10">
-        <div class="philosophy-transition-tone absolute -top-10 md:-top-14 left-0 w-full h-56 md:h-72"></div>
-        
+        <div class="philosophy-transition-tone absolute -top-10 md:-top-14 right-0 w-full h-56 md:h-72"></div>
+
         <!-- 置中漸層引導線 -->
         <div class="absolute top-0 left-1/2 w-px h-24 bg-gradient-to-b from-gallery-300 to-transparent -translate-x-1/2"></div>
 
@@ -487,15 +618,55 @@
         </div>
     </section>
 
-    <!-- 6. Insights & Events (洞察與活動) -->
-    <section id="insights" class="py-24 md:pt-30 md:pb-40 px-6 md:px-12 relative z-10">
-        <!-- 上方漸層引導線 -->
-        <div class="absolute top-0 left-1/2 w-px h-24 bg-gradient-to-b from-gallery-300 to-transparent -translate-x-1/2"></div>
+    <!-- 6. Insights & Events → CTA（收束連場：高段落連續性） -->
+    <section id="insights" class="closing-sequence py-24 md:pt-28 md:pb-24 px-6 md:px-12 relative z-10">
+        <!-- 上方漸層引導線（承接藝廊） -->
+        <div class="absolute top-0 left-1/2 w-px h-24 bg-gradient-to-b from-gallery-300 to-transparent -translate-x-1/2 z-10"></div>
 
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-32 mt-12 relative z-10">
-            
-            <!-- Left: Events -->
-            <div>
+        <div class="max-w-7xl mx-auto flex flex-col gap-28 md:gap-36 mt-12 relative z-10">
+
+            <!-- Scene 03 · 影片陳列 -->
+            <div class="scene-spine relative w-full">
+                <div class="scene-watermark-wrap"><span class="scene-watermark" style="right:-0.03em;">FILMS</span></div>
+                <div class="relative z-10">
+                <div class="flex items-center gap-4 mb-10">
+                    <div class="h-px w-12 bg-gallery-800"></div>
+                    <p class="text-[10px] font-bold tracking-[0.3em] text-gallery-400 uppercase font-display">Videos</p>
+                </div>
+                <div id="insights-videos" class="flex overflow-x-auto gap-4 no-scrollbar pb-2 snap-x snap-mandatory"></div>
+
+                <a href="insights.html" class="sm:hidden mt-8 inline-flex items-center gap-3 text-xs font-bold tracking-widest text-gallery-900 pb-1 border-b border-gallery-900 hover:text-gallery-500 hover:border-gallery-500 transition-colors">
+                    瀏覽所有專欄 <i class="fa-solid fa-arrow-right-long text-xs"></i>
+                </a>
+                </div>
+            </div>
+
+
+            <!-- Scene 02 · 尖端洞察 -->
+            <div class="scene-spine relative w-full">
+                <div class="scene-watermark-wrap"><span class="scene-watermark" style="left:-0.03em;">INSIGHTS</span></div>
+                <div class="relative z-10">
+                <div class="flex items-center gap-4 mb-10">
+                    <div class="h-px w-12 bg-gallery-800"></div>
+                    <p class="text-[10px] font-bold tracking-[0.3em] text-gallery-400 uppercase font-display">Insights</p>
+                </div>
+                <div class="flex items-end justify-between gap-6 mb-12">
+                    <h2 class="font-serif text-4xl font-bold text-gallery-900">尖端洞察</h2>
+                    <a href="insights.html" class="hidden sm:inline-flex items-center gap-3 text-xs font-bold tracking-widest text-gallery-900 pb-1 border-b border-gallery-900 hover:text-gallery-500 hover:border-gallery-500 transition-colors whitespace-nowrap">
+                        瀏覽所有專欄 <i class="fa-solid fa-arrow-right-long text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- 動態注入：類似學員心得的橫向卡片 -->
+                <div id="insights-scroll" class="insights-fade flex overflow-x-auto gap-6 pt-6 pb-4 -mx-6 px-6 md:mx-0 md:px-1 snap-x snap-mandatory no-scrollbar items-stretch"></div>
+                </div>
+            </div>
+
+
+            <!-- Scene 01 · 近期活動 -->
+            <div class="scene-spine relative w-full">
+                <div class="scene-watermark-wrap"><span class="scene-watermark" style="left:-0.03em;">EVENTS</span></div>
+                <div class="relative z-10">
                 <div class="flex items-center gap-4 mb-10">
                     <div class="h-px w-12 bg-gallery-800"></div>
                     <p class="text-[10px] font-bold tracking-[0.3em] text-gallery-400 uppercase font-display">Upcoming</p>
@@ -551,36 +722,18 @@
                         </div>
                     </a>
                 </div>
+                </div>
             </div>
 
-            <!-- Right: Insights -->
-            <div>
-                <div class="flex items-center gap-4 mb-10">
-                    <div class="h-px w-12 bg-gallery-800"></div>
-                    <p class="text-[10px] font-bold tracking-[0.3em] text-gallery-400 uppercase font-display">Insights</p>
-                </div>
-                <div class="flex items-end justify-between gap-6 mb-12">
-                    <h2 class="font-serif text-4xl font-bold text-gallery-900">尖端洞察</h2>
-                    <a href="insights.html" class="hidden sm:inline-flex items-center gap-3 text-xs font-bold tracking-widest text-gallery-900 pb-1 border-b border-gallery-900 hover:text-gallery-500 hover:border-gallery-500 transition-colors whitespace-nowrap">
-                        瀏覽所有專欄 <i class="fa-solid fa-arrow-right-long text-xs"></i>
-                    </a>
-                </div>
-
-                <!-- 動態注入：最新精選文章卡 -->
-                <div id="insights-featured"></div>
-
-                <a href="insights.html" class="sm:hidden mt-8 inline-flex items-center gap-3 text-xs font-bold tracking-widest text-gallery-900 pb-1 border-b border-gallery-900 hover:text-gallery-500 hover:border-gallery-500 transition-colors">
-                    瀏覽所有專欄 <i class="fa-solid fa-arrow-right-long text-xs"></i>
-                </a>
-            </div>
         </div>
+
     </section>
 
     <div id="shared-cta"></div>
     <div id="shared-footer"></div>
 
     <!-- JavaScript -->
-    <script src="js/shared-layout.js"></script>
+    <script src="js/shared-layout.js?v=20260711-glow-fix"></script>
     <script src="js/works-data.js"></script>
     <script src="js/insights-data.js"></script>
     <script src="js/courses-data.js"></script>
@@ -660,21 +813,43 @@
 
             const preferredStartIndex = Math.min(2, slides.length - 1);
             let currentIndex = preferredStartIndex;
+            let autoplayTimer = null;
             const intervalMs = 3500;
 
-            slides.forEach(function(slide, idx) {
-                slide.classList.toggle('opacity-100', idx === currentIndex);
-                slide.classList.toggle('opacity-0', idx !== currentIndex);
-            });
+            const heroPrev = document.querySelector('.hero-prev');
+            const heroNext = document.querySelector('.hero-next');
 
-            setInterval(function() {
-                const nextIndex = (currentIndex + 1) % slides.length;
-                slides[currentIndex].classList.remove('opacity-100');
-                slides[currentIndex].classList.add('opacity-0');
-                slides[nextIndex].classList.remove('opacity-0');
-                slides[nextIndex].classList.add('opacity-100');
-                currentIndex = nextIndex;
-            }, intervalMs);
+            function renderSlide(index) {
+                slides.forEach(function(slide, idx) {
+                    slide.classList.toggle('opacity-100', idx === index);
+                    slide.classList.toggle('opacity-0', idx !== index);
+                });
+                currentIndex = index;
+            }
+
+            function restartAutoplay() {
+                if (autoplayTimer) clearInterval(autoplayTimer);
+                autoplayTimer = setInterval(function() {
+                    renderSlide((currentIndex + 1) % slides.length);
+                }, intervalMs);
+            }
+
+            function goPrev() {
+                renderSlide((currentIndex - 1 + slides.length) % slides.length);
+                restartAutoplay();
+            }
+
+            function goNext() {
+                renderSlide((currentIndex + 1) % slides.length);
+                restartAutoplay();
+            }
+
+            renderSlide(currentIndex);
+
+            if (heroPrev) heroPrev.addEventListener('click', goPrev);
+            if (heroNext) heroNext.addEventListener('click', goNext);
+
+            restartAutoplay();
         })();
 
         // ── Splash 顯示策略：只有同站其他頁返回時略過；外站返回仍播放 ──
@@ -762,10 +937,11 @@
             WorksStore.subscribe(render);
         })();
 
-        // ── 尖端洞察：動態渲染最新精選文章 ──
+        // ── 尖端洞察：動態渲染最新精選文章 + 影片陳列 ──
         (function renderInsightsFeatured() {
-            const slot = document.getElementById('insights-featured');
-            if (!slot || typeof InsightsStore === 'undefined') return;
+            const rail = document.getElementById('insights-scroll');
+            const videoRow = document.getElementById('insights-videos');
+            if ((!rail && !videoRow) || typeof InsightsStore === 'undefined') return;
 
             function esc(s) {
                 return String(s == null ? '' : s)
@@ -773,39 +949,98 @@
                     .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
             }
 
+            const videoItems = [
+                { url: 'https://www.youtube.com/watch?v=MkA7q2zLJ-I', title: '影片陳列 01', label: 'YouTube' },
+                { url: 'https://www.youtube.com/watch?v=6mqD4OZmbGU', title: '影片陳列 02', label: 'YouTube' },
+                { url: 'https://www.youtube.com/watch?v=wkJsAIY2xIw', title: '影片陳列 03', label: 'YouTube' }
+            ];
+
+            function youtubeId(url) {
+                const match = String(url || '').match(/[?&]v=([^&]+)/) || String(url || '').match(/youtu\.be\/([^?&]+)/) || String(url || '').match(/youtube\.com\/embed\/([^?&]+)/);
+                return match ? match[1] : '';
+            }
+
+            function youtubeThumb(url) {
+                const id = youtubeId(url);
+                return id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : '';
+            }
+
             function render() {
-                const list = InsightsStore.getFeatured();
-                const post = list[0] || InsightsStore.getAll()[0];
-                if (!post) {
-                    slot.innerHTML = `
-                        <div class="glass-card p-8 rounded-2xl text-center text-gallery-500">
-                            <p class="text-sm tracking-widest">尚無專欄文章</p>
-                            <p class="text-xs mt-2 text-gallery-400">管理者請按 ⌘ + ⇧ + E 於 insights.html 開啟後台新增。</p>
-                        </div>`;
-                    return;
+                const featured = InsightsStore.getFeatured(4);
+                const allPosts = InsightsStore.getAll();
+                const posts = [];
+                const seen = new Set();
+
+                featured.concat(allPosts).forEach(function (post) {
+                    if (!post || seen.has(post.id) || posts.length >= 4) return;
+                    seen.add(post.id);
+                    posts.push(post);
+                });
+
+                if (rail) {
+                    if (!posts.length) {
+                        rail.innerHTML = `
+                            <div class="insight-card text-center text-gallery-500">
+                                <p class="text-sm tracking-widest">尚無專欄文章</p>
+                                <p class="text-xs mt-2 text-gallery-400">管理者請按 ⌘ + ⇧ + E 於 insights.html 開啟後台新增。</p>
+                            </div>`;
+                    } else {
+                        const cards = posts.map(function (post) {
+                            const cover = InsightsStore.coverOf(post);
+                            const kicker = (post.categories && post.categories[0]) || '專欄';
+                            return `
+                                    <a href="insight-detail.html?id=${encodeURIComponent(post.id)}" class="insight-card group">
+                                        <div class="insight-card__media">
+                                            <img src="${esc(cover)}" alt="${esc(post.title)}" onerror="this.onerror=null;this.src='${esc(InsightsStore.pickFallbackCover(post.id))}';">
+                                        </div>
+                                        <div class="insight-card__body">
+                                            <div class="flex items-center gap-2 mb-3">
+                                                <span class="w-1.5 h-1.5 rounded-full bg-gallery-400 group-hover:bg-gallery-900 transition-colors"></span>
+                                                <span class="text-[10px] text-gallery-800 font-bold tracking-widest uppercase">${esc(kicker)}</span>
+                                            </div>
+                                            <h4 class="font-serif text-2xl md:text-3xl font-bold mb-4 text-gallery-900 group-hover:text-gallery-500 transition-colors leading-snug">${esc(post.title)}</h4>
+                                            <div class="insight-card__arrow">
+                                                <span>閱讀全文</span>
+                                                <div class="w-8 h-[1px] bg-gallery-900 group-hover:w-12 transition-all duration-300"></div>
+                                            </div>
+                                        </div>
+                                </a>`;
+                        }).join('');
+                        rail.innerHTML = cards + `
+                            <a href="insights.html" class="insight-more-card group">
+                                <div class="w-16 h-16 rounded-full bg-white shadow flex items-center justify-center mb-4 text-gallery-800 text-2xl group-hover:scale-110 transition-transform"><i class="fa-solid fa-book-open"></i></div>
+                                <h4 class="font-serif font-bold text-gallery-900 text-lg mb-2 group-hover:text-gallery-500 transition-colors">瀏覽所有專欄</h4>
+                                <p class="text-xs text-gallery-500 mb-6 leading-relaxed">閱讀更多洞察與觀點</p>
+                                <span class="px-6 py-2.5 bg-white border border-gallery-200 text-gallery-900 rounded-full text-xs font-bold shadow-sm group-hover:border-gallery-800 transition-all whitespace-nowrap">前往專欄 <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></span>
+                            </a>`;
+                    }
                 }
-                const cover = InsightsStore.coverOf(post);
-                const summary = InsightsStore.summaryOf(post, 90);
-                const kicker = (post.categories && post.categories[0]) || (post.author ? post.author + ' 專欄' : '視丘專欄');
-                slot.innerHTML = `
-                    <a href="insight-detail.html?id=${encodeURIComponent(post.id)}"
-                       class="block group relative glass-card p-6 rounded-2xl hover:-translate-y-2 transition-transform duration-500">
-                        <div class="aspect-[16/10] overflow-hidden mb-6 rounded-xl bg-gallery-100">
-                            <img src="${esc(cover)}" alt="${esc(post.title)}"
-                                 class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 mix-blend-multiply"
-                                 onerror="this.onerror=null;this.src='${esc(InsightsStore.pickFallbackCover(post.id))}';">
-                        </div>
-                        <div class="flex items-center gap-2 mb-4">
-                            <span class="w-1.5 h-1.5 rounded-full bg-gallery-400 group-hover:bg-gallery-900 transition-colors"></span>
-                            <span class="text-[10px] text-gallery-800 font-bold tracking-widest uppercase">${esc(kicker)}</span>
-                        </div>
-                        <h3 class="font-serif text-2xl font-bold mb-4 text-gallery-900 group-hover:text-gallery-500 transition-colors leading-snug">${esc(post.title)}</h3>
-                        ${summary ? `<p class="text-gallery-800 font-medium mb-6 line-clamp-2 leading-relaxed text-sm">${esc(summary)}</p>` : ''}
-                        <div class="flex items-center gap-3 text-xs font-bold tracking-widest text-gallery-900">
-                            <span>閱讀全文</span>
-                            <div class="w-8 h-[1px] bg-gallery-900 group-hover:w-12 transition-all duration-300"></div>
-                        </div>
-                    </a>`;
+
+                if (videoRow) {
+                    videoRow.innerHTML = videoItems.map(function (item) {
+                        const thumb = youtubeThumb(item.url);
+                        return `
+                            <a href="${esc(item.url)}" target="_blank" rel="noopener"
+                               class="insight-video-card group relative shrink-0 w-[64vw] sm:w-[260px] md:w-[280px] hover:-translate-y-1 transition-transform duration-500 snap-center">
+                                <div class="aspect-[16/10] overflow-hidden bg-gallery-100 relative">
+                                    <img src="${esc(thumb)}" alt="${esc(item.title)}"
+                                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100">
+                                    <div class="absolute inset-0 bg-black/35 group-hover:bg-black/25 transition-colors"></div>
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <div class="w-14 h-14 rounded-full bg-white/92 text-gallery-900 flex items-center justify-center shadow-lg border border-white/70 group-hover:scale-110 transition-transform">
+                                            <i class="fa-solid fa-play text-sm ml-1"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-4 md:p-5">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <span class="text-[10px] text-gallery-400 font-bold tracking-widest uppercase">${esc(item.label)}</span>
+                                    </div>
+                                    <h4 class="font-serif text-lg md:text-xl font-bold text-gallery-900 group-hover:text-gallery-500 transition-colors leading-snug">${esc(item.title)}</h4>
+                                </div>
+                            </a>`;
+                    }).join('');
+                }
             }
 
             render();
